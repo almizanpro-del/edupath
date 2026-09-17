@@ -22,7 +22,7 @@ import { ReviewForm } from '@/components/edupath/review-form'
 import { AdminPanel } from '@/components/edupath/admin-panel'
 import { LocaleSwitcher } from '@/components/edupath/locale-switcher'
 import { createClient } from '@/lib/supabase/client'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 
 // =================== Types ===================
 type Program = {
@@ -478,15 +478,15 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 <SheetContent className="w-full sm:max-w-md overflow-y-auto">
                   <SheetHeader>
                     <SheetTitle className="flex items-center justify-between">
-                      <span>Filters</span>
+                      <span>{t('Filters.title')}</span>
                       {activeFilterCount > 0 && (
-                        <Button variant="ghost" size="sm" onClick={clearFilters}>Clear all</Button>
+                        <Button variant="ghost" size="sm" onClick={clearFilters}>{t('Filters.clearAll')}</Button>
                       )}
                     </SheetTitle>
                   </SheetHeader>
                   <div className="px-4 pb-8 space-y-6 mt-4">
                     <div>
-                      <Label className="text-sm font-semibold mb-3 block">Country</Label>
+                      <Label className="text-sm font-semibold mb-3 block">{t('Filters.country')}</Label>
                       <div className="space-y-2">
                         {countries.map(c => (
                           <div key={c.code} className="flex items-center space-x-2">
@@ -508,7 +508,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                     <Separator />
 
                     <div>
-                      <Label className="text-sm font-semibold mb-3 block">Field of Study</Label>
+                      <Label className="text-sm font-semibold mb-3 block">{t('Filters.fieldOfStudy')}</Label>
                       <div className="space-y-2">
                         {['Computer Science', 'Engineering', 'Business', 'Medicine', 'Social Sciences'].map(f => (
                           <div key={f} className="flex items-center space-x-2">
@@ -526,7 +526,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                     <Separator />
 
                     <div>
-                      <Label className="text-sm font-semibold mb-3 block">Language of Instruction</Label>
+                      <Label className="text-sm font-semibold mb-3 block">{t('Filters.languageOfInstruction')}</Label>
                       <div className="space-y-2">
                         {['English', 'Arabic', 'German', 'Turkish'].map(l => (
                           <div key={l} className="flex items-center space-x-2">
@@ -545,7 +545,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
 
                     <div>
                       <div className="flex items-center justify-between mb-3">
-                        <Label className="text-sm font-semibold">Annual Tuition (USD)</Label>
+                        <Label className="text-sm font-semibold">{t('Filters.annualTuition')}</Label>
                         <span className="text-xs text-muted-foreground">
                           {formatUsd(tuitionRange[0])} - {formatUsd(tuitionRange[1])}
                         </span>
@@ -731,9 +731,9 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         <SheetContent side="bottom" className="h-[90vh] max-w-none w-full p-0">
           <SheetHeader className="px-6 py-4 border-b">
             <SheetTitle className="flex items-center justify-between">
-              <span>Compare {compareList.length} universit{compareList.length === 1 ? 'y' : 'ies'}</span>
+              <span>{t('Compare.title', { count: compareList.length })}</span>
               <Button variant="ghost" size="sm" onClick={() => setCompareList([])} disabled={compareList.length === 0}>
-                Clear all
+                {t('Compare.clearAll')}
               </Button>
             </SheetTitle>
           </SheetHeader>
@@ -741,9 +741,9 @@ export function EduPathApp({ universities, countries, stats }: Props) {
             {compareList.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-[60vh] text-center px-4">
                 <ArrowLeftRight className="size-12 text-muted-foreground/40 mb-4" />
-                <h3 className="text-lg font-semibold mb-2">No universities to compare yet</h3>
+                <h3 className="text-lg font-semibold mb-2">{t('Compare.empty')}</h3>
                 <p className="text-sm text-muted-foreground">
-                  Click the compare button on any university card to add it here. You can compare up to 3 at a time.
+                  {t('Compare.emptyDesc')}
                 </p>
               </div>
             ) : (
@@ -794,6 +794,7 @@ function UniversityCard({
   onCompare: () => void
   onOpen: () => void
 }) {
+  const t = useTranslations('UniversityCard')
   return (
     <Card className="group hover:shadow-lg transition-all hover:border-emerald-300 cursor-pointer relative" onClick={onOpen}>
       <CardHeader className="pb-3">
@@ -824,23 +825,23 @@ function UniversityCard({
         {uni.avgRating !== null && uni.reviewCount > 0 ? (
           <div className="flex items-center gap-2">
             <StarRating value={uni.avgRating} />
-            <span className="text-xs text-muted-foreground">({uni.reviewCount} review{uni.reviewCount > 1 ? 's' : ''})</span>
+            <span className="text-xs text-muted-foreground">{t('reviewCount', { count: uni.reviewCount })}</span>
           </div>
         ) : (
-          <div className="text-xs text-muted-foreground italic">No reviews yet - be the first!</div>
+          <div className="text-xs text-muted-foreground italic">{t('noReviews')}</div>
         )}
 
         <div className="grid grid-cols-3 gap-2 pt-3 border-t">
           <div>
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wide">From</div>
-            <div className="text-sm font-bold text-emerald-700">{formatUsdCompact(uni.cheapestProgramTuition)}/yr</div>
+            <div className="text-[10px] text-muted-foreground uppercase tracking-wide">{t('from')}</div>
+            <div className="text-sm font-bold text-emerald-700">{formatUsdCompact(uni.cheapestProgramTuition)}{t('perYear')}</div>
           </div>
           <div>
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wide">Living</div>
-            <div className="text-sm font-semibold">{formatUsdCompact(uni.livingCostUsd)}/yr</div>
+            <div className="text-[10px] text-muted-foreground uppercase tracking-wide">{t('living')}</div>
+            <div className="text-sm font-semibold">{formatUsdCompact(uni.livingCostUsd)}{t('perYear')}</div>
           </div>
           <div>
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wide">Intl %</div>
+            <div className="text-[10px] text-muted-foreground uppercase tracking-wide">{t('intlPct')}</div>
             <div className="text-sm font-semibold">{uni.intlStudentPct}%</div>
           </div>
         </div>
@@ -853,14 +854,14 @@ function UniversityCard({
           ))}
           {uni.programs.length > 3 && (
             <Badge variant="outline" className="text-[10px] font-normal">
-              +{uni.programs.length - 3} more
+              +{uni.programs.length - 3} {t('more')}
             </Badge>
           )}
         </div>
 
         <div className="flex gap-2 pt-2">
           <Button size="sm" className="flex-1 gap-1" onClick={(e) => { e.stopPropagation(); onOpen() }}>
-            View details
+            {t('viewDetails')}
             <ArrowRight className="size-3.5" />
           </Button>
           <Button
@@ -870,7 +871,7 @@ function UniversityCard({
             className={cn(isComparing && 'bg-emerald-600 hover:bg-emerald-700')}
           >
             <ArrowLeftRight className="size-3.5" />
-            {isComparing ? 'Comparing' : 'Compare'}
+            {isComparing ? t('comparing') : t('compare')}
           </Button>
         </div>
       </CardContent>
@@ -891,6 +892,8 @@ function UniversityDetail({
   onWriteReview: () => void
   onClose: () => void
 }) {
+  const t = useTranslations('Detail')
+  const locale = useLocale()
   const [activeTab, setActiveTab] = React.useState('overview')
   const [costDuration, setCostDuration] = React.useState(36)
   const [includeLiving, setIncludeLiving] = React.useState(true)
@@ -927,7 +930,7 @@ function UniversityDetail({
                   rel="noopener noreferrer"
                   className="flex items-center gap-1 hover:underline"
                 >
-                  <ExternalLink className="size-3.5" /> Visit website
+                  <ExternalLink className="size-3.5" /> {t('visitWebsite')}
                 </a>
                 {uni.avgRating !== null && (
                   <span className="flex items-center gap-1">
@@ -941,7 +944,7 @@ function UniversityDetail({
           <div className="flex gap-2 mt-5">
             <Button size="sm" variant="secondary" onClick={onSave} className="gap-2">
               <Heart className={cn('size-4', isSaved && 'fill-rose-500 text-rose-500')} />
-              {isSaved ? 'Saved' : 'Save'}
+              {isSaved ? t('saved') : t('save')}
             </Button>
             <Button
               size="sm"
@@ -950,7 +953,7 @@ function UniversityDetail({
               className={cn('gap-2', isComparing && 'bg-emerald-700 hover:bg-emerald-800')}
             >
               <ArrowLeftRight className="size-4" />
-              {isComparing ? 'In compare' : 'Add to compare'}
+              {isComparing ? t('inCompare') : t('addToCompare')}
             </Button>
           </div>
         </div>
@@ -958,11 +961,11 @@ function UniversityDetail({
         <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col overflow-hidden">
           <div className="border-b px-6">
             <TabsList className="bg-transparent h-12 p-0 gap-6">
-              <TabsTrigger value="overview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">Overview</TabsTrigger>
-              <TabsTrigger value="programs" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">Programs ({uni.programs.length})</TabsTrigger>
-              <TabsTrigger value="scholarships" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">Scholarships ({uni.scholarships.length})</TabsTrigger>
-              <TabsTrigger value="cost" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">Cost Calculator</TabsTrigger>
-              <TabsTrigger value="reviews" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">Reviews ({uni.reviews.length})</TabsTrigger>
+              <TabsTrigger value="overview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.overview')}</TabsTrigger>
+              <TabsTrigger value="programs" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.programs')} ({uni.programs.length})</TabsTrigger>
+              <TabsTrigger value="scholarships" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.scholarships')} ({uni.scholarships.length})</TabsTrigger>
+              <TabsTrigger value="cost" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.cost')}</TabsTrigger>
+              <TabsTrigger value="reviews" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.reviews')} ({uni.reviews.length})</TabsTrigger>
             </TabsList>
           </div>
 
@@ -972,14 +975,14 @@ function UniversityDetail({
                 <p className="text-sm leading-relaxed">{uni.descriptionEn}</p>
                 <Separator />
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <StatCard icon={<DollarSign className="size-4" />} label="Cheapest program" value={formatUsd(uni.cheapestProgramTuition) + '/yr'} />
-                  <StatCard icon={<DollarSign className="size-4" />} label="Living cost" value={formatUsd(uni.livingCostUsd) + '/yr'} />
-                  <StatCard icon={<Users className="size-4" />} label="Intl students" value={uni.intlStudentPct + '%'} />
-                  <StatCard icon={<TrendingUp className="size-4" />} label="Acceptance" value={uni.acceptanceRate !== null ? uni.acceptanceRate + '%' : 'N/A'} />
+                  <StatCard icon={<DollarSign className="size-4" />} label={t('stats.cheapestProgram')} value={formatUsd(uni.cheapestProgramTuition) + '/yr'} />
+                  <StatCard icon={<DollarSign className="size-4" />} label={t('stats.livingCost')} value={formatUsd(uni.livingCostUsd) + '/yr'} />
+                  <StatCard icon={<Users className="size-4" />} label={t('stats.intlStudents')} value={uni.intlStudentPct + '%'} />
+                  <StatCard icon={<TrendingUp className="size-4" />} label={t('stats.acceptance')} value={uni.acceptanceRate !== null ? uni.acceptanceRate + '%' : 'N/A'} />
                 </div>
                 <Separator />
                 <div>
-                  <h4 className="font-semibold mb-2 text-sm">Description (Arabic)</h4>
+                  <h4 className="font-semibold mb-2 text-sm">{t('descriptionAr')}</h4>
                   <p className="text-sm leading-relaxed text-right" dir="rtl" lang="ar">{uni.descriptionAr}</p>
                 </div>
               </TabsContent>
@@ -1002,16 +1005,16 @@ function UniversityDetail({
                         </div>
                         <div className="text-right">
                           <div className="text-lg font-bold text-emerald-700">{formatUsd(p.tuitionUsd)}</div>
-                          <div className="text-xs text-muted-foreground">per year</div>
+                          <div className="text-xs text-muted-foreground">{t('programs.perYear')}</div>
                         </div>
                       </div>
                       <div className="flex flex-wrap gap-4 text-xs text-muted-foreground pt-2 border-t">
-                        <span className="flex items-center gap-1"><Clock className="size-3" /> {p.durationMonths} months</span>
-                        {p.deadline && <span className="flex items-center gap-1"><CalendarIcon className="size-3" /> Deadline: {p.deadline}</span>}
+                        <span className="flex items-center gap-1"><Clock className="size-3" /> {p.durationMonths} {t('programs.months')}</span>
+                        {p.deadline && <span className="flex items-center gap-1"><CalendarIcon className="size-3" /> {t('programs.deadline')}: {p.deadline}</span>}
                       </div>
                       {p.entryReqs && (
                         <div className="text-xs text-muted-foreground bg-amber-50 border border-amber-200 rounded p-2">
-                          <strong>Entry requirements:</strong> {p.entryReqs}
+                          <strong>{t('programs.entryRequirements')}:</strong> {p.entryReqs}
                         </div>
                       )}
                     </CardContent>
@@ -1021,7 +1024,7 @@ function UniversityDetail({
 
               <TabsContent value="scholarships" className="mt-0 space-y-3">
                 {uni.scholarships.length === 0 ? (
-                  <div className="text-center py-8 text-muted-foreground text-sm">No scholarships listed.</div>
+                  <div className="text-center py-8 text-muted-foreground text-sm">{t('scholarships.none')}</div>
                 ) : (
                   uni.scholarships.map(s => (
                     <Card key={s.id} className="py-4">
@@ -1033,13 +1036,13 @@ function UniversityDetail({
                           </div>
                           <div className="text-right">
                             <div className="text-lg font-bold text-emerald-700">{formatUsd(s.amountUsd)}</div>
-                            <div className="text-xs text-muted-foreground">{s.amountType === 'full' ? 'full coverage' : 'amount'}</div>
+                            <div className="text-xs text-muted-foreground">{s.amountType === 'full' ? t('scholarships.fullCoverage') : t('scholarships.amount')}</div>
                           </div>
                         </div>
                         <p className="text-xs text-muted-foreground">{s.eligibility}</p>
                         {s.deadline && (
                           <div className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-                            <CalendarIcon className="size-3" /> Apply by: {s.deadline}
+                            <CalendarIcon className="size-3" /> {t('scholarships.applyBy')}: {s.deadline}
                           </div>
                         )}
                       </CardContent>
@@ -1051,16 +1054,16 @@ function UniversityDetail({
               <TabsContent value="cost" className="mt-0 space-y-4">
                 <div>
                   <h4 className="font-semibold mb-3 flex items-center gap-2">
-                    <Calculator className="size-4" /> Total Cost Calculator
+                    <Calculator className="size-4" /> {t('cost.title')}
                   </h4>
                   <p className="text-sm text-muted-foreground mb-4">
-                    Estimate your total cost based on program duration. Tuition is per year; living costs are approximate.
+                    {t('cost.description')}
                   </p>
                 </div>
 
                 <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 space-y-4">
                   <div>
-                    <Label className="text-sm font-medium">Program duration: {costDuration} months ({(costDuration / 12).toFixed(1)} years)</Label>
+                    <Label className="text-sm font-medium">{t('cost.programDuration', { months: costDuration, years: (costDuration / 12).toFixed(1) })}</Label>
                     <Slider
                       value={[costDuration]}
                       onValueChange={(v) => setCostDuration(v[0])}
@@ -1070,8 +1073,8 @@ function UniversityDetail({
                       className="mt-3"
                     />
                     <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                      <span>1 year</span>
-                      <span>6 years</span>
+                      <span>{t('cost.1year')}</span>
+                      <span>{t('cost.6years')}</span>
                     </div>
                   </div>
 
@@ -1082,7 +1085,7 @@ function UniversityDetail({
                       onCheckedChange={(v) => setIncludeLiving(v === true)}
                     />
                     <Label htmlFor="include-living" className="text-sm cursor-pointer">
-                      Include living expenses ({formatUsd(uni.livingCostUsd)}/yr)
+                      {t('cost.includeLiving', { amount: formatUsd(uni.livingCostUsd) })}
                     </Label>
                   </div>
 
@@ -1090,18 +1093,18 @@ function UniversityDetail({
 
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Tuition ({(costDuration / 12).toFixed(1)} years)</span>
+                      <span className="text-muted-foreground">{t('cost.tuition', { years: (costDuration / 12).toFixed(1) })}</span>
                       <span className="font-medium">{formatUsd(Math.round(uni.cheapestProgramTuition * costDuration / 12))}</span>
                     </div>
                     {includeLiving && (
                       <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Living ({(costDuration / 12).toFixed(1)} years)</span>
+                        <span className="text-muted-foreground">{t('cost.living', { years: (costDuration / 12).toFixed(1) })}</span>
                         <span className="font-medium">{formatUsd(Math.round(uni.livingCostUsd * costDuration / 12))}</span>
                       </div>
                     )}
                     <Separator />
                     <div className="flex justify-between items-center pt-2">
-                      <span className="font-semibold">Total estimated cost</span>
+                      <span className="font-semibold">{t('cost.total')}</span>
                       <span className="text-2xl font-bold text-emerald-700">
                         {formatUsd(totalCost(
                           uni.cheapestProgramTuition,
@@ -1114,7 +1117,7 @@ function UniversityDetail({
                 </div>
 
                 <div className="text-xs text-muted-foreground bg-amber-50 border border-amber-200 rounded p-3">
-                  <strong>Disclaimer:</strong> Costs are estimates based on annual tuition + living expenses. Currency conversion uses daily rates. Actual costs may vary by program and lifestyle. Always verify with the university directly.
+                  <strong>{t('cost.disclaimer')}</strong>
                 </div>
               </TabsContent>
 
@@ -1122,24 +1125,24 @@ function UniversityDetail({
                 {/* Write a review CTA */}
                 <div className="flex items-center justify-between gap-3 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
                   <div>
-                    <div className="font-semibold text-sm">Share your experience</div>
+                    <div className="font-semibold text-sm">{t('reviews.shareExperience')}</div>
                     <div className="text-xs text-muted-foreground mt-0.5">
                       {isLoggedIn
-                        ? 'Help other MENA students by reviewing this university.'
-                        : 'Sign in to write a review.'}
+                        ? t('reviews.shareDescLoggedIn')
+                        : t('reviews.shareDescLoggedOut')}
                     </div>
                   </div>
                   <Button onClick={onWriteReview} className="gap-2" size="sm">
                     <MessageSquarePlus className="size-4" />
-                    Write a Review
+                    {t('reviews.writeReview')}
                   </Button>
                 </div>
 
                 {uni.reviews.length === 0 ? (
                   <div className="text-center py-12">
                     <div className="text-4xl mb-3">✍️</div>
-                    <h4 className="font-semibold mb-1">No reviews yet</h4>
-                    <p className="text-sm text-muted-foreground">Be the first to share your experience at {uni.name}.</p>
+                    <h4 className="font-semibold mb-1">{t('reviews.noReviews')}</h4>
+                    <p className="text-sm text-muted-foreground">{t('reviews.noReviewsDesc', { name: uni.name })}</p>
                   </div>
                 ) : (
                   <>
@@ -1149,15 +1152,15 @@ function UniversityDetail({
                           <div>
                             <div className="text-3xl font-bold">{uni.avgRating.toFixed(1)}</div>
                             <StarRating value={uni.avgRating} size={16} />
-                            <div className="text-xs text-muted-foreground mt-1">{uni.reviewCount} review{uni.reviewCount > 1 ? 's' : ''}</div>
+                            <div className="text-xs text-muted-foreground mt-1">{t('reviews.reviewCount', { count: uni.reviewCount })}</div>
                           </div>
                         </div>
                         <div className="space-y-2">
-                          <RatingBar label="Affordability" value={uni.reviews.reduce((s, r) => s + r.ratingAffordability, 0) / uni.reviews.length} />
-                          <RatingBar label="Teaching quality" value={uni.reviews.reduce((s, r) => s + r.ratingTeaching, 0) / uni.reviews.length} />
-                          <RatingBar label="Visa process" value={uni.reviews.reduce((s, r) => s + r.ratingVisa, 0) / uni.reviews.length} />
-                          <RatingBar label="Safety" value={uni.reviews.reduce((s, r) => s + r.ratingSafety, 0) / uni.reviews.length} />
-                          <RatingBar label="Social life" value={uni.reviews.reduce((s, r) => s + r.ratingSocial, 0) / uni.reviews.length} />
+                          <RatingBar label={t('reviews.subRatings.affordability')} value={uni.reviews.reduce((s, r) => s + r.ratingAffordability, 0) / uni.reviews.length} />
+                          <RatingBar label={t('reviews.subRatings.teaching')} value={uni.reviews.reduce((s, r) => s + r.ratingTeaching, 0) / uni.reviews.length} />
+                          <RatingBar label={t('reviews.subRatings.visa')} value={uni.reviews.reduce((s, r) => s + r.ratingVisa, 0) / uni.reviews.length} />
+                          <RatingBar label={t('reviews.subRatings.safety')} value={uni.reviews.reduce((s, r) => s + r.ratingSafety, 0) / uni.reviews.length} />
+                          <RatingBar label={t('reviews.subRatings.social')} value={uni.reviews.reduce((s, r) => s + r.ratingSocial, 0) / uni.reviews.length} />
                         </div>
                       </div>
                     )}
@@ -1170,7 +1173,7 @@ function UniversityDetail({
                                 <span className="font-semibold">{r.userName}</span>
                                 {r.verifiedEnrollment && (
                                   <Badge variant="outline" className="text-[10px] gap-1 border-emerald-500 text-emerald-700">
-                                    <CheckCircle2 className="size-3" /> Verified Student
+                                    <CheckCircle2 className="size-3" /> {t('reviews.verifiedStudent')}
                                   </Badge>
                                 )}
                               </div>
@@ -1187,9 +1190,9 @@ function UniversityDetail({
                             ))}
                           </div>
                           <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t">
-                            <span>{new Date(r.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                            <span>{new Date(r.createdAt).toLocaleDateString(locale === 'ar' ? 'ar-EG' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
                             <Button variant="ghost" size="sm" className="h-7 gap-1 text-xs">
-                              <ThumbsUp className="size-3" /> Helpful ({r.helpfulCount})
+                              <ThumbsUp className="size-3" /> {t('reviews.helpful')} ({r.helpfulCount})
                             </Button>
                           </div>
                         </CardContent>
@@ -1220,19 +1223,20 @@ function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string
 
 // =================== Comparison Table ===================
 function ComparisonTable({ universities }: { universities: University[] }) {
+  const t = useTranslations('Compare.rows')
   const rows: Array<{ label: string; render: (u: University) => React.ReactNode }> = [
-    { label: 'Country', render: u => `${countryFlag(u.country)} ${u.country}` },
-    { label: 'City', render: u => u.city },
-    { label: 'Cheapest tuition (yr)', render: u => <span className="font-semibold text-emerald-700">{formatUsd(u.cheapestProgramTuition)}</span> },
-    { label: 'Living cost (yr)', render: u => formatUsd(u.livingCostUsd) },
-    { label: 'Total 3-yr cost', render: u => <span className="font-semibold">{formatUsd(totalCost(u.cheapestProgramTuition, u.livingCostUsd, 36))}</span> },
-    { label: 'Intl student %', render: u => `${u.intlStudentPct}%` },
-    { label: 'Acceptance rate', render: u => u.acceptanceRate !== null ? `${u.acceptanceRate}%` : 'N/A' },
-    { label: 'Programs', render: u => `${u.programs.length} programs` },
-    { label: 'Scholarships', render: u => `${u.scholarships.length} available` },
-    { label: 'Reviews', render: u => u.reviewCount > 0 ? `${u.avgRating?.toFixed(1)} star (${u.reviewCount})` : 'None' },
-    { label: 'Languages', render: u => [...new Set(u.programs.map(p => p.language))].join(', ') },
-    { label: 'Fields', render: u => [...new Set(u.programs.map(p => p.field))].slice(0, 4).join(', ') },
+    { label: t('country'), render: u => `${countryFlag(u.country)} ${u.country}` },
+    { label: t('city'), render: u => u.city },
+    { label: t('cheapestTuition'), render: u => <span className="font-semibold text-emerald-700">{formatUsd(u.cheapestProgramTuition)}</span> },
+    { label: t('livingCost'), render: u => formatUsd(u.livingCostUsd) },
+    { label: t('total3yrCost'), render: u => <span className="font-semibold">{formatUsd(totalCost(u.cheapestProgramTuition, u.livingCostUsd, 36))}</span> },
+    { label: t('intlPct'), render: u => `${u.intlStudentPct}%` },
+    { label: t('acceptance'), render: u => u.acceptanceRate !== null ? `${u.acceptanceRate}%` : 'N/A' },
+    { label: t('programs'), render: u => t('programsValue', { count: u.programs.length }) },
+    { label: t('scholarships'), render: u => t('scholarshipsValue', { count: u.scholarships.length }) },
+    { label: t('reviews'), render: u => u.reviewCount > 0 ? t('reviewsValue', { rating: u.avgRating?.toFixed(1) ?? '0', count: u.reviewCount }) : t('reviewsNone') },
+    { label: t('languages'), render: u => [...new Set(u.programs.map(p => p.language))].join(', ') },
+    { label: t('fields'), render: u => [...new Set(u.programs.map(p => p.field))].slice(0, 4).join(', ') },
   ]
 
   return (
@@ -1240,7 +1244,7 @@ function ComparisonTable({ universities }: { universities: University[] }) {
       <table className="w-full">
         <thead className="sticky top-0 bg-white z-10">
           <tr>
-            <th className="text-left p-4 border-b font-semibold text-sm w-40">Metric</th>
+            <th className="text-left p-4 border-b font-semibold text-sm w-40">{t('metric')}</th>
             {universities.map(u => (
               <th key={u.id} className="text-left p-4 border-b font-semibold text-sm min-w-[200px]">
                 <div className="flex items-start gap-2">

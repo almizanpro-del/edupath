@@ -48,7 +48,8 @@
     "viewDetails": "View details",
     "compare": "Compare",
     "comparing": "Comparing",
-    "noReviews": "No reviews yet - be the first!"
+    "noReviews": "No reviews yet - be the first!",
+    "reviewCount": "({count, plural, one {# review} other {# reviews}})"
   },
   "Detail": {
     "visitWebsite": "Visit website",
@@ -90,7 +91,9 @@
       "tuition": "Tuition ({years} years)",
       "living": "Living ({years} years)",
       "total": "Total estimated cost",
-      "disclaimer": "Disclaimer: Costs are estimates based on annual tuition + living expenses. Currency conversion uses daily rates. Actual costs may vary by program and lifestyle. Always verify with the university directly."
+      "disclaimer": "Disclaimer: Costs are estimates based on annual tuition + living expenses. Currency conversion uses daily rates. Actual costs may vary by program and lifestyle. Always verify with the university directly.",
+      "1year": "1 year",
+      "6years": "6 years"
     },
     "reviews": {
       "shareExperience": "Share your experience",
@@ -101,6 +104,7 @@
       "noReviewsDesc": "Be the first to share your experience at {name}.",
       "verifiedStudent": "Verified Student",
       "helpful": "Helpful",
+      "reviewCount": "{count, plural, one {# review} other {# reviews}}",
       "subRatings": {
         "affordability": "Affordability",
         "teaching": "Teaching quality",
@@ -128,7 +132,11 @@
       "scholarships": "Scholarships",
       "reviews": "Reviews",
       "languages": "Languages",
-      "fields": "Fields"
+      "fields": "Fields",
+      "programsValue": "{count} programs",
+      "scholarshipsValue": "{count} available",
+      "reviewsValue": "{rating} star ({count})",
+      "reviewsNone": "None"
     }
   },
   "Auth": {
