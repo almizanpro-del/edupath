@@ -3,6 +3,8 @@
  * GET    /api/saved-lists          — list current user's saved universities
  * POST   /api/saved-lists          — toggle save/unsave a university
  *   body: { universityId: string }
+ *
+ * Returns graceful errors when DB is unavailable (Vercel without Postgres).
  */
 import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
@@ -35,92 +37,105 @@ async function getOrCreateProfile() {
 
 // Get current user's saved universities
 export async function GET() {
-  const profile = await getOrCreateProfile()
-  if (!profile) {
-    return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
-  }
+  try {
+    const profile = await getOrCreateProfile()
+    if (!profile) {
+      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+    }
 
-  // Use a single default saved list per user (MVP simplification)
-  let list = await db.savedList.findFirst({
-    where: { userId: profile.id, listName: 'My Saved Universities' },
-  })
-
-  if (!list) {
-    list = await db.savedList.create({
-      data: {
-        userId: profile.id,
-        listName: 'My Saved Universities',
-        universities: '[]',
-      },
+    let list = await db.savedList.findFirst({
+      where: { userId: profile.id, listName: 'My Saved Universities' },
     })
-  }
 
-  const universityIds: string[] = JSON.parse(list.universities)
-  const universities = universityIds.length > 0
-    ? await db.university.findMany({
-        where: { id: { in: universityIds } },
-        select: {
-          id: true,
-          name: true,
-          slug: true,
-          country: true,
-          city: true,
-          tuitionUsd: true,
-          livingCostUsd: true,
+    if (!list) {
+      list = await db.savedList.create({
+        data: {
+          userId: profile.id,
+          listName: 'My Saved Universities',
+          universities: '[]',
         },
       })
-    : []
+    }
 
-  return NextResponse.json({ universities })
+    const universityIds: string[] = JSON.parse(list.universities)
+    const universities = universityIds.length > 0
+      ? await db.university.findMany({
+          where: { id: { in: universityIds } },
+          select: {
+            id: true,
+            name: true,
+            slug: true,
+            country: true,
+            city: true,
+            tuitionUsd: true,
+            livingCostUsd: true,
+          },
+        })
+      : []
+
+    return NextResponse.json({ universities })
+  } catch (error) {
+    // DB unavailable
+    console.warn('[api/saved-lists GET] Error:', error)
+    return NextResponse.json({ universities: [], dbAvailable: false })
+  }
 }
 
 // Toggle save/unsave a university
 export async function POST(req: NextRequest) {
-  const profile = await getOrCreateProfile()
-  if (!profile) {
-    return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
-  }
+  try {
+    const profile = await getOrCreateProfile()
+    if (!profile) {
+      return NextResponse.json({ error: 'Not authenticated' }, { status: 401 })
+    }
 
-  const body = await req.json()
-  const { universityId } = body
-  if (!universityId || typeof universityId !== 'string') {
-    return NextResponse.json({ error: 'universityId required' }, { status: 400 })
-  }
+    const body = await req.json()
+    const { universityId } = body
+    if (!universityId || typeof universityId !== 'string') {
+      return NextResponse.json({ error: 'universityId required' }, { status: 400 })
+    }
 
-  // Ensure university exists
-  const uni = await db.university.findUnique({ where: { id: universityId } })
-  if (!uni) {
-    return NextResponse.json({ error: 'University not found' }, { status: 404 })
-  }
+    const uni = await db.university.findUnique({ where: { id: universityId } })
+    if (!uni) {
+      return NextResponse.json({ error: 'University not found' }, { status: 404 })
+    }
 
-  let list = await db.savedList.findFirst({
-    where: { userId: profile.id, listName: 'My Saved Universities' },
-  })
-  if (!list) {
-    list = await db.savedList.create({
-      data: {
-        userId: profile.id,
-        listName: 'My Saved Universities',
-        universities: '[]',
-      },
+    let list = await db.savedList.findFirst({
+      where: { userId: profile.id, listName: 'My Saved Universities' },
     })
+    if (!list) {
+      list = await db.savedList.create({
+        data: {
+          userId: profile.id,
+          listName: 'My Saved Universities',
+          universities: '[]',
+        },
+      })
+    }
+
+    const current: string[] = JSON.parse(list.universities)
+    let next: string[]
+    let action: 'saved' | 'removed'
+    if (current.includes(universityId)) {
+      next = current.filter(id => id !== universityId)
+      action = 'removed'
+    } else {
+      next = [...current, universityId]
+      action = 'saved'
+    }
+
+    await db.savedList.update({
+      where: { id: list.id },
+      data: { universities: JSON.stringify(next) },
+    })
+
+    return NextResponse.json({ action, savedCount: next.length })
+  } catch (error) {
+    // DB unavailable
+    console.warn('[api/saved-lists POST] Error:', error)
+    return NextResponse.json(
+      { error: 'Saved lists require a database connection. This feature is unavailable in demo mode.' },
+      { status: 503 }
+    )
   }
-
-  const current: string[] = JSON.parse(list.universities)
-  let next: string[]
-  let action: 'saved' | 'removed'
-  if (current.includes(universityId)) {
-    next = current.filter(id => id !== universityId)
-    action = 'removed'
-  } else {
-    next = [...current, universityId]
-    action = 'saved'
-  }
-
-  await db.savedList.update({
-    where: { id: list.id },
-    data: { universities: JSON.stringify(next) },
-  })
-
-  return NextResponse.json({ action, savedCount: next.length })
 }

@@ -1,0 +1,1428 @@
+[
+  {
+    "id": "cmu5yddh70031opfrc19vbdy6",
+    "slug": "american-university-in-cairo",
+    "name": "American University in Cairo",
+    "country": "Egypt",
+    "city": "Cairo",
+    "website": "https://www.aucegypt.edu",
+    "tuitionUsd": 14000,
+    "livingCostUsd": 5000,
+    "intlStudentPct": 18,
+    "acceptanceRate": 35,
+    "currency": "USD",
+    "logoUrl": null,
+    "descriptionEn": "Egypt's premier American-style university. US-accredited degrees, English-medium, strong regional reputation. Higher tuition but generous financial aid.",
+    "descriptionAr": "أعرق جامعة على الطريقة الأمريكية في مصر. شهادات معتمدة أمريكياً، تدريس بالإنجليزية، سمعة إقليمية قوية. رسوم أعلى لكن مع مساعدات مالية سخية.",
+    "programs": [
+      {
+        "id": "cmu5yddh80033opfrtbyzr06a",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 14000,
+        "deadline": "2026-06-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddh90035opfr5wttz63o",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 13500,
+        "deadline": "2026-06-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddha0037opfrtp0n0ah2",
+        "name": "MA International Relations",
+        "degreeLevel": "master",
+        "field": "Social Sciences",
+        "durationMonths": 24,
+        "language": "English",
+        "tuitionUsd": 15000,
+        "deadline": "2026-07-30",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddhb0039opfrj2hhggr8",
+        "name": "AUC Excellence Scholarship",
+        "amountUsd": 14000,
+        "amountType": "full",
+        "eligibility": "Top academic performers, full tuition coverage",
+        "deadline": "2026-03-15"
+      },
+      {
+        "id": "cmu5yddhb003bopfrn1zd1m1x",
+        "name": "AUC Financial Aid",
+        "amountUsd": 7000,
+        "amountType": "partial",
+        "eligibility": "Need-based, demonstrated financial need",
+        "deadline": "2026-04-30"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "cmu5yddi8005bopfr4xfu5r14",
+        "userName": "Fatima Al-Rashid",
+        "userCountry": "Jordan",
+        "ratingOverall": 4,
+        "ratingAffordability": 3,
+        "ratingVisa": 5,
+        "ratingTeaching": 4,
+        "ratingSafety": 4,
+        "ratingSocial": 5,
+        "reviewText": "AUC is the most expensive option in Egypt but the US accreditation makes it worth it for many. Cairo living is very affordable. Career services are excellent - lots of regional MBB and banking recruitment. The new campus in New Cairo is modern but far from downtown.",
+        "helpfulCount": 5,
+        "verifiedEnrollment": false,
+        "tags": [
+          "US accredited",
+          "good career services",
+          "expensive",
+          "modern campus"
+        ],
+        "createdAt": "2026-09-17T19:59:02.049Z"
+      }
+    ],
+    "avgRating": 4,
+    "reviewCount": 1,
+    "cheapestProgramTuition": 13500
+  },
+  {
+    "id": "cmu5yddhn004hopfrvflvw22x",
+    "slug": "american-university-of-beirut",
+    "name": "American University of Beirut",
+    "country": "Lebanon",
+    "city": "Beirut",
+    "website": "https://www.aub.edu.lb",
+    "tuitionUsd": 16500,
+    "livingCostUsd": 9000,
+    "intlStudentPct": 22,
+    "acceptanceRate": 30,
+    "currency": "USD",
+    "logoUrl": null,
+    "descriptionEn": "The Middle East's oldest American-accredited university (founded 1866). Regional prestige, US-accredited degrees, English-medium.",
+    "descriptionAr": "أقدم جامعة معتمدة أمريكياً في الشرق الأوسط (تأسست 1866). سمعة إقليمية، شهادات معتمدة أمريكياً، تدريس بالإنجليزية.",
+    "programs": [
+      {
+        "id": "cmu5yddho004jopfrzl7p7tso",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 16500,
+        "deadline": "2026-06-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddhp004lopfrwljsudzc",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 16000,
+        "deadline": "2026-06-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddhq004nopfr23foptpb",
+        "name": "MD Medicine",
+        "degreeLevel": "bachelor",
+        "field": "Medicine",
+        "durationMonths": 72,
+        "language": "English",
+        "tuitionUsd": 22000,
+        "deadline": "2026-03-31",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddhr004popfr8zq7sk9o",
+        "name": "AUBMerit Scholarship",
+        "amountUsd": 16500,
+        "amountType": "full",
+        "eligibility": "Top 5% applicants, full tuition",
+        "deadline": "2026-03-15"
+      },
+      {
+        "id": "cmu5yddhu004ropfrofc8l9th",
+        "name": "AUB Need-Based Aid",
+        "amountUsd": 8000,
+        "amountType": "partial",
+        "eligibility": "Demonstrated financial need",
+        "deadline": "2026-04-30"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 16000
+  },
+  {
+    "id": "cmu5yddhl0048opfr6c118sol",
+    "slug": "american-university-of-sharjah",
+    "name": "American University of Sharjah",
+    "country": "United Arab Emirates",
+    "city": "Sharjah",
+    "website": "https://www.aus.edu",
+    "tuitionUsd": 17000,
+    "livingCostUsd": 11000,
+    "intlStudentPct": 45,
+    "acceptanceRate": 40,
+    "currency": "USD",
+    "logoUrl": null,
+    "descriptionEn": "A US-accredited university in the UAE with strong international student body. American-style liberal arts education with engineering and business programs.",
+    "descriptionAr": "جامعة معتمدة أمريكياً في الإمارات مع هيكل طلابي دولي قوي. تعليم ليبرالي على الطريقة الأمريكية مع برامج هندسة وأعمال.",
+    "programs": [
+      {
+        "id": "cmu5yddhm004aopfrdx1afx6v",
+        "name": "BSc Computer Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 17000,
+        "deadline": "2026-06-30",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddhm004copfr8th17yjg",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 16500,
+        "deadline": "2026-06-30",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddhn004eopfrge0msmyo",
+        "name": "AUS Merit Scholarship",
+        "amountUsd": 17000,
+        "amountType": "full",
+        "eligibility": "Top 10% applicants, full tuition",
+        "deadline": "2026-04-15"
+      },
+      {
+        "id": "cmu5yddhn004gopfrq243z8oc",
+        "name": "AUS Family Tuition Discount",
+        "amountUsd": 3000,
+        "amountType": "partial",
+        "eligibility": "Siblings enrolled simultaneously",
+        "deadline": "2026-06-30"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 16500
+  },
+  {
+    "id": "cmu5yddgp001iopfrsq1whkdc",
+    "slug": "bogazici-university",
+    "name": "Bogazici University",
+    "country": "Turkey",
+    "city": "Istanbul",
+    "website": "https://www.boun.edu.tr",
+    "tuitionUsd": 800,
+    "livingCostUsd": 6000,
+    "intlStudentPct": 15,
+    "acceptanceRate": 8,
+    "currency": "TRY",
+    "logoUrl": null,
+    "descriptionEn": "Turkey's most prestigious English-medium public university. Extremely competitive admissions, very low tuition. Located on a beautiful campus overlooking the Bosphorus.",
+    "descriptionAr": "أعرق جامعة عامة تركية مع تدريس بالإنجليزية. قبول تنافسي للغاية ورسوم منخفضة جداً. تقع في حرم جامعي جميل يطل على البوسفور.",
+    "programs": [
+      {
+        "id": "cmu5yddgq001kopfraaaemhiv",
+        "name": "BSc Computer Engineering (English)",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 800,
+        "deadline": "2026-07-01",
+        "entryReqs": "YOS or SAT, top 5% of applicants"
+      },
+      {
+        "id": "cmu5yddgq001mopfr30limtew",
+        "name": "BA Economics (English)",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 800,
+        "deadline": "2026-07-01",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddgr001oopfrlwteexyk",
+        "name": "MSc Mechanical Engineering (English)",
+        "degreeLevel": "master",
+        "field": "Engineering",
+        "durationMonths": 24,
+        "language": "English",
+        "tuitionUsd": 1000,
+        "deadline": "2026-06-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddgr001qopfr6ie2w9a0",
+        "name": "Türkiye Bursları Scholarship",
+        "amountUsd": 8000,
+        "amountType": "full",
+        "eligibility": "International students via Turkey government scholarship program",
+        "deadline": "2026-02-20"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "cmu5yddi80059opfrijvmo7ar",
+        "userName": "Ahmed Hassan",
+        "userCountry": "Egypt",
+        "ratingOverall": 5,
+        "ratingAffordability": 5,
+        "ratingVisa": 3,
+        "ratingTeaching": 5,
+        "ratingSafety": 4,
+        "ratingSocial": 5,
+        "reviewText": "Bogazici is the Harvard of Turkey. Getting in is very competitive but if you do, the education is world-class and almost free. The campus is gorgeous, overlooking the Bosphorus. Turkish student life is vibrant. Only downside: visa process for non-Turkish students can be slow.",
+        "helpfulCount": 8,
+        "verifiedEnrollment": true,
+        "tags": [
+          "prestigious",
+          "very affordable",
+          "competitive",
+          "beautiful campus"
+        ],
+        "createdAt": "2026-09-17T19:59:02.048Z"
+      }
+    ],
+    "avgRating": 5,
+    "reviewCount": 1,
+    "cheapestProgramTuition": 800
+  },
+  {
+    "id": "cmu5yddhc003copfrnycrbboa",
+    "slug": "cairo-university",
+    "name": "Cairo University",
+    "country": "Egypt",
+    "city": "Cairo",
+    "website": "https://cu.edu.eg",
+    "tuitionUsd": 2500,
+    "livingCostUsd": 4000,
+    "intlStudentPct": 8,
+    "acceptanceRate": 20,
+    "currency": "EGP",
+    "logoUrl": null,
+    "descriptionEn": "Egypt's oldest and largest public university. Very affordable, strong programs in engineering, medicine, and law. Primarily Arabic-medium with some English programs.",
+    "descriptionAr": "أقدم وأكبر جامعة عامة في مصر. ميسورة التكلفة، برامج قوية في الهندسة والطب والقانون. تدريس بالعربية بشكل أساسي مع بعض البرامج بالإنجليزية.",
+    "programs": [
+      {
+        "id": "cmu5yddhc003eopfrpr1scbtl",
+        "name": "BSc Engineering (Arabic/English)",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 60,
+        "language": "Arabic",
+        "tuitionUsd": 2500,
+        "deadline": "2026-08-01",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddhd003gopfrs8glduux",
+        "name": "BSc Computer Science (English)",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 3000,
+        "deadline": "2026-08-01",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddhe003iopfru9dxknri",
+        "name": "Egyptian Government Scholarship",
+        "amountUsd": 2500,
+        "amountType": "full",
+        "eligibility": "International Arab students via Ministry of Higher Education",
+        "deadline": "2026-05-31"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 2500
+  },
+  {
+    "id": "cmu5yddg20002opfro0kg7q02",
+    "slug": "coventry-university",
+    "name": "Coventry University",
+    "country": "United Kingdom",
+    "city": "Coventry",
+    "website": "https://www.coventry.ac.uk",
+    "tuitionUsd": 19500,
+    "livingCostUsd": 12000,
+    "intlStudentPct": 38,
+    "acceptanceRate": 32,
+    "currency": "GBP",
+    "logoUrl": null,
+    "descriptionEn": "A modern post-92 university with strong industry links and affordable tuition for international students. Known for automotive engineering, business, and digital media programs.",
+    "descriptionAr": "جامعة حديثة تأسست بعد عام 1992 مع روابط قوية مع الصناعة ورسوم دراسية معقولة للطلاب الدوليين. معروفة ببرامج الهندسة automotive والأعمال والإعلام الرقمي.",
+    "programs": [
+      {
+        "id": "cmu5yddg30004opfrb41jkov2",
+        "name": "BSc Automotive Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 19500,
+        "deadline": "2026-06-30",
+        "entryReqs": "IELTS 6.0, Math + Physics A-levels"
+      },
+      {
+        "id": "cmu5yddg40006opfr8q8w2acw",
+        "name": "BSc Business Management",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 18500,
+        "deadline": "2026-06-30",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddg50008opfr51ic531q",
+        "name": "MSc Data Science",
+        "degreeLevel": "master",
+        "field": "Computer Science",
+        "durationMonths": 12,
+        "language": "English",
+        "tuitionUsd": 21000,
+        "deadline": "2026-08-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddg5000aopfrxt4c1ywp",
+        "name": "Coventry International Scholarship",
+        "amountUsd": 3000,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+",
+        "deadline": "2026-05-01"
+      },
+      {
+        "id": "cmu5yddg6000copfrzkxbtjm1",
+        "name": "Global Leaders Scholarship",
+        "amountUsd": 5000,
+        "amountType": "partial",
+        "eligibility": "Outstanding academic record + leadership essay",
+        "deadline": "2026-04-15"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 18500
+  },
+  {
+    "id": "cmu5yddgs001ropfrgkrprj5f",
+    "slug": "istanbul-technical-university",
+    "name": "Istanbul Technical University",
+    "country": "Turkey",
+    "city": "Istanbul",
+    "website": "https://www.itu.edu.tr",
+    "tuitionUsd": 900,
+    "livingCostUsd": 6000,
+    "intlStudentPct": 18,
+    "acceptanceRate": 12,
+    "currency": "TRY",
+    "logoUrl": null,
+    "descriptionEn": "Turkey's oldest technical university, founded 1773. Strong engineering and architecture programs with English-medium options.",
+    "descriptionAr": "أقدم جامعة تقنية في تركيا، تأسست عام 1773. برامج قوية في الهندسة والعمارة مع خيارات باللغة الإنجليزية.",
+    "programs": [
+      {
+        "id": "cmu5yddgt001topfrui113ve1",
+        "name": "BSc Civil Engineering (English)",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 900,
+        "deadline": "2026-07-01",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddgu001vopfr1q87lks0",
+        "name": "BSc Computer Engineering (English)",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 900,
+        "deadline": "2026-07-01",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddgu001xopfrtb2hes35",
+        "name": "ITU International Scholarship",
+        "amountUsd": 5000,
+        "amountType": "partial",
+        "eligibility": "International students with strong academic record",
+        "deadline": "2026-05-15"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 900
+  },
+  {
+    "id": "cmu5yddh0002eopfrcfskcsf6",
+    "slug": "jagiellonian-university",
+    "name": "Jagiellonian University",
+    "country": "Poland",
+    "city": "Krakow",
+    "website": "https://en.uj.edu.pl",
+    "tuitionUsd": 3800,
+    "livingCostUsd": 5500,
+    "intlStudentPct": 10,
+    "acceptanceRate": 30,
+    "currency": "PLN",
+    "logoUrl": null,
+    "descriptionEn": "Poland's oldest university (founded 1364). Strong programs in medicine, law, international relations. Affordable Krakow living costs.",
+    "descriptionAr": "أقدم جامعة في بولندا (تأسست 1364). برامج قوية في الطب والقانون والعلاقات الدولية. تكاليف معيشة معقولة في كراكوف.",
+    "programs": [
+      {
+        "id": "cmu5yddh1002gopfr2bsd7bgl",
+        "name": "MD Medicine (English)",
+        "degreeLevel": "bachelor",
+        "field": "Medicine",
+        "durationMonths": 72,
+        "language": "English",
+        "tuitionUsd": 14000,
+        "deadline": "2026-07-01",
+        "entryReqs": "Biology + Chemistry entrance exam"
+      },
+      {
+        "id": "cmu5yddh2002iopfrw0oa2f69",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 3800,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddh2002kopfrz0g057ic",
+        "name": "JU Merit Scholarship",
+        "amountUsd": 2000,
+        "amountType": "partial",
+        "eligibility": "Top international applicants",
+        "deadline": "2026-05-31"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 3800
+  },
+  {
+    "id": "cmu5yddhg003sopfr12pxvcm5",
+    "slug": "jordan-university-of-science-and-technology",
+    "name": "Jordan University of Science and Technology",
+    "country": "Jordan",
+    "city": "Irbid",
+    "website": "https://www.just.edu.jo",
+    "tuitionUsd": 2400,
+    "livingCostUsd": 5500,
+    "intlStudentPct": 22,
+    "acceptanceRate": 35,
+    "currency": "JOD",
+    "logoUrl": null,
+    "descriptionEn": "A leading technical university focused on engineering, medicine, and applied sciences. Strong regional reputation, particularly for medical and pharmacy programs.",
+    "descriptionAr": "جامعة تقنية رائدة تركز على الهندسة والطب والعلوم التطبيقية. سمعة إقليمية قوية، خاصة في البرامج الطبية والصيدلة.",
+    "programs": [
+      {
+        "id": "cmu5yddhg003uopfrl614p8r9",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 60,
+        "language": "English",
+        "tuitionUsd": 2400,
+        "deadline": "2026-08-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddhh003wopfryhwfimdq",
+        "name": "PharmD Pharmacy",
+        "degreeLevel": "bachelor",
+        "field": "Medicine",
+        "durationMonths": 72,
+        "language": "English",
+        "tuitionUsd": 3500,
+        "deadline": "2026-08-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddhj003yopfrh8wzkk1q",
+        "name": "JUST International Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with strong academic record",
+        "deadline": "2026-05-15"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 2400
+  },
+  {
+    "id": "cmu5yddhj003zopfrpf4ruipx",
+    "slug": "khalifa-university",
+    "name": "Khalifa University of Science and Technology",
+    "country": "United Arab Emirates",
+    "city": "Abu Dhabi",
+    "website": "https://www.ku.ac.ae",
+    "tuitionUsd": 16000,
+    "livingCostUsd": 12000,
+    "intlStudentPct": 35,
+    "acceptanceRate": 25,
+    "currency": "AED",
+    "logoUrl": null,
+    "descriptionEn": "UAE's top-ranked university for engineering and science. Generous scholarships for international students, English-medium, modern campus.",
+    "descriptionAr": "أعلى جامعة في الإمارات العربية المتحدة في الهندسة والعلوم. منح سخية للطلاب الدوليين، تدريس بالإنجليزية، حرم جامعي حديث.",
+    "programs": [
+      {
+        "id": "cmu5yddhk0041opfrz313r1dx",
+        "name": "BSc Aerospace Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 16000,
+        "deadline": "2026-05-31",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddhk0043opfr3409hct7",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 16000,
+        "deadline": "2026-05-31",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddhl0045opfrs19wjff0",
+        "name": "MSc Electrical Engineering",
+        "degreeLevel": "master",
+        "field": "Engineering",
+        "durationMonths": 24,
+        "language": "English",
+        "tuitionUsd": 18000,
+        "deadline": "2026-06-30",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddhl0047opfr69mjcy6o",
+        "name": "KU Full Scholarship",
+        "amountUsd": 28000,
+        "amountType": "full",
+        "eligibility": "Outstanding international students, covers tuition + stipend",
+        "deadline": "2026-03-31"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 16000
+  },
+  {
+    "id": "cmu5yddgu001yopfr9fo1z0qf",
+    "slug": "koç-university",
+    "name": "Koç University",
+    "country": "Turkey",
+    "city": "Istanbul",
+    "website": "https://www.ku.edu.tr",
+    "tuitionUsd": 18000,
+    "livingCostUsd": 8000,
+    "intlStudentPct": 20,
+    "acceptanceRate": 15,
+    "currency": "USD",
+    "logoUrl": null,
+    "descriptionEn": "A top private university in Istanbul with English-medium instruction and strong international partnerships. Higher tuition but generous scholarships.",
+    "descriptionAr": "جامعة خاصة رائدة في إسطنبول مع تدريس بالإنجليزية وشراكات دولية قوية. رسوم أعلى لكن مع منح سخية.",
+    "programs": [
+      {
+        "id": "cmu5yddgv0020opfrp9xk5bh1",
+        "name": "BSc Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 18000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddgw0022opfrs083spj6",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 18000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddgw0024opfruync6wna",
+        "name": "Merit Scholarship",
+        "amountUsd": 18000,
+        "amountType": "full",
+        "eligibility": "Top 10% applicants, full tuition waiver",
+        "deadline": "2026-06-30"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 18000
+  },
+  {
+    "id": "cmu5yddg6000dopfr7wmft4n1",
+    "slug": "middlesex-university-london",
+    "name": "Middlesex University London",
+    "country": "United Kingdom",
+    "city": "London",
+    "website": "https://www.mdx.ac.uk",
+    "tuitionUsd": 17500,
+    "livingCostUsd": 18000,
+    "intlStudentPct": 42,
+    "acceptanceRate": 45,
+    "currency": "GBP",
+    "logoUrl": null,
+    "descriptionEn": "A diverse London-based university with strong international focus and one of the highest percentages of international students in the UK.",
+    "descriptionAr": "جامعة متنوعة مقرها لندن مع تركيز دولي قوي وواحدة من أعلى نسب الطلاب الدوليين في المملكة المتحدة.",
+    "programs": [
+      {
+        "id": "cmu5yddg7000fopfrj0ylular",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 17500,
+        "deadline": "2026-06-30",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddg8000hopfrjx9wxboh",
+        "name": "BA International Business",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 17000,
+        "deadline": "2026-06-30",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddg9000jopfrp83vvgxa",
+        "name": "International Regional Scholarship",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Students from MENA region",
+        "deadline": "2026-05-15"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 17000
+  },
+  {
+    "id": "cmu5yddge000ropfrr1mbkmob",
+    "slug": "tu-berlin",
+    "name": "Technical University of Berlin",
+    "country": "Germany",
+    "city": "Berlin",
+    "website": "https://www.tu.berlin",
+    "tuitionUsd": 1500,
+    "livingCostUsd": 12000,
+    "intlStudentPct": 30,
+    "acceptanceRate": 25,
+    "currency": "EUR",
+    "logoUrl": null,
+    "descriptionEn": "One of Germany's leading technical universities with nominal semester fees. Strong engineering, computer science, and architecture programs. Most programs in German, with growing English-taught master's.",
+    "descriptionAr": "إحدى أبرز الجامعات التقنية في ألمانيا مع رسوم فصلية رمزية. برامج قوية في الهندسة وعلوم الكمبيوتر والعمارة. معظم البرامج بالألمانية مع تزايد الماجستير بالإنجليزية.",
+    "programs": [
+      {
+        "id": "cmu5yddgg000topfrek85tu2s",
+        "name": "BSc Computer Science (German)",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "German",
+        "tuitionUsd": 1500,
+        "deadline": "2026-07-15",
+        "entryReqs": "TestDaF 4x4 or DSH-2"
+      },
+      {
+        "id": "cmu5yddgh000vopfr1izi2jz2",
+        "name": "MSc Computer Science (English)",
+        "degreeLevel": "master",
+        "field": "Computer Science",
+        "durationMonths": 24,
+        "language": "English",
+        "tuitionUsd": 1500,
+        "deadline": "2026-03-31",
+        "entryReqs": "IELTS 6.5, BSc in CS"
+      },
+      {
+        "id": "cmu5yddgh000xopfrb10nu4ju",
+        "name": "BSc Mechanical Engineering (German)",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "German",
+        "tuitionUsd": 1500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddgi000zopfre96gcsci",
+        "name": "DAAD Scholarship",
+        "amountUsd": 10000,
+        "amountType": "partial",
+        "eligibility": "International master's students via DAAD",
+        "deadline": "2026-10-31"
+      },
+      {
+        "id": "cmu5yddgi0011opfrrrhb3t6t",
+        "name": "Deutschlandstipendium",
+        "amountUsd": 3600,
+        "amountType": "partial",
+        "eligibility": "Outstanding students, all nationalities",
+        "deadline": "2026-09-15"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "cmu5yddi40057opfrh0kk69ic",
+        "userName": "Fatima Al-Rashid",
+        "userCountry": "Jordan",
+        "ratingOverall": 5,
+        "ratingAffordability": 5,
+        "ratingVisa": 4,
+        "ratingTeaching": 5,
+        "ratingSafety": 5,
+        "ratingSocial": 4,
+        "reviewText": "TU Berlin exceeded my expectations. The tuition is essentially free (just 1500 EUR/semester admin fee), and the CS faculty is world-class. Berlin student life is amazing - lots of international community, affordable housing if you find it early. Visa process was straightforward but requires blocked account proof.",
+        "helpfulCount": 12,
+        "verifiedEnrollment": true,
+        "tags": [
+          "affordable",
+          "great teaching",
+          "easy visa",
+          "international community"
+        ],
+        "createdAt": "2026-09-17T19:59:02.045Z"
+      }
+    ],
+    "avgRating": 5,
+    "reviewCount": 1,
+    "cheapestProgramTuition": 1500
+  },
+  {
+    "id": "cmu5yddgl0019opfriga5r7i8",
+    "slug": "tu-munich",
+    "name": "Technical University of Munich",
+    "country": "Germany",
+    "city": "Munich",
+    "website": "https://www.tum.de",
+    "tuitionUsd": 1500,
+    "livingCostUsd": 14000,
+    "intlStudentPct": 33,
+    "acceptanceRate": 18,
+    "currency": "EUR",
+    "logoUrl": null,
+    "descriptionEn": "Germany's #1 technical university (QS ranking). Renowned for engineering, natural sciences, and computer science. No tuition for most programs except a nominal semester fee.",
+    "descriptionAr": "الجامعة التقنية رقم 1 في ألمانيا (تصنيف QS). مشهورة بالهندسة والعلوم الطبيعية وعلوم الكمبيوتر. لا توجد رسوم دراسية لمعظم البرامج.",
+    "programs": [
+      {
+        "id": "cmu5yddgl001bopfrcztocbqf",
+        "name": "BSc Information Engineering (English)",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 1500,
+        "deadline": "2026-05-31",
+        "entryReqs": "IELTS 6.5, strong math background"
+      },
+      {
+        "id": "cmu5yddgm001dopfr2du4v74j",
+        "name": "MSc Aerospace (English)",
+        "degreeLevel": "master",
+        "field": "Engineering",
+        "durationMonths": 24,
+        "language": "English",
+        "tuitionUsd": 1500,
+        "deadline": "2026-01-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddgn001fopfrs3go4irt",
+        "name": "BSc Management and Technology (English)",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 1500,
+        "deadline": "2026-05-31",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddgo001hopfrmdyjsk87",
+        "name": "TUM Asia Scholarship",
+        "amountUsd": 8000,
+        "amountType": "partial",
+        "eligibility": "Asian students with academic excellence",
+        "deadline": "2026-03-31"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 1500
+  },
+  {
+    "id": "cmu5yddh5002uopfrpr6u2gho",
+    "slug": "universiti-teknologi-malaysia",
+    "name": "Universiti Teknologi Malaysia",
+    "country": "Malaysia",
+    "city": "Johor Bahru",
+    "website": "https://www.utm.my",
+    "tuitionUsd": 4800,
+    "livingCostUsd": 4500,
+    "intlStudentPct": 20,
+    "acceptanceRate": 40,
+    "currency": "MYR",
+    "logoUrl": null,
+    "descriptionEn": "Malaysia's premier engineering and technology university. Very affordable, English-medium, with strong industry placement.",
+    "descriptionAr": "الجامعة الماليزية الرائدة في الهندسة والتكنولوجيا. ميسورة التكلفة، تدريس بالإنجليزية، مع توظيف صناعي قوي.",
+    "programs": [
+      {
+        "id": "cmu5yddh6002wopfrqnms0lgv",
+        "name": "BEng Civil Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 4800,
+        "deadline": "2026-06-30",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddh6002yopfrj4xpj3xx",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-06-30",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddh70030opfrbcbqc0hn",
+        "name": "UTM International Grant",
+        "amountUsd": 3000,
+        "amountType": "partial",
+        "eligibility": "International students with academic merit",
+        "deadline": "2026-05-15"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 4500
+  },
+  {
+    "id": "cmu5yddhe003jopfr9299nns2",
+    "slug": "university-of-jordan",
+    "name": "University of Jordan",
+    "country": "Jordan",
+    "city": "Amman",
+    "website": "https://www.ju.edu.jo",
+    "tuitionUsd": 2200,
+    "livingCostUsd": 6000,
+    "intlStudentPct": 14,
+    "acceptanceRate": 40,
+    "currency": "JOD",
+    "logoUrl": null,
+    "descriptionEn": "Jordan's largest and oldest university. Affordable, well-regarded across the Arab world. Strong medicine, engineering, and business programs.",
+    "descriptionAr": "أكبر وأقدم جامعة في الأردن. ميسورة التكلفة، تحظى بسمعة طيبة في جميع أنحاء العالم العربي. برامج قوية في الطب والهندسة والأعمال.",
+    "programs": [
+      {
+        "id": "cmu5yddhe003lopfrbkludnur",
+        "name": "BSc Computer Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 60,
+        "language": "English",
+        "tuitionUsd": 2200,
+        "deadline": "2026-08-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddhf003nopfrjpb1b0uu",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 48,
+        "language": "Arabic",
+        "tuitionUsd": 2000,
+        "deadline": "2026-08-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddhf003popfry3xre1mq",
+        "name": "MD Medicine",
+        "degreeLevel": "bachelor",
+        "field": "Medicine",
+        "durationMonths": 72,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-08-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddhf003ropfr56xv4xo9",
+        "name": "Jordanian Government Scholarship",
+        "amountUsd": 2200,
+        "amountType": "full",
+        "eligibility": "Arab students via bilateral agreements",
+        "deadline": "2026-04-30"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 2000
+  },
+  {
+    "id": "cmu5yddh3002lopfrl2sds2mr",
+    "slug": "university-of-malaya",
+    "name": "University of Malaya",
+    "country": "Malaysia",
+    "city": "Kuala Lumpur",
+    "website": "https://www.um.edu.my",
+    "tuitionUsd": 5500,
+    "livingCostUsd": 5000,
+    "intlStudentPct": 25,
+    "acceptanceRate": 30,
+    "currency": "MYR",
+    "logoUrl": null,
+    "descriptionEn": "Malaysia's top-ranked university (QS Top 100). Affordable tuition and low living costs make it popular with MENA students. English-medium programs widely available.",
+    "descriptionAr": "أعلى جامعة ماليزية تصنيفاً (QS Top 100). رسوم دراسية معقولة وتكاليف معيشة منخفضة تجعلها محببة للطلاب من الشرق الأوسط. برامج بالإنجليزية متاحة على نطاق واسع.",
+    "programs": [
+      {
+        "id": "cmu5yddh3002nopfr97rezv3r",
+        "name": "BEng Computer Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 48,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-06-30",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddh4002popfrxuc9cyyx",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-06-30",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddh4002ropfrjydzh2ae",
+        "name": "MSc Data Science",
+        "degreeLevel": "master",
+        "field": "Computer Science",
+        "durationMonths": 18,
+        "language": "English",
+        "tuitionUsd": 6500,
+        "deadline": "2026-08-31",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddh5002topfru1716r29",
+        "name": "UM International Scholarship",
+        "amountUsd": 4000,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.3+",
+        "deadline": "2026-04-30"
+      }
+    ],
+    "reviews": [
+      {
+        "id": "cmu5yddi9005dopfrqgqzb7p3",
+        "userName": "Ahmed Hassan",
+        "userCountry": "Egypt",
+        "ratingOverall": 4,
+        "ratingAffordability": 5,
+        "ratingVisa": 4,
+        "ratingTeaching": 4,
+        "ratingSafety": 5,
+        "ratingSocial": 4,
+        "reviewText": "UM is great value - top 100 QS ranking at very low tuition. KL is a fantastic city for international students, halal food everywhere, English widely spoken. The CS program is solid but could use more industry connections. Visa process via EMGS was smooth.",
+        "helpfulCount": 7,
+        "verifiedEnrollment": true,
+        "tags": [
+          "halal friendly",
+          "affordable",
+          "good ranking",
+          "english friendly"
+        ],
+        "createdAt": "2026-09-17T19:59:02.050Z"
+      }
+    ],
+    "avgRating": 4,
+    "reviewCount": 1,
+    "cheapestProgramTuition": 5000
+  },
+  {
+    "id": "cmu5yddga000kopfrtvyms1b7",
+    "slug": "university-of-portsmouth",
+    "name": "University of Portsmouth",
+    "country": "United Kingdom",
+    "city": "Portsmouth",
+    "website": "https://www.port.ac.uk",
+    "tuitionUsd": 19000,
+    "livingCostUsd": 13000,
+    "intlStudentPct": 28,
+    "acceptanceRate": 50,
+    "currency": "GBP",
+    "logoUrl": null,
+    "descriptionEn": "A coastal university known for strong employability outcomes and affordable living costs compared to London.",
+    "descriptionAr": "جامعة ساحلية معروفة بنتائج التوظيف القوية وتكاليف معيشة معقولة مقارنة بلندن.",
+    "programs": [
+      {
+        "id": "cmu5yddgb000mopfr772x4vnn",
+        "name": "BSc Software Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 19000,
+        "deadline": "2026-06-30",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddgc000oopfrbolfly55",
+        "name": "MSc Civil Engineering",
+        "degreeLevel": "master",
+        "field": "Engineering",
+        "durationMonths": 12,
+        "language": "English",
+        "tuitionUsd": 20500,
+        "deadline": "2026-08-01",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddge000qopfr91xfu6i6",
+        "name": "Vice-Chancellor Scholarship",
+        "amountUsd": 4000,
+        "amountType": "partial",
+        "eligibility": "Academic excellence, GPA 3.5+",
+        "deadline": "2026-04-30"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 19000
+  },
+  {
+    "id": "cmu5yddgi0012opfrsq5gkunp",
+    "slug": "university-of-stuttgart",
+    "name": "University of Stuttgart",
+    "country": "Germany",
+    "city": "Stuttgart",
+    "website": "https://www.uni-stuttgart.de",
+    "tuitionUsd": 1500,
+    "livingCostUsd": 11000,
+    "intlStudentPct": 22,
+    "acceptanceRate": 30,
+    "currency": "EUR",
+    "logoUrl": null,
+    "descriptionEn": "A leading technical university in southern Germany with strong ties to the automotive industry (Mercedes, Porsche HQ nearby). Nominal tuition fees.",
+    "descriptionAr": "جامعة تقنية رائدة في جنوب ألمانيا مع روابط قوية مع صناعة السيارات. رسوم دراسية رمزية.",
+    "programs": [
+      {
+        "id": "cmu5yddgj0014opfr1fdbtphv",
+        "name": "MSc Mechanical Engineering (English)",
+        "degreeLevel": "master",
+        "field": "Engineering",
+        "durationMonths": 24,
+        "language": "English",
+        "tuitionUsd": 1500,
+        "deadline": "2026-03-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddgj0016opfrrfr9bx38",
+        "name": "BSc Electrical Engineering (German)",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "German",
+        "tuitionUsd": 1500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddgk0018opfrm9rbzaq4",
+        "name": "Baden-Württemberg Scholarship",
+        "amountUsd": 6000,
+        "amountType": "partial",
+        "eligibility": "International exchange students",
+        "deadline": "2026-04-30"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 1500
+  },
+  {
+    "id": "cmu5yddgx0025opfr8kisge2c",
+    "slug": "university-of-warsaw",
+    "name": "University of Warsaw",
+    "country": "Poland",
+    "city": "Warsaw",
+    "website": "https://www.uw.edu.pl",
+    "tuitionUsd": 3500,
+    "livingCostUsd": 6000,
+    "intlStudentPct": 12,
+    "acceptanceRate": 35,
+    "currency": "PLN",
+    "logoUrl": null,
+    "descriptionEn": "Poland's largest and most prestigious university. Affordable tuition for EU and non-EU students, with growing English-medium program offerings.",
+    "descriptionAr": "أكبر وأعرق جامعة في بولندا. رسوم دراسية معقولة للطلاب من الاتحاد الأوروبي وخارجه مع تزايد البرامج باللغة الإنجليزية.",
+    "programs": [
+      {
+        "id": "cmu5yddgy0027opfrgrisbnvc",
+        "name": "BA International Relations (English)",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 3500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddgy0029opfre3cvjdqc",
+        "name": "BSc Computer Science (English)",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddgz002bopfr32c6h20h",
+        "name": "MA Economics (English)",
+        "degreeLevel": "master",
+        "field": "Business",
+        "durationMonths": 24,
+        "language": "English",
+        "tuitionUsd": 4000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddh0002dopfrxa5ch078",
+        "name": "Polish Government Scholarship",
+        "amountUsd": 6000,
+        "amountType": "partial",
+        "eligibility": "International students via Polish Ministry of Education",
+        "deadline": "2026-03-31"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 3500
+  },
+  {
+    "id": "cmu5yddhz004zopfr9v2vmzu7",
+    "slug": "vilnius-gediminas-technical-university",
+    "name": "Vilnius Gediminas Technical University",
+    "country": "Lithuania",
+    "city": "Vilnius",
+    "website": "https://vilniustech.lt",
+    "tuitionUsd": 3800,
+    "livingCostUsd": 4800,
+    "intlStudentPct": 15,
+    "acceptanceRate": 45,
+    "currency": "EUR",
+    "logoUrl": null,
+    "descriptionEn": "A leading Lithuanian technical university with strong English-medium engineering and IT programs. Very affordable EU education.",
+    "descriptionAr": "جامعة تقنية ليتوانية رائدة مع برامج قوية بالإنجليزية في الهندسة وتكنولوجيا المعلومات. تعليم في الاتحاد الأوروبي ميسور التكلفة للغاية.",
+    "programs": [
+      {
+        "id": "cmu5yddi00051opfr1qdllnpr",
+        "name": "BSc Information Systems Engineering (English)",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 42,
+        "language": "English",
+        "tuitionUsd": 3800,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddi00053opfro0bq5d8q",
+        "name": "MSc Civil Engineering (English)",
+        "degreeLevel": "master",
+        "field": "Engineering",
+        "durationMonths": 24,
+        "language": "English",
+        "tuitionUsd": 4200,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddi10055opfr2iu2lv8p",
+        "name": "VGTU Tuition Waiver",
+        "amountUsd": 3800,
+        "amountType": "full",
+        "eligibility": "Top international applicants, full tuition",
+        "deadline": "2026-05-31"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 3800
+  },
+  {
+    "id": "cmu5yddhw004sopfrrx5oqqx5",
+    "slug": "vilnius-university",
+    "name": "Vilnius University",
+    "country": "Lithuania",
+    "city": "Vilnius",
+    "website": "https://www.vu.lt",
+    "tuitionUsd": 4000,
+    "livingCostUsd": 5000,
+    "intlStudentPct": 12,
+    "acceptanceRate": 40,
+    "currency": "EUR",
+    "logoUrl": null,
+    "descriptionEn": "Lithuania's oldest and most prestigious university (founded 1579). Affordable EU tuition, English-medium programs growing rapidly.",
+    "descriptionAr": "أقدم وأعرق جامعة في ليتوانيا (تأسست 1579). رسوم دراسية معقولة في الاتحاد الأوروبي، برامج بالإنجليزية تتزايد بسرعة.",
+    "programs": [
+      {
+        "id": "cmu5yddhw004uopfrl4bgm6jf",
+        "name": "BSc Software Engineering (English)",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 42,
+        "language": "English",
+        "tuitionUsd": 4000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu5yddhx004wopfr62tpk3kf",
+        "name": "BA International Business (English)",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 3800,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu5yddhy004yopfrargdybo5",
+        "name": "Lithuanian State Scholarship",
+        "amountUsd": 4000,
+        "amountType": "partial",
+        "eligibility": "International students via Lithuanian Ministry",
+        "deadline": "2026-04-30"
+      }
+    ],
+    "reviews": [],
+    "avgRating": null,
+    "reviewCount": 0,
+    "cheapestProgramTuition": 3800
+  }
+]
