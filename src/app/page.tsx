@@ -7,8 +7,8 @@ import { COUNTRIES, FIELDS_OF_STUDY, formatUsdCompact, countryFlag } from '@/lib
 import { EduPathApp } from '@/components/edupath/edupath-app'
 import { parseTags } from '@/lib/edupath'
 
-export const dynamic = 'force-static'
-export const revalidate = 3600 // refresh hourly
+// Force dynamic rendering so the locale cookie is read per-request
+export const dynamic = 'force-dynamic'
 
 export default async function Home() {
   // Fetch all universities with related data (small dataset for demo)

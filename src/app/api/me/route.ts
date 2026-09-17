@@ -46,6 +46,7 @@ export async function GET() {
       country: profile.country,
       fieldOfInterest: profile.fieldOfInterest,
       verificationStatus: profile.verificationStatus,
+      role: profile.role,
     },
   })
 }

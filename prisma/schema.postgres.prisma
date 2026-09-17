@@ -1,0 +1,132 @@
+// EduPath Prisma schema — Postgres (production)
+// Use this schema when migrating to Supabase Postgres.
+//
+// To switch from SQLite to Postgres:
+// 1. Update your .env: DATABASE_URL=postgresql://postgres:[PASSWORD]@db.[PROJECT].supabase.co:5432/postgres
+// 2. Copy this file to prisma/schema.prisma (replacing the SQLite version)
+// 3. Run: bun run db:push --accept-data-loss
+//    (This creates all tables in Postgres. Data won't be migrated from SQLite — re-seed instead.)
+// 4. Run: bun run prisma/seed.ts
+//    (Seeds 22 universities + programs + scholarships + reviews)
+// 5. Promote yourself to admin: bun run scripts/promote-admin.ts your@email.com
+//
+// Note: SQLite uses String for JSON arrays (universities field in SavedList, tags in Review).
+// Postgres uses native Json type. The application code uses JSON.parse/stringify which works
+// with both, but Postgres enforces JSON validity at the DB level.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model University {
+  id              String   @id @default(uuid())
+  slug            String   @unique
+  name            String
+  country         String
+  city            String
+  website         String
+  tuitionUsd      Int
+  livingCostUsd   Int
+  intlStudentPct  Float
+  acceptanceRate  Float?
+  currency        String   @default("USD")
+  logoUrl         String?
+  descriptionEn   String?
+  descriptionAr   String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  programs        Program[]
+  scholarships    Scholarship[]
+  reviews         Review[]
+
+  @@index([country, tuitionUsd])
+  @@index([name])
+}
+
+model Program {
+  id              String   @id @default(uuid())
+  universityId    String
+  university      University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  name            String
+  degreeLevel     String
+  field           String
+  durationMonths  Int
+  language        String
+  tuitionUsd      Int
+  deadline        String?
+  entryReqs       String?
+
+  @@index([universityId])
+  @@index([field, degreeLevel])
+}
+
+model Scholarship {
+  id              String   @id @default(uuid())
+  universityId    String
+  university      University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  name            String
+  amountUsd       Int
+  amountType      String
+  eligibility     String
+  deadline        String?
+
+  @@index([universityId])
+}
+
+model User {
+  id              String   @id @default(uuid())
+  supabaseId      String?  @unique
+  email           String   @unique
+  name            String
+  country         String   @default("Jordan")
+  fieldOfInterest String?
+  role            String   @default("student")
+  verificationStatus String @default("pending")
+  locale          String   @default("en")
+  createdAt       DateTime @default(now())
+
+  reviews         Review[]
+  savedLists      SavedList[]
+}
+
+model Review {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  universityId    String
+  university      University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  ratingOverall       Int
+  ratingAffordability Int
+  ratingVisa          Int
+  ratingTeaching      Int
+  ratingSafety        Int
+  ratingSocial        Int
+  reviewText      String
+  helpfulCount    Int      @default(0)
+  moderationStatus String @default("pending")
+  verifiedEnrollment Boolean @default(false)
+  tags            Json     @default("[]")  // Postgres native JSON
+  createdAt       DateTime @default(now())
+
+  @@index([universityId, moderationStatus])
+  @@index([userId])
+}
+
+model SavedList {
+  id              String   @id @default(uuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listName        String
+  universities    Json     @default("[]")  // Postgres native JSON
+  isPublic        Boolean  @default(false)
+  shareToken      String?  @unique
+  createdAt       DateTime @default(now())
+
+  @@index([userId])
+}

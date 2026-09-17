@@ -119,6 +119,63 @@ This MVP covers Phase 1 of the EduPath development plan. Future phases:
 
 See `EduPath_Development_Plan_v1.1.pdf` for the full technical blueprint (14 chapters, 35 pages, includes risk register, 12-week sprint plan, and engineering deep-dives on scraping, verification, AI prompts, and monetization).
 
+## Authentication
+
+EduPath uses Supabase Auth with two sign-in methods:
+
+### Email/Password
+Works out of the box. By default, Supabase requires email confirmation — for dev/demo, you can disable this in:
+> Supabase Dashboard → Authentication → Sign In / Providers → Email → turn OFF "Confirm email"
+
+### Google OAuth (optional)
+To enable Google sign-in:
+1. Go to [Google Cloud Console](https://console.cloud.google.com/) → create a project (or use existing)
+2. APIs & Services → Credentials → Create OAuth client ID → Web application
+3. Add authorized redirect URI: `https://<your-supabase-project>.supabase.co/auth/v1/callback`
+4. Copy the Client ID and Client Secret
+5. Supabase Dashboard → Authentication → Providers → Google → toggle ON → paste Client ID + Secret
+6. The "Continue with Google" button in the auth modal will now work
+
+## Admin Moderation
+
+New reviews go to a `pending` state and appear in the admin moderation queue. To access the queue:
+
+1. Sign in with any account
+2. Promote yourself to admin:
+   ```bash
+   bun run scripts/promote-admin.ts your@email.com
+   ```
+3. Refresh the page — an "Admin" button will appear in the header
+4. Click it to open the moderation panel where you can approve or reject pending reviews
+
+## Database Migration: SQLite → Supabase Postgres
+
+The dev environment uses SQLite (zero-config). For production, migrate to Supabase Postgres:
+
+1. Get your Postgres connection string from Supabase Dashboard → Settings → Database → Connection string → URI
+2. Update `.env`:
+   ```env
+   DATABASE_URL=postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT].supabase.co:5432/postgres
+   ```
+3. Replace the Prisma schema:
+   ```bash
+   cp prisma/schema.postgres.prisma prisma/schema.prisma
+   ```
+4. Push the schema to Postgres:
+   ```bash
+   bun run db:push --accept-data-loss
+   ```
+5. Re-seed:
+   ```bash
+   bun run prisma/seed.ts
+   ```
+6. Promote yourself to admin again (the User table is fresh):
+   ```bash
+   bun run scripts/promote-admin.ts your@email.com
+   ```
+
+The Postgres schema uses native `Json` type for the `tags` and `universities` fields (SQLite used `String`). The application code (`JSON.parse`/`JSON.stringify`) works with both — no code changes needed.
+
 ## License
 
 MIT

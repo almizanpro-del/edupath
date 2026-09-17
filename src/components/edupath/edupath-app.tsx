@@ -19,7 +19,10 @@ import { formatUsd, formatUsdCompact, totalCost, countryFlag } from '@/lib/edupa
 import { cn } from '@/lib/utils'
 import { AuthModal, UserMenuButton, type UserProfile } from '@/components/edupath/auth-modal'
 import { ReviewForm } from '@/components/edupath/review-form'
+import { AdminPanel } from '@/components/edupath/admin-panel'
+import { LocaleSwitcher } from '@/components/edupath/locale-switcher'
 import { createClient } from '@/lib/supabase/client'
+import { useTranslations } from 'next-intl'
 
 // =================== Types ===================
 type Program = {
@@ -159,6 +162,7 @@ function CalendarIcon({ className }: { className?: string }) {
 // =================== Main Component ===================
 export function EduPathApp({ universities, countries, stats }: Props) {
   const { toast } = useToast()
+  const t = useTranslations()
   const [searchQuery, setSearchQuery] = React.useState('')
   const [selectedCountries, setSelectedCountries] = React.useState<Set<string>>(new Set())
   const [selectedFields, setSelectedFields] = React.useState<Set<string>>(new Set())
@@ -176,6 +180,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
   const [authModalOpen, setAuthModalOpen] = React.useState(false)
   const [reviewFormOpen, setReviewFormOpen] = React.useState(false)
   const [reviewFormUni, setReviewFormUni] = React.useState<University | null>(null)
+  const [adminPanelOpen, setAdminPanelOpen] = React.useState(false)
   // Local override of reviews per university (after a fresh submission)
   const [reviewOverrides, setReviewOverrides] = React.useState<Record<string, Review[]>>({})
 
@@ -408,13 +413,25 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 className="gap-2"
               >
                 <ArrowLeftRight className="size-4" />
-                Compare ({compareList.length})
+                {t('Nav.compare')} ({compareList.length})
               </Button>
             )}
-            <Button variant="ghost" size="sm" className="gap-2" title="Saved universities">
+            <Button variant="ghost" size="sm" className="gap-2" title={t('Nav.saved')}>
               <Heart className="size-4" />
-              <span className="hidden sm:inline">Saved ({savedUniversities.size})</span>
+              <span className="hidden sm:inline">{t('Nav.saved')} ({savedUniversities.size})</span>
             </Button>
+            {profile?.role === 'admin' && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setAdminPanelOpen(true)}
+                className="gap-2 border-slate-300 text-slate-700 hover:bg-slate-100"
+              >
+                <Shield className="size-4" />
+                <span className="hidden sm:inline">{t('Nav.admin')}</span>
+              </Button>
+            )}
+            <LocaleSwitcher />
             <UserMenuButton
               profile={profile}
               onSignInClick={() => setAuthModalOpen(true)}
@@ -429,21 +446,20 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         <div className="container mx-auto max-w-7xl px-4 py-16 md:py-24">
           <div className="max-w-3xl">
             <Badge variant="secondary" className="mb-4 bg-white/15 text-white border-white/20 hover:bg-white/20">
-              For MENA students
+              {t('Hero.badge')}
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              Discover affordable universities worldwide
+              {t('Hero.title')}
             </h1>
             <p className="text-lg md:text-xl text-white/85 mb-8 leading-relaxed">
-              Compare tuition, scholarships, and verified peer reviews from {stats.totalCountries} countries.
-              Find your path to quality education without breaking the bank.
+              {t('Hero.subtitle', { count: stats.totalCountries })}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-muted-foreground" />
                 <Input
-                  placeholder="Search by university, country, or field of study..."
+                  placeholder={t('Hero.searchPlaceholder')}
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   className="pl-10 h-12 bg-white text-foreground border-0 shadow-lg"
@@ -453,7 +469,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 <SheetTrigger asChild>
                   <Button size="lg" variant="secondary" className="h-12 gap-2 shadow-lg">
                     <SlidersHorizontal className="size-5" />
-                    Filters
+                    {t('Hero.filters')}
                     {activeFilterCount > 0 && (
                       <Badge variant="default" className="ml-1 bg-emerald-600">{activeFilterCount}</Badge>
                     )}
@@ -557,19 +573,19 @@ export function EduPathApp({ universities, countries, stats }: Props) {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
               <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/15">
                 <div className="text-2xl font-bold">{stats.totalUniversities}</div>
-                <div className="text-sm text-white/75">Universities</div>
+                <div className="text-sm text-white/75">{t('Hero.stats.universities')}</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/15">
                 <div className="text-2xl font-bold">{stats.totalCountries}</div>
-                <div className="text-sm text-white/75">Countries</div>
+                <div className="text-sm text-white/75">{t('Hero.stats.countries')}</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/15">
                 <div className="text-2xl font-bold">{stats.totalPrograms}</div>
-                <div className="text-sm text-white/75">Programs</div>
+                <div className="text-sm text-white/75">{t('Hero.stats.programs')}</div>
               </div>
               <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/15">
                 <div className="text-2xl font-bold">{formatUsdCompact(stats.cheapestTuition)}</div>
-                <div className="text-sm text-white/75">From / year</div>
+                <div className="text-sm text-white/75">{t('Hero.stats.fromPerYear')}</div>
               </div>
             </div>
           </div>
@@ -581,8 +597,8 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         <div className="container mx-auto max-w-7xl px-4 py-10">
           <div className="flex items-end justify-between mb-6">
             <div>
-              <h2 className="text-2xl font-bold mb-1">Explore by country</h2>
-              <p className="text-sm text-muted-foreground">Click a country to filter universities</p>
+              <h2 className="text-2xl font-bold mb-1">{t('CountryExplorer.title')}</h2>
+              <p className="text-sm text-muted-foreground">{t('CountryExplorer.subtitle')}</p>
             </div>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-3">
@@ -611,23 +627,23 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-bold mb-1">
-              {filtered.length} universit{filtered.length === 1 ? 'y' : 'ies'}
+              {t('Directory.universities', { count: filtered.length })}
             </h2>
             <p className="text-sm text-muted-foreground">
               {activeFilterCount > 0
-                ? `${activeFilterCount} filter${activeFilterCount > 1 ? 's' : ''} applied`
-                : 'Showing all universities'}
+                ? t('Directory.filtersApplied', { count: activeFilterCount })
+                : t('Directory.showingAll')}
             </p>
           </div>
           <Select value={sortBy} onValueChange={(v) => setSortBy(v as typeof sortBy)}>
             <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Sort by" />
+              <SelectValue placeholder={t('Directory.sortBy')} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="tuition-asc">Tuition: Low to High</SelectItem>
-              <SelectItem value="tuition-desc">Tuition: High to Low</SelectItem>
-              <SelectItem value="rating-desc">Rating: High to Low</SelectItem>
-              <SelectItem value="name-asc">Name: A to Z</SelectItem>
+              <SelectItem value="tuition-asc">{t('Directory.sort.tuitionAsc')}</SelectItem>
+              <SelectItem value="tuition-desc">{t('Directory.sort.tuitionDesc')}</SelectItem>
+              <SelectItem value="rating-desc">{t('Directory.sort.ratingDesc')}</SelectItem>
+              <SelectItem value="name-asc">{t('Directory.sort.nameAsc')}</SelectItem>
             </SelectContent>
           </Select>
         </div>
@@ -635,9 +651,9 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         {filtered.length === 0 ? (
           <div className="text-center py-20">
             <div className="text-5xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold mb-2">No universities match your filters</h3>
-            <p className="text-muted-foreground mb-4">Try widening your tuition range or clearing some filters.</p>
-            <Button onClick={clearFilters} variant="outline">Clear all filters</Button>
+            <h3 className="text-xl font-semibold mb-2">{t('Directory.noResults')}</h3>
+            <p className="text-muted-foreground mb-4">{t('Directory.noResultsDesc')}</p>
+            <Button onClick={clearFilters} variant="outline">{t('Directory.clearAll')}</Button>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -668,30 +684,30 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 <span className="font-bold">EduPath</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                Your path to affordable global education. Built for MENA students.
+                {t('Footer.tagline')}
               </p>
             </div>
             <div>
-              <h4 className="font-semibold mb-3 text-sm">Platform</h4>
+              <h4 className="font-semibold mb-3 text-sm">{t('Footer.platform')}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>University Directory</li>
-                <li>Comparison Tool</li>
-                <li>Cost Calculator</li>
-                <li>Verified Reviews</li>
+                <li>{t('Footer.items.directory')}</li>
+                <li>{t('Footer.items.comparison')}</li>
+                <li>{t('Footer.items.calculator')}</li>
+                <li>{t('Footer.items.reviews')}</li>
               </ul>
             </div>
             <div>
-              <h4 className="font-semibold mb-3 text-sm">Coverage</h4>
+              <h4 className="font-semibold mb-3 text-sm">{t('Footer.coverage')}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>{stats.totalUniversities} universities</li>
-                <li>{stats.totalCountries} countries</li>
-                <li>{stats.totalPrograms} programs</li>
-                <li>English + Arabic (RTL coming)</li>
+                <li>{stats.totalUniversities} {t('Hero.stats.universities').toLowerCase()}</li>
+                <li>{stats.totalCountries} {t('Hero.stats.countries').toLowerCase()}</li>
+                <li>{stats.totalPrograms} {t('Hero.stats.programs').toLowerCase()}</li>
+                <li>{t('Footer.englishArabic')}</li>
               </ul>
             </div>
           </div>
           <div className="border-t mt-8 pt-6 text-center text-xs text-muted-foreground">
-            Phase 1 MVP demo. Verified reviews are surface-level only - full verification flow in production.
+            {t('Footer.disclaimer')}
           </div>
         </div>
       </footer>
@@ -757,6 +773,12 @@ export function EduPathApp({ universities, countries, stats }: Props) {
           onSubmitted={handleReviewSubmitted}
         />
       )}
+
+      {/* ===== Admin Moderation Panel ===== */}
+      <AdminPanel
+        open={adminPanelOpen}
+        onClose={() => setAdminPanelOpen(false)}
+      />
     </div>
   )
 }

@@ -1,0 +1,258 @@
+{
+  "Nav": {
+    "saved": "Saved",
+    "compare": "Compare",
+    "signIn": "Sign In",
+    "admin": "Admin",
+    "signOut": "Sign out"
+  },
+  "Hero": {
+    "badge": "For MENA students",
+    "title": "Discover affordable universities worldwide",
+    "subtitle": "Compare tuition, scholarships, and verified peer reviews from {count} countries. Find your path to quality education without breaking the bank.",
+    "searchPlaceholder": "Search by university, country, or field of study...",
+    "filters": "Filters",
+    "stats": {
+      "universities": "Universities",
+      "countries": "Countries",
+      "programs": "Programs",
+      "fromPerYear": "From / year"
+    }
+  },
+  "CountryExplorer": {
+    "title": "Explore by country",
+    "subtitle": "Click a country to filter universities",
+    "unis": "unis"
+  },
+  "Directory": {
+    "universities": "{count, plural, one {# university} other {# universities}}",
+    "filtersApplied": "{count, plural, one {# filter applied} other {# filters applied}}",
+    "showingAll": "Showing all universities",
+    "sortBy": "Sort by",
+    "sort": {
+      "tuitionAsc": "Tuition: Low to High",
+      "tuitionDesc": "Tuition: High to Low",
+      "ratingDesc": "Rating: High to Low",
+      "nameAsc": "Name: A to Z"
+    },
+    "noResults": "No universities match your filters",
+    "noResultsDesc": "Try widening your tuition range or clearing some filters.",
+    "clearAll": "Clear all filters"
+  },
+  "UniversityCard": {
+    "from": "From",
+    "living": "Living",
+    "intlPct": "Intl %",
+    "perYear": "/yr",
+    "more": "more",
+    "viewDetails": "View details",
+    "compare": "Compare",
+    "comparing": "Comparing",
+    "noReviews": "No reviews yet - be the first!"
+  },
+  "Detail": {
+    "visitWebsite": "Visit website",
+    "save": "Save",
+    "saved": "Saved",
+    "addToCompare": "Add to compare",
+    "inCompare": "In compare",
+    "tabs": {
+      "overview": "Overview",
+      "programs": "Programs",
+      "scholarships": "Scholarships",
+      "cost": "Cost Calculator",
+      "reviews": "Reviews"
+    },
+    "stats": {
+      "cheapestProgram": "Cheapest program",
+      "livingCost": "Living cost",
+      "intlStudents": "Intl students",
+      "acceptance": "Acceptance"
+    },
+    "descriptionAr": "Description (Arabic)",
+    "programs": {
+      "perYear": "per year",
+      "months": "months",
+      "deadline": "Deadline",
+      "entryRequirements": "Entry requirements"
+    },
+    "scholarships": {
+      "amount": "amount",
+      "fullCoverage": "full coverage",
+      "applyBy": "Apply by",
+      "none": "No scholarships listed."
+    },
+    "cost": {
+      "title": "Total Cost Calculator",
+      "description": "Estimate your total cost based on program duration. Tuition is per year; living costs are approximate.",
+      "programDuration": "Program duration: {months} months ({years} years)",
+      "includeLiving": "Include living expenses ({amount}/yr)",
+      "tuition": "Tuition ({years} years)",
+      "living": "Living ({years} years)",
+      "total": "Total estimated cost",
+      "disclaimer": "Disclaimer: Costs are estimates based on annual tuition + living expenses. Currency conversion uses daily rates. Actual costs may vary by program and lifestyle. Always verify with the university directly."
+    },
+    "reviews": {
+      "shareExperience": "Share your experience",
+      "shareDescLoggedIn": "Help other MENA students by reviewing this university.",
+      "shareDescLoggedOut": "Sign in to write a review.",
+      "writeReview": "Write a Review",
+      "noReviews": "No reviews yet",
+      "noReviewsDesc": "Be the first to share your experience at {name}.",
+      "verifiedStudent": "Verified Student",
+      "helpful": "Helpful",
+      "subRatings": {
+        "affordability": "Affordability",
+        "teaching": "Teaching quality",
+        "visa": "Visa process",
+        "safety": "Safety",
+        "social": "Social life"
+      }
+    }
+  },
+  "Compare": {
+    "title": "Compare {count} {count, plural, one {university} other {universities}}",
+    "clearAll": "Clear all",
+    "empty": "No universities to compare yet",
+    "emptyDesc": "Click the compare button on any university card to add it here. You can compare up to 3 at a time.",
+    "rows": {
+      "metric": "Metric",
+      "country": "Country",
+      "city": "City",
+      "cheapestTuition": "Cheapest tuition (yr)",
+      "livingCost": "Living cost (yr)",
+      "total3yrCost": "Total 3-yr cost",
+      "intlPct": "Intl student %",
+      "acceptance": "Acceptance rate",
+      "programs": "Programs",
+      "scholarships": "Scholarships",
+      "reviews": "Reviews",
+      "languages": "Languages",
+      "fields": "Fields"
+    }
+  },
+  "Auth": {
+    "welcome": "Welcome to EduPath",
+    "welcomeDesc": "Sign in to save universities and write reviews",
+    "signIn": "Sign In",
+    "createAccount": "Create Account",
+    "continueWithGoogle": "Continue with Google",
+    "or": "or",
+    "fullName": "Full name",
+    "email": "Email",
+    "password": "Password",
+    "country": "Country",
+    "signInBtn": "Sign In",
+    "createAccountBtn": "Create Account",
+    "termsNote": "By signing up you agree to our terms. We never share your data.",
+    "welcomeBack": "Welcome back!",
+    "accountCreated": "Account created!",
+    "checkEmail": "Check your email",
+    "checkEmailDesc": "We sent a confirmation link. Click it to activate your account, then sign in.",
+    "signInFailed": "Sign in failed",
+    "signUpFailed": "Sign up failed",
+    "googleFailed": "Google sign-in failed",
+    "signedOut": "Signed out",
+    "signedOutDesc": "See you soon!"
+  },
+  "ReviewForm": {
+    "title": "Write a Review",
+    "ratings": "Your ratings",
+    "reviewText": "Your review",
+    "reviewTextHint": "(min 20 chars, max 5000)",
+    "reviewTextPlaceholder": "Share your experience: quality of teaching, affordability, social life, visa process, anything future students should know...",
+    "tags": "Tags",
+    "tagsHint": "(optional, up to 8)",
+    "addCustomTag": "Add custom tag...",
+    "add": "Add",
+    "cancel": "Cancel",
+    "publish": "Publish Review",
+    "reviewTooShort": "Review too short",
+    "reviewTooShortDesc": "Please write at least 20 characters.",
+    "maxTags": "Max 8 tags",
+    "submissionFailed": "Submission failed",
+    "networkError": "Network error",
+    "networkErrorDesc": "Could not reach server. Try again.",
+    "published": "Review published!",
+    "publishedDesc": "Thanks for sharing your experience.",
+    "footerNote": "Your review will be visible publicly. Reviews are auto-approved in this MVP demo; production builds moderate reviews via admin queue.",
+    "dimensions": {
+      "overall": "Overall",
+      "overallHint": "Your overall experience",
+      "affordability": "Affordability",
+      "affordabilityHint": "Tuition + living cost value",
+      "teaching": "Teaching quality",
+      "teachingHint": "Faculty, curriculum, facilities",
+      "visa": "Visa process",
+      "visaHint": "Difficulty of obtaining student visa",
+      "safety": "Safety",
+      "safetyHint": "Campus + city safety",
+      "social": "Social life",
+      "socialHint": "Community, events, integration"
+    },
+    "tagSuggestions": {
+      "affordable": "affordable",
+      "greatTeaching": "great teaching",
+      "easyVisa": "easy visa",
+      "internationalCommunity": "international community",
+      "beautifulCampus": "beautiful campus",
+      "goodCareerServices": "good career services",
+      "halalFriendly": "halal friendly",
+      "prestigious": "prestigious",
+      "competitive": "competitive",
+      "modernCampus": "modern campus",
+      "expensive": "expensive",
+      "poorHousing": "poor housing"
+    }
+  },
+  "Admin": {
+    "title": "Admin: Review Moderation",
+    "pendingCount": "{count} reviews awaiting moderation",
+    "noPending": "No pending reviews — all caught up!",
+    "pendingQueue": "Pending queue",
+    "refresh": "Refresh",
+    "loading": "Loading pending reviews...",
+    "allCaughtUp": "All caught up!",
+    "allCaughtUpDesc": "No reviews are pending moderation. New submissions will appear here automatically.",
+    "approve": "Approve",
+    "reject": "Reject",
+    "approved": "Review approved",
+    "rejected": "Review rejected",
+    "approvedDesc": "Review by {name} has been approved.",
+    "rejectedDesc": "Review by {name} has been rejected.",
+    "moderationFailed": "Moderation failed",
+    "loadFailed": "Failed to load pending reviews"
+  },
+  "Toast": {
+    "savedToList": "Saved to your list",
+    "removedFromSaved": "Removed from saved list",
+    "failedToSave": "Failed to save",
+    "signInToSave": "Sign in to save universities",
+    "signInToSaveDesc": "Create a free account to bookmark universities and write reviews.",
+    "signInToReview": "Sign in to write a review",
+    "signInToReviewDesc": "Reviews help other MENA students make informed decisions.",
+    "compareListFull": "Compare list full",
+    "compareListFullDesc": "You can compare up to 3 universities at a time. Remove one to add another."
+  },
+  "Footer": {
+    "tagline": "Your path to affordable global education. Built for MENA students.",
+    "platform": "Platform",
+    "coverage": "Coverage",
+    "items": {
+      "directory": "University Directory",
+      "comparison": "Comparison Tool",
+      "calculator": "Cost Calculator",
+      "reviews": "Verified Reviews"
+    },
+    "englishArabic": "English + Arabic (RTL coming)",
+    "disclaimer": "Phase 1 MVP demo. Verified reviews are surface-level only - full verification flow in production."
+  },
+  "Filters": {
+    "title": "Filters",
+    "clearAll": "Clear all",
+    "country": "Country",
+    "fieldOfStudy": "Field of Study",
+    "languageOfInstruction": "Language of Instruction",
+    "annualTuition": "Annual Tuition (USD)"
+  }
+}

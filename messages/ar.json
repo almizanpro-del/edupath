@@ -1,0 +1,258 @@
+{
+  "Nav": {
+    "saved": "المحفوظات",
+    "compare": "مقارنة",
+    "signIn": "تسجيل الدخول",
+    "admin": "الإدارة",
+    "signOut": "تسجيل الخروج"
+  },
+  "Hero": {
+    "badge": "لطلاب الشرق الأوسط وشمال أفريقيا",
+    "title": "اكتشف الجامعات ميسورة التكلفة حول العالم",
+    "subtitle": "قارن الرسوم الدراسية والمنح ومراجعات الطلاب من {count} دولة. اعثر على مسارك نحو تعليم عالي الجودة دون إرهاق ميزانيتك.",
+    "searchPlaceholder": "ابحث بالجامعة أو الدولة أو التخصص...",
+    "filters": "تصفية",
+    "stats": {
+      "universities": "جامعة",
+      "countries": "دولة",
+      "programs": "برنامج",
+      "fromPerYear": "يبدأ من / سنوياً"
+    }
+  },
+  "CountryExplorer": {
+    "title": "استكشف حسب الدولة",
+    "subtitle": "اضغط على دولة لتصفية الجامعات",
+    "unis": "جامعة"
+  },
+  "Directory": {
+    "universities": "{count, plural, one {# جامعة} other {# جامعة}}",
+    "filtersApplied": "{count, plural, one {# تصفية مطبقة} other {# تصفيات مطبقة}}",
+    "showingAll": "عرض جميع الجامعات",
+    "sortBy": "ترتيب حسب",
+    "sort": {
+      "tuitionAsc": "الرسوم: من الأقل للأعلى",
+      "tuitionDesc": "الرسوم: من الأعلى للأقل",
+      "ratingDesc": "التقييم: من الأعلى للأقل",
+      "nameAsc": "الاسم: من الألف للياء"
+    },
+    "noResults": "لا توجد جامعات تطابق تصفياتك",
+    "noResultsDesc": "حاول توسيع نطاق الرسوم أو مسح بعض التصفيات.",
+    "clearAll": "مسح جميع التصفيات"
+  },
+  "UniversityCard": {
+    "from": "يبدأ من",
+    "living": "المعيشة",
+    "intlPct": "نسبة الدوليين",
+    "perYear": "/سنوياً",
+    "more": "أخرى",
+    "viewDetails": "عرض التفاصيل",
+    "compare": "مقارنة",
+    "comparing": "قيد المقارنة",
+    "noReviews": "لا توجد مراجعات بعد - كن أول من يراجع!"
+  },
+  "Detail": {
+    "visitWebsite": "زيارة الموقع",
+    "save": "حفظ",
+    "saved": "محفوظ",
+    "addToCompare": "أضف للمقارنة",
+    "inCompare": "في المقارنة",
+    "tabs": {
+      "overview": "نظرة عامة",
+      "programs": "البرامج",
+      "scholarships": "المنح",
+      "cost": "حاسبة التكلفة",
+      "reviews": "المراجعات"
+    },
+    "stats": {
+      "cheapestProgram": "أرخص برنامج",
+      "livingCost": "تكلفة المعيشة",
+      "intlStudents": "الطلاب الدوليون",
+      "acceptance": "نسبة القبول"
+    },
+    "descriptionAr": "الوصف (بالعربية)",
+    "programs": {
+      "perYear": "سنوياً",
+      "months": "شهر",
+      "deadline": "الموعد النهائي",
+      "entryRequirements": "متطلبات القبول"
+    },
+    "scholarships": {
+      "amount": "المبلغ",
+      "fullCoverage": "تغطية كاملة",
+      "applyBy": "آخر موعد للتقديم",
+      "none": "لا توجد منح دراسية."
+    },
+    "cost": {
+      "title": "حاسبة التكلفة الإجمالية",
+      "description": "قدّر تكلفتك الإجمالية بناءً على مدة البرنامج. الرسوم سنوية؛ تكاليف المعيشة تقريبية.",
+      "programDuration": "مدة البرنامج: {months} شهر ({years} سنوات)",
+      "includeLiving": "إدراج تكاليف المعيشة ({amount}/سنوياً)",
+      "tuition": "الرسوم ({years} سنوات)",
+      "living": "المعيشة ({years} سنوات)",
+      "total": "إجمالي التكلفة المقدرة",
+      "disclaimer": "تنبيه: التكاليف تقديرية بناءً على الرسوم السنوية + تكاليف المعيشة. تحويل العملات يستخدم أسعار صرف يومية. قد تختلف التكاليف الفعلية حسب البرنامج وأسلوب الحياة. تحقق دائماً من الجامعة مباشرة."
+    },
+    "reviews": {
+      "shareExperience": "شارك تجربتك",
+      "shareDescLoggedIn": "ساعد الطلاب الآخرين من الشرق الأوسط بتقييم هذه الجامعة.",
+      "shareDescLoggedOut": "سجل الدخول لكتابة مراجعة.",
+      "writeReview": "اكتب مراجعة",
+      "noReviews": "لا توجد مراجعات بعد",
+      "noReviewsDesc": "كن أول من يشارك تجربته في {name}.",
+      "verifiedStudent": "طالب موثّق",
+      "helpful": "مفيد",
+      "subRatings": {
+        "affordability": "التكلفة",
+        "teaching": "جودة التدريس",
+        "visa": "إجراءات التأشيرة",
+        "safety": "الأمان",
+        "social": "الحياة الاجتماعية"
+      }
+    }
+  },
+  "Compare": {
+    "title": "مقارنة {count} {count, plural, one {جامعة} other {جامعات}}",
+    "clearAll": "مسح الكل",
+    "empty": "لا توجد جامعات للمقارنة بعد",
+    "emptyDesc": "اضغط على زر المقارنة في أي بطاقة جامعة لإضافتها هنا. يمكنك مقارنة حتى 3 جامعات في الوقت الواحد.",
+    "rows": {
+      "metric": "المعيار",
+      "country": "الدولة",
+      "city": "المدينة",
+      "cheapestTuition": "أرخص رسوم (سنوياً)",
+      "livingCost": "تكلفة المعيشة (سنوياً)",
+      "total3yrCost": "إجمالي تكلفة 3 سنوات",
+      "intlPct": "نسبة الطلاب الدوليين",
+      "acceptance": "نسبة القبول",
+      "programs": "البرامج",
+      "scholarships": "المنح",
+      "reviews": "المراجعات",
+      "languages": "اللغات",
+      "fields": "التخصصات"
+    }
+  },
+  "Auth": {
+    "welcome": "مرحباً بك في EduPath",
+    "welcomeDesc": "سجل الدخول لحفظ الجامعات وكتابة المراجعات",
+    "signIn": "تسجيل الدخول",
+    "createAccount": "إنشاء حساب",
+    "continueWithGoogle": "المتابعة مع جوجل",
+    "or": "أو",
+    "fullName": "الاسم الكامل",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "country": "الدولة",
+    "signInBtn": "تسجيل الدخول",
+    "createAccountBtn": "إنشاء حساب",
+    "termsNote": "بإنشائك حساباً فإنك توافق على شروطنا. نحن لا نشارك بياناتك أبداً.",
+    "welcomeBack": "مرحباً بعودتك!",
+    "accountCreated": "تم إنشاء الحساب!",
+    "checkEmail": "تحقق من بريدك الإلكتروني",
+    "checkEmailDesc": "أرسلنا رابط تأكيد. اضغط عليه لتفعيل حسابك، ثم سجل الدخول.",
+    "signInFailed": "فشل تسجيل الدخول",
+    "signUpFailed": "فشل إنشاء الحساب",
+    "googleFailed": "فشل تسجيل الدخول عبر جوجل",
+    "signedOut": "تم تسجيل الخروج",
+    "signedOutDesc": "نراك قريباً!"
+  },
+  "ReviewForm": {
+    "title": "اكتب مراجعة",
+    "ratings": "تقييماتك",
+    "reviewText": "مراجعتك",
+    "reviewTextHint": "(الحد الأدنى 20 حرفاً، الحد الأقصى 5000)",
+    "reviewTextPlaceholder": "شارك تجربتك: جودة التدريس، التكلفة، الحياة الاجتماعية، إجراءات التأشيرة، أي شيء يجب أن يعرفه الطلاب المستقبليون...",
+    "tags": "الوسوم",
+    "tagsHint": "(اختياري، حتى 8 وسوم)",
+    "addCustomTag": "أضف وسم مخصص...",
+    "add": "أضف",
+    "cancel": "إلغاء",
+    "publish": "نشر المراجعة",
+    "reviewTooShort": "المراجعة قصيرة جداً",
+    "reviewTooShortDesc": "يرجى كتابة 20 حرفاً على الأقل.",
+    "maxTags": "الحد الأقصى 8 وسوم",
+    "submissionFailed": "فشل الإرسال",
+    "networkError": "خطأ في الشبكة",
+    "networkErrorDesc": "تعذر الوصول إلى الخادم. حاول مرة أخرى.",
+    "published": "تم نشر المراجعة!",
+    "publishedDesc": "شكراً لمشاركتك تجربتك.",
+    "footerNote": "ستكون مراجعتك مرئية للعامة. يتم الموافقة التلقائية على المراجعات في هذا العرض التجريبي؛ الإصدارات الإنتاجية تراجع المراجعات عبر قائمة الإدارة.",
+    "dimensions": {
+      "overall": "التقييم العام",
+      "overallHint": "تجربتك الإجمالية",
+      "affordability": "التكلفة",
+      "affordabilityHint": "قيمة الرسوم + تكلفة المعيشة",
+      "teaching": "جودة التدريس",
+      "teachingHint": "هيئة التدريس، المنهج، المرافق",
+      "visa": "إجراءات التأشيرة",
+      "visaHint": "صعوبة الحصول على تأشيرة الطالب",
+      "safety": "الأمان",
+      "safetyHint": "أمان الحرم الجامعي + المدينة",
+      "social": "الحياة الاجتماعية",
+      "socialHint": "المجتمع، الفعاليات، الاندماج"
+    },
+    "tagSuggestions": {
+      "affordable": "ميسور التكلفة",
+      "greatTeaching": "تدريس ممتاز",
+      "easyVisa": "تأشيرة سهلة",
+      "internationalCommunity": "مجتمع دولي",
+      "beautifulCampus": "حرم جميل",
+      "goodCareerServices": "خدمات مهنية جيدة",
+      "halalFriendly": "صديق للحلال",
+      "prestigious": "مرموقة",
+      "competitive": "تنافسية",
+      "modernCampus": "حرم حديث",
+      "expensive": "باهظة",
+      "poorHousing": "سكن رديء"
+    }
+  },
+  "Admin": {
+    "title": "الإدارة: مراجعة التقييمات",
+    "pendingCount": "{count} مراجعة بانتظار المراجعة",
+    "noPending": "لا توجد مراجعات معلقة — كل شيء مكتمل!",
+    "pendingQueue": "قائمة الانتظار",
+    "refresh": "تحديث",
+    "loading": "جاري تحميل المراجعات المعلقة...",
+    "allCaughtUp": "كل شيء مكتمل!",
+    "allCaughtUpDesc": "لا توجد مراجعات معلقة. الإرسالات الجديدة ستظهر هنا تلقائياً.",
+    "approve": "موافقة",
+    "reject": "رفض",
+    "approved": "تمت الموافقة على المراجعة",
+    "rejected": "تم رفض المراجعة",
+    "approvedDesc": "تمت الموافقة على مراجعة {name}.",
+    "rejectedDesc": "تم رفض مراجعة {name}.",
+    "moderationFailed": "فشل في المراجعة",
+    "loadFailed": "فشل في تحميل المراجعات المعلقة"
+  },
+  "Toast": {
+    "savedToList": "تم الحفظ في قائمتك",
+    "removedFromSaved": "تمت الإزالة من المحفوظات",
+    "failedToSave": "فشل الحفظ",
+    "signInToSave": "سجل الدخول لحفظ الجامعات",
+    "signInToSaveDesc": "أنشئ حساباً مجانياً لحفظ الجامعات وكتابة المراجعات.",
+    "signInToReview": "سجل الدخول لكتابة مراجعة",
+    "signInToReviewDesc": "المراجعات تساعد الطلاب الآخرين على اتخاذ قرارات مستنيرة.",
+    "compareListFull": "قائمة المقارنة ممتلئة",
+    "compareListFullDesc": "يمكنك مقارنة حتى 3 جامعات في الوقت الواحد. أزل واحدة لإضافة أخرى."
+  },
+  "Footer": {
+    "tagline": "مسارك نحو تعليم عالمي ميسور التكلفة. مصمم لطلاب الشرق الأوسط.",
+    "platform": "المنصة",
+    "coverage": "التغطية",
+    "items": {
+      "directory": "دليل الجامعات",
+      "comparison": "أداة المقارنة",
+      "calculator": "حاسبة التكلفة",
+      "reviews": "مراجعات موثّقة"
+    },
+    "englishArabic": "إنجليزي + عربي (RTL)",
+    "disclaimer": "عرض تجريبي للمرحلة الأولى. المراجعات الموثّقة سطحية فقط - تدفق التحقق الكامل في الإنتاج."
+  },
+  "Filters": {
+    "title": "تصفيات",
+    "clearAll": "مسح الكل",
+    "country": "الدولة",
+    "fieldOfStudy": "التخصص",
+    "languageOfInstruction": "لغة التدريس",
+    "annualTuition": "الرسوم السنوية (دولار أمريكي)"
+  }
+}
