@@ -1,7 +1,9 @@
 'use client'
 
 import * as React from 'react'
+import { useRouter } from 'next/navigation'
 import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus } from 'lucide-react'
+import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -15,7 +17,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Separator } from '@/components/ui/separator'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { useToast } from '@/hooks/use-toast'
-import { formatUsd, formatUsdCompact, totalCost, countryFlag } from '@/lib/edupath'
+import { formatUsd, formatUsdCompact, totalCost, countryFlagUrl } from '@/lib/edupath'
 import { cn } from '@/lib/utils'
 import { AuthModal, UserMenuButton, type UserProfile } from '@/components/edupath/auth-modal'
 import { ReviewForm } from '@/components/edupath/review-form'
@@ -163,13 +165,14 @@ function CalendarIcon({ className }: { className?: string }) {
 export function EduPathApp({ universities, countries, stats }: Props) {
   const { toast } = useToast()
   const t = useTranslations()
+  const router = useRouter()
   const [searchQuery, setSearchQuery] = React.useState('')
   const [selectedCountries, setSelectedCountries] = React.useState<Set<string>>(new Set())
   const [selectedFields, setSelectedFields] = React.useState<Set<string>>(new Set())
   const [selectedLanguages, setSelectedLanguages] = React.useState<Set<string>>(new Set())
   const [tuitionRange, setTuitionRange] = React.useState<[number, number]>([0, 25000])
   const [sortBy, setSortBy] = React.useState<'tuition-asc' | 'tuition-desc' | 'rating-desc' | 'name-asc'>('tuition-asc')
-  const [selectedUni, setSelectedUni] = React.useState<University | null>(null)
+  const [selectedUni, setSelectedUni] = React.useState<University | null>(null) // kept for review form refetch logic; modal removed
   const [compareList, setCompareList] = React.useState<University[]>([])
   const [savedUniversities, setSavedUniversities] = React.useState<Set<string>>(new Set())
   const [showCompare, setShowCompare] = React.useState(false)
@@ -442,9 +445,9 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       </header>
 
       {/* ===== Hero ===== */}
-      <section className="border-b bg-gradient-to-br from-emerald-600 via-teal-700 to-cyan-800 text-white">
+      <section className="border-b bg-gradient-to-br from-slate-900 via-teal-900 to-blue-950 text-white">
         <div className="container mx-auto max-w-7xl px-4 py-16 md:py-24">
-          <div className="max-w-3xl">
+          <div className="max-w-3xl mx-auto text-center">
             <Badge variant="secondary" className="mb-4 bg-white/15 text-white border-white/20 hover:bg-white/20">
               {t('Hero.badge')}
             </Badge>
@@ -613,7 +616,14 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                     : 'border-border bg-white hover:border-emerald-300'
                 )}
               >
-                <div className="text-3xl">{c.flag}</div>
+                <Image
+                  src={`https://flagcdn.com/w80/${c.flag}.png`}
+                  alt={c.name}
+                  width={40}
+                  height={28}
+                  className="rounded shadow-sm"
+                  unoptimized
+                />
                 <div className="text-xs font-medium text-center leading-tight">{c.name}</div>
                 <div className="text-[10px] text-muted-foreground">{c.count} unis</div>
               </button>
@@ -665,7 +675,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 isComparing={!!compareList.find(c => c.id === u.id)}
                 onSave={() => toggleSave(u)}
                 onCompare={() => toggleCompare(u)}
-                onOpen={() => setSelectedUni(u)}
+                onOpen={() => router.push(`/university/${u.slug}`)}
               />
             ))}
           </div>
@@ -712,19 +722,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         </div>
       </footer>
 
-      {/* ===== University Detail Dialog ===== */}
-      {selectedUni && (
-        <UniversityDetail
-          uni={selectedUni}
-          isSaved={savedUniversities.has(selectedUni.id)}
-          isComparing={!!compareList.find(c => c.id === selectedUni.id)}
-          isLoggedIn={!!profile}
-          onSave={() => toggleSave(selectedUni)}
-          onCompare={() => toggleCompare(selectedUni)}
-          onWriteReview={() => openReviewForm(selectedUni)}
-          onClose={() => setSelectedUni(null)}
-        />
-      )}
+      {/* (University detail is now a full page at /university/[slug]) */}
 
       {/* ===== Comparison Sheet ===== */}
       <Sheet open={showCompare} onOpenChange={setShowCompare}>
@@ -801,7 +799,14 @@ function UniversityCard({
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
-              <span className="text-2xl">{countryFlag(uni.country)}</span>
+              <Image
+                src={countryFlagUrl(uni.country, 40)}
+                alt={uni.country}
+                width={24}
+                height={16}
+                className="rounded shadow-sm shrink-0"
+                unoptimized
+              />
               <Badge variant="outline" className="text-xs font-normal">
                 <MapPin className="size-3 mr-1" />
                 {uni.city}, {uni.country}
@@ -879,353 +884,18 @@ function UniversityCard({
   )
 }
 
-// =================== University Detail ===================
-function UniversityDetail({
-  uni, isSaved, isComparing, isLoggedIn, onSave, onCompare, onWriteReview, onClose,
-}: {
-  uni: University
-  isSaved: boolean
-  isComparing: boolean
-  isLoggedIn: boolean
-  onSave: () => void
-  onCompare: () => void
-  onWriteReview: () => void
-  onClose: () => void
-}) {
-  const t = useTranslations('Detail')
-  const locale = useLocale()
-  const [activeTab, setActiveTab] = React.useState('overview')
-  const [costDuration, setCostDuration] = React.useState(36)
-  const [includeLiving, setIncludeLiving] = React.useState(true)
-
-  return (
-    <div
-      className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4"
-      onClick={onClose}
-    >
-      <div
-        className="bg-white w-full sm:max-w-4xl max-h-[95vh] sm:max-h-[90vh] rounded-t-2xl sm:rounded-2xl overflow-hidden flex flex-col shadow-2xl"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="bg-gradient-to-br from-emerald-600 to-teal-700 text-white p-6 relative">
-          <Button
-            variant="ghost"
-            size="icon"
-            className="absolute top-3 right-3 text-white hover:bg-white/20"
-            onClick={onClose}
-          >
-            <X className="size-5" />
-          </Button>
-          <div className="flex items-start gap-4 pr-10">
-            <div className="size-16 rounded-xl bg-white/15 flex items-center justify-center text-4xl shrink-0">
-              {countryFlag(uni.country)}
-            </div>
-            <div className="flex-1">
-              <h2 className="text-2xl font-bold mb-1">{uni.name}</h2>
-              <div className="flex flex-wrap items-center gap-3 text-sm text-white/85">
-                <span className="flex items-center gap-1"><MapPin className="size-3.5" /> {uni.city}, {uni.country}</span>
-                <a
-                  href={uni.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 hover:underline"
-                >
-                  <ExternalLink className="size-3.5" /> {t('visitWebsite')}
-                </a>
-                {uni.avgRating !== null && (
-                  <span className="flex items-center gap-1">
-                    <Star className="size-3.5 fill-amber-300 text-amber-300" />
-                    {uni.avgRating.toFixed(1)} ({uni.reviewCount})
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-          <div className="flex gap-2 mt-5">
-            <Button size="sm" variant="secondary" onClick={onSave} className="gap-2">
-              <Heart className={cn('size-4', isSaved && 'fill-rose-500 text-rose-500')} />
-              {isSaved ? t('saved') : t('save')}
-            </Button>
-            <Button
-              size="sm"
-              variant={isComparing ? 'default' : 'secondary'}
-              onClick={onCompare}
-              className={cn('gap-2', isComparing && 'bg-emerald-700 hover:bg-emerald-800')}
-            >
-              <ArrowLeftRight className="size-4" />
-              {isComparing ? t('inCompare') : t('addToCompare')}
-            </Button>
-          </div>
-        </div>
-
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col overflow-hidden">
-          <div className="border-b px-6">
-            <TabsList className="bg-transparent h-12 p-0 gap-6">
-              <TabsTrigger value="overview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.overview')}</TabsTrigger>
-              <TabsTrigger value="programs" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.programs')} ({uni.programs.length})</TabsTrigger>
-              <TabsTrigger value="scholarships" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.scholarships')} ({uni.scholarships.length})</TabsTrigger>
-              <TabsTrigger value="cost" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.cost')}</TabsTrigger>
-              <TabsTrigger value="reviews" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.reviews')} ({uni.reviews.length})</TabsTrigger>
-            </TabsList>
-          </div>
-
-          <ScrollArea className="flex-1">
-            <div className="p-6">
-              <TabsContent value="overview" className="mt-0 space-y-4">
-                <p className="text-sm leading-relaxed">{uni.descriptionEn}</p>
-                <Separator />
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <StatCard icon={<DollarSign className="size-4" />} label={t('stats.cheapestProgram')} value={formatUsd(uni.cheapestProgramTuition) + '/yr'} />
-                  <StatCard icon={<DollarSign className="size-4" />} label={t('stats.livingCost')} value={formatUsd(uni.livingCostUsd) + '/yr'} />
-                  <StatCard icon={<Users className="size-4" />} label={t('stats.intlStudents')} value={uni.intlStudentPct + '%'} />
-                  <StatCard icon={<TrendingUp className="size-4" />} label={t('stats.acceptance')} value={uni.acceptanceRate !== null ? uni.acceptanceRate + '%' : 'N/A'} />
-                </div>
-                <Separator />
-                <div>
-                  <h4 className="font-semibold mb-2 text-sm">{t('descriptionAr')}</h4>
-                  <p className="text-sm leading-relaxed text-right" dir="rtl" lang="ar">{uni.descriptionAr}</p>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="programs" className="mt-0 space-y-3">
-                {uni.programs.map(p => (
-                  <Card key={p.id} className="py-4">
-                    <CardContent className="space-y-2">
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-1">
-                            <Badge variant="outline" className="text-xs capitalize">{p.degreeLevel}</Badge>
-                            <Badge variant="secondary" className="text-xs">{p.field}</Badge>
-                            <Badge variant="outline" className="text-xs">
-                              <Languages className="size-3 mr-1" />
-                              {p.language}
-                            </Badge>
-                          </div>
-                          <h4 className="font-semibold">{p.name}</h4>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-lg font-bold text-emerald-700">{formatUsd(p.tuitionUsd)}</div>
-                          <div className="text-xs text-muted-foreground">{t('programs.perYear')}</div>
-                        </div>
-                      </div>
-                      <div className="flex flex-wrap gap-4 text-xs text-muted-foreground pt-2 border-t">
-                        <span className="flex items-center gap-1"><Clock className="size-3" /> {p.durationMonths} {t('programs.months')}</span>
-                        {p.deadline && <span className="flex items-center gap-1"><CalendarIcon className="size-3" /> {t('programs.deadline')}: {p.deadline}</span>}
-                      </div>
-                      {p.entryReqs && (
-                        <div className="text-xs text-muted-foreground bg-amber-50 border border-amber-200 rounded p-2">
-                          <strong>{t('programs.entryRequirements')}:</strong> {p.entryReqs}
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                ))}
-              </TabsContent>
-
-              <TabsContent value="scholarships" className="mt-0 space-y-3">
-                {uni.scholarships.length === 0 ? (
-                  <div className="text-center py-8 text-muted-foreground text-sm">{t('scholarships.none')}</div>
-                ) : (
-                  uni.scholarships.map(s => (
-                    <Card key={s.id} className="py-4">
-                      <CardContent>
-                        <div className="flex items-start justify-between gap-3 mb-2">
-                          <div className="flex-1">
-                            <h4 className="font-semibold">{s.name}</h4>
-                            <Badge variant="outline" className="mt-1 capitalize">{s.amountType}</Badge>
-                          </div>
-                          <div className="text-right">
-                            <div className="text-lg font-bold text-emerald-700">{formatUsd(s.amountUsd)}</div>
-                            <div className="text-xs text-muted-foreground">{s.amountType === 'full' ? t('scholarships.fullCoverage') : t('scholarships.amount')}</div>
-                          </div>
-                        </div>
-                        <p className="text-xs text-muted-foreground">{s.eligibility}</p>
-                        {s.deadline && (
-                          <div className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-                            <CalendarIcon className="size-3" /> {t('scholarships.applyBy')}: {s.deadline}
-                          </div>
-                        )}
-                      </CardContent>
-                    </Card>
-                  ))
-                )}
-              </TabsContent>
-
-              <TabsContent value="cost" className="mt-0 space-y-4">
-                <div>
-                  <h4 className="font-semibold mb-3 flex items-center gap-2">
-                    <Calculator className="size-4" /> {t('cost.title')}
-                  </h4>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {t('cost.description')}
-                  </p>
-                </div>
-
-                <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 space-y-4">
-                  <div>
-                    <Label className="text-sm font-medium">{t('cost.programDuration', { months: costDuration, years: (costDuration / 12).toFixed(1) })}</Label>
-                    <Slider
-                      value={[costDuration]}
-                      onValueChange={(v) => setCostDuration(v[0])}
-                      min={12}
-                      max={72}
-                      step={6}
-                      className="mt-3"
-                    />
-                    <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                      <span>{t('cost.1year')}</span>
-                      <span>{t('cost.6years')}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="include-living"
-                      checked={includeLiving}
-                      onCheckedChange={(v) => setIncludeLiving(v === true)}
-                    />
-                    <Label htmlFor="include-living" className="text-sm cursor-pointer">
-                      {t('cost.includeLiving', { amount: formatUsd(uni.livingCostUsd) })}
-                    </Label>
-                  </div>
-
-                  <Separator />
-
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">{t('cost.tuition', { years: (costDuration / 12).toFixed(1) })}</span>
-                      <span className="font-medium">{formatUsd(Math.round(uni.cheapestProgramTuition * costDuration / 12))}</span>
-                    </div>
-                    {includeLiving && (
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">{t('cost.living', { years: (costDuration / 12).toFixed(1) })}</span>
-                        <span className="font-medium">{formatUsd(Math.round(uni.livingCostUsd * costDuration / 12))}</span>
-                      </div>
-                    )}
-                    <Separator />
-                    <div className="flex justify-between items-center pt-2">
-                      <span className="font-semibold">{t('cost.total')}</span>
-                      <span className="text-2xl font-bold text-emerald-700">
-                        {formatUsd(totalCost(
-                          uni.cheapestProgramTuition,
-                          includeLiving ? uni.livingCostUsd : 0,
-                          costDuration
-                        ))}
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="text-xs text-muted-foreground bg-amber-50 border border-amber-200 rounded p-3">
-                  <strong>{t('cost.disclaimer')}</strong>
-                </div>
-              </TabsContent>
-
-              <TabsContent value="reviews" className="mt-0 space-y-4">
-                {/* Write a review CTA */}
-                <div className="flex items-center justify-between gap-3 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
-                  <div>
-                    <div className="font-semibold text-sm">{t('reviews.shareExperience')}</div>
-                    <div className="text-xs text-muted-foreground mt-0.5">
-                      {isLoggedIn
-                        ? t('reviews.shareDescLoggedIn')
-                        : t('reviews.shareDescLoggedOut')}
-                    </div>
-                  </div>
-                  <Button onClick={onWriteReview} className="gap-2" size="sm">
-                    <MessageSquarePlus className="size-4" />
-                    {t('reviews.writeReview')}
-                  </Button>
-                </div>
-
-                {uni.reviews.length === 0 ? (
-                  <div className="text-center py-12">
-                    <div className="text-4xl mb-3">✍️</div>
-                    <h4 className="font-semibold mb-1">{t('reviews.noReviews')}</h4>
-                    <p className="text-sm text-muted-foreground">{t('reviews.noReviewsDesc', { name: uni.name })}</p>
-                  </div>
-                ) : (
-                  <>
-                    {uni.avgRating !== null && (
-                      <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-4">
-                        <div className="flex items-center justify-between mb-3">
-                          <div>
-                            <div className="text-3xl font-bold">{uni.avgRating.toFixed(1)}</div>
-                            <StarRating value={uni.avgRating} size={16} />
-                            <div className="text-xs text-muted-foreground mt-1">{t('reviews.reviewCount', { count: uni.reviewCount })}</div>
-                          </div>
-                        </div>
-                        <div className="space-y-2">
-                          <RatingBar label={t('reviews.subRatings.affordability')} value={uni.reviews.reduce((s, r) => s + r.ratingAffordability, 0) / uni.reviews.length} />
-                          <RatingBar label={t('reviews.subRatings.teaching')} value={uni.reviews.reduce((s, r) => s + r.ratingTeaching, 0) / uni.reviews.length} />
-                          <RatingBar label={t('reviews.subRatings.visa')} value={uni.reviews.reduce((s, r) => s + r.ratingVisa, 0) / uni.reviews.length} />
-                          <RatingBar label={t('reviews.subRatings.safety')} value={uni.reviews.reduce((s, r) => s + r.ratingSafety, 0) / uni.reviews.length} />
-                          <RatingBar label={t('reviews.subRatings.social')} value={uni.reviews.reduce((s, r) => s + r.ratingSocial, 0) / uni.reviews.length} />
-                        </div>
-                      </div>
-                    )}
-                    {uni.reviews.map(r => (
-                      <Card key={r.id} className="py-4">
-                        <CardContent>
-                          <div className="flex items-start justify-between gap-3 mb-2">
-                            <div>
-                              <div className="flex items-center gap-2">
-                                <span className="font-semibold">{r.userName}</span>
-                                {r.verifiedEnrollment && (
-                                  <Badge variant="outline" className="text-[10px] gap-1 border-emerald-500 text-emerald-700">
-                                    <CheckCircle2 className="size-3" /> {t('reviews.verifiedStudent')}
-                                  </Badge>
-                                )}
-                              </div>
-                              <div className="text-xs text-muted-foreground flex items-center gap-1">
-                                <MapPin className="size-3" /> {r.userCountry}
-                              </div>
-                            </div>
-                            <StarRating value={r.ratingOverall} />
-                          </div>
-                          <p className="text-sm leading-relaxed my-3">{r.reviewText}</p>
-                          <div className="flex flex-wrap gap-1.5 mb-3">
-                            {r.tags.map((tag, i) => (
-                              <Badge key={i} variant="secondary" className="text-[10px]">{tag}</Badge>
-                            ))}
-                          </div>
-                          <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t">
-                            <span>{new Date(r.createdAt).toLocaleDateString(locale === 'ar' ? 'ar-EG' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                            <Button variant="ghost" size="sm" className="h-7 gap-1 text-xs">
-                              <ThumbsUp className="size-3" /> {t('reviews.helpful')} ({r.helpfulCount})
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
-                  </>
-                )}
-              </TabsContent>
-            </div>
-          </ScrollArea>
-        </Tabs>
-      </div>
-    </div>
-  )
-}
-
-function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
-  return (
-    <div className="bg-slate-50 rounded-lg p-3">
-      <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
-        {icon}
-        {label}
-      </div>
-      <div className="text-sm font-semibold">{value}</div>
-    </div>
-  )
-}
-
+// (UniversityDetail modal removed — now a full page at /university/[slug])
+// (See src/components/edupath/university-detail-page.tsx)
 // =================== Comparison Table ===================
 function ComparisonTable({ universities }: { universities: University[] }) {
   const t = useTranslations('Compare.rows')
   const rows: Array<{ label: string; render: (u: University) => React.ReactNode }> = [
-    { label: t('country'), render: u => `${countryFlag(u.country)} ${u.country}` },
+    { label: t('country'), render: u => (
+      <span className="flex items-center gap-2">
+        <Image src={countryFlagUrl(u.country, 40)} alt={u.country} width={20} height={14} className="rounded shadow-sm" unoptimized />
+        {u.country}
+      </span>
+    ) },
     { label: t('city'), render: u => u.city },
     { label: t('cheapestTuition'), render: u => <span className="font-semibold text-emerald-700">{formatUsd(u.cheapestProgramTuition)}</span> },
     { label: t('livingCost'), render: u => formatUsd(u.livingCostUsd) },
@@ -1248,7 +918,7 @@ function ComparisonTable({ universities }: { universities: University[] }) {
             {universities.map(u => (
               <th key={u.id} className="text-left p-4 border-b font-semibold text-sm min-w-[200px]">
                 <div className="flex items-start gap-2">
-                  <span className="text-2xl">{countryFlag(u.country)}</span>
+                  <Image src={countryFlagUrl(u.country, 80)} alt={u.country} width={32} height={22} className="rounded shadow-sm shrink-0" unoptimized />
                   <div>
                     <div className="leading-tight">{u.name}</div>
                     <div className="text-xs font-normal text-muted-foreground">{u.city}</div>

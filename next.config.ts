@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   reactStrictMode: false,
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'flagcdn.com' },
+    ],
+  },
 };
 
 export default withNextIntl(nextConfig);

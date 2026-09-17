@@ -11,16 +11,16 @@ export type Country = {
 }
 
 export const COUNTRIES: Country[] = [
-  { code: 'United Kingdom', name: 'United Kingdom', nameAr: 'المملكة المتحدة', flag: '🇬🇧' },
-  { code: 'Germany', name: 'Germany', nameAr: 'ألمانيا', flag: '🇩🇪' },
-  { code: 'Turkey', name: 'Turkey', nameAr: 'تركيا', flag: '🇹🇷' },
-  { code: 'Poland', name: 'Poland', nameAr: 'بولندا', flag: '🇵🇱' },
-  { code: 'Lithuania', name: 'Lithuania', nameAr: 'ليتوانيا', flag: '🇱🇹' },
-  { code: 'Malaysia', name: 'Malaysia', nameAr: 'ماليزيا', flag: '🇲🇾' },
-  { code: 'Egypt', name: 'Egypt', nameAr: 'مصر', flag: '🇪🇬' },
-  { code: 'Jordan', name: 'Jordan', nameAr: 'الأردن', flag: '🇯🇴' },
-  { code: 'United Arab Emirates', name: 'United Arab Emirates', nameAr: 'الإمارات', flag: '🇦🇪' },
-  { code: 'Lebanon', name: 'Lebanon', nameAr: 'لبنان', flag: '🇱🇧' },
+  { code: 'United Kingdom', name: 'United Kingdom', nameAr: 'المملكة المتحدة', flag: 'gb' },
+  { code: 'Germany', name: 'Germany', nameAr: 'ألمانيا', flag: 'de' },
+  { code: 'Turkey', name: 'Turkey', nameAr: 'تركيا', flag: 'tr' },
+  { code: 'Poland', name: 'Poland', nameAr: 'بولندا', flag: 'pl' },
+  { code: 'Lithuania', name: 'Lithuania', nameAr: 'ليتوانيا', flag: 'lt' },
+  { code: 'Malaysia', name: 'Malaysia', nameAr: 'ماليزيا', flag: 'my' },
+  { code: 'Egypt', name: 'Egypt', nameAr: 'مصر', flag: 'eg' },
+  { code: 'Jordan', name: 'Jordan', nameAr: 'الأردن', flag: 'jo' },
+  { code: 'United Arab Emirates', name: 'United Arab Emirates', nameAr: 'الإمارات', flag: 'ae' },
+  { code: 'Lebanon', name: 'Lebanon', nameAr: 'لبنان', flag: 'lb' },
 ]
 
 export const FIELDS_OF_STUDY = [
@@ -113,7 +113,27 @@ export function totalCost(tuitionUsd: number, livingCostUsd: number, durationMon
 }
 
 /**
- * Get country flag emoji.
+ * Get ISO 3166-1 alpha-2 country code for a country name.
+ * Returns null if country not found.
+ */
+export function countryCode(countryName: string): string | null {
+  return COUNTRIES.find(c => c.name === countryName)?.flag ?? null
+}
+
+/**
+ * Get country flag image URL from flagcdn.com.
+ * Returns a URL like https://flagcdn.com/w80/gb.png
+ * These render reliably on all platforms (unlike emoji flags which
+ * don't render on Windows).
+ */
+export function countryFlagUrl(countryName: string, width = 80): string {
+  const code = countryCode(countryName)
+  if (!code) return ''
+  return `https://flagcdn.com/w${width}/${code}.png`
+}
+
+/**
+ * Get country flag emoji (legacy — use countryFlagUrl for reliable rendering).
  */
 export function countryFlag(countryName: string): string {
   return COUNTRIES.find(c => c.name === countryName)?.flag ?? '🌍'
