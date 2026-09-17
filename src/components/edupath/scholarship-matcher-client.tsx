@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useToast } from '@/hooks/use-toast'
 import { formatUsd } from '@/lib/edupath'
 import { cn } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
 
 type Match = {
   scholarshipId: string
@@ -33,6 +34,7 @@ type Match = {
 export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarships: number }) {
   const router = useRouter()
   const { toast } = useToast()
+  const t = useTranslations('Scholarships')
   const [gpa, setGpa] = React.useState('')
   const [field, setField] = React.useState('')
   const [country, setCountry] = React.useState('')
@@ -82,11 +84,11 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
         <div className="container mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
           <Button variant="ghost" size="sm" onClick={() => router.push('/')} className="gap-2">
             <ArrowLeft className="size-4" />
-            <span className="hidden sm:inline">Back to directory</span>
+            <span className="hidden sm:inline">{t('back')}</span>
           </Button>
           <div className="flex items-center gap-2">
             <Award className="size-5 text-emerald-600" />
-            <span className="font-bold">Financial Aid Matcher</span>
+            <span className="font-bold">{t('title')}</span>
           </div>
         </div>
       </header>
@@ -95,14 +97,13 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-4">
             <Sparkles className="size-4" />
-            AI-Powered Matching
+            {t('badge')}
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-3">
-            Find scholarships you actually qualify for
+            {t('heading')}
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Enter your profile and our AI matches you with {totalScholarships} scholarships across our university network.
-            Get match scores and application tips for each.
+            {t('subtitle', { count: totalScholarships })}
           </p>
         </div>
 
@@ -113,11 +114,11 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
               <form onSubmit={handleMatch} className="space-y-4">
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1.5">
-                    <Label htmlFor="gpa" className="text-xs">GPA (4.0 scale) *</Label>
+                    <Label htmlFor="gpa" className="text-xs">{t('gpa')} *</Label>
                     <Input id="gpa" type="number" step="0.1" min="0" max="4" placeholder="3.5" value={gpa} onChange={e => setGpa(e.target.value)} required />
                   </div>
                   <div className="space-y-1.5">
-                    <Label htmlFor="field" className="text-xs">Field of Study *</Label>
+                    <Label htmlFor="field" className="text-xs">{t('field')} *</Label>
                     <Select value={field} onValueChange={setField}>
                       <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
                       <SelectContent>
@@ -129,24 +130,24 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1.5">
-                    <Label htmlFor="country" className="text-xs">Your Country</Label>
+                    <Label htmlFor="country" className="text-xs">{t('country')}</Label>
                     <Input id="country" type="text" placeholder="Jordan" value={country} onChange={e => setCountry(e.target.value)} />
                   </div>
                   <div className="space-y-1.5">
-                    <Label htmlFor="lang" className="text-xs">IELTS/TOEFL</Label>
+                    <Label htmlFor="lang" className="text-xs">{t('languageScore')}</Label>
                     <Input id="lang" type="text" placeholder="IELTS 6.5" value={languageScore} onChange={e => setLanguageScore(e.target.value)} />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="space-y-1.5">
-                    <Label htmlFor="budget" className="text-xs">Budget (USD/yr)</Label>
+                    <Label htmlFor="budget" className="text-xs">{t('budget')}</Label>
                     <Input id="budget" type="number" placeholder="10000" value={budget} onChange={e => setBudget(e.target.value)} />
                   </div>
                   <div className="space-y-1.5">
-                    <Label htmlFor="degree" className="text-xs">Degree Level</Label>
+                    <Label htmlFor="degree" className="text-xs">{t('degreeLevel')}</Label>
                     <Select value={degreeLevel} onValueChange={setDegreeLevel}>
-                      <SelectTrigger><SelectValue placeholder="Any" /></SelectTrigger>
+                      <SelectTrigger><SelectValue placeholder={t('any')} /></SelectTrigger>
                       <SelectContent>
                         {['bachelor', 'master', 'phd'].map(d => <SelectItem key={d} value={d} className="capitalize">{d}</SelectItem>)}
                       </SelectContent>
@@ -155,7 +156,7 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
                 </div>
 
                 <Button type="submit" className="w-full gap-2 bg-emerald-600 hover:bg-emerald-700" disabled={loading}>
-                  {loading ? <><Loader2 className="size-4 animate-spin" /> Matching...</> : <><Sparkles className="size-4" /> Find My Matches</>}
+                  {loading ? <><Loader2 className="size-4 animate-spin" /> {t('matching')}</> : <><Sparkles className="size-4" /> {t('findMatches')}</>}
                 </Button>
               </form>
             </CardContent>
@@ -167,8 +168,8 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
               <Card className="flex items-center justify-center min-h-[400px]">
                 <CardContent className="text-center py-12">
                   <Loader2 className="size-12 animate-spin text-emerald-600 mx-auto mb-4" />
-                  <h3 className="font-semibold text-lg mb-2">AI is matching your profile...</h3>
-                  <p className="text-sm text-muted-foreground">Analyzing {totalScholarships} scholarships against your profile. This takes 10-20 seconds.</p>
+                  <h3 className="font-semibold text-lg mb-2">{t('matchingTitle')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('matchingDesc', { count: totalScholarships })}</p>
                 </CardContent>
               </Card>
             )}
@@ -179,8 +180,8 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
                   <div className="size-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
                     <Award className="size-8 text-emerald-600" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-2">Your matches will appear here</h3>
-                  <p className="text-sm text-muted-foreground">Fill in your profile and click "Find My Matches" to get AI-powered scholarship recommendations.</p>
+                  <h3 className="font-semibold text-lg mb-2">{t('yourMatches')}</h3>
+                  <p className="text-sm text-muted-foreground">{t('yourMatchesDesc')}</p>
                 </CardContent>
               </Card>
             )}
@@ -188,8 +189,8 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
             {!loading && matches.length > 0 && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-xl font-bold">{matches.length} scholarship matches</h2>
-                  <Badge variant="outline" className="gap-1"><TrendingUp className="size-3" /> Sorted by match score</Badge>
+                  <h2 className="text-xl font-bold">{t('matchesFound', { count: matches.length })}</h2>
+                  <Badge variant="outline" className="gap-1"><TrendingUp className="size-3" /> {t('sortedByScore')}</Badge>
                 </div>
                 {matches.map((m, i) => {
                   const colors = scoreColor(m.matchScore)
@@ -206,7 +207,7 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
                           </div>
                           <div className="text-right shrink-0">
                             <div className={cn('text-3xl font-bold', colors.text)}>{m.matchScore}</div>
-                            <div className="text-[10px] text-muted-foreground uppercase">match</div>
+                            <div className="text-[10px] text-muted-foreground uppercase">{t('match')}</div>
                           </div>
                         </div>
 
@@ -231,18 +232,18 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
 
                         {/* AI reasoning */}
                         <div className="text-sm text-slate-700 mb-2">
-                          <strong>Why this matches:</strong> {m.reasoning}
+                          <strong>{t('whyMatches')}:</strong> {m.reasoning}
                         </div>
 
                         {/* Tips */}
                         <div className="text-xs bg-blue-50 border border-blue-200 rounded p-2 flex items-start gap-2">
                           <Lightbulb className="size-3 text-blue-600 mt-0.5 shrink-0" />
-                          <span><strong>Tip:</strong> {m.tips}</span>
+                          <span><strong>{t('tip')}:</strong> {m.tips}</span>
                         </div>
 
                         {/* Eligibility */}
                         <details className="mt-2 text-xs text-muted-foreground">
-                          <summary className="cursor-pointer font-medium">Eligibility criteria</summary>
+                          <summary className="cursor-pointer font-medium">{t('eligibility')}</summary>
                           <p className="mt-1">{m.scholarship.eligibility}</p>
                         </details>
                       </CardContent>

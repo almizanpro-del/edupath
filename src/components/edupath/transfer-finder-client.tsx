@@ -12,6 +12,7 @@ import { Label } from '@/components/ui/label'
 import { useToast } from '@/hooks/use-toast'
 import { countryFlagUrl, formatUsd, formatUsdCompact } from '@/lib/edupath'
 import { cn } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
 
 type University = { id: string; name: string; country: string; city: string }
 
@@ -30,6 +31,7 @@ type Pathway = {
 export function TransferFinderClient({ universities }: { universities: University[] }) {
   const router = useRouter()
   const { toast } = useToast()
+  const t = useTranslations('TransferFinder')
   const [fromId, setFromId] = React.useState('')
   const [toId, setToId] = React.useState('')
   const [pathways, setPathways] = React.useState<Pathway[]>([])
@@ -73,11 +75,11 @@ export function TransferFinderClient({ universities }: { universities: Universit
         <div className="container mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
           <Button variant="ghost" size="sm" onClick={() => router.push('/')} className="gap-2">
             <ArrowLeft className="size-4" />
-            <span className="hidden sm:inline">Back to directory</span>
+            <span className="hidden sm:inline">{t('back')}</span>
           </Button>
           <div className="flex items-center gap-2">
             <Shuffle className="size-5 text-emerald-600" />
-            <span className="font-bold">Transfer Pathway Finder</span>
+            <span className="font-bold">{t('title')}</span>
           </div>
         </div>
       </header>
@@ -86,14 +88,13 @@ export function TransferFinderClient({ universities }: { universities: Universit
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-4">
             <Shuffle className="size-4" />
-            Credit Transfer Agreements
+            {t('badge')}
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-3">
-            Save thousands by transferring credits
+            {t('heading')}
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Start at an affordable university, then transfer to complete your degree.
-            Browse credit transfer agreements between universities.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -102,9 +103,9 @@ export function TransferFinderClient({ universities }: { universities: Universit
           <CardContent className="pt-6">
             <div className="grid md:grid-cols-[1fr_auto_1fr_auto] gap-4 items-end">
               <div className="space-y-1.5">
-                <Label className="text-xs font-medium">From (current university)</Label>
+                <Label className="text-xs font-medium">{t('from')}</Label>
                 <Select value={fromId} onValueChange={setFromId}>
-                  <SelectTrigger><SelectValue placeholder="Any university" /></SelectTrigger>
+                  <SelectTrigger><SelectValue placeholder={t('anyUniversity')} /></SelectTrigger>
                   <SelectContent>
                     {universities.map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
                   </SelectContent>
@@ -114,9 +115,9 @@ export function TransferFinderClient({ universities }: { universities: Universit
                 <ArrowRight className="size-5 text-muted-foreground" />
               </div>
               <div className="space-y-1.5">
-                <Label className="text-xs font-medium">To (target university)</Label>
+                <Label className="text-xs font-medium">{t('to')}</Label>
                 <Select value={toId} onValueChange={setToId}>
-                  <SelectTrigger><SelectValue placeholder="Any university" /></SelectTrigger>
+                  <SelectTrigger><SelectValue placeholder={t('anyUniversity')} /></SelectTrigger>
                   <SelectContent>
                     {universities.map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
                   </SelectContent>
@@ -124,10 +125,10 @@ export function TransferFinderClient({ universities }: { universities: Universit
               </div>
               <div className="flex gap-2">
                 <Button onClick={handleSearch} className="gap-2 bg-emerald-600 hover:bg-emerald-700">
-                  <Shuffle className="size-4" /> Search
+                  <Shuffle className="size-4" /> {t('search')}
                 </Button>
                 {(fromId || toId) && (
-                  <Button variant="outline" onClick={clearFilters}>Clear</Button>
+                  <Button variant="outline" onClick={clearFilters}>{t('clear')}</Button>
                 )}
               </div>
             </div>
@@ -138,17 +139,17 @@ export function TransferFinderClient({ universities }: { universities: Universit
         {loading ? (
           <div className="text-center py-20">
             <Loader2 className="size-10 animate-spin text-emerald-600 mx-auto mb-4" />
-            <p className="text-muted-foreground">Loading pathways...</p>
+            <p className="text-muted-foreground">{t('loading')}</p>
           </div>
         ) : pathways.length === 0 ? (
           <div className="text-center py-20">
             <div className="text-5xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold mb-2">No pathways found</h3>
-            <p className="text-muted-foreground">Try different filter combinations or clear filters.</p>
+            <h3 className="text-xl font-semibold mb-2">{t('noResults')}</h3>
+            <p className="text-muted-foreground">{t('noResultsDesc')}</p>
           </div>
         ) : (
           <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">{pathways.length} pathway{pathways.length !== 1 ? 's' : ''} found</p>
+            <p className="text-sm text-muted-foreground">{t('pathwaysFound', { count: pathways.length })}</p>
             {pathways.map(p => <PathwayCard key={p.id} pathway={p} />)}
           </div>
         )}
@@ -158,6 +159,7 @@ export function TransferFinderClient({ universities }: { universities: Universit
 }
 
 function PathwayCard({ pathway }: { pathway: Pathway }) {
+  const t = useTranslations('TransferFinder')
   const transferPct = Math.round((pathway.creditsAccepted / pathway.totalCredits) * 100)
   const agreementColors: Record<string, string> = {
     official: 'bg-emerald-100 text-emerald-700 border-emerald-300',
@@ -190,20 +192,20 @@ function PathwayCard({ pathway }: { pathway: Pathway }) {
         {/* Stats row */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
           <div className="bg-slate-50 rounded-lg p-3">
-            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><GraduationCap className="size-3" /> Credits Transfer</div>
+            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><GraduationCap className="size-3" /> {t('creditsTransfer')}</div>
             <div className="text-lg font-bold">{pathway.creditsAccepted}/{pathway.totalCredits}</div>
             <div className="text-xs text-emerald-600 font-medium">{transferPct}%</div>
           </div>
           <div className="bg-slate-50 rounded-lg p-3">
-            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><DollarSign className="size-3" /> Est. Savings</div>
+            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><DollarSign className="size-3" /> {t('estSavings')}</div>
             <div className="text-lg font-bold text-emerald-700">{pathway.estimatedSavingsUsd ? formatUsdCompact(pathway.estimatedSavingsUsd) : '—'}</div>
           </div>
           <div className="bg-slate-50 rounded-lg p-3">
-            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><FileText className="size-3" /> Agreement</div>
-            <Badge variant="outline" className={cn('text-xs capitalize', agreementColors[pathway.agreementType])}>{pathway.agreementType.replace('-', ' ')}</Badge>
+            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><FileText className="size-3" /> {t('agreement')}</div>
+            <Badge variant="outline" className={cn('text-xs capitalize', agreementColors[pathway.agreementType])}>{pathway.agreementType === 'case-by-case' ? t('caseByCase') : pathway.agreementType === 'official' ? t('official') : t('informal')}</Badge>
           </div>
           <div className="bg-slate-50 rounded-lg p-3">
-            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><DollarSign className="size-3" /> Tuition Diff/yr</div>
+            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><DollarSign className="size-3" /> {t('tuitionDiff')}</div>
             <div className="text-lg font-bold">{formatUsdCompact(pathway.toUniversity.tuitionUsd - pathway.fromUniversity.tuitionUsd)}</div>
           </div>
         </div>
@@ -214,14 +216,14 @@ function PathwayCard({ pathway }: { pathway: Pathway }) {
         {/* Requirements */}
         {pathway.requirements && (
           <div className="text-xs bg-amber-50 border border-amber-200 rounded p-3 mb-3">
-            <strong>Requirements:</strong> {pathway.requirements}
+            <strong>{t('requirements')}:</strong> {pathway.requirements}
           </div>
         )}
 
         {/* Progress bar */}
         <div className="mb-3">
           <div className="flex justify-between text-xs text-muted-foreground mb-1">
-            <span>Credits accepted</span>
+            <span>{t('creditsAccepted')}</span>
             <span>{transferPct}%</span>
           </div>
           <div className="h-2 bg-slate-200 rounded-full overflow-hidden">

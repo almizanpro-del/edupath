@@ -15,6 +15,7 @@ import { useToast } from '@/hooks/use-toast'
 import { cn } from '@/lib/utils'
 import { AuthModal, type UserProfile } from '@/components/edupath/auth-modal'
 import { createClient } from '@/lib/supabase/client'
+import { useTranslations } from 'next-intl'
 
 type University = { id: string; name: string; country: string }
 
@@ -46,6 +47,7 @@ const DIMENSIONS = [
 export function EssayReviewClient({ universities }: { universities: University[] }) {
   const router = useRouter()
   const { toast } = useToast()
+  const t = useTranslations('EssayReview')
 
   const [essayText, setEssayText] = React.useState('')
   const [targetUniversity, setTargetUniversity] = React.useState('')
@@ -150,11 +152,11 @@ export function EssayReviewClient({ universities }: { universities: University[]
         <div className="container mx-auto max-w-5xl px-4 py-3 flex items-center justify-between gap-4">
           <Button variant="ghost" size="sm" onClick={() => router.push('/')} className="gap-2">
             <ArrowLeft className="size-4" />
-            <span className="hidden sm:inline">Back to directory</span>
+            <span className="hidden sm:inline">{t('back')}</span>
           </Button>
           <div className="flex items-center gap-2">
             <Sparkles className="size-5 text-emerald-600" />
-            <span className="font-bold">AI Essay Review</span>
+            <span className="font-bold">{t('title')}</span>
           </div>
         </div>
       </header>
@@ -164,14 +166,13 @@ export function EssayReviewClient({ universities }: { universities: University[]
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-4">
             <Sparkles className="size-4" />
-            Powered by AI
+            {t('badge')}
           </div>
           <h1 className="text-3xl md:text-4xl font-bold mb-3 bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent">
-            Get instant feedback on your application essay
+            {t('heading')}
           </h1>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Our AI reviews your essay on 4 dimensions — structure, tone, clarity, and cultural fit —
-            with specific, actionable line-level feedback.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -180,7 +181,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
           <div className="flex justify-center mb-6">
             <Badge variant="outline" className="gap-2 px-3 py-1">
               <FileText className="size-3" />
-              {remaining} review{remaining !== 1 ? 's' : ''} remaining this hour
+              {t('reviewsRemaining', { count: remaining })}
             </Badge>
           </div>
         )}
@@ -192,7 +193,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <PenLine className="size-5 text-emerald-600" />
-                  Your Essay
+                  {t('yourEssay')}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -200,10 +201,10 @@ export function EssayReviewClient({ universities }: { universities: University[]
                   {/* Context fields */}
                   <div className="grid sm:grid-cols-2 gap-3">
                     <div className="space-y-1.5">
-                      <Label htmlFor="university" className="text-xs">Target University (optional)</Label>
+                      <Label htmlFor="university" className="text-xs">{t('targetUniversity')}</Label>
                       <Select value={targetUniversity} onValueChange={setTargetUniversity}>
                         <SelectTrigger id="university" className="h-9">
-                          <SelectValue placeholder="Select university" />
+                          <SelectValue placeholder={t('selectUniversity')} />
                         </SelectTrigger>
                         <SelectContent>
                           {universities.map(u => (
@@ -215,7 +216,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
                       </Select>
                     </div>
                     <div className="space-y-1.5">
-                      <Label htmlFor="program" className="text-xs">Target Program (optional)</Label>
+                      <Label htmlFor="program" className="text-xs">{t('targetProgram')}</Label>
                       <Input
                         id="program"
                         type="text"
@@ -228,7 +229,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
                   </div>
 
                   <div className="space-y-1.5">
-                    <Label htmlFor="country" className="text-xs">Your Country (optional)</Label>
+                    <Label htmlFor="country" className="text-xs">{t('yourCountry')}</Label>
                     <Input
                       id="country"
                       type="text"
@@ -245,7 +246,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
                   <div className="space-y-1.5">
                     <div className="flex items-center justify-between">
                       <Label htmlFor="essay" className="text-sm font-medium">
-                        Paste your essay here
+                        {t('pasteEssay')}
                       </Label>
                       <span className={cn(
                         'text-xs',
@@ -256,7 +257,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
                     </div>
                     <Textarea
                       id="essay"
-                      placeholder="Paste your university application essay here. The AI will review it on structure, tone, clarity, and cultural fit..."
+                      placeholder={t('pasteEssayPlaceholder')}
                       value={essayText}
                       onChange={(e) => setEssayText(e.target.value)}
                       rows={12}
@@ -265,7 +266,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
                     />
                     {charCount > 0 && charCount < minChars && (
                       <p className="text-xs text-muted-foreground">
-                        {minChars - charCount} more characters needed...
+                        {t('moreCharsNeeded', { count: minChars - charCount })}
                       </p>
                     )}
                   </div>
@@ -280,25 +281,25 @@ export function EssayReviewClient({ universities }: { universities: University[]
                       {loading ? (
                         <>
                           <Loader2 className="size-4 animate-spin" />
-                          Reviewing...
+                          {t('reviewing')}
                         </>
                       ) : (
                         <>
                           <Sparkles className="size-4" />
-                          Review My Essay
+                          {t('reviewMyEssay')}
                         </>
                       )}
                     </Button>
                     {(review || error) && (
                       <Button type="button" variant="outline" onClick={resetForm}>
-                        Reset
+                        {t('reset')}
                       </Button>
                     )}
                   </div>
 
                   {!profile && (
                     <p className="text-xs text-muted-foreground text-center">
-                      Sign in to get your essay reviewed. Free for all users.
+                      {t('signInNote')}
                     </p>
                   )}
                 </form>
@@ -312,9 +313,9 @@ export function EssayReviewClient({ universities }: { universities: University[]
               <Card className="h-full flex items-center justify-center min-h-[400px]">
                 <CardContent className="text-center py-12">
                   <Loader2 className="size-12 animate-spin text-emerald-600 mx-auto mb-4" />
-                  <h3 className="font-semibold text-lg mb-2">AI is reviewing your essay...</h3>
+                  <h3 className="font-semibold text-lg mb-2">{t('aiReviewing')}</h3>
                   <p className="text-sm text-muted-foreground">
-                    Analyzing structure, tone, clarity, and cultural fit. This takes 10-20 seconds.
+                    {t('aiReviewingDesc')}
                   </p>
                 </CardContent>
               </Card>
@@ -324,9 +325,9 @@ export function EssayReviewClient({ universities }: { universities: University[]
               <Card className="h-full flex items-center justify-center min-h-[400px] border-rose-200">
                 <CardContent className="text-center py-12">
                   <AlertCircle className="size-12 text-rose-500 mx-auto mb-4" />
-                  <h3 className="font-semibold text-lg mb-2">Review failed</h3>
+                  <h3 className="font-semibold text-lg mb-2">{t('reviewFailed')}</h3>
                   <p className="text-sm text-muted-foreground mb-4">{error}</p>
-                  <Button onClick={handleSubmit} variant="outline">Try again</Button>
+                  <Button onClick={handleSubmit} variant="outline">{t('tryAgain')}</Button>
                 </CardContent>
               </Card>
             )}
@@ -341,9 +342,9 @@ export function EssayReviewClient({ universities }: { universities: University[]
                   <div className="size-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
                     <FileText className="size-8 text-emerald-600" />
                   </div>
-                  <h3 className="font-semibold text-lg mb-2">Your review will appear here</h3>
+                  <h3 className="font-semibold text-lg mb-2">{t('resultsAppear')}</h3>
                   <p className="text-sm text-muted-foreground max-w-sm">
-                    Paste your essay on the left and click "Review My Essay" to get instant AI feedback.
+                    {t('resultsAppearDesc')}
                   </p>
                 </CardContent>
               </Card>
@@ -353,7 +354,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
 
         {/* How it works */}
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-center mb-8">How the review works</h2>
+          <h2 className="text-2xl font-bold text-center mb-8">{t('howItWorks')}</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {DIMENSIONS.map(dim => (
               <Card key={dim.key}>
