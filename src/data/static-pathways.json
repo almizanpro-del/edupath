@@ -1,0 +1,245 @@
+[
+  {
+    "id": "cmu61njir005hop44gvpqyb9r",
+    "creditsAccepted": 120,
+    "totalCredits": 360,
+    "agreementType": "official",
+    "notes": "2+2 articulation agreement: complete 2 years at Cairo University, transfer to Coventry for final 2 years. UK degree awarded.",
+    "requirements": "GPA 2.5+, IELTS 6.0, passing internal English exam",
+    "estimatedSavingsUsd": 18000,
+    "fromUniversity": {
+      "id": "cmu61njhf003cop44cxq3t8gk",
+      "name": "Cairo University",
+      "slug": "cairo-university",
+      "country": "Egypt",
+      "city": "Cairo",
+      "tuitionUsd": 2500,
+      "livingCostUsd": 4000
+    },
+    "toUniversity": {
+      "id": "cmu61njfk0002op44kvrmnr3w",
+      "name": "Coventry University",
+      "slug": "coventry-university",
+      "country": "United Kingdom",
+      "city": "Coventry",
+      "tuitionUsd": 19500,
+      "livingCostUsd": 12000
+    }
+  },
+  {
+    "id": "cmu61njis005lop449d0rms6i",
+    "creditsAccepted": 120,
+    "totalCredits": 360,
+    "agreementType": "official",
+    "notes": "Bilateral agreement between University of Jordan and Coventry University. Strong for Business and Engineering programs.",
+    "requirements": "GPA 2.5+, IELTS 6.0, Jordanian secondary school certificate",
+    "estimatedSavingsUsd": 16000,
+    "fromUniversity": {
+      "id": "cmu61njhi003jop444yll2aue",
+      "name": "University of Jordan",
+      "slug": "university-of-jordan",
+      "country": "Jordan",
+      "city": "Amman",
+      "tuitionUsd": 2200,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu61njfk0002op44kvrmnr3w",
+      "name": "Coventry University",
+      "slug": "coventry-university",
+      "country": "United Kingdom",
+      "city": "Coventry",
+      "tuitionUsd": 19500,
+      "livingCostUsd": 12000
+    }
+  },
+  {
+    "id": "cmu61njir005jop44yf43pxat",
+    "creditsAccepted": 100,
+    "totalCredits": 360,
+    "agreementType": "official",
+    "notes": "Credit transfer agreement for Engineering and CS programs. Up to 100 credits accepted toward Portsmouth 3-year degree.",
+    "requirements": "GPA 2.7+, IELTS 6.0, course syllabus review",
+    "estimatedSavingsUsd": 15000,
+    "fromUniversity": {
+      "id": "cmu61njhf003cop44cxq3t8gk",
+      "name": "Cairo University",
+      "slug": "cairo-university",
+      "country": "Egypt",
+      "city": "Cairo",
+      "tuitionUsd": 2500,
+      "livingCostUsd": 4000
+    },
+    "toUniversity": {
+      "id": "cmu61njfw000kop44dddasnfn",
+      "name": "University of Portsmouth",
+      "slug": "university-of-portsmouth",
+      "country": "United Kingdom",
+      "city": "Portsmouth",
+      "tuitionUsd": 19000,
+      "livingCostUsd": 13000
+    }
+  },
+  {
+    "id": "cmu61njis005nop44vxx0i3sx",
+    "creditsAccepted": 110,
+    "totalCredits": 360,
+    "agreementType": "informal",
+    "notes": "Case-by-case credit transfer for Pharmacy and Engineering students. JUST students have successfully transferred since 2019.",
+    "requirements": "GPA 2.8+, IELTS 6.0, detailed course descriptions",
+    "estimatedSavingsUsd": 14000,
+    "fromUniversity": {
+      "id": "cmu61njhl003sop441r4esf4l",
+      "name": "Jordan University of Science and Technology",
+      "slug": "jordan-university-of-science-and-technology",
+      "country": "Jordan",
+      "city": "Irbid",
+      "tuitionUsd": 2400,
+      "livingCostUsd": 5500
+    },
+    "toUniversity": {
+      "id": "cmu61njfw000kop44dddasnfn",
+      "name": "University of Portsmouth",
+      "slug": "university-of-portsmouth",
+      "country": "United Kingdom",
+      "city": "Portsmouth",
+      "tuitionUsd": 19000,
+      "livingCostUsd": 13000
+    }
+  },
+  {
+    "id": "cmu61njit005rop4492h8pwq2",
+    "creditsAccepted": 90,
+    "totalCredits": 180,
+    "agreementType": "case-by-case",
+    "notes": "Credit transfer possible for CS and Engineering master's programs. German language proficiency required for bachelor programs.",
+    "requirements": "GPA 3.0+, TestDaF 4x4 or DSH-2 for German programs, IELTS 6.5 for English programs",
+    "estimatedSavingsUsd": 12000,
+    "fromUniversity": {
+      "id": "cmu61njh3002lop44cahi2eyb",
+      "name": "University of Malaya",
+      "slug": "university-of-malaya",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "tuitionUsd": 5500,
+      "livingCostUsd": 5000
+    },
+    "toUniversity": {
+      "id": "cmu61njg80019op447mwvbu7k",
+      "name": "Technical University of Munich",
+      "slug": "tu-munich",
+      "country": "Germany",
+      "city": "Munich",
+      "tuitionUsd": 1500,
+      "livingCostUsd": 14000
+    }
+  },
+  {
+    "id": "cmu61njiu005top442qgnmgtc",
+    "creditsAccepted": 80,
+    "totalCredits": 180,
+    "agreementType": "case-by-case",
+    "notes": "Engineering credit transfer possible. Stuttgart reviews syllabi individually. Strong for Mechanical and Automotive engineering.",
+    "requirements": "GPA 2.8+, German B1 level minimum, course-by-course evaluation",
+    "estimatedSavingsUsd": 10000,
+    "fromUniversity": {
+      "id": "cmu61njh3002lop44cahi2eyb",
+      "name": "University of Malaya",
+      "slug": "university-of-malaya",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "tuitionUsd": 5500,
+      "livingCostUsd": 5000
+    },
+    "toUniversity": {
+      "id": "cmu61njg50012op441cjv3ex3",
+      "name": "University of Stuttgart",
+      "slug": "university-of-stuttgart",
+      "country": "Germany",
+      "city": "Stuttgart",
+      "tuitionUsd": 1500,
+      "livingCostUsd": 11000
+    }
+  },
+  {
+    "id": "cmu61njiv005xop443zns9lod",
+    "creditsAccepted": 120,
+    "totalCredits": 180,
+    "agreementType": "official",
+    "notes": "EU Erasmus+ mobility program. Credits transfer seamlessly under ECTS system. Ideal for students who want to start in affordable Lithuania and move to Germany.",
+    "requirements": "GPA 2.5+, German B1 or English B2, Erasmus+ application",
+    "estimatedSavingsUsd": 9000,
+    "fromUniversity": {
+      "id": "cmu61nji5004sop4433rgekbu",
+      "name": "Vilnius University",
+      "slug": "vilnius-university",
+      "country": "Lithuania",
+      "city": "Vilnius",
+      "tuitionUsd": 4000,
+      "livingCostUsd": 5000
+    },
+    "toUniversity": {
+      "id": "cmu61njg1000rop44t0dqm4or",
+      "name": "Technical University of Berlin",
+      "slug": "tu-berlin",
+      "country": "Germany",
+      "city": "Berlin",
+      "tuitionUsd": 1500,
+      "livingCostUsd": 12000
+    }
+  },
+  {
+    "id": "cmu61njis005pop44rhd7ejoq",
+    "creditsAccepted": 60,
+    "totalCredits": 240,
+    "agreementType": "case-by-case",
+    "notes": "Limited credit transfer due to different credit systems. Best for students early in their degree who can restart with advanced standing.",
+    "requirements": "GPA 3.0+, Koç internal exam, English proficiency",
+    "estimatedSavingsUsd": 8000,
+    "fromUniversity": {
+      "id": "cmu61njhi003jop444yll2aue",
+      "name": "University of Jordan",
+      "slug": "university-of-jordan",
+      "country": "Jordan",
+      "city": "Amman",
+      "tuitionUsd": 2200,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu61njgj001yop442jz5hjag",
+      "name": "Koç University",
+      "slug": "koç-university",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "tuitionUsd": 18000,
+      "livingCostUsd": 8000
+    }
+  },
+  {
+    "id": "cmu61njiv005vop44426gsxrz",
+    "creditsAccepted": 90,
+    "totalCredits": 120,
+    "agreementType": "informal",
+    "notes": "Affordable pathway: complete 1-2 years in Egypt, transfer to University of Malaya for English-medium degree. Lower cost than direct UK/US transfer.",
+    "requirements": "GPA 2.5+, IELTS 5.5, transcript evaluation",
+    "estimatedSavingsUsd": 6000,
+    "fromUniversity": {
+      "id": "cmu61njhf003cop44cxq3t8gk",
+      "name": "Cairo University",
+      "slug": "cairo-university",
+      "country": "Egypt",
+      "city": "Cairo",
+      "tuitionUsd": 2500,
+      "livingCostUsd": 4000
+    },
+    "toUniversity": {
+      "id": "cmu61njh3002lop44cahi2eyb",
+      "name": "University of Malaya",
+      "slug": "university-of-malaya",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "tuitionUsd": 5500,
+      "livingCostUsd": 5000
+    }
+  }
+]

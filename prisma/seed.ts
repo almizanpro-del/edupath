@@ -679,6 +679,65 @@ async function seed() {
     })
   }
 
+  // Seed transfer pathways
+  await db.transferPathway.deleteMany({})
+
+  // Re-fetch universities for transfer pathways (some may have been fetched earlier but to be safe)
+  const cairoUni = await db.university.findUnique({ where: { slug: 'cairo-university' } })
+  const malayaUni = await db.university.findUnique({ where: { slug: 'university-of-malaya' } })
+  const ujUni = await db.university.findUnique({ where: { slug: 'university-of-jordan' } })
+  const justUni = await db.university.findUnique({ where: { slug: 'jordan-university-of-science-and-technology' } })
+  const tuMunichUni = await db.university.findUnique({ where: { slug: 'tu-munich' } })
+  const stuttgartUni = await db.university.findUnique({ where: { slug: 'university-of-stuttgart' } })
+  const koçUni = await db.university.findUnique({ where: { slug: 'koç-university' } })
+  const portsmouthUni = await db.university.findUnique({ where: { slug: 'university-of-portsmouth' } })
+  const coventryUni = await db.university.findUnique({ where: { slug: 'coventry-university' } })
+  const vilniusUni = await db.university.findUnique({ where: { slug: 'vilnius-university' } })
+
+  const pathways = [
+    // Egypt → UK pathways (2+2 articulation)
+    { from: cairoUni, to: coventryUni, creditsAccepted: 120, totalCredits: 360, type: 'official', notes: '2+2 articulation agreement: complete 2 years at Cairo University, transfer to Coventry for final 2 years. UK degree awarded.', reqs: 'GPA 2.5+, IELTS 6.0, passing internal English exam', savings: 18000 },
+    { from: cairoUni, to: portsmouthUni, creditsAccepted: 100, totalCredits: 360, type: 'official', notes: 'Credit transfer agreement for Engineering and CS programs. Up to 100 credits accepted toward Portsmouth 3-year degree.', reqs: 'GPA 2.7+, IELTS 6.0, course syllabus review', savings: 15000 },
+
+    // Jordan → UK pathways
+    { from: ujUni, to: coventryUni, creditsAccepted: 120, totalCredits: 360, type: 'official', notes: 'Bilateral agreement between University of Jordan and Coventry University. Strong for Business and Engineering programs.', reqs: 'GPA 2.5+, IELTS 6.0, Jordanian secondary school certificate', savings: 16000 },
+    { from: justUni, to: portsmouthUni, creditsAccepted: 110, totalCredits: 360, type: 'informal', notes: 'Case-by-case credit transfer for Pharmacy and Engineering students. JUST students have successfully transferred since 2019.', reqs: 'GPA 2.8+, IELTS 6.0, detailed course descriptions', savings: 14000 },
+
+    // Jordan → Turkey pathways
+    { from: ujUni, to: koçUni, creditsAccepted: 60, totalCredits: 240, type: 'case-by-case', notes: 'Limited credit transfer due to different credit systems. Best for students early in their degree who can restart with advanced standing.', reqs: 'GPA 3.0+, Koç internal exam, English proficiency', savings: 8000 },
+
+    // Malaysia → Germany pathways (English → German transition)
+    { from: malayaUni, to: tuMunichUni, creditsAccepted: 90, totalCredits: 180, type: 'case-by-case', notes: 'Credit transfer possible for CS and Engineering master\'s programs. German language proficiency required for bachelor programs.', reqs: 'GPA 3.0+, TestDaF 4x4 or DSH-2 for German programs, IELTS 6.5 for English programs', savings: 12000 },
+    { from: malayaUni, to: stuttgartUni, creditsAccepted: 80, totalCredits: 180, type: 'case-by-case', notes: 'Engineering credit transfer possible. Stuttgart reviews syllabi individually. Strong for Mechanical and Automotive engineering.', reqs: 'GPA 2.8+, German B1 level minimum, course-by-course evaluation', savings: 10000 },
+
+    // Egypt → Malaysia pathway (affordable stepping stone)
+    { from: cairoUni, to: malayaUni, creditsAccepted: 90, totalCredits: 120, type: 'informal', notes: 'Affordable pathway: complete 1-2 years in Egypt, transfer to University of Malaya for English-medium degree. Lower cost than direct UK/US transfer.', reqs: 'GPA 2.5+, IELTS 5.5, transcript evaluation', savings: 6000 },
+
+    // Lithuania → Germany pathway (EU mobility)
+    { from: vilniusUni, to: tuBerlin, creditsAccepted: 120, totalCredits: 180, type: 'official', notes: 'EU Erasmus+ mobility program. Credits transfer seamlessly under ECTS system. Ideal for students who want to start in affordable Lithuania and move to Germany.', reqs: 'GPA 2.5+, German B1 or English B2, Erasmus+ application', savings: 9000 },
+  ]
+
+  for (const p of pathways) {
+    if (p.from && p.to) {
+      await db.transferPathway.create({
+        data: {
+          fromUniversityId: p.from.id,
+          toUniversityId: p.to.id,
+          creditsAccepted: p.creditsAccepted,
+          totalCredits: p.totalCredits,
+          agreementType: p.type,
+          notes: p.notes,
+          requirements: p.reqs,
+          estimatedSavingsUsd: p.savings,
+        },
+      })
+    }
+  }
+
+  const transferCount = await db.transferPathway.count()
+  console.log(`Seeded ${transferCount} transfer pathways`)
+
+
   const counts = await Promise.all([
     db.university.count(),
     db.program.count(),
@@ -686,8 +745,9 @@ async function seed() {
     db.review.count(),
     db.user.count(),
     db.savedList.count(),
+    db.transferPathway.count(),
   ])
-  console.log(`Seeded: ${counts[0]} universities, ${counts[1]} programs, ${counts[2]} scholarships, ${counts[3]} reviews, ${counts[4]} users, ${counts[5]} saved lists`)
+  console.log(`Seeded: ${counts[0]} universities, ${counts[1]} programs, ${counts[2]} scholarships, ${counts[3]} reviews, ${counts[4]} users, ${counts[5]} saved lists, ${counts[6]} transfer pathways`)
 }
 
 seed()

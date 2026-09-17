@@ -32,6 +32,8 @@ model University {
   programs        Program[]
   scholarships    Scholarship[]
   reviews         Review[]
+  transferFrom    TransferPathway[] @relation("TransferFrom")
+  transferTo      TransferPathway[] @relation("TransferTo")
 }
 
 model Program {
@@ -113,4 +115,22 @@ model SavedList {
   createdAt       DateTime @default(now())
 
   @@index([userId])
+}
+
+model TransferPathway {
+  id              String   @id @default(cuid())
+  fromUniversityId String
+  fromUniversity  University @relation("TransferFrom", fields: [fromUniversityId], references: [id], onDelete: Cascade)
+  toUniversityId  String
+  toUniversity    University @relation("TransferTo", fields: [toUniversityId], references: [id], onDelete: Cascade)
+  creditsAccepted Int      // typical number of credits that transfer
+  totalCredits    Int      // total credits in the target program
+  agreementType   String   // "official" | "informal" | "case-by-case"
+  notes           String   // description of the transfer pathway
+  requirements    String?  // GPA requirements, course equivalents, etc.
+  estimatedSavingsUsd Int? // how much students save by transferring
+  createdAt       DateTime @default(now())
+
+  @@index([fromUniversityId])
+  @@index([toUniversityId])
 }

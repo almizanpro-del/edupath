@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
-import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles } from 'lucide-react'
+import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles, Shuffle, Award } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -408,15 +408,65 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 <div className="text-[10px] text-muted-foreground leading-none mt-0.5">Your path to affordable global education</div>
               </div>
             </button>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => router.push('/essay-review')}
-              className="gap-2 ml-2 text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
-            >
-              <Sparkles className="size-4" />
-              <span className="hidden sm:inline">Essay Review</span>
-            </Button>
+            <nav className="hidden md:flex items-center gap-1 ml-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => router.push('/essay-review')}
+                className="gap-2 text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+              >
+                <Sparkles className="size-4" />
+                Essay Review
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => router.push('/transfer-finder')}
+                className="gap-2 text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+              >
+                <Shuffle className="size-4" />
+                Transfer Finder
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => router.push('/scholarships')}
+                className="gap-2 text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+              >
+                <Award className="size-4" />
+                Scholarships
+              </Button>
+            </nav>
+            {/* Mobile: condensed nav */}
+            <div className="md:hidden flex items-center gap-1 ml-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => router.push('/essay-review')}
+                className="text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+                title="Essay Review"
+              >
+                <Sparkles className="size-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => router.push('/transfer-finder')}
+                className="text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+                title="Transfer Finder"
+              >
+                <Shuffle className="size-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => router.push('/scholarships')}
+                className="text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+                title="Scholarships"
+              >
+                <Award className="size-4" />
+              </Button>
+            </div>
           </div>
           <div className="flex items-center gap-2">
             {compareList.length > 0 && (

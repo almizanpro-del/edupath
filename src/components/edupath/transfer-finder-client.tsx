@@ -1,0 +1,234 @@
+'use client'
+
+import * as React from 'react'
+import { useRouter } from 'next/navigation'
+import { ArrowLeft, ArrowRight, Shuffle, Loader2, FileText, DollarSign, GraduationCap, Sparkles } from 'lucide-react'
+import Image from 'next/image'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Label } from '@/components/ui/label'
+import { useToast } from '@/hooks/use-toast'
+import { countryFlagUrl, formatUsd, formatUsdCompact } from '@/lib/edupath'
+import { cn } from '@/lib/utils'
+
+type University = { id: string; name: string; country: string; city: string }
+
+type Pathway = {
+  id: string
+  creditsAccepted: number
+  totalCredits: number
+  agreementType: string
+  notes: string
+  requirements: string | null
+  estimatedSavingsUsd: number | null
+  fromUniversity: University & { slug: string; tuitionUsd: number; livingCostUsd: number }
+  toUniversity: University & { slug: string; tuitionUsd: number; livingCostUsd: number }
+}
+
+export function TransferFinderClient({ universities }: { universities: University[] }) {
+  const router = useRouter()
+  const { toast } = useToast()
+  const [fromId, setFromId] = React.useState('')
+  const [toId, setToId] = React.useState('')
+  const [pathways, setPathways] = React.useState<Pathway[]>([])
+  const [loading, setLoading] = React.useState(false)
+  const [searched, setSearched] = React.useState(false)
+
+  const fetchPathways = async (from?: string, to?: string) => {
+    setLoading(true)
+    setSearched(true)
+    try {
+      const params = new URLSearchParams()
+      if (from) params.set('from', from)
+      if (to) params.set('to', to)
+      const res = await fetch(`/api/transfer-pathways?${params}`)
+      const data = await res.json()
+      setPathways(data.pathways ?? [])
+    } catch {
+      toast({ title: 'Failed to load pathways', variant: 'destructive' })
+    }
+    setLoading(false)
+  }
+
+  // Load all pathways on mount
+  React.useEffect(() => {
+    fetchPathways()
+  }, [])
+
+  const handleSearch = () => {
+    fetchPathways(fromId || undefined, toId || undefined)
+  }
+
+  const clearFilters = () => {
+    setFromId('')
+    setToId('')
+    fetchPathways()
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-white">
+      <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur-md">
+        <div className="container mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
+          <Button variant="ghost" size="sm" onClick={() => router.push('/')} className="gap-2">
+            <ArrowLeft className="size-4" />
+            <span className="hidden sm:inline">Back to directory</span>
+          </Button>
+          <div className="flex items-center gap-2">
+            <Shuffle className="size-5 text-emerald-600" />
+            <span className="font-bold">Transfer Pathway Finder</span>
+          </div>
+        </div>
+      </header>
+
+      <div className="container mx-auto max-w-7xl px-4 py-8">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-4">
+            <Shuffle className="size-4" />
+            Credit Transfer Agreements
+          </div>
+          <h1 className="text-3xl md:text-4xl font-bold mb-3">
+            Save thousands by transferring credits
+          </h1>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Start at an affordable university, then transfer to complete your degree.
+            Browse credit transfer agreements between universities.
+          </p>
+        </div>
+
+        {/* Search filters */}
+        <Card className="mb-8">
+          <CardContent className="pt-6">
+            <div className="grid md:grid-cols-[1fr_auto_1fr_auto] gap-4 items-end">
+              <div className="space-y-1.5">
+                <Label className="text-xs font-medium">From (current university)</Label>
+                <Select value={fromId} onValueChange={setFromId}>
+                  <SelectTrigger><SelectValue placeholder="Any university" /></SelectTrigger>
+                  <SelectContent>
+                    {universities.map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="hidden md:flex items-center pb-2">
+                <ArrowRight className="size-5 text-muted-foreground" />
+              </div>
+              <div className="space-y-1.5">
+                <Label className="text-xs font-medium">To (target university)</Label>
+                <Select value={toId} onValueChange={setToId}>
+                  <SelectTrigger><SelectValue placeholder="Any university" /></SelectTrigger>
+                  <SelectContent>
+                    {universities.map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex gap-2">
+                <Button onClick={handleSearch} className="gap-2 bg-emerald-600 hover:bg-emerald-700">
+                  <Shuffle className="size-4" /> Search
+                </Button>
+                {(fromId || toId) && (
+                  <Button variant="outline" onClick={clearFilters}>Clear</Button>
+                )}
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Results */}
+        {loading ? (
+          <div className="text-center py-20">
+            <Loader2 className="size-10 animate-spin text-emerald-600 mx-auto mb-4" />
+            <p className="text-muted-foreground">Loading pathways...</p>
+          </div>
+        ) : pathways.length === 0 ? (
+          <div className="text-center py-20">
+            <div className="text-5xl mb-4">🔍</div>
+            <h3 className="text-xl font-semibold mb-2">No pathways found</h3>
+            <p className="text-muted-foreground">Try different filter combinations or clear filters.</p>
+          </div>
+        ) : (
+          <div className="space-y-4">
+            <p className="text-sm text-muted-foreground">{pathways.length} pathway{pathways.length !== 1 ? 's' : ''} found</p>
+            {pathways.map(p => <PathwayCard key={p.id} pathway={p} />)}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+function PathwayCard({ pathway }: { pathway: Pathway }) {
+  const transferPct = Math.round((pathway.creditsAccepted / pathway.totalCredits) * 100)
+  const agreementColors: Record<string, string> = {
+    official: 'bg-emerald-100 text-emerald-700 border-emerald-300',
+    informal: 'bg-amber-100 text-amber-700 border-amber-300',
+    'case-by-case': 'bg-blue-100 text-blue-700 border-blue-300',
+  }
+
+  return (
+    <Card className="overflow-hidden">
+      <CardContent className="pt-6">
+        {/* From → To header */}
+        <div className="flex items-center gap-3 mb-4 flex-wrap">
+          <div className="flex items-center gap-2">
+            <Image src={countryFlagUrl(pathway.fromUniversity.country, 40)} alt="" width={24} height={16} className="rounded" unoptimized />
+            <div>
+              <div className="font-semibold text-sm">{pathway.fromUniversity.name}</div>
+              <div className="text-xs text-muted-foreground">{pathway.fromUniversity.city}, {pathway.fromUniversity.country}</div>
+            </div>
+          </div>
+          <ArrowRight className="size-5 text-emerald-600 mx-2" />
+          <div className="flex items-center gap-2">
+            <Image src={countryFlagUrl(pathway.toUniversity.country, 40)} alt="" width={24} height={16} className="rounded" unoptimized />
+            <div>
+              <div className="font-semibold text-sm">{pathway.toUniversity.name}</div>
+              <div className="text-xs text-muted-foreground">{pathway.toUniversity.city}, {pathway.toUniversity.country}</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats row */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+          <div className="bg-slate-50 rounded-lg p-3">
+            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><GraduationCap className="size-3" /> Credits Transfer</div>
+            <div className="text-lg font-bold">{pathway.creditsAccepted}/{pathway.totalCredits}</div>
+            <div className="text-xs text-emerald-600 font-medium">{transferPct}%</div>
+          </div>
+          <div className="bg-slate-50 rounded-lg p-3">
+            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><DollarSign className="size-3" /> Est. Savings</div>
+            <div className="text-lg font-bold text-emerald-700">{pathway.estimatedSavingsUsd ? formatUsdCompact(pathway.estimatedSavingsUsd) : '—'}</div>
+          </div>
+          <div className="bg-slate-50 rounded-lg p-3">
+            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><FileText className="size-3" /> Agreement</div>
+            <Badge variant="outline" className={cn('text-xs capitalize', agreementColors[pathway.agreementType])}>{pathway.agreementType.replace('-', ' ')}</Badge>
+          </div>
+          <div className="bg-slate-50 rounded-lg p-3">
+            <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><DollarSign className="size-3" /> Tuition Diff/yr</div>
+            <div className="text-lg font-bold">{formatUsdCompact(pathway.toUniversity.tuitionUsd - pathway.fromUniversity.tuitionUsd)}</div>
+          </div>
+        </div>
+
+        {/* Notes */}
+        <p className="text-sm text-slate-700 mb-3">{pathway.notes}</p>
+
+        {/* Requirements */}
+        {pathway.requirements && (
+          <div className="text-xs bg-amber-50 border border-amber-200 rounded p-3 mb-3">
+            <strong>Requirements:</strong> {pathway.requirements}
+          </div>
+        )}
+
+        {/* Progress bar */}
+        <div className="mb-3">
+          <div className="flex justify-between text-xs text-muted-foreground mb-1">
+            <span>Credits accepted</span>
+            <span>{transferPct}%</span>
+          </div>
+          <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
+            <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full" style={{ width: `${transferPct}%` }} />
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  )
+}
