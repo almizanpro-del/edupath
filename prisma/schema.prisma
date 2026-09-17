@@ -1,0 +1,116 @@
+// EduPath Phase 1 MVP schema (SQLite for local dev/demo)
+// Note: SQLite doesn't support arrays or native FTS - tags stored as JSON,
+// search uses LIKE with trigram-like filtering at the application layer.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model University {
+  id              String   @id @default(cuid())
+  slug            String   @unique
+  name            String
+  country         String
+  city            String
+  website         String
+  tuitionUsd      Int
+  livingCostUsd   Int
+  intlStudentPct  Float
+  acceptanceRate  Float?
+  currency        String   @default("USD")
+  logoUrl         String?
+  descriptionEn   String?
+  descriptionAr   String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  programs        Program[]
+  scholarships    Scholarship[]
+  reviews         Review[]
+}
+
+model Program {
+  id              String   @id @default(cuid())
+  universityId    String
+  university      University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  name            String
+  degreeLevel     String   // bachelor | master | phd
+  field           String
+  durationMonths  Int
+  language        String
+  tuitionUsd      Int
+  deadline        String?
+  entryReqs       String?
+
+  @@index([universityId])
+}
+
+model Scholarship {
+  id              String   @id @default(cuid())
+  universityId    String
+  university      University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  name            String
+  amountUsd       Int
+  amountType      String   // full | partial | fixed
+  eligibility     String
+  deadline        String?
+
+  @@index([universityId])
+}
+
+model User {
+  id              String   @id @default(cuid())
+  supabaseId      String?  @unique // maps to Supabase auth.users.id when user signs in
+  email           String   @unique
+  name            String
+  country         String   @default("Jordan")
+  fieldOfInterest String?
+  role            String   @default("student") // student | recruiter | admin
+  verificationStatus String @default("pending") // pending | verified | rejected
+  locale          String   @default("en")
+  createdAt       DateTime @default(now())
+
+  reviews         Review[]
+  savedLists      SavedList[]
+}
+
+model Review {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  universityId    String
+  university      University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  ratingOverall       Int
+  ratingAffordability Int
+  ratingVisa          Int
+  ratingTeaching      Int
+  ratingSafety        Int
+  ratingSocial        Int
+  reviewText      String
+  helpfulCount    Int      @default(0)
+  moderationStatus String @default("approved") // pending | approved | rejected
+  verifiedEnrollment Boolean @default(false)
+  tags            String   @default("[]") // JSON array of tags
+  createdAt       DateTime @default(now())
+
+  @@index([universityId, moderationStatus])
+  @@index([userId])
+}
+
+model SavedList {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listName        String
+  universities    String   @default("[]") // JSON array of university IDs
+  isPublic        Boolean  @default(false)
+  shareToken      String?  @unique
+  createdAt       DateTime @default(now())
+
+  @@index([userId])
+}
