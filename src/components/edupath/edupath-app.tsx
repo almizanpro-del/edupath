@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
-import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus } from 'lucide-react'
+import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -399,13 +399,24 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur-md">
         <div className="container mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="size-9 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center">
-              <GraduationCap className="size-5 text-white" />
-            </div>
-            <div>
-              <div className="text-lg font-bold leading-none">EduPath</div>
-              <div className="text-[10px] text-muted-foreground leading-none mt-0.5">Your path to affordable global education</div>
-            </div>
+            <button onClick={() => router.push('/')} className="flex items-center gap-2">
+              <div className="size-9 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center">
+                <GraduationCap className="size-5 text-white" />
+              </div>
+              <div className="text-left">
+                <div className="text-lg font-bold leading-none">EduPath</div>
+                <div className="text-[10px] text-muted-foreground leading-none mt-0.5">Your path to affordable global education</div>
+              </div>
+            </button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.push('/essay-review')}
+              className="gap-2 ml-2 text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+            >
+              <Sparkles className="size-4" />
+              <span className="hidden sm:inline">Essay Review</span>
+            </Button>
           </div>
           <div className="flex items-center gap-2">
             {compareList.length > 0 && (
