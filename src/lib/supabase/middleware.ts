@@ -3,17 +3,25 @@ import { NextResponse, type NextRequest } from 'next/server'
 
 /**
  * Refreshes the Supabase auth session on every request.
- * Without this, server components won't see the latest session state.
+ * Wrapped in try-catch so auth failures NEVER block page rendering.
+ * Auth state is also read client-side in EduPathApp, so the middleware
+ * is a best-effort cookie refresh, not a gate.
  */
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({
     request,
   })
 
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
+  try {
+    // Check if env vars are available (they should be, but edge runtime can be finicky)
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    if (!supabaseUrl || !supabaseKey) {
+      // No env vars — skip auth refresh, let the page render
+      return supabaseResponse
+    }
+
+    const supabase = createServerClient(supabaseUrl, supabaseKey, {
       cookies: {
         getAll() {
           return request.cookies.getAll()
@@ -30,17 +38,16 @@ export async function updateSession(request: NextRequest) {
           )
         },
       },
-    }
-  )
+    })
 
-  // IMPORTANT: Don't run any code between createServerClient and
-  // supabase.auth.getUser(). This will waste server resources.
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-
-  // No session protection needed for this MVP — all routes are public.
-  // Auth state is read on the client side.
+    // Refresh the session (network call — may fail in edge runtime)
+    // Use getTime-jittered retry? No — just let it fail gracefully.
+    await supabase.auth.getUser()
+  } catch (error) {
+    // Auth refresh failed (network, timeout, bad env, etc.)
+    // Don't block the page — auth state is also read client-side.
+    console.warn('[middleware] Supabase auth refresh failed, continuing without session refresh:', error)
+  }
 
   return supabaseResponse
 }
