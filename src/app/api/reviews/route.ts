@@ -1,5 +1,6 @@
 /**
  * Reviews API.
+ * GET  /api/reviews?universityId=... — list approved reviews for a university (public)
  * POST /api/reviews — submit a new review (requires auth)
  *   body: {
  *     universityId: string,
@@ -12,6 +13,41 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
+import { parseTags } from '@/lib/edupath'
+
+// GET — list approved reviews for a university
+export async function GET(req: NextRequest) {
+  const url = new URL(req.url)
+  const universityId = url.searchParams.get('universityId')
+  if (!universityId) {
+    return NextResponse.json({ error: 'universityId query param required' }, { status: 400 })
+  }
+
+  const reviews = await db.review.findMany({
+    where: { universityId, moderationStatus: 'approved' },
+    include: { user: true },
+    orderBy: { createdAt: 'desc' },
+  })
+
+  return NextResponse.json({
+    reviews: reviews.map(r => ({
+      id: r.id,
+      userName: r.user.name ?? 'Anonymous',
+      userCountry: r.user.country,
+      ratingOverall: r.ratingOverall,
+      ratingAffordability: r.ratingAffordability,
+      ratingVisa: r.ratingVisa,
+      ratingTeaching: r.ratingTeaching,
+      ratingSafety: r.ratingSafety,
+      ratingSocial: r.ratingSocial,
+      reviewText: r.reviewText,
+      helpfulCount: r.helpfulCount,
+      verifiedEnrollment: r.verifiedEnrollment,
+      tags: parseTags(r.tags),
+      createdAt: r.createdAt.toISOString(),
+    })),
+  })
+}
 
 async function getOrCreateProfile() {
   const supabase = await createClient()

@@ -702,8 +702,10 @@ export function EduPathApp({ universities, countries, stats }: Props) {
           uni={selectedUni}
           isSaved={savedUniversities.has(selectedUni.id)}
           isComparing={!!compareList.find(c => c.id === selectedUni.id)}
+          isLoggedIn={!!profile}
           onSave={() => toggleSave(selectedUni)}
           onCompare={() => toggleCompare(selectedUni)}
+          onWriteReview={() => openReviewForm(selectedUni)}
           onClose={() => setSelectedUni(null)}
         />
       )}
@@ -856,13 +858,15 @@ function UniversityCard({
 
 // =================== University Detail ===================
 function UniversityDetail({
-  uni, isSaved, isComparing, onSave, onCompare, onClose,
+  uni, isSaved, isComparing, isLoggedIn, onSave, onCompare, onWriteReview, onClose,
 }: {
   uni: University
   isSaved: boolean
   isComparing: boolean
+  isLoggedIn: boolean
   onSave: () => void
   onCompare: () => void
+  onWriteReview: () => void
   onClose: () => void
 }) {
   const [activeTab, setActiveTab] = React.useState('overview')
@@ -1093,12 +1097,27 @@ function UniversityDetail({
               </TabsContent>
 
               <TabsContent value="reviews" className="mt-0 space-y-4">
+                {/* Write a review CTA */}
+                <div className="flex items-center justify-between gap-3 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
+                  <div>
+                    <div className="font-semibold text-sm">Share your experience</div>
+                    <div className="text-xs text-muted-foreground mt-0.5">
+                      {isLoggedIn
+                        ? 'Help other MENA students by reviewing this university.'
+                        : 'Sign in to write a review.'}
+                    </div>
+                  </div>
+                  <Button onClick={onWriteReview} className="gap-2" size="sm">
+                    <MessageSquarePlus className="size-4" />
+                    Write a Review
+                  </Button>
+                </div>
+
                 {uni.reviews.length === 0 ? (
                   <div className="text-center py-12">
                     <div className="text-4xl mb-3">✍️</div>
                     <h4 className="font-semibold mb-1">No reviews yet</h4>
                     <p className="text-sm text-muted-foreground">Be the first to share your experience at {uni.name}.</p>
-                    <Button className="mt-4" disabled>Write a review (coming soon)</Button>
                   </div>
                 ) : (
                   <>
