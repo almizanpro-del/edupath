@@ -60,15 +60,24 @@ export async function POST(req: NextRequest) {
       metadata: { leadId: lead.id, field, gpa },
     })
 
-    // Send email notification to the university (if email is configured)
+    // Send email notification to the university + platform admins (if email is configured)
     try {
       const { sendLeadNotificationEmail } = await import('@/lib/email')
-      await sendLeadNotificationEmail('sponsor@edupath.com', {
-        studentName: studentName.trim(), studentEmail: studentEmail.trim(),
-        country: country || 'Unknown', gpa: gpa ? Number(gpa) : null,
-        field: field || null, message: message.trim().slice(0, 2000),
+      const leadData = {
+        studentName: safeName, studentEmail: safeEmail,
+        country: safeCountry, gpa: gpa ? Number(gpa) : null,
+        field: safeField, message: safeMessage,
         universityName: uni.name,
-      })
+      }
+      // 1. Email platform admins (always)
+      await sendLeadNotificationEmail('sponsor@edupath.com', leadData)
+      // 2. If the university has a claimed sponsor email, email them directly
+      const sponsor = await db.user.findFirst({
+        where: { role: 'recruiter', fieldOfInterest: uni.id },
+      }).catch(() => null)
+      if (sponsor?.email) {
+        await sendLeadNotificationEmail(sponsor.email, leadData)
+      }
     } catch {
       // Email failed — don't block the lead creation
     }

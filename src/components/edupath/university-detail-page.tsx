@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, DollarSign, Star, Heart, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Mail, Send, Loader2 } from 'lucide-react'
+import { ArrowLeft, DollarSign, Star, Heart, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Mail, Send, Loader2, Building2 } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -262,7 +262,16 @@ export function UniversityDetailPage({ uni }: Props) {
       {/* Tabs */}
       <div className="container mx-auto max-w-7xl px-4 py-8">
         {/* Social share */}
-        <div className="mb-6 flex justify-end">
+        <div className="mb-6 flex items-center justify-between flex-wrap gap-3">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => router.push(`/claim/${uni.slug}`)}
+            className="gap-2 text-emerald-700 border-emerald-300 hover:bg-emerald-50"
+          >
+            <Building2 className="size-4" />
+            Claim this university
+          </Button>
           <SocialShare
             url={`https://edupath-amber-three.vercel.app/university/${uni.slug}`}
             title={`${uni.name} — Tuition, Programs & Reviews | EduPath`}

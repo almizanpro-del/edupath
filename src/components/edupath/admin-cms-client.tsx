@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Shield, Search, Check, X, Edit, Trash2, Plus, Loader2, FileText, AlertCircle } from 'lucide-react'
+import { ArrowLeft, Shield, Search, Check, X, Edit, Trash2, Plus, Loader2, FileText, AlertCircle, BarChart3 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -153,9 +153,14 @@ export function AdminCMSClient() {
               <span className="font-bold"> Admin CMS </span>
             </div>
           </div>
-          <Button onClick={() => setCreating(true)} size="sm" className="gap-2">
-            <Plus className="size-4" /> Add University
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm" onClick={() => router.push('/admin/analytics')} className="gap-2">
+              <BarChart3 className="size-4" /> Analytics
+            </Button>
+            <Button onClick={() => setCreating(true)} size="sm" className="gap-2">
+              <Plus className="size-4" /> Add University
+            </Button>
+          </div>
         </div>
       </header>
 
