@@ -27,6 +27,7 @@ import { createClient } from '@/lib/supabase/client'
 import { track } from '@/lib/analytics-client'
 import { EmailCapture } from '@/components/edupath/email-capture'
 import { CurrencySwitcher } from '@/components/edupath/currency-switcher'
+import { ThemeToggle } from '@/components/theme-toggle'
 import { useTranslations, useLocale } from 'next-intl'
 
 // =================== Types ===================
@@ -403,9 +404,9 @@ export function EduPathApp({ universities, countries, stats }: Props) {
     (tuitionRange[0] > 0 || tuitionRange[1] < 25000 ? 1 : 0)
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-emerald-50/40 via-white to-white">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-emerald-50/40 via-white to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
       {/* ===== Header ===== */}
-      <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur-md">
+      <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur-md dark:bg-slate-900/80">
         <div className="container mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <button onClick={() => router.push('/')} className="flex items-center gap-2">
@@ -535,6 +536,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
             )}
             <LocaleSwitcher />
             <CurrencySwitcher />
+            <ThemeToggle />
             <UserMenuButton
               profile={profile}
               onSignInClick={() => setAuthModalOpen(true)}
@@ -701,7 +703,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       </section>
 
       {/* ===== Country Explorer ===== */}
-      <section className="border-b bg-white">
+      <section className="border-b bg-white dark:bg-slate-900">
         <div className="container mx-auto max-w-7xl px-4 py-10">
           <div className="flex items-end justify-between mb-6">
             <div>
@@ -718,7 +720,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                   'flex flex-col items-center gap-2 p-4 rounded-lg border transition-all hover:shadow-md',
                   selectedCountries.has(c.code)
                     ? 'border-emerald-500 bg-emerald-50 ring-2 ring-emerald-500/20'
-                    : 'border-border bg-white hover:border-emerald-300'
+                    : 'border-border bg-white dark:bg-slate-800 hover:border-emerald-300'
                 )}
               >
                 <Image
@@ -739,7 +741,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
 
       {/* ===== Email Capture (for non-authenticated users) ===== */}
       {!profile && (
-        <section className="bg-white border-b py-8">
+        <section className="bg-white dark:bg-slate-900 border-b py-8">
           <div className="container mx-auto max-w-7xl px-4">
             <EmailCapture />
           </div>
@@ -814,7 +816,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       </section>
 
       {/* ===== Footer ===== */}
-      <footer className="border-t bg-slate-50 mt-auto">
+      <footer className="border-t bg-slate-50 dark:bg-slate-900 mt-auto">
         <div className="container mx-auto max-w-7xl px-4 py-10">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
