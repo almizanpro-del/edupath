@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useToast } from '@/hooks/use-toast'
 import { cn } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
 import { AuthModal, type UserProfile } from '@/components/edupath/auth-modal'
 import { createClient } from '@/lib/supabase/client'
 import { formatUsd, countryFlagUrl } from '@/lib/edupath'
@@ -30,6 +31,7 @@ type Uni = {
 export function AdminCMSClient() {
   const router = useRouter()
   const { toast } = useToast()
+  const t = useTranslations('AdminCMS')
   const [profile, setProfile] = React.useState<UserProfile | null>(null)
   const [authModalOpen, setAuthModalOpen] = React.useState(false)
   const [universities, setUniversities] = React.useState<Uni[]>([])
@@ -109,9 +111,9 @@ export function AdminCMSClient() {
         <Card className="max-w-md w-full">
           <CardContent className="pt-6 text-center">
             <Shield className="size-12 text-slate-400 mx-auto mb-4" />
-            <h2 className="text-xl font-bold mb-2">Admin Access Required</h2>
+            <h2 className="text-xl font-bold mb-2">{t('adminAccessRequired')}</h2>
             <p className="text-sm text-muted-foreground mb-4">Sign in with an admin account to access the CMS.</p>
-            <Button onClick={() => setAuthModalOpen(true)}>Sign In</Button>
+            <Button onClick={() => setAuthModalOpen(true)}>{t('signIn')}</Button>
           </CardContent>
         </Card>
         <AuthModal open={authModalOpen} onClose={() => setAuthModalOpen(false)} onAuthed={(p) => setProfile(p)} />
@@ -125,7 +127,7 @@ export function AdminCMSClient() {
         <Card className="max-w-md w-full">
           <CardContent className="pt-6 text-center">
             <AlertCircle className="size-12 text-amber-500 mx-auto mb-4" />
-            <h2 className="text-xl font-bold mb-2">Not an Admin</h2>
+            <h2 className="text-xl font-bold mb-2">{t('notAdmin')}</h2>
             <p className="text-sm text-muted-foreground mb-4">
               Your account doesn't have admin access. Run this command to promote yourself:
             </p>
@@ -148,7 +150,7 @@ export function AdminCMSClient() {
             </Button>
             <div className="flex items-center gap-2">
               <Shield className="size-5 text-slate-700" />
-              <span className="font-bold">Admin CMS</span>
+              <span className="font-bold"> Admin CMS </span>
             </div>
           </div>
           <Button onClick={() => setCreating(true)} size="sm" className="gap-2">
@@ -163,7 +165,7 @@ export function AdminCMSClient() {
           <div className="relative flex-1 min-w-[200px]">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
             <Input
-              placeholder="Search by name, country, or city..."
+              placeholder={t('searchPlaceholder')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-9"
@@ -172,27 +174,27 @@ export function AdminCMSClient() {
           </div>
           <Tabs value={filter} onValueChange={(v) => setFilter(v as typeof filter)}>
             <TabsList>
-              <TabsTrigger value="pending">Pending Review</TabsTrigger>
-              <TabsTrigger value="published">Published</TabsTrigger>
-              <TabsTrigger value="all">All</TabsTrigger>
+              <TabsTrigger value="pending">{t('pendingReview')}</TabsTrigger>
+              <TabsTrigger value="published">{t('published')}</TabsTrigger>
+              <TabsTrigger value="all">{t('all')}</TabsTrigger>
             </TabsList>
           </Tabs>
-          <Button variant="outline" size="sm" onClick={loadUniversities}>Refresh</Button>
+          <Button variant="outline" size="sm" onClick={loadUniversities}>{t('refresh')}</Button>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-4 mb-6">
           <Card><CardContent className="pt-4 pb-4">
             <div className="text-2xl font-bold text-amber-600">{universities.filter(u => u.pendingReview).length}</div>
-            <div className="text-xs text-muted-foreground">Pending Review</div>
+            <div className="text-xs text-muted-foreground">{t('pendingReview')}</div>
           </CardContent></Card>
           <Card><CardContent className="pt-4 pb-4">
             <div className="text-2xl font-bold text-emerald-600">{universities.filter(u => !u.pendingReview).length}</div>
-            <div className="text-xs text-muted-foreground">Published</div>
+            <div className="text-xs text-muted-foreground">{t('published')}</div>
           </CardContent></Card>
           <Card><CardContent className="pt-4 pb-4">
             <div className="text-2xl font-bold">{universities.length}</div>
-            <div className="text-xs text-muted-foreground">Total (filtered)</div>
+            <div className="text-xs text-muted-foreground">{t('totalFiltered')}</div>
           </CardContent></Card>
         </div>
 
@@ -202,8 +204,8 @@ export function AdminCMSClient() {
         ) : universities.length === 0 ? (
           <Card><CardContent className="py-12 text-center">
             <FileText className="size-12 text-slate-300 mx-auto mb-3" />
-            <h3 className="font-semibold mb-1">No universities found</h3>
-            <p className="text-sm text-muted-foreground">Try a different filter or search query.</p>
+            <h3 className="font-semibold mb-1">{t('noResults')}</h3>
+            <p className="text-sm text-muted-foreground">{t('noResultsDesc')}</p>
           </CardContent></Card>
         ) : (
           <div className="space-y-2">
@@ -214,7 +216,7 @@ export function AdminCMSClient() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2">
                       <span className="font-medium truncate">{u.name}</span>
-                      {u.pendingReview && <Badge variant="outline" className="text-amber-700 border-amber-400 text-[10px]">PENDING</Badge>}
+                      {u.pendingReview && <Badge variant="outline" className="text-amber-700 border-amber-400 text-[10px]">{t('pending')}</Badge>}
                     </div>
                     <div className="text-xs text-muted-foreground flex items-center gap-3">
                       <span>{u.city}, {u.country}</span>
@@ -225,11 +227,11 @@ export function AdminCMSClient() {
                   <div className="flex items-center gap-1 shrink-0">
                     {u.pendingReview && (
                       <Button size="sm" variant="ghost" onClick={() => handleApprove(u.id)} className="text-emerald-600 hover:text-emerald-700 gap-1">
-                        <Check className="size-4" /> Approve
+                        <Check className="size-4" /> {t('approve')}
                       </Button>
                     )}
                     <Button size="sm" variant="ghost" onClick={() => setEditing(u)} className="gap-1">
-                      <Edit className="size-4" /> Edit
+                      <Edit className="size-4" /> {t('edit')}
                     </Button>
                     <Button size="sm" variant="ghost" onClick={() => handleDelete(u.id, u.name)} className="text-rose-600 hover:text-rose-700 gap-1">
                       <Trash2 className="size-4" />

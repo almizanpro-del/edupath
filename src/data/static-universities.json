@@ -68,12 +68,77 @@
     "logoUrl": null,
     "descriptionEn": "Abu Dhabi University is a university in Abu Dhabi, United Arab Emirates.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jyx00dpr8eui0j9bsg4",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyy00drr8eusyie7ukf",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyy00dtr8eu09lbzz1s",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyz00dvr8eu9dvifk51",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyz00dxr8euhmwlh7jc",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jz100dzr8eundtl1mnx",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbt60010r8s36o2gb18e",
@@ -90,12 +155,77 @@
     "logoUrl": null,
     "descriptionEn": "Ain Shams University is a university in Cairo, Egypt.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jxt00axr8eumdldk27v",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxu00azr8eu3dfuvtig",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxv00b1r8eux3y3tch1",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxv00b3r8eu5yjjcids",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxw00b5r8eu8asf2zvw",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jxw00b7r8eu2rjn7et4",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbth001br8s3pthl2rjb",
@@ -112,12 +242,66 @@
     "logoUrl": null,
     "descriptionEn": "Ajman University is a university in Ajman, United Arab Emirates.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jze00ebr8eufl9g0eud",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jze00edr8eu9ulhrb5m",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzf00efr8eu5sqv08l3",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzg00ehr8eug4l5ttiy",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jzg00ejr8eu5cehyx3u",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbtg001ar8s3q2jcvipe",
@@ -134,8 +318,59 @@
     "logoUrl": null,
     "descriptionEn": "Al Ghurair University is a university in Dubai, United Arab Emirates.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jz200e1r8eud9zkein2",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jz300e3r8eutt42wj70",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzb00e5r8euf2pn0a9r",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jzc00e7r8eudz7a9yhf",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jzd00e9r8eurls6mj5b",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -156,8 +391,59 @@
     "logoUrl": null,
     "descriptionEn": "Al-Balqa Applied University is a university in Al-Salt, Jordan.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jyt00dfr8eu6odjavap",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyu00dhr8eu2f8wtm2o",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyu00djr8euhzdmp2xe",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jyv00dlr8eufd7d8jgv",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jyw00dnr8eumri0j2ig",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -516,8 +802,51 @@
     "logoUrl": null,
     "descriptionEn": "Anadolu University is a university in Eskisehir, Turkey.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jvt006jr8euelgceerx",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvu006lr8eupde80mep",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvu006nr8eu9y79e4zm",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jvv006pr8eucpidfi5m",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -592,12 +921,77 @@
     "logoUrl": null,
     "descriptionEn": "Applied Science University is a university in Al Jubaiha, Jordan.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jyg00cjr8eui70ej2gw",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyh00clr8euu1luy4ux",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyh00cnr8euxqaruj2h",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyi00cpr8euz0at15si",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyj00crr8eu9q6qrmb4",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jyj00ctr8eue8bkgw3t",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbss000or8s3nwqcentu",
@@ -614,8 +1008,51 @@
     "logoUrl": null,
     "descriptionEn": "Ataturk University is a university in Erzurum, Turkey.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jw20073r8eueyhhtvmj",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jw30075r8eu1wb9783g",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jw40077r8euzkry5kpe",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jw60079r8eu3gwlxx45",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -636,12 +1073,77 @@
     "logoUrl": null,
     "descriptionEn": "Bielefeld University is a university in Bielefeld, Germany.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jv5004tr8euce0xqzb7",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jv5004vr8eu6gih9l0g",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jv6004xr8euwzi7f4qz",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jv6004zr8eu2w9d5afp",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jv70051r8eu3pw3tqgf",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jv70053r8eukstwmpgi",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbnn002cr8rrar5snrvd",
@@ -853,12 +1355,74 @@
     "logoUrl": null,
     "descriptionEn": "Canadian University Dubai is a university in Dubai, United Arab Emirates.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jzi00elr8eu28nb7s45",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzi00enr8eu990k7bv7",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzj00epr8eutu0gm6ef",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzk00err8eud212p5wf",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jzk00etr8eu0djdks1l",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jzl00evr8eujdaikhtr",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbhh0002r8rfdgswri3h",
@@ -948,12 +1512,74 @@
     "logoUrl": null,
     "descriptionEn": "Cukurova University is a university in Adana, Turkey.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jvx006rr8euitkxltry",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvx006tr8euobknso2l",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvy006vr8euwzrzaar9",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvz006xr8euhxnti2es",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jw0006zr8euigetnli7",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jw10071r8eui2tbmgi1",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbsl000jr8s3hoqdhsbk",
@@ -970,12 +1596,66 @@
     "logoUrl": null,
     "descriptionEn": "Dokuz Eylul University is a university in Izmir, Turkey.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jvh005rr8euc8z1nl36",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvh005tr8eumzw1pl8s",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvi005vr8eu8uk6644x",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvj005xr8eut3otp71t",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jvk005zr8eugf91ye29",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbsk000ir8s3o5wfaugv",
@@ -992,12 +1672,77 @@
     "logoUrl": null,
     "descriptionEn": "Ege University is a university in Izmir, Turkey.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jvc005fr8eug5be01m6",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvc005hr8eusi13bvp2",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvd005jr8eu3dk5iksw",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jve005lr8euq8vne6cv",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jve005nr8eu4bukyopy",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jvf005pr8eul9vzx8el",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbsm000kr8s3magghpqr",
@@ -1014,8 +1759,59 @@
     "logoUrl": null,
     "descriptionEn": "Gazi University is a university in Ankara, Turkey.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jvl0061r8eu7tuu9y67",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvm0063r8eu75m8v3rc",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvm0065r8euy45hko5q",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jvn0067r8euvst7wwxf",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jvo0069r8euuxc18cl1",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -1036,12 +1832,74 @@
     "logoUrl": null,
     "descriptionEn": "Gdansk University of Technology is a university in Gdansk, Poland.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jwe007nr8euc5r4a9t0",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwk007pr8euk9o2kepo",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwk007rr8euiw6i4yyi",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwl007tr8euxunhnliz",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jwm007vr8eurxw9uh1z",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jwn007xr8eugx1khtm0",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbof004ar8rrmxmy5ct3",
@@ -1166,8 +2024,59 @@
     "logoUrl": null,
     "descriptionEn": "Goethe University Frankfurt is a university in Frankfurt, Germany.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8juf003dr8eu5posdqme",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jug003fr8eu188u4hia",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8juh003hr8euyqp2xy5w",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8juh003jr8euc8s6dh8j",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jui003lr8euxp0zd1w2",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -1242,12 +2151,77 @@
     "logoUrl": null,
     "descriptionEn": "Haigazian University is a university in Beirut, Lebanon.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8k0600gfr8eu046getq6",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8k0700ghr8eue6mvlmt9",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8k0800gjr8euhwv7bczc",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8k0800glr8eutysckc1p",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8k0900gnr8euouxcufm2",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8k0900gpr8euldyy7uvh",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbte0017r8s3cm8euj41",
@@ -1264,12 +2238,77 @@
     "logoUrl": null,
     "descriptionEn": "Hashemite University is a university in Zarqa, Jordan.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jyo00d3r8eudnll3ik0",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyo00d5r8euzweawko2",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyq00d7r8eu4s6tv340",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyr00d9r8eu37sivso1",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyr00dbr8eurj78oglk",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jys00ddr8eu7kq6tku9",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbt4000zr8s3rosfhkbq",
@@ -1286,12 +2325,85 @@
     "logoUrl": null,
     "descriptionEn": "Helwan University is a university in Cairo, Egypt.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jxo00ajr8euti9u1lyi",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxp00alr8euqrmksd9s",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxq00anr8eu4vvw3ko8",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxq00apr8euh6hbxkij",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxr00arr8eu1h5vceh9",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jxs00atr8euncvij9gm",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jxs00avr8eu9gy3o2s3",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbtj001dr8s39ln1cc7a",
@@ -1308,12 +2420,66 @@
     "logoUrl": null,
     "descriptionEn": "Heriot-Watt University Dubai is a university in Dubai, United Arab Emirates.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jzm00exr8euqzlse343",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzm00ezr8eupbp1nkjr",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzn00f1r8euqxvv27lz",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzn00f3r8eulev8imt9",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jzo00f5r8eurg27zscs",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbto001fr8s3iwsr0ab5",
@@ -1330,8 +2496,51 @@
     "logoUrl": null,
     "descriptionEn": "ISM University of Management and Economics is a university in Vilnius, Lithuania.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jzt00fhr8euriu3ur60",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzu00fjr8eu4yd4rynw",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzu00flr8eua1mw5wf8",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jzv00fnr8eu2u1awx7o",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -1352,12 +2561,85 @@
     "logoUrl": null,
     "descriptionEn": "International Islamic University Malaysia is a university in Gombak, Malaysia.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jxa009hr8eu19phcbxg",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxb009jr8eu1c8a5oql",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxc009lr8eu8f88rwcb",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxd009nr8eulk3qa8sp",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxd009pr8euu16x4rtn",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jxe009rr8euveoxw2ki",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jxe009tr8eui7qmf79m",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbi7001rr8rf31l3rgl4",
@@ -1871,12 +3153,74 @@
     "logoUrl": null,
     "descriptionEn": "Lebanese University is a university in Beirut, Lebanon.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jzw00fpr8eud8zis42c",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzx00frr8eutbdc2bzd",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzy00ftr8eu9n142063",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzz00fvr8eubhpk5tzi",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8k0000fxr8eut10k19z3",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8k0000fzr8eu3n4ddkdc",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbs00004r8s3l3qby42h",
@@ -1893,8 +3237,51 @@
     "logoUrl": null,
     "descriptionEn": "Leeds Beckett University is a university in Leeds, United Kingdom.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jtk001br8eubl1gu1uj",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtl001dr8euknfxsr1x",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtm001fr8eux2x0lx2c",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jtm001hr8eup4o6cf3l",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -1915,12 +3302,66 @@
     "logoUrl": null,
     "descriptionEn": "Lithuanian University of Health Sciences is a university in Kaunas, Lithuania.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jzp00f7r8eu41ksnjgq",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzq00f9r8eu42c2isgd",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzq00fbr8eu5qfvd3xu",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jzr00fdr8euctgzrc1h",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jzs00ffr8euiq6nbasm",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbs30006r8s3g17uvmm6",
@@ -1937,12 +3378,77 @@
     "logoUrl": null,
     "descriptionEn": "Liverpool John Moores University is a university in Liverpool, United Kingdom.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jtt001tr8euhyvy23qv",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtu001vr8euskwxa1jb",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtv001xr8eu6g44hgiq",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtv001zr8eulmwnkiw1",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtw0021r8eu84m921zf",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jtw0023r8eus0qb2weq",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbrw0001r8s3u6sp5eoq",
@@ -1959,12 +3465,66 @@
     "logoUrl": null,
     "descriptionEn": "London South Bank University is a university in London, United Kingdom.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jt7000fr8euefx6qja3",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jt8000hr8eu53n7aj36",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jt8000jr8eu3pb1029c",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jt9000lr8eu1bbbmic2",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jta000nr8euhaj38i1u",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdboa003wr8rrcbhoao7b",
@@ -2035,12 +3595,66 @@
     "logoUrl": null,
     "descriptionEn": "Manchester Metropolitan University is a university in Manchester, United Kingdom.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jto001jr8eu6gs77scl",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtp001lr8eu6r76zwio",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtq001nr8euh4hpqi7z",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jts001pr8euuu25wmei",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jts001rr8eu47pr1lef",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbt70011r8s36frgra9m",
@@ -2057,12 +3671,74 @@
     "logoUrl": null,
     "descriptionEn": "Mansoura University is a university in Mansoura, Egypt.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jxx00b9r8eugru303nz",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxy00bbr8euulsl1wlj",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxz00bdr8eu7f24prsk",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxz00bfr8euwp5cylah",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jy000bhr8eub1cp16dw",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jy000bjr8eua0up9ayu",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbso000lr8s345j06zyv",
@@ -2079,8 +3755,51 @@
     "logoUrl": null,
     "descriptionEn": "Marmara University is a university in Istanbul, Turkey.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jvp006br8euqybmanic",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvq006dr8eu4b1vl5uz",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jvr006fr8eukrchp8sf",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jvr006hr8eug02w284p",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -2155,8 +3874,59 @@
     "logoUrl": null,
     "descriptionEn": "Multimedia University is a university in Cyberjaya, Malaysia.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jxg009vr8eudojv2e0v",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxg009xr8eukydgzy6b",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxh009zr8euruyri2rv",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jxh00a1r8eujqlagm11",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jxi00a3r8eu3lq87wnr",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -2177,8 +3947,51 @@
     "logoUrl": null,
     "descriptionEn": "Nicolaus Copernicus University is a university in Torun, Poland.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jwx008lr8euqbja2ibd",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwy008nr8eu521txasb",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwz008pr8eub5bcg57u",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jwz008rr8eudh7kjjet",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -2199,12 +4012,85 @@
     "logoUrl": null,
     "descriptionEn": "Notre Dame University-Louaize is a university in Louaize, Lebanon.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8k0200g1r8eu1ff8m1e6",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8k0200g3r8euylvfdlbm",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8k0300g5r8euqrj412n5",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8k0300g7r8eui36x3fym",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8k0400g9r8eu994myhyw",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8k0500gbr8eu7vbofd10",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8k0500gdr8eujy0y7ocz",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbs80009r8s3ji61omad",
@@ -2221,12 +4107,74 @@
     "logoUrl": null,
     "descriptionEn": "Oxford Brookes University is a university in Oxford, United Kingdom.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8ju8002rr8eu7uusqpp0",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8ju8002tr8eu9hawf77y",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8ju9002vr8euqxmohuc2",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8ju9002xr8eu0zremrr1",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jua002zr8euo3162e4v",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jub0031r8euw7w5c2pa",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbta0014r8s39gj57pb3",
@@ -2243,12 +4191,85 @@
     "logoUrl": null,
     "descriptionEn": "Philadelphia University is a university in Amman, Jordan.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jyb00c5r8eulp3rvcbb",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyc00c7r8euk0kuah6s",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyc00c9r8euw0lt1fmu",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyd00cbr8eu07c31am8",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jye00cdr8eufo9z8rdn",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jye00cfr8euemu1ifk2",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jyf00chr8euby3mbsg5",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbsx000rr8s3qk6wdsr4",
@@ -2265,12 +4286,74 @@
     "logoUrl": null,
     "descriptionEn": "Poznan University of Technology is a university in Poznan, Poland.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jwp007zr8eusv35yugp",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwp0081r8euty8ft5vo",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwq0083r8euytk8eyph",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwr0085r8eu7x93ny7s",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jwr0087r8eug9ei5kle",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jws0089r8euuo5evaxm",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbn3000zr8rrjjyud4zu",
@@ -2341,8 +4424,59 @@
     "logoUrl": null,
     "descriptionEn": "Sheffield Hallam University is a university in Sheffield, United Kingdom.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jti0011r8eulenbyfto",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jti0013r8eu5wm29sad",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtj0015r8euzzjyqbne",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jtj0017r8eud52zhbax",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jtj0019r8euafphn1tm",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -2363,8 +4497,59 @@
     "logoUrl": null,
     "descriptionEn": "Suez Canal University is a university in Ismailia, Egypt.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jy700bvr8eu5b1a3lp9",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jy800bxr8eumva9lxf4",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jy900bzr8eu9fqcrrt3",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jy900c1r8euhsjylcxj",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jya00c3r8euz5psza48",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -2385,12 +4570,85 @@
     "logoUrl": null,
     "descriptionEn": "Sunway University is a university in Subang Jaya, Malaysia.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jxk00a5r8euqutq3o3u",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxk00a7r8euy14vy7mn",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxl00a9r8eucfi393bk",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxm00abr8eugfsv9s4q",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jxm00adr8eut5x833ic",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jxn00afr8eug6pahoom",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jxn00ahr8eua6r02ho4",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbsd000dr8s31pcwexcu",
@@ -2407,12 +4665,85 @@
     "logoUrl": null,
     "descriptionEn": "TU Dortmund is a university in Dortmund, Germany.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jum003vr8eurmkim4ge",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jun003xr8euyqxe5jum",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8juo003zr8euc3lxje9g",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jup0041r8euuuffjir8",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8juq0043r8euktpox3bl",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jus0045r8euypgdfuon",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jus0047r8eu859vxe98",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbt70012r8s3f0svupdx",
@@ -2429,12 +4760,66 @@
     "logoUrl": null,
     "descriptionEn": "Tanta University is a university in Tanta, Egypt.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jy100blr8eu3zwn47s8",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jy200bnr8eunk8ygo5i",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jy400bpr8eu5jrpl1jx",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jy500brr8euqi0jbdz2",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jy600btr8euimoh2ij3",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbo3003ir8rrp4tm5d12",
@@ -2773,12 +5158,74 @@
     "logoUrl": null,
     "descriptionEn": "Universiti Putra Malaysia is a university in Serdang, Malaysia.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jx1008tr8eucutieuoh",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jx1008vr8eue9p61fjk",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jx2008xr8euwa6rdy8k",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jx3008zr8eu6lsrlmz8",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jx30091r8euw8vk4qha",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jx40093r8eu70x8ia05",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbnx0034r8rr4mxsrkou",
@@ -2903,12 +5350,74 @@
     "logoUrl": null,
     "descriptionEn": "Universiti Utara Malaysia is a university in Sintok, Malaysia.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jx60095r8euhitfbs3o",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jx60097r8euzrv923gj",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jx70099r8euryv9yjll",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jx8009br8euae638rfx",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jx8009dr8eu0zuvo9ez",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jx9009fr8eu9gp31fed",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbpe005nr8rrn2es9abo",
@@ -2979,8 +5488,51 @@
     "logoUrl": null,
     "descriptionEn": "University of Bonn is a university in Bonn, Germany.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8juj003nr8euf179y4kl",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8juk003pr8eu4dynd93j",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8juk003rr8euz4iyo48x",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jul003tr8euno1lm8oe",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -3055,12 +5607,77 @@
     "logoUrl": null,
     "descriptionEn": "University of Central Lancashire is a university in Preston, United Kingdom.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jtx0025r8eumnnb3c9n",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jty0027r8euqrnrz0iy",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtz0029r8euvybffhc1",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtz002br8euk4pdubrd",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8ju0002dr8eueamo8ioe",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8ju1002fr8eua25cj03h",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbsa000ar8s3xj0p4gnr",
@@ -3077,8 +5694,59 @@
     "logoUrl": null,
     "descriptionEn": "University of Cologne is a university in Cologne, Germany.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jub0033r8euewfh08qd",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8juc0035r8eu4wk662y3",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jud0037r8eu5yvmok9s",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jud0039r8euy3m0rjgr",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jue003br8eu5flzzlm2",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -3099,12 +5767,66 @@
     "logoUrl": null,
     "descriptionEn": "University of Duisburg-Essen is a university in Essen, Germany.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jv80055r8euswjndv9c",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jv90057r8euo1z70yrc",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jv90059r8euuzsk4n4l",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jva005br8eud9qm59tw",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jva005dr8eujvtimlas",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbrx0002r8s3xdsf128d",
@@ -3121,12 +5843,74 @@
     "logoUrl": null,
     "descriptionEn": "University of East London is a university in London, United Kingdom.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jtc000pr8euhk3nactc",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtd000rr8euymqtmevn",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jte000tr8euic9wbkok",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jtf000vr8eu3ls53y2e",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jtg000xr8eu9j4snpxv",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jtg000zr8eud02txlvx",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbnd001kr8rrjtq0kcjt",
@@ -3197,12 +5981,85 @@
     "logoUrl": null,
     "descriptionEn": "University of Greenwich is a university in London, United Kingdom.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jt00001r8euim34m8kg",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jt10003r8euehnkvr8a",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jt20005r8eumms3d69q",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jt30007r8euzw5f4fkn",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jt40009r8eurvw06896",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jt5000br8eupo2rfenq",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jt6000dr8eu0r1m1wfr",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbn60016r8rrkqkj0owf",
@@ -3533,12 +6390,66 @@
     "logoUrl": null,
     "descriptionEn": "University of Mannheim is a university in Mannheim, Germany.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8juu0049r8eul67rl4vv",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8juu004br8eu4ynn2tuz",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8juv004dr8eurdd2t7dm",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8juv004fr8eu33mmbg9i",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8juw004hr8eunp0rlpaq",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4500
   },
   {
     "id": "cmu6tdbsf000fr8s3ivcfl6xa",
@@ -3555,8 +6466,59 @@
     "logoUrl": null,
     "descriptionEn": "University of Munster is a university in Munster, Germany.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jux004jr8eu4572shhh",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8juy004lr8eu6rgq0to6",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8juy004nr8eut9psd612",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jv1004pr8euq4kvx8p5",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jv2004rr8eu7ra57st0",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -3912,8 +6874,59 @@
     "logoUrl": null,
     "descriptionEn": "University of Wroclaw is a university in Wroclaw, Poland.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jwt008br8euqxgnnqym",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwu008dr8eu0baxeu36",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwu008fr8euv4tj6cs5",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jwv008hr8eut7pmdihs",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8jww008jr8eupyyakny4",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -3934,8 +6947,59 @@
     "logoUrl": null,
     "descriptionEn": "University of the West of England is a university in Bristol, United Kingdom.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8ju3002hr8eub69102zm",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8ju4002jr8eu8aqudkpp",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8ju5002lr8eulenckfec",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8ju5002nr8eundq1l5b1",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      },
+      {
+        "id": "cmu6w8ju6002pr8eu126ti3uj",
+        "name": "Academic Excellence Award",
+        "amountUsd": 2500,
+        "amountType": "partial",
+        "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
@@ -4118,12 +7182,77 @@
     "logoUrl": null,
     "descriptionEn": "Wroclaw University of Technology is a university in Wroclaw, Poland.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jw8007br8eunqqj65lp",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jw9007dr8eu28tdz5sa",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwa007fr8eunzova2n4",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwa007hr8euz3xzrknv",
+        "name": "BBA Business Administration",
+        "degreeLevel": "bachelor",
+        "field": "Business",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jwc007jr8eu36fnyqj3",
+        "name": "BA International Relations",
+        "degreeLevel": "bachelor",
+        "field": "Social Sciences",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 4250,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jwd007lr8euv88tqsje",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 4250
   },
   {
     "id": "cmu6tdbtc0016r8s3sbzvijsh",
@@ -4140,8 +7269,51 @@
     "logoUrl": null,
     "descriptionEn": "Yarmouk University is a university in Irbid, Jordan.",
     "descriptionAr": "",
-    "programs": [],
-    "scholarships": [],
+    "programs": [
+      {
+        "id": "cmu6w8jyk00cvr8eu5a7agnog",
+        "name": "BSc Computer Science",
+        "degreeLevel": "bachelor",
+        "field": "Computer Science",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5000,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jyl00cxr8eumj857ug7",
+        "name": "BSc Mechanical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      },
+      {
+        "id": "cmu6w8jym00czr8eubxt8g9j5",
+        "name": "BSc Electrical Engineering",
+        "degreeLevel": "bachelor",
+        "field": "Engineering",
+        "durationMonths": 36,
+        "language": "English",
+        "tuitionUsd": 5500,
+        "deadline": "2026-07-15",
+        "entryReqs": null
+      }
+    ],
+    "scholarships": [
+      {
+        "id": "cmu6w8jym00d1r8euewg8hay4",
+        "name": "International Merit Scholarship",
+        "amountUsd": 1500,
+        "amountType": "partial",
+        "eligibility": "International students with GPA 3.0+ and strong academic record",
+        "deadline": null
+      }
+    ],
     "reviews": [],
     "avgRating": null,
     "reviewCount": 0,

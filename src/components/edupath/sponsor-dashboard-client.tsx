@@ -10,6 +10,7 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useToast } from '@/hooks/use-toast'
 import { cn } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
 import { AuthModal, type UserProfile } from '@/components/edupath/auth-modal'
 import { createClient } from '@/lib/supabase/client'
 import { countryFlagUrl, formatUsd } from '@/lib/edupath'
@@ -34,6 +35,7 @@ type Lead = {
 export function SponsorDashboardClient() {
   const router = useRouter()
   const { toast } = useToast()
+  const t = useTranslations('Sponsor')
   const [profile, setProfile] = React.useState<UserProfile | null>(null)
   const [authModalOpen, setAuthModalOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(true)
@@ -115,9 +117,9 @@ export function SponsorDashboardClient() {
         <Card className="max-w-md w-full">
           <CardContent className="pt-6 text-center">
             <Building2 className="size-12 text-slate-400 mx-auto mb-4" />
-            <h2 className="text-xl font-bold mb-2">Sponsor Access</h2>
+            <h2 className="text-xl font-bold mb-2">{t('sponsorAccess')}</h2>
             <p className="text-sm text-muted-foreground mb-4">Sign in to access the sponsor dashboard.</p>
-            <Button onClick={() => setAuthModalOpen(true)}>Sign In</Button>
+            <Button onClick={() => setAuthModalOpen(true)}>{t('signIn')}</Button>
           </CardContent>
         </Card>
         <AuthModal open={authModalOpen} onClose={() => setAuthModalOpen(false)} onAuthed={(p) => setProfile(p)} />
@@ -131,7 +133,7 @@ export function SponsorDashboardClient() {
         <Card className="max-w-md w-full">
           <CardContent className="pt-6 text-center">
             <AlertCircle className="size-12 text-amber-500 mx-auto mb-4" />
-            <h2 className="text-xl font-bold mb-2">Sponsor Access Required</h2>
+            <h2 className="text-xl font-bold mb-2">{t('sponsorRequired')}</h2>
             <p className="text-sm text-muted-foreground">Your account needs the 'recruiter' role. Contact your administrator.</p>
           </CardContent>
         </Card>
@@ -149,7 +151,7 @@ export function SponsorDashboardClient() {
             </Button>
             <div className="flex items-center gap-2">
               <Building2 className="size-5 text-emerald-600" />
-              <span className="font-bold">Sponsor Dashboard</span>
+              <span className="font-bold">{t('title')}</span>
             </div>
           </div>
           <Button onClick={exportLeads} size="sm" variant="outline" className="gap-2">
@@ -164,9 +166,9 @@ export function SponsorDashboardClient() {
         ) : (
           <Tabs defaultValue="overview">
             <TabsList className="mb-6">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="universities">University Analytics ({analytics.length})</TabsTrigger>
-              <TabsTrigger value="leads">Lead Inbox ({leads.filter(l => l.status === 'new').length} new)</TabsTrigger>
+              <TabsTrigger value="overview">{t('overview')}</TabsTrigger>
+              <TabsTrigger value="universities">{t('universityAnalytics')} ({analytics.length})</TabsTrigger>
+              <TabsTrigger value="leads">{t('leadInbox')} ({leads.filter(l => l.status === 'new').length} new)</TabsTrigger>
             </TabsList>
 
             {/* Overview tab */}
@@ -179,7 +181,7 @@ export function SponsorDashboardClient() {
               </div>
 
               <Card>
-                <CardHeader><CardTitle>How students discover your universities</CardTitle></CardHeader>
+                <CardHeader><CardTitle>{t('howDiscover')}</CardTitle></CardHeader>
                 <CardContent>
                   <div className="space-y-3">
                     <MetricBar label="Directory browsing" value={45} icon={<Eye className="size-4" />} />
@@ -195,13 +197,13 @@ export function SponsorDashboardClient() {
             {/* University analytics tab */}
             <TabsContent value="universities">
               <div className="flex flex-wrap items-center gap-3 mb-4">
-                <Input placeholder="Search universities..." value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="max-w-xs" />
+                <Input placeholder={t('searchUniversities')} value={searchQuery} onChange={e => setSearchQuery(e.target.value)} className="max-w-xs" />
                 <Select value={sortBy} onValueChange={(v) => setSortBy(v as typeof sortBy)}>
                   <SelectTrigger className="w-[180px]"><SelectValue /></SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="views">Sort: Most Views</SelectItem>
-                    <SelectItem value="rating">Sort: Highest Rated</SelectItem>
-                    <SelectItem value="name">Sort: Name A-Z</SelectItem>
+                    <SelectItem value="views">{t('sortViews')}</SelectItem>
+                    <SelectItem value="rating">{t('sortRating')}</SelectItem>
+                    <SelectItem value="name">{t('sortName')}</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -270,7 +272,7 @@ function UniversityAnalyticsCard({ uni }: { uni: Analytics }) {
           <div className="flex items-center gap-4 text-sm">
             <div className="text-center">
               <div className="font-bold text-blue-600">{uni.metrics.profileViews}</div>
-              <div className="text-[10px] text-muted-foreground">Views</div>
+              <div className="text-[10px] text-muted-foreground">{t('views')}</div>
             </div>
             <div className="text-center">
               <div className="font-bold flex items-center gap-1">
@@ -280,16 +282,16 @@ function UniversityAnalyticsCard({ uni }: { uni: Analytics }) {
             </div>
             <div className={cn("text-center", sentimentColor)}>
               <div className="font-bold">{uni.sentiment.sentimentScore === 'N/A' ? '—' : `${uni.sentiment.sentimentScore}%`}</div>
-              <div className="text-[10px] text-muted-foreground">Sentiment</div>
+              <div className="text-[10px] text-muted-foreground">{t('sentiment')}</div>
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-4 gap-2 text-xs">
-          <div className="bg-slate-50 rounded p-2 text-center"><div className="font-bold">{uni.metrics.uniqueVisitors}</div><div className="text-muted-foreground">Visitors</div></div>
-          <div className="bg-slate-50 rounded p-2 text-center"><div className="font-bold">{uni.metrics.comparisonAppearances}</div><div className="text-muted-foreground">Comparisons</div></div>
-          <div className="bg-slate-50 rounded p-2 text-center"><div className="font-bold">{uni.metrics.saveCount}</div><div className="text-muted-foreground">Saves</div></div>
-          <div className="bg-slate-50 rounded p-2 text-center"><div className="font-bold">{uni.metrics.clickThroughRate}%</div><div className="text-muted-foreground">CTR</div></div>
+          <div className="bg-slate-50 rounded p-2 text-center"><div className="font-bold">{uni.metrics.uniqueVisitors}</div><div className="text-muted-foreground">{t('visitors')}</div></div>
+          <div className="bg-slate-50 rounded p-2 text-center"><div className="font-bold">{uni.metrics.comparisonAppearances}</div><div className="text-muted-foreground">{t('comparisons')}</div></div>
+          <div className="bg-slate-50 rounded p-2 text-center"><div className="font-bold">{uni.metrics.saveCount}</div><div className="text-muted-foreground">{t('saves')}</div></div>
+          <div className="bg-slate-50 rounded p-2 text-center"><div className="font-bold">{uni.metrics.clickThroughRate}%</div><div className="text-muted-foreground">{t('ctr')}</div></div>
         </div>
 
         <button onClick={() => setExpanded(!expanded)} className="text-xs text-emerald-600 hover:underline mt-3 flex items-center gap-1">
