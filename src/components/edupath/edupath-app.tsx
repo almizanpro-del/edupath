@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
-import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles, Shuffle, Award, Building2 } from 'lucide-react'
+import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles, Shuffle, Award, Building2, CreditCard } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -437,6 +437,15 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 <Award className="size-4" />
                 Scholarships
               </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => router.push('/pricing')}
+                className="gap-2 text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+              >
+                <CreditCard className="size-4" />
+                Pricing
+              </Button>
             </nav>
             {/* Mobile: condensed nav */}
             <div className="md:hidden flex items-center gap-1 ml-2">
@@ -466,6 +475,15 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 title="Scholarships"
               >
                 <Award className="size-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => router.push('/pricing')}
+                className="text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+                title="Pricing"
+              >
+                <CreditCard className="size-4" />
               </Button>
             </div>
           </div>

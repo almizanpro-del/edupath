@@ -82,6 +82,7 @@ model User {
 
   reviews         Review[]
   savedLists      SavedList[]
+  subscription    Subscription?
 }
 
 model Review {
@@ -169,4 +170,22 @@ model Lead {
 
   @@index([universityId])
   @@index([status])
+}
+
+model Subscription {
+  id                    String   @id @default(cuid())
+  userId                String   @unique
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stripeCustomerId      String?  @unique
+  stripeSubscriptionId  String?  @unique
+  stripePriceId         String?
+  tier                  String   @default("free") // free | premium | pro | vip | sponsor_starter | sponsor_growth
+  status                String   @default("none") // none | trialing | active | past_due | canceled | expired
+  currentPeriodEnd      DateTime?
+  cancelAtPeriodEnd     Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@index([userId])
+  @@index([stripeCustomerId])
 }
