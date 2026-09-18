@@ -113,6 +113,25 @@
         "safety": "الأمان",
         "social": "الحياة الاجتماعية"
       }
+    },
+    "contact": {
+      "title": "تواصل مع {name}",
+      "description": "أرسل استفساراً لفريق القبول. رسالتك تنشئ عميلاً محتملاً في لوحة تحكم الراعي.",
+      "yourName": "اسمك",
+      "email": "البريد الإلكتروني",
+      "country": "الدولة",
+      "gpa": "المعدل (اختياري)",
+      "fieldOfInterest": "التخصص المفضل",
+      "yourMessage": "رسالتك",
+      "messagePlaceholder": "أنا مهتم بالتقديم على...",
+      "sendInquiry": "إرسال الاستفسار",
+      "submitting": "جاري الإرسال...",
+      "messageSent": "تم إرسال الرسالة!",
+      "messageSentDesc": "{name} سيرد على استفسارك.",
+      "sendAnother": "إرسال رسالة أخرى",
+      "fillRequired": "يرجى ملء جميع الحقول المطلوبة",
+      "failedToSend": "فشل الإرسال",
+      "tryAgain": "يرجى المحاولة مرة أخرى"
     }
   },
   "Compare": {

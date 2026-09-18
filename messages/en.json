@@ -113,6 +113,25 @@
         "safety": "Safety",
         "social": "Social life"
       }
+    },
+    "contact": {
+      "title": "Contact {name}",
+      "description": "Send an inquiry to the admissions team. Your message creates a lead in their sponsor dashboard.",
+      "yourName": "Your Name",
+      "email": "Email",
+      "country": "Country",
+      "gpa": "GPA (optional)",
+      "fieldOfInterest": "Field of Interest",
+      "yourMessage": "Your Message",
+      "messagePlaceholder": "I'm interested in applying to...",
+      "sendInquiry": "Send Inquiry",
+      "submitting": "Submitting...",
+      "messageSent": "Message sent!",
+      "messageSentDesc": "{name} will respond to your inquiry.",
+      "sendAnother": "Send another message",
+      "fillRequired": "Please fill in all required fields",
+      "failedToSend": "Failed to send",
+      "tryAgain": "Please try again"
     }
   },
   "Compare": {

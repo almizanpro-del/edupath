@@ -496,6 +496,7 @@ export function UniversityDetailPage({ uni }: Props) {
 // =================== Contact Form ===================
 function ContactForm({ universityId, universityName, profile }: { universityId: string; universityName: string; profile: UserProfile | null }) {
   const { toast } = useToast()
+  const t = useTranslations('Detail.contact')
   const [name, setName] = React.useState(profile?.name ?? '')
   const [email, setEmail] = React.useState('')
   const [country, setCountry] = React.useState(profile?.country ?? '')
@@ -516,7 +517,7 @@ function ContactForm({ universityId, universityName, profile }: { universityId: 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!name || !email || !message) {
-      toast({ title: 'Please fill in all required fields', variant: 'destructive' })
+      toast({ title: t('fillRequired'), variant: 'destructive' })
       return
     }
     setSubmitting(true)
@@ -530,9 +531,9 @@ function ContactForm({ universityId, universityName, profile }: { universityId: 
       if (!res.ok) throw new Error(data.error)
       setSubmitted(true)
       setMessage('')
-      toast({ title: 'Message sent!', description: `${universityName} will respond to your inquiry.` })
+      toast({ title: t('messageSent'), description: t('messageSentDesc', { name: universityName }) })
     } catch (err) {
-      toast({ title: 'Failed to send', description: err instanceof Error ? err.message : 'Please try again', variant: 'destructive' })
+      toast({ title: t('failedToSend'), description: err instanceof Error ? err.message : t('tryAgain'), variant: 'destructive' })
     }
     setSubmitting(false)
   }
@@ -546,49 +547,49 @@ function ContactForm({ universityId, universityName, profile }: { universityId: 
               <div className="size-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
                 <CheckCircle2 className="size-8 text-emerald-600" />
               </div>
-              <h3 className="text-xl font-bold mb-2">Message sent!</h3>
-              <p className="text-sm text-muted-foreground mb-4">{universityName} will respond to your inquiry.</p>
-              <Button variant="outline" onClick={() => setSubmitted(false)}>Send another message</Button>
+              <h3 className="text-xl font-bold mb-2">{t('messageSent')}</h3>
+              <p className="text-sm text-muted-foreground mb-4">{t('messageSentDesc', { name: universityName })}</p>
+              <Button variant="outline" onClick={() => setSubmitted(false)}>{t('sendAnother')}</Button>
             </div>
           ) : (
             <>
               <div className="flex items-center gap-2 mb-4">
                 <Mail className="size-5 text-emerald-600" />
-                <h3 className="text-lg font-bold">Contact {universityName}</h3>
+                <h3 className="text-lg font-bold">{t('title', { name: universityName })}</h3>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">Send an inquiry to the admissions team. Your message creates a lead in their sponsor dashboard.</p>
+              <p className="text-sm text-muted-foreground mb-4">{t('description')}</p>
               <form onSubmit={handleSubmit} className="space-y-3">
                 <div className="grid sm:grid-cols-2 gap-3">
                   <div>
-                    <Label htmlFor="contact-name" className="text-xs">Your Name *</Label>
+                    <Label htmlFor="contact-name" className="text-xs">{t('yourName')} *</Label>
                     <Input id="contact-name" value={name} onChange={e => setName(e.target.value)} required />
                   </div>
                   <div>
-                    <Label htmlFor="contact-email" className="text-xs">Email *</Label>
+                    <Label htmlFor="contact-email" className="text-xs">{t('email')} *</Label>
                     <Input id="contact-email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
                   </div>
                 </div>
                 <div className="grid sm:grid-cols-3 gap-3">
                   <div>
-                    <Label htmlFor="contact-country" className="text-xs">Country</Label>
+                    <Label htmlFor="contact-country" className="text-xs">{t('country')}</Label>
                     <Input id="contact-country" value={country} onChange={e => setCountry(e.target.value)} />
                   </div>
                   <div>
-                    <Label htmlFor="contact-gpa" className="text-xs">GPA (optional)</Label>
+                    <Label htmlFor="contact-gpa" className="text-xs">{t('gpa')}</Label>
                     <Input id="contact-gpa" type="number" step="0.1" placeholder="3.5" value={gpa} onChange={e => setGpa(e.target.value)} />
                   </div>
                   <div>
-                    <Label htmlFor="contact-field" className="text-xs">Field of Interest</Label>
+                    <Label htmlFor="contact-field" className="text-xs">{t('fieldOfInterest')}</Label>
                     <Input id="contact-field" value={field} onChange={e => setField(e.target.value)} />
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="contact-msg" className="text-xs">Your Message *</Label>
-                  <Textarea id="contact-msg" rows={4} placeholder="I'm interested in applying to..." value={message} onChange={e => setMessage(e.target.value)} required maxLength={2000} />
+                  <Label htmlFor="contact-msg" className="text-xs">{t('yourMessage')} *</Label>
+                  <Textarea id="contact-msg" rows={4} placeholder={t('messagePlaceholder')} value={message} onChange={e => setMessage(e.target.value)} required maxLength={2000} />
                 </div>
                 <Button type="submit" className="w-full gap-2 bg-emerald-600 hover:bg-emerald-700" disabled={submitting}>
                   {submitting ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
-                  Send Inquiry
+                  {t('sendInquiry')}
                 </Button>
               </form>
             </>
