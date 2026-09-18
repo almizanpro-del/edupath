@@ -24,6 +24,7 @@ import { AuthModal, type UserProfile } from '@/components/edupath/auth-modal'
 import { ReviewForm } from '@/components/edupath/review-form'
 import { createClient } from '@/lib/supabase/client'
 import { track } from '@/lib/analytics-client'
+import { SocialShare } from '@/components/edupath/social-share'
 
 type Program = {
   id: string; name: string; degreeLevel: string; field: string
@@ -260,6 +261,14 @@ export function UniversityDetailPage({ uni }: Props) {
 
       {/* Tabs */}
       <div className="container mx-auto max-w-7xl px-4 py-8">
+        {/* Social share */}
+        <div className="mb-6 flex justify-end">
+          <SocialShare
+            url={`https://edupath-amber-three.vercel.app/university/${uni.slug}`}
+            title={`${uni.name} — Tuition, Programs & Reviews | EduPath`}
+            description={uni.descriptionEn}
+          />
+        </div>
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="bg-transparent h-12 p-0 gap-6 border-b w-full justify-start rounded-none">
             <TabsTrigger value="overview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.overview')}</TabsTrigger>

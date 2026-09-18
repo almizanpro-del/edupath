@@ -25,6 +25,8 @@ import { AdminPanel } from '@/components/edupath/admin-panel'
 import { LocaleSwitcher } from '@/components/edupath/locale-switcher'
 import { createClient } from '@/lib/supabase/client'
 import { track } from '@/lib/analytics-client'
+import { EmailCapture } from '@/components/edupath/email-capture'
+import { CurrencySwitcher } from '@/components/edupath/currency-switcher'
 import { useTranslations, useLocale } from 'next-intl'
 
 // =================== Types ===================
@@ -532,6 +534,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
               </Button>
             )}
             <LocaleSwitcher />
+            <CurrencySwitcher />
             <UserMenuButton
               profile={profile}
               onSignInClick={() => setAuthModalOpen(true)}
@@ -733,6 +736,15 @@ export function EduPathApp({ universities, countries, stats }: Props) {
           </div>
         </div>
       </section>
+
+      {/* ===== Email Capture (for non-authenticated users) ===== */}
+      {!profile && (
+        <section className="bg-white border-b py-8">
+          <div className="container mx-auto max-w-7xl px-4">
+            <EmailCapture />
+          </div>
+        </section>
+      )}
 
       {/* ===== Directory ===== */}
       <section className="container mx-auto max-w-7xl px-4 py-10 flex-1">
