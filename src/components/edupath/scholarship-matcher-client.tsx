@@ -13,6 +13,7 @@ import { useToast } from '@/hooks/use-toast'
 import { formatUsd } from '@/lib/edupath'
 import { cn } from '@/lib/utils'
 import { useTranslations } from 'next-intl'
+import { track } from '@/lib/analytics-client'
 
 type Match = {
   scholarshipId: string
@@ -61,6 +62,7 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
       const data = await res.json()
       if (!res.ok) throw new Error(data.message || data.error)
       setMatches(data.matches)
+      track('scholarship_match', { metadata: { gpa, field, matchCount: data.matches.length } })
       if (data.matches.length === 0) {
         toast({ title: 'No matches found', description: 'Try adjusting your profile.' })
       } else {

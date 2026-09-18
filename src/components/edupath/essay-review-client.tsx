@@ -15,6 +15,7 @@ import { useToast } from '@/hooks/use-toast'
 import { cn } from '@/lib/utils'
 import { AuthModal, type UserProfile } from '@/components/edupath/auth-modal'
 import { createClient } from '@/lib/supabase/client'
+import { track } from '@/lib/analytics-client'
 import { useTranslations } from 'next-intl'
 
 type University = { id: string; name: string; country: string }
@@ -128,6 +129,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
 
       setReview(data.review)
       setRemaining(data.remaining)
+      track('essay_review', { metadata: { overallScore: data.review.overall_score, targetUniversity } })
       toast({
         title: 'Review complete!',
         description: `Overall score: ${data.review.overall_score}/5`,

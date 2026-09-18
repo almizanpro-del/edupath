@@ -24,6 +24,7 @@ import { ReviewForm } from '@/components/edupath/review-form'
 import { AdminPanel } from '@/components/edupath/admin-panel'
 import { LocaleSwitcher } from '@/components/edupath/locale-switcher'
 import { createClient } from '@/lib/supabase/client'
+import { track } from '@/lib/analytics-client'
 import { useTranslations, useLocale } from 'next-intl'
 
 // =================== Types ===================
@@ -537,6 +538,11 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                   placeholder={t('Hero.searchPlaceholder')}
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter' && searchQuery.trim()) {
+                      track('search', { metadata: { query: searchQuery } })
+                    }
+                  }}
                   className="pl-10 h-12 bg-white text-foreground border-0 shadow-lg"
                 />
               </div>

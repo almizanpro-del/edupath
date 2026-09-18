@@ -1,9 +1,8 @@
 /** Sponsor dashboard API
  * GET /api/sponsor — analytics + leads for the sponsor's university
  *
- * Sponsor = user with role 'recruiter' linked to a university.
- * For MVP demo, we return mock analytics data based on the university's
- * real data (reviews, programs, etc.) plus simulated view/lead metrics.
+ * Reads real analytics from AnalyticsEvent table + real leads from Lead table.
+ * Falls back to simulated data when DB is unavailable (Vercel without Postgres).
  */
 import { NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
@@ -54,13 +53,27 @@ export async function GET() {
       const avgSafety = reviews.length > 0 ? reviews.reduce((s, r) => s + r.ratingSafety, 0) / reviews.length : 0
       const avgSocial = reviews.length > 0 ? reviews.reduce((s, r) => s + r.ratingSocial, 0) / reviews.length : 0
 
-      // Simulated metrics (in production, track via PostHog or analytics events)
-      const seed = u.id.charCodeAt(0) + u.id.charCodeAt(1)
-      const profileViews = Math.floor(50 + (seed % 500))
+      // Real analytics from AnalyticsEvent table (fallback to simulated if no events yet)
+      let profileViews = 0
+      let comparisonAppearances = 0
+      let saveCount = 0
+      try {
+        const events = await db.analyticsEvent.findMany({
+          where: { universityId: u.id },
+          select: { eventType: true },
+        })
+        profileViews = events.filter(e => e.eventType === 'university_view').length
+        comparisonAppearances = events.filter(e => e.eventType === 'compare').length
+        saveCount = events.filter(e => e.eventType === 'save').length
+      } catch {
+        // DB unavailable — use simulated fallback
+        const seed = u.id.charCodeAt(0) + u.id.charCodeAt(1)
+        profileViews = Math.floor(50 + (seed % 500))
+        comparisonAppearances = Math.floor(profileViews * 0.3)
+        saveCount = Math.floor(profileViews * 0.1)
+      }
       const uniqueVisitors = Math.floor(profileViews * 0.7)
-      const comparisonAppearances = Math.floor(profileViews * 0.3)
-      const saveCount = Math.floor(profileViews * 0.1)
-      const clickThroughRate = (2 + (seed % 5)).toFixed(1)
+      const clickThroughRate = profileViews > 0 ? ((saveCount / profileViews) * 100).toFixed(1) : '0.0'
 
       // Sentiment analysis from review ratings
       const sentimentScore = reviews.length > 0 ? ((avgRating / 5) * 100).toFixed(0) : 'N/A'
@@ -95,13 +108,30 @@ export async function GET() {
       }
     })
 
-    // Simulated leads (in production, stored in DB from contact form submissions)
-    const leads = [
-      { id: 'lead-1', studentName: 'Fatima A.', country: 'Jordan', gpa: 3.7, field: 'Computer Science', message: 'Interested in BSc Computer Science for Fall 2026. What scholarships are available?', date: '2026-09-15', status: 'new' },
-      { id: 'lead-2', studentName: 'Ahmed H.', country: 'Egypt', gpa: 3.5, field: 'Engineering', message: 'Looking for transfer options. I have 60 credits completed. Can these transfer?', date: '2026-09-14', status: 'new' },
-      { id: 'lead-3', studentName: 'Layla M.', country: 'UAE', gpa: 3.8, field: 'Business', message: 'I would like to know more about the MBA program and application deadlines.', date: '2026-09-12', status: 'contacted' },
-      { id: 'lead-4', studentName: 'Omar K.', country: 'Saudi Arabia', gpa: 3.2, field: 'Medicine', message: 'What are the English language requirements for international students?', date: '2026-09-10', status: 'closed' },
-    ]
+    // Real leads from Lead table (fallback to simulated if DB unavailable)
+    let leads: Array<{ id: string; studentName: string; country: string; gpa: number | null; field: string | null; message: string; date: string; status: string }> = []
+    try {
+      const dbLeads = await db.lead.findMany({
+        orderBy: { createdAt: 'desc' },
+        take: 50,
+      })
+      leads = dbLeads.map(l => ({
+        id: l.id,
+        studentName: l.studentName,
+        country: l.country,
+        gpa: l.gpa,
+        field: l.field,
+        message: l.message,
+        date: l.createdAt.toISOString().slice(0, 10),
+        status: l.status,
+      }))
+    } catch {
+      // DB unavailable — use simulated fallback
+      leads = [
+        { id: 'lead-1', studentName: 'Fatima A.', country: 'Jordan', gpa: 3.7, field: 'Computer Science', message: 'Interested in BSc Computer Science for Fall 2026.', date: '2026-09-15', status: 'new' },
+        { id: 'lead-2', studentName: 'Ahmed H.', country: 'Egypt', gpa: 3.5, field: 'Engineering', message: 'Looking for transfer options.', date: '2026-09-14', status: 'new' },
+      ]
+    }
 
     return NextResponse.json({
       analytics,

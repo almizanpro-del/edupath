@@ -35,6 +35,8 @@ model University {
   reviews         Review[]
   transferFrom    TransferPathway[] @relation("TransferFrom")
   transferTo      TransferPathway[] @relation("TransferTo")
+  events          AnalyticsEvent[]
+  leads           Lead[]
 }
 
 model Program {
@@ -134,4 +136,37 @@ model TransferPathway {
 
   @@index([fromUniversityId])
   @@index([toUniversityId])
+}
+
+model AnalyticsEvent {
+  id            String   @id @default(cuid())
+  eventType     String   // university_view | search | compare | save | essay_review | scholarship_match | transfer_view | contact_form
+  universityId  String?  // related university (if applicable)
+  university    University? @relation(fields: [universityId], references: [id], onDelete: SetNull)
+  userId        String?  // authenticated user (if applicable)
+  sessionId     String?  // anonymous session ID
+  metadata      String   @default("{}") // JSON: { query, filters, field, gpa, etc. }
+  country       String?  // user's country (from profile or IP)
+  createdAt     DateTime @default(now())
+
+  @@index([eventType, createdAt])
+  @@index([universityId])
+  @@index([userId])
+}
+
+model Lead {
+  id            String   @id @default(cuid())
+  universityId  String
+  university    University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  studentName   String
+  studentEmail  String
+  country       String
+  gpa           Float?
+  field         String?
+  message       String
+  status        String   @default("new") // new | contacted | closed
+  createdAt     DateTime @default(now())
+
+  @@index([universityId])
+  @@index([status])
 }

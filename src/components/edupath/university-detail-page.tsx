@@ -3,11 +3,13 @@
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, DollarSign, Star, Heart, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus } from 'lucide-react'
+import { ArrowLeft, DollarSign, Star, Heart, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Mail, Send, Loader2 } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { Slider } from '@/components/ui/slider'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
@@ -21,6 +23,7 @@ import { useTranslations, useLocale } from 'next-intl'
 import { AuthModal, type UserProfile } from '@/components/edupath/auth-modal'
 import { ReviewForm } from '@/components/edupath/review-form'
 import { createClient } from '@/lib/supabase/client'
+import { track } from '@/lib/analytics-client'
 
 type Program = {
   id: string; name: string; degreeLevel: string; field: string
@@ -106,6 +109,11 @@ export function UniversityDetailPage({ uni }: Props) {
   const [reviewFormOpen, setReviewFormOpen] = React.useState(false)
   const [reviews, setReviews] = React.useState<Review[]>(uni.reviews)
 
+  // Track university view on mount
+  React.useEffect(() => {
+    track('university_view', { universityId: uni.id, metadata: { slug: uni.slug, name: uni.name } })
+  }, [uni.id, uni.slug, uni.name])
+
   // Check auth on mount
   React.useEffect(() => {
     const supabase = createClient()
@@ -145,6 +153,7 @@ export function UniversityDetailPage({ uni }: Props) {
     }
     const wasSaved = isSaved
     setIsSaved(!wasSaved)
+    track(wasSaved ? 'unsave' : 'save', { universityId: uni.id })
     try {
       const res = await fetch('/api/saved-lists', {
         method: 'POST',
@@ -166,6 +175,7 @@ export function UniversityDetailPage({ uni }: Props) {
       toast({ title: 'Removed from comparison', description: uni.name })
     } else {
       setIsComparing(true)
+      track('compare', { universityId: uni.id })
       toast({ title: 'Added to comparison', description: uni.name })
     }
   }
@@ -467,6 +477,9 @@ export function UniversityDetailPage({ uni }: Props) {
         </Tabs>
       </div>
 
+      {/* Contact form section */}
+      <ContactForm universityId={uni.id} universityName={uni.name} profile={profile} />
+
       {/* Auth + Review modals */}
       <AuthModal open={authModalOpen} onClose={() => setAuthModalOpen(false)} onAuthed={(p) => setProfile(p)} />
       <ReviewForm
@@ -476,6 +489,112 @@ export function UniversityDetailPage({ uni }: Props) {
         universityName={uni.name}
         onSubmitted={handleReviewSubmitted}
       />
+    </div>
+  )
+}
+
+// =================== Contact Form ===================
+function ContactForm({ universityId, universityName, profile }: { universityId: string; universityName: string; profile: UserProfile | null }) {
+  const { toast } = useToast()
+  const [name, setName] = React.useState(profile?.name ?? '')
+  const [email, setEmail] = React.useState('')
+  const [country, setCountry] = React.useState(profile?.country ?? '')
+  const [gpa, setGpa] = React.useState('')
+  const [field, setField] = React.useState(profile?.fieldOfInterest ?? '')
+  const [message, setMessage] = React.useState('')
+  const [submitting, setSubmitting] = React.useState(false)
+  const [submitted, setSubmitted] = React.useState(false)
+
+  React.useEffect(() => {
+    if (profile) {
+      setName(profile.name)
+      setCountry(profile.country)
+      setField(profile.fieldOfInterest ?? '')
+    }
+  }, [profile])
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!name || !email || !message) {
+      toast({ title: 'Please fill in all required fields', variant: 'destructive' })
+      return
+    }
+    setSubmitting(true)
+    try {
+      const res = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ universityId, studentName: name, studentEmail: email, country, gpa, field, message }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error)
+      setSubmitted(true)
+      setMessage('')
+      toast({ title: 'Message sent!', description: `${universityName} will respond to your inquiry.` })
+    } catch (err) {
+      toast({ title: 'Failed to send', description: err instanceof Error ? err.message : 'Please try again', variant: 'destructive' })
+    }
+    setSubmitting(false)
+  }
+
+  return (
+    <div className="container mx-auto max-w-7xl px-4 py-8 border-t">
+      <Card className="max-w-2xl mx-auto">
+        <CardContent className="pt-6">
+          {submitted ? (
+            <div className="text-center py-8">
+              <div className="size-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
+                <CheckCircle2 className="size-8 text-emerald-600" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">Message sent!</h3>
+              <p className="text-sm text-muted-foreground mb-4">{universityName} will respond to your inquiry.</p>
+              <Button variant="outline" onClick={() => setSubmitted(false)}>Send another message</Button>
+            </div>
+          ) : (
+            <>
+              <div className="flex items-center gap-2 mb-4">
+                <Mail className="size-5 text-emerald-600" />
+                <h3 className="text-lg font-bold">Contact {universityName}</h3>
+              </div>
+              <p className="text-sm text-muted-foreground mb-4">Send an inquiry to the admissions team. Your message creates a lead in their sponsor dashboard.</p>
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div>
+                    <Label htmlFor="contact-name" className="text-xs">Your Name *</Label>
+                    <Input id="contact-name" value={name} onChange={e => setName(e.target.value)} required />
+                  </div>
+                  <div>
+                    <Label htmlFor="contact-email" className="text-xs">Email *</Label>
+                    <Input id="contact-email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+                  </div>
+                </div>
+                <div className="grid sm:grid-cols-3 gap-3">
+                  <div>
+                    <Label htmlFor="contact-country" className="text-xs">Country</Label>
+                    <Input id="contact-country" value={country} onChange={e => setCountry(e.target.value)} />
+                  </div>
+                  <div>
+                    <Label htmlFor="contact-gpa" className="text-xs">GPA (optional)</Label>
+                    <Input id="contact-gpa" type="number" step="0.1" placeholder="3.5" value={gpa} onChange={e => setGpa(e.target.value)} />
+                  </div>
+                  <div>
+                    <Label htmlFor="contact-field" className="text-xs">Field of Interest</Label>
+                    <Input id="contact-field" value={field} onChange={e => setField(e.target.value)} />
+                  </div>
+                </div>
+                <div>
+                  <Label htmlFor="contact-msg" className="text-xs">Your Message *</Label>
+                  <Textarea id="contact-msg" rows={4} placeholder="I'm interested in applying to..." value={message} onChange={e => setMessage(e.target.value)} required maxLength={2000} />
+                </div>
+                <Button type="submit" className="w-full gap-2 bg-emerald-600 hover:bg-emerald-700" disabled={submitting}>
+                  {submitting ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
+                  Send Inquiry
+                </Button>
+              </form>
+            </>
+          )}
+        </CardContent>
+      </Card>
     </div>
   )
 }

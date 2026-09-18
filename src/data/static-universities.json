@@ -1,6 +1,6 @@
 [
   {
-    "id": "cmu6qs4uo002xr81vfhgpbbl9",
+    "id": "cmu6tdbnt002xr8rrws1o21kz",
     "slug": "agh-university-of-science-and-technology",
     "name": "AGH University of Science and Technology",
     "country": "Poland",
@@ -16,7 +16,7 @@
     "descriptionAr": "أبرز جامعة علوم وتكنولوجيا في بولندا، قوية في التعدين والطاقة وتكنولوجيا المعلومات.",
     "programs": [
       {
-        "id": "cmu6qs4up002zr81vcv1z96ya",
+        "id": "cmu6tdbnu002zr8rrwplohh9y",
         "name": "BSc Computer Science (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -27,7 +27,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4up0031r81vxcyzlqa0",
+        "id": "cmu6tdbnv0031r8rrej4s36sx",
         "name": "BSc Energy Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -40,7 +40,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4uq0033r81va7p9g2g5",
+        "id": "cmu6tdbnw0033r8rr4jlngm8h",
         "name": "AGH International Scholarship",
         "amountUsd": 2500,
         "amountType": "partial",
@@ -54,7 +54,7 @@
     "cheapestProgramTuition": 4200
   },
   {
-    "id": "cmu6qs50i0019r827cf1138t3",
+    "id": "cmu6tdbtf0019r8s3jjzm0jww",
     "slug": "abu-dhabi-university",
     "name": "Abu Dhabi University",
     "country": "United Arab Emirates",
@@ -76,7 +76,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs5030010r827clta7srm",
+    "id": "cmu6tdbt60010r8s36o2gb18e",
     "slug": "ain-shams-university",
     "name": "Ain Shams University",
     "country": "Egypt",
@@ -98,7 +98,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs50k001br827kyldx7wl",
+    "id": "cmu6tdbth001br8s3pthl2rjb",
     "slug": "ajman-university",
     "name": "Ajman University",
     "country": "United Arab Emirates",
@@ -120,7 +120,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs50j001ar827j2ye6rew",
+    "id": "cmu6tdbtg001ar8s3q2jcvipe",
     "slug": "al-ghurair-university",
     "name": "Al Ghurair University",
     "country": "United Arab Emirates",
@@ -142,7 +142,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs50h0018r8279tdwb3gl",
+    "id": "cmu6tdbtf0018r8s3czwu3fid",
     "slug": "al-balqa-applied-university",
     "name": "Al-Balqa Applied University",
     "country": "Jordan",
@@ -164,7 +164,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4v40043r81vsyl4uavg",
+    "id": "cmu6tdboe0043r8rr8dlm1t7q",
     "slug": "alexandria-university",
     "name": "Alexandria University",
     "country": "Egypt",
@@ -180,7 +180,7 @@
     "descriptionAr": "ثاني أكبر جامعة عامة في مصر. برامج قوية في الطب والهندسة والعلوم.",
     "programs": [
       {
-        "id": "cmu6qs4v50045r81vtj5rr6ax",
+        "id": "cmu6tdboe0045r8rrxjworz62",
         "name": "BSc Engineering (Arabic/English)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -191,7 +191,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4v50047r81vsayncqi6",
+        "id": "cmu6tdboe0047r8rrh6q5prbj",
         "name": "MD Medicine",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -204,7 +204,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4v60049r81vm3ln9hx3",
+        "id": "cmu6tdbof0049r8rrdf1ol5sy",
         "name": "Alexandria International Scholarship",
         "amountUsd": 2500,
         "amountType": "full",
@@ -218,7 +218,7 @@
     "cheapestProgramTuition": 2500
   },
   {
-    "id": "cmu6qs4pm0031r81j5pcr161b",
+    "id": "cmu6tdbim0031r8rfd3tteidk",
     "slug": "american-university-in-cairo",
     "name": "American University in Cairo",
     "country": "Egypt",
@@ -234,7 +234,7 @@
     "descriptionAr": "أعرق جامعة على الطريقة الأمريكية في مصر. شهادات معتمدة أمريكياً، تدريس بالإنجليزية، سمعة إقليمية قوية. رسوم أعلى لكن مع مساعدات مالية سخية.",
     "programs": [
       {
-        "id": "cmu6qs4pn0033r81jzarsmyr1",
+        "id": "cmu6tdbin0033r8rf3wo8jcpb",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -245,7 +245,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4pn0035r81j5n2rocbn",
+        "id": "cmu6tdbin0035r8rf7wkl9ykw",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -256,7 +256,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4po0037r81jlakudrmi",
+        "id": "cmu6tdbio0037r8rfid2lfig6",
         "name": "MA International Relations",
         "degreeLevel": "master",
         "field": "Social Sciences",
@@ -269,7 +269,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4po0039r81je13huoqr",
+        "id": "cmu6tdbio0039r8rfi9poz8sn",
         "name": "AUC Excellence Scholarship",
         "amountUsd": 14000,
         "amountType": "full",
@@ -277,7 +277,7 @@
         "deadline": "2026-03-15"
       },
       {
-        "id": "cmu6qs4pp003br81jxyeyyp6j",
+        "id": "cmu6tdbip003br8rfkevxs16f",
         "name": "AUC Financial Aid",
         "amountUsd": 7000,
         "amountType": "partial",
@@ -287,7 +287,7 @@
     ],
     "reviews": [
       {
-        "id": "cmu6qs4qe005br81j35om9efg",
+        "id": "cmu6tdbjt005br8rfpk6s4d52",
         "userName": "Fatima Al-Rashid",
         "userCountry": "Jordan",
         "ratingOverall": 4,
@@ -305,7 +305,7 @@
           "expensive",
           "modern campus"
         ],
-        "createdAt": "2026-09-18T09:14:19.767Z"
+        "createdAt": "2026-09-18T10:26:47.609Z"
       }
     ],
     "avgRating": 4,
@@ -313,7 +313,7 @@
     "cheapestProgramTuition": 13500
   },
   {
-    "id": "cmu6qs4q1004hr81ju5jpyrdn",
+    "id": "cmu6tdbj1004hr8rfyt1kb7o1",
     "slug": "american-university-of-beirut",
     "name": "American University of Beirut",
     "country": "Lebanon",
@@ -329,7 +329,7 @@
     "descriptionAr": "أقدم جامعة معتمدة أمريكياً في الشرق الأوسط (تأسست 1866). سمعة إقليمية، شهادات معتمدة أمريكياً، تدريس بالإنجليزية.",
     "programs": [
       {
-        "id": "cmu6qs4q2004jr81js26s9qkb",
+        "id": "cmu6tdbj2004jr8rf64uo9t90",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -340,7 +340,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4q2004lr81jy5gt0xvy",
+        "id": "cmu6tdbj2004lr8rflh7itmrp",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -351,7 +351,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4q2004nr81jmmdfwqcz",
+        "id": "cmu6tdbj3004nr8rfpwcpadwi",
         "name": "MD Medicine",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -364,7 +364,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4q3004pr81jq0zhbkwn",
+        "id": "cmu6tdbj4004pr8rf9grydjjy",
         "name": "AUBMerit Scholarship",
         "amountUsd": 16500,
         "amountType": "full",
@@ -372,7 +372,7 @@
         "deadline": "2026-03-15"
       },
       {
-        "id": "cmu6qs4q4004rr81j3r1yq68z",
+        "id": "cmu6tdbj7004rr8rfz6codbv3",
         "name": "AUB Need-Based Aid",
         "amountUsd": 8000,
         "amountType": "partial",
@@ -386,7 +386,7 @@
     "cheapestProgramTuition": 16000
   },
   {
-    "id": "cmu6qs4pz0048r81jdd21illk",
+    "id": "cmu6tdbiz0048r8rflupvzbq4",
     "slug": "american-university-of-sharjah",
     "name": "American University of Sharjah",
     "country": "United Arab Emirates",
@@ -402,7 +402,7 @@
     "descriptionAr": "جامعة معتمدة أمريكياً في الإمارات مع هيكل طلابي دولي قوي. تعليم ليبرالي على الطريقة الأمريكية مع برامج هندسة وأعمال.",
     "programs": [
       {
-        "id": "cmu6qs4q0004ar81jwkx3g0ml",
+        "id": "cmu6tdbiz004ar8rfegslclov",
         "name": "BSc Computer Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -413,7 +413,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4q0004cr81ji3n7kngh",
+        "id": "cmu6tdbj0004cr8rfjfviyzv0",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -426,7 +426,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4q0004er81jdvuw54h8",
+        "id": "cmu6tdbj0004er8rfwkc73vjy",
         "name": "AUS Merit Scholarship",
         "amountUsd": 17000,
         "amountType": "full",
@@ -434,7 +434,7 @@
         "deadline": "2026-04-15"
       },
       {
-        "id": "cmu6qs4q1004gr81jx8jl3jz9",
+        "id": "cmu6tdbj0004gr8rfuhlos7dh",
         "name": "AUS Family Tuition Discount",
         "amountUsd": 3000,
         "amountType": "partial",
@@ -448,7 +448,7 @@
     "cheapestProgramTuition": 16500
   },
   {
-    "id": "cmu6qs4v9004hr81vh05u4wbt",
+    "id": "cmu6tdboh004hr8rrc4jirail",
     "slug": "apollate-university",
     "name": "Amman Arab University",
     "country": "Jordan",
@@ -464,7 +464,7 @@
     "descriptionAr": "جامعة أردنية خاصة ببرامج في الأعمال وتكنولوجيا المعلومات والقانون.",
     "programs": [
       {
-        "id": "cmu6qs4va004jr81vv4pg796s",
+        "id": "cmu6tdboi004jr8rribjobg9j",
         "name": "BSc Information Technology",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -475,7 +475,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4vb004lr81vvlo6svxy",
+        "id": "cmu6tdboi004lr8rrskcnd7m4",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -488,7 +488,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4vb004nr81vz41fmbt4",
+        "id": "cmu6tdboj004nr8rrgcaqbw74",
         "name": "AAU Scholarship",
         "amountUsd": 1500,
         "amountType": "partial",
@@ -502,7 +502,7 @@
     "cheapestProgramTuition": 3000
   },
   {
-    "id": "cmu6qs4zg000mr827mepp1fdz",
+    "id": "cmu6tdbsp000mr8s3fvwa4m3b",
     "slug": "anadolu-university",
     "name": "Anadolu University",
     "country": "Turkey",
@@ -524,7 +524,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4u8001rr81vutxepdh2",
+    "id": "cmu6tdbnf001rr8rrgls3xrsg",
     "slug": "ankara-university",
     "name": "Ankara University",
     "country": "Turkey",
@@ -540,7 +540,7 @@
     "descriptionAr": "أول جامعة في تركيا، تأسست عام 1946. برامج قوية في القانون والعلوم السياسية والطب.",
     "programs": [
       {
-        "id": "cmu6qs4u9001tr81v0y7lt8n0",
+        "id": "cmu6tdbng001tr8rr9l7lquz4",
         "name": "BA Political Science (English)",
         "degreeLevel": "bachelor",
         "field": "Social Sciences",
@@ -551,7 +551,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4ua001vr81volnpi0kj",
+        "id": "cmu6tdbng001vr8rrrojojsx1",
         "name": "MD Medicine (Turkish)",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -564,7 +564,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ub001xr81voje7yrlj",
+        "id": "cmu6tdbnh001xr8rr4lj7cadt",
         "name": "Türkiye Bursları",
         "amountUsd": 8000,
         "amountType": "full",
@@ -578,7 +578,7 @@
     "cheapestProgramTuition": 800
   },
   {
-    "id": "cmu6qs50a0015r82750vt6d32",
+    "id": "cmu6tdbtb0015r8s3gx57uz35",
     "slug": "applied-science-university",
     "name": "Applied Science University",
     "country": "Jordan",
@@ -600,7 +600,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4zk000or827oibmu9sj",
+    "id": "cmu6tdbss000or8s3nwqcentu",
     "slug": "ataturk-university",
     "name": "Ataturk University",
     "country": "Turkey",
@@ -622,7 +622,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4z7000gr827kbhhjl4n",
+    "id": "cmu6tdbsh000gr8s39fupwhjg",
     "slug": "bielefeld-university",
     "name": "Bielefeld University",
     "country": "Germany",
@@ -644,7 +644,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4uh002cr81v8d17z90w",
+    "id": "cmu6tdbnn002cr8rrar5snrvd",
     "slug": "bilkent-university",
     "name": "Bilkent University",
     "country": "Turkey",
@@ -660,7 +660,7 @@
     "descriptionAr": "جامعة خاصة رائدة بالتدريس بالإنجليزية. قوية في علوم الكمبيوتر والهندسة والأعمال.",
     "programs": [
       {
-        "id": "cmu6qs4ui002er81vpgefeohg",
+        "id": "cmu6tdbno002er8rrii8cxs39",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -671,7 +671,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4ui002gr81vavg7og02",
+        "id": "cmu6tdbno002gr8rrkp2dt1bn",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -684,7 +684,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4uj002ir81vnf7u0tie",
+        "id": "cmu6tdbno002ir8rrbi9u8l3h",
         "name": "Bilkent Merit Scholarship",
         "amountUsd": 16000,
         "amountType": "full",
@@ -698,7 +698,7 @@
     "cheapestProgramTuition": 15500
   },
   {
-    "id": "cmu6qs4p4001ir81jd07lnq1n",
+    "id": "cmu6tdbi3001ir8rfrw7z9owy",
     "slug": "bogazici-university",
     "name": "Bogazici University",
     "country": "Turkey",
@@ -714,7 +714,7 @@
     "descriptionAr": "أعرق جامعة عامة تركية مع تدريس بالإنجليزية. قبول تنافسي للغاية ورسوم منخفضة جداً. تقع في حرم جامعي جميل يطل على البوسفور.",
     "programs": [
       {
-        "id": "cmu6qs4p5001kr81jms8bc5v5",
+        "id": "cmu6tdbi4001kr8rf6486qmpr",
         "name": "BSc Computer Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -725,7 +725,7 @@
         "entryReqs": "YOS or SAT, top 5% of applicants"
       },
       {
-        "id": "cmu6qs4p5001mr81j1exrrq6h",
+        "id": "cmu6tdbi4001mr8rfgean6opk",
         "name": "BA Economics (English)",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -736,7 +736,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4p6001or81jf0pm8ql9",
+        "id": "cmu6tdbi5001or8rfsa2yb62p",
         "name": "MSc Mechanical Engineering (English)",
         "degreeLevel": "master",
         "field": "Engineering",
@@ -749,7 +749,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4p6001qr81jvx4o2ow9",
+        "id": "cmu6tdbi6001qr8rfhyquh90a",
         "name": "Türkiye Bursları Scholarship",
         "amountUsd": 8000,
         "amountType": "full",
@@ -759,7 +759,7 @@
     ],
     "reviews": [
       {
-        "id": "cmu6qs4qe0059r81jmee9hgod",
+        "id": "cmu6tdbjs0059r8rfxnalmplf",
         "userName": "Ahmed Hassan",
         "userCountry": "Egypt",
         "ratingOverall": 5,
@@ -777,7 +777,7 @@
           "competitive",
           "beautiful campus"
         ],
-        "createdAt": "2026-09-18T09:14:19.766Z"
+        "createdAt": "2026-09-18T10:26:47.609Z"
       }
     ],
     "avgRating": 5,
@@ -785,7 +785,7 @@
     "cheapestProgramTuition": 800
   },
   {
-    "id": "cmu6qs4pp003cr81jml8angnz",
+    "id": "cmu6tdbiq003cr8rfwlo282va",
     "slug": "cairo-university",
     "name": "Cairo University",
     "country": "Egypt",
@@ -801,7 +801,7 @@
     "descriptionAr": "أقدم وأكبر جامعة عامة في مصر. ميسورة التكلفة، برامج قوية في الهندسة والطب والقانون. تدريس بالعربية بشكل أساسي مع بعض البرامج بالإنجليزية.",
     "programs": [
       {
-        "id": "cmu6qs4pq003er81jqygkx2zf",
+        "id": "cmu6tdbiq003er8rfq0zuxhlj",
         "name": "BSc Engineering (Arabic/English)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -812,7 +812,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4pr003gr81jxd9tiy0y",
+        "id": "cmu6tdbir003gr8rfzxlvjkqe",
         "name": "BSc Computer Science (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -825,7 +825,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4pr003ir81j5z8qy41j",
+        "id": "cmu6tdbir003ir8rfsvr93zvf",
         "name": "Egyptian Government Scholarship",
         "amountUsd": 2500,
         "amountType": "full",
@@ -839,7 +839,7 @@
     "cheapestProgramTuition": 2500
   },
   {
-    "id": "cmu6qs50m001cr827xzs1n2d9",
+    "id": "cmu6tdbti001cr8s38iu2xenq",
     "slug": "canadian-university-dubai",
     "name": "Canadian University Dubai",
     "country": "United Arab Emirates",
@@ -861,7 +861,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4oi0002r81jxx3fvdmh",
+    "id": "cmu6tdbhh0002r8rfdgswri3h",
     "slug": "coventry-university",
     "name": "Coventry University",
     "country": "United Kingdom",
@@ -877,7 +877,7 @@
     "descriptionAr": "جامعة حديثة تأسست بعد عام 1992 مع روابط قوية مع الصناعة ورسوم دراسية معقولة للطلاب الدوليين. معروفة ببرامج الهندسة automotive والأعمال والإعلام الرقمي.",
     "programs": [
       {
-        "id": "cmu6qs4oj0004r81j8iapa30m",
+        "id": "cmu6tdbhi0004r8rf7qcrorwb",
         "name": "BSc Automotive Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -888,7 +888,7 @@
         "entryReqs": "IELTS 6.0, Math + Physics A-levels"
       },
       {
-        "id": "cmu6qs4ok0006r81js9oeik4k",
+        "id": "cmu6tdbhj0006r8rf37s8ksi3",
         "name": "BSc Business Management",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -899,7 +899,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4ol0008r81jtlb5f02y",
+        "id": "cmu6tdbhj0008r8rf8rtwrvrx",
         "name": "MSc Data Science",
         "degreeLevel": "master",
         "field": "Computer Science",
@@ -912,7 +912,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ol000ar81j2tt223jk",
+        "id": "cmu6tdbhk000ar8rf3xowds5h",
         "name": "Coventry International Scholarship",
         "amountUsd": 3000,
         "amountType": "partial",
@@ -920,7 +920,7 @@
         "deadline": "2026-05-01"
       },
       {
-        "id": "cmu6qs4om000cr81jschynyq8",
+        "id": "cmu6tdbhl000cr8rfs7ith3my",
         "name": "Global Leaders Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
@@ -934,7 +934,7 @@
     "cheapestProgramTuition": 18500
   },
   {
-    "id": "cmu6qs4zi000nr827uzuch2pp",
+    "id": "cmu6tdbsq000nr8s3sztmkzgk",
     "slug": "cukurova-university",
     "name": "Cukurova University",
     "country": "Turkey",
@@ -956,7 +956,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4zc000jr8276kd64yva",
+    "id": "cmu6tdbsl000jr8s3hoqdhsbk",
     "slug": "dokuz-eylul-university",
     "name": "Dokuz Eylul University",
     "country": "Turkey",
@@ -978,7 +978,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4zb000ir827xaww3r3p",
+    "id": "cmu6tdbsk000ir8s3o5wfaugv",
     "slug": "ege-university",
     "name": "Ege University",
     "country": "Turkey",
@@ -1000,7 +1000,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4zd000kr827alotjgoc",
+    "id": "cmu6tdbsm000kr8s3magghpqr",
     "slug": "gazi-university",
     "name": "Gazi University",
     "country": "Turkey",
@@ -1022,7 +1022,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4zn000qr827glrq0h69",
+    "id": "cmu6tdbsw000qr8s3t14jc0ss",
     "slug": "gdansk-university-of-technology",
     "name": "Gdansk University of Technology",
     "country": "Poland",
@@ -1044,7 +1044,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4v7004ar81vsftucbr0",
+    "id": "cmu6tdbof004ar8rrmxmy5ct3",
     "slug": "german-jordanian-university",
     "name": "German Jordanian University",
     "country": "Jordan",
@@ -1060,7 +1060,7 @@
     "descriptionAr": "جامعة أردنية-ألمانية بتركيز على العلوم التطبيقية وفصل تدريب إلزامي في ألمانيا.",
     "programs": [
       {
-        "id": "cmu6qs4v8004cr81v2jwos9r9",
+        "id": "cmu6tdbog004cr8rrksz72xwe",
         "name": "BSc Mechanical Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -1071,7 +1071,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4v8004er81vylgauo7u",
+        "id": "cmu6tdbog004er8rrx6xxj7sw",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -1084,7 +1084,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4v8004gr81vbnjpohef",
+        "id": "cmu6tdbog004gr8rrwt9cwp4k",
         "name": "GJU Exchange Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
@@ -1098,7 +1098,7 @@
     "cheapestProgramTuition": 4200
   },
   {
-    "id": "cmu6qs4uy003pr81vj9tvat2t",
+    "id": "cmu6tdbo6003pr8rrm3s8zyyo",
     "slug": "guc-german-university-in-cairo",
     "name": "German University in Cairo",
     "country": "Egypt",
@@ -1114,7 +1114,7 @@
     "descriptionAr": "جامعة ألمانية-مصرية بشهادات معتمدة ألمانية. برامج قوية في الهندسة والإدارة.",
     "programs": [
       {
-        "id": "cmu6qs4uz003rr81vst56rmer",
+        "id": "cmu6tdbo6003rr8rrqghkn02l",
         "name": "BSc Computer Science (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -1125,7 +1125,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4uz003tr81vy9dgd9pd",
+        "id": "cmu6tdbo7003tr8rrn6fx2tq8",
         "name": "BSc Mechanical Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -1138,7 +1138,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4v0003vr81vo1oqvlcn",
+        "id": "cmu6tdbo7003vr8rr9ix49gnt",
         "name": "GUC Merit Scholarship",
         "amountUsd": 6000,
         "amountType": "partial",
@@ -1152,7 +1152,7 @@
     "cheapestProgramTuition": 12000
   },
   {
-    "id": "cmu6qs4yy000br827lpsnaodf",
+    "id": "cmu6tdbsb000br8s3x89hfcc2",
     "slug": "goethe-university-frankfurt",
     "name": "Goethe University Frankfurt",
     "country": "Germany",
@@ -1174,7 +1174,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4uc001yr81vbdxmp3ct",
+    "id": "cmu6tdbnj001yr8rr6ih1htkx",
     "slug": "hacettepe-university",
     "name": "Hacettepe University",
     "country": "Turkey",
@@ -1190,7 +1190,7 @@
     "descriptionAr": "أفضل جامعة طبية في تركيا. كما أنها قوية في الهندسة والعلوم الاجتماعية.",
     "programs": [
       {
-        "id": "cmu6qs4ue0020r81vkicqhr65",
+        "id": "cmu6tdbnj0020r8rrvhttqi97",
         "name": "MD Medicine (English)",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -1201,7 +1201,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4ue0022r81vsntqb9gd",
+        "id": "cmu6tdbnk0022r8rr68fgycfp",
         "name": "BSc Computer Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -1214,7 +1214,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4uf0024r81vg806vepw",
+        "id": "cmu6tdbnk0024r8rr08per4k4",
         "name": "Hacettepe International Scholarship",
         "amountUsd": 4000,
         "amountType": "partial",
@@ -1228,7 +1228,7 @@
     "cheapestProgramTuition": 850
   },
   {
-    "id": "cmu6qs50w001ir82702cxkp0r",
+    "id": "cmu6tdbtr001ir8s3hb5m9z2s",
     "slug": "haigazian-university",
     "name": "Haigazian University",
     "country": "Lebanon",
@@ -1250,7 +1250,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs50f0017r827x6g0htjs",
+    "id": "cmu6tdbte0017r8s3cm8euj41",
     "slug": "hashemite-university",
     "name": "Hashemite University",
     "country": "Jordan",
@@ -1272,7 +1272,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs501000zr827zn975cd0",
+    "id": "cmu6tdbt4000zr8s3rosfhkbq",
     "slug": "helwan-university",
     "name": "Helwan University",
     "country": "Egypt",
@@ -1294,7 +1294,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs50n001dr827t53nbuxf",
+    "id": "cmu6tdbtj001dr8s39ln1cc7a",
     "slug": "heriot-watt-university-dubai",
     "name": "Heriot-Watt University Dubai",
     "country": "United Arab Emirates",
@@ -1316,7 +1316,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs50r001fr8279vfyei3c",
+    "id": "cmu6tdbto001fr8s3iwsr0ab5",
     "slug": "ism-university-of-management-and-economics",
     "name": "ISM University of Management and Economics",
     "country": "Lithuania",
@@ -1338,7 +1338,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4zw000wr8276ssc21vl",
+    "id": "cmu6tdbt1000wr8s30l9q0zf2",
     "slug": "international-islamic-university-malaysia",
     "name": "International Islamic University Malaysia",
     "country": "Malaysia",
@@ -1360,7 +1360,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4p7001rr81jjhsbd92g",
+    "id": "cmu6tdbi7001rr8rf31l3rgl4",
     "slug": "istanbul-technical-university",
     "name": "Istanbul Technical University",
     "country": "Turkey",
@@ -1376,7 +1376,7 @@
     "descriptionAr": "أقدم جامعة تقنية في تركيا، تأسست عام 1773. برامج قوية في الهندسة والعمارة مع خيارات باللغة الإنجليزية.",
     "programs": [
       {
-        "id": "cmu6qs4p7001tr81jxsuwrejj",
+        "id": "cmu6tdbi8001tr8rf7h5n0of2",
         "name": "BSc Civil Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -1387,7 +1387,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4p8001vr81j8uk6yu4g",
+        "id": "cmu6tdbi8001vr8rf21en7t38",
         "name": "BSc Computer Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -1400,7 +1400,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4p8001xr81jt1iwijhs",
+        "id": "cmu6tdbi9001xr8rfabnh5l9l",
         "name": "ITU International Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
@@ -1414,7 +1414,7 @@
     "cheapestProgramTuition": 900
   },
   {
-    "id": "cmu6qs4pg002er81j0dpo19ft",
+    "id": "cmu6tdbif002er8rf5hanjfw7",
     "slug": "jagiellonian-university",
     "name": "Jagiellonian University",
     "country": "Poland",
@@ -1430,7 +1430,7 @@
     "descriptionAr": "أقدم جامعة في بولندا (تأسست 1364). برامج قوية في الطب والقانون والعلاقات الدولية. تكاليف معيشة معقولة في كراكوف.",
     "programs": [
       {
-        "id": "cmu6qs4ph002gr81jwx5349wh",
+        "id": "cmu6tdbig002gr8rf2wesp4ar",
         "name": "MD Medicine (English)",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -1441,7 +1441,7 @@
         "entryReqs": "Biology + Chemistry entrance exam"
       },
       {
-        "id": "cmu6qs4ph002ir81jt1j1jxtj",
+        "id": "cmu6tdbih002ir8rf1gt14v1h",
         "name": "BA International Relations",
         "degreeLevel": "bachelor",
         "field": "Social Sciences",
@@ -1454,7 +1454,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ph002kr81jpfvgakpo",
+        "id": "cmu6tdbih002kr8rf3elam8a3",
         "name": "JU Merit Scholarship",
         "amountUsd": 2000,
         "amountType": "partial",
@@ -1468,7 +1468,7 @@
     "cheapestProgramTuition": 3800
   },
   {
-    "id": "cmu6qs4pt003sr81je4q97qjb",
+    "id": "cmu6tdbiu003sr8rfp3vk5ovl",
     "slug": "jordan-university-of-science-and-technology",
     "name": "Jordan University of Science and Technology",
     "country": "Jordan",
@@ -1484,7 +1484,7 @@
     "descriptionAr": "جامعة تقنية رائدة تركز على الهندسة والطب والعلوم التطبيقية. سمعة إقليمية قوية، خاصة في البرامج الطبية والصيدلة.",
     "programs": [
       {
-        "id": "cmu6qs4pu003ur81jotr7uxhw",
+        "id": "cmu6tdbiu003ur8rf8zoamcty",
         "name": "BSc Mechanical Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -1495,7 +1495,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4pv003wr81j0mma44oa",
+        "id": "cmu6tdbiv003wr8rfq1wheyex",
         "name": "PharmD Pharmacy",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -1508,7 +1508,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4pw003yr81jwzjheo8o",
+        "id": "cmu6tdbix003yr8rf0hy30spg",
         "name": "JUST International Scholarship",
         "amountUsd": 1500,
         "amountType": "partial",
@@ -1522,7 +1522,7 @@
     "cheapestProgramTuition": 2400
   },
   {
-    "id": "cmu6qs4u3001dr81vnxhn0b1y",
+    "id": "cmu6tdbna001dr8rrhcq0ngin",
     "slug": "kit-karlsruhe",
     "name": "Karlsruhe Institute of Technology",
     "country": "Germany",
@@ -1538,7 +1538,7 @@
     "descriptionAr": "جامعة تقنية رائدة تجمع بين بحوث الهندسة والعلوم الطبيعية.",
     "programs": [
       {
-        "id": "cmu6qs4u4001fr81vf01wme18",
+        "id": "cmu6tdbnb001fr8rrkwotq9qz",
         "name": "BSc Computer Science (German)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -1549,7 +1549,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4u4001hr81vtc84pld8",
+        "id": "cmu6tdbnb001hr8rrukf950gy",
         "name": "MSc Electrical Engineering (English)",
         "degreeLevel": "master",
         "field": "Engineering",
@@ -1562,7 +1562,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4u5001jr81v8othx2kx",
+        "id": "cmu6tdbnc001jr8rrtp879y2l",
         "name": "Deutschlandstipendium",
         "amountUsd": 3600,
         "amountType": "partial",
@@ -1576,7 +1576,7 @@
     "cheapestProgramTuition": 1500
   },
   {
-    "id": "cmu6qs4vj0059r81vazr1ppw5",
+    "id": "cmu6tdbor0059r8rrmnyafykd",
     "slug": "kaunas-university-of-technology",
     "name": "Kaunas University of Technology",
     "country": "Lithuania",
@@ -1592,7 +1592,7 @@
     "descriptionAr": "أكبر جامعة تقنية في ليتوانيا ببرامج قوية بالإنجليزية في الهندسة وتكنولوجيا المعلومات.",
     "programs": [
       {
-        "id": "cmu6qs4vk005br81v9mu0gfnv",
+        "id": "cmu6tdbp7005br8rro5rntlqy",
         "name": "BSc Software Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -1603,7 +1603,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4vl005dr81vjz82mx77",
+        "id": "cmu6tdbp8005dr8rrlehurtdb",
         "name": "MSc Mechanical Engineering (English)",
         "degreeLevel": "master",
         "field": "Engineering",
@@ -1616,7 +1616,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4vm005fr81vzj8uvyy0",
+        "id": "cmu6tdbp9005fr8rrg9tayfo6",
         "name": "KTU Tuition Waiver",
         "amountUsd": 3500,
         "amountType": "full",
@@ -1630,7 +1630,7 @@
     "cheapestProgramTuition": 3500
   },
   {
-    "id": "cmu6qs4px003zr81jstrastcj",
+    "id": "cmu6tdbix003zr8rfv5mpwlvt",
     "slug": "khalifa-university",
     "name": "Khalifa University of Science and Technology",
     "country": "United Arab Emirates",
@@ -1646,7 +1646,7 @@
     "descriptionAr": "أعلى جامعة في الإمارات العربية المتحدة في الهندسة والعلوم. منح سخية للطلاب الدوليين، تدريس بالإنجليزية، حرم جامعي حديث.",
     "programs": [
       {
-        "id": "cmu6qs4px0041r81j1cr5qpej",
+        "id": "cmu6tdbiy0041r8rf6s0ma8hn",
         "name": "BSc Aerospace Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -1657,7 +1657,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4py0043r81jbj258ygt",
+        "id": "cmu6tdbiy0043r8rf39qof7ak",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -1668,7 +1668,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4py0045r81jyvqakxb0",
+        "id": "cmu6tdbiy0045r8rfzgmzk27q",
         "name": "MSc Electrical Engineering",
         "degreeLevel": "master",
         "field": "Engineering",
@@ -1681,7 +1681,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4pz0047r81jpq8gkjlk",
+        "id": "cmu6tdbiz0047r8rf0j0irlp2",
         "name": "KU Full Scholarship",
         "amountUsd": 28000,
         "amountType": "full",
@@ -1695,7 +1695,7 @@
     "cheapestProgramTuition": 16000
   },
   {
-    "id": "cmu6qs4tq000lr81vdrqrlt65",
+    "id": "cmu6tdbmx000lr8rr8ovxiuin",
     "slug": "kingston-university",
     "name": "Kingston University",
     "country": "United Kingdom",
@@ -1711,7 +1711,7 @@
     "descriptionAr": "جامعة لندنية ببرامج قوية في التصميم والأعمال والهندسة.",
     "programs": [
       {
-        "id": "cmu6qs4tr000nr81vcvawyojk",
+        "id": "cmu6tdbmy000nr8rrqfbog0sw",
         "name": "BSc Mechanical Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -1722,7 +1722,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4ts000pr81vv7rmylrj",
+        "id": "cmu6tdbmz000pr8rrvhavrida",
         "name": "BA Fashion Design",
         "degreeLevel": "bachelor",
         "field": "Arts & Humanities",
@@ -1735,7 +1735,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ts000rr81vm54c2p9u",
+        "id": "cmu6tdbn0000rr8rro76cmxxl",
         "name": "Kingston International Award",
         "amountUsd": 3500,
         "amountType": "partial",
@@ -1749,7 +1749,7 @@
     "cheapestProgramTuition": 16800
   },
   {
-    "id": "cmu6qs4p9001yr81jhep27ckb",
+    "id": "cmu6tdbi9001yr8rfd2tpspyy",
     "slug": "koç-university",
     "name": "Koç University",
     "country": "Turkey",
@@ -1765,7 +1765,7 @@
     "descriptionAr": "جامعة خاصة رائدة في إسطنبول مع تدريس بالإنجليزية وشراكات دولية قوية. رسوم أعلى لكن مع منح سخية.",
     "programs": [
       {
-        "id": "cmu6qs4p90020r81jena8gnvd",
+        "id": "cmu6tdbia0020r8rfl0j7bmwk",
         "name": "BSc Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -1776,7 +1776,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4pa0022r81j300chj0f",
+        "id": "cmu6tdbia0022r8rftz4iedai",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -1789,7 +1789,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4pa0024r81jv032b300",
+        "id": "cmu6tdbib0024r8rfm3rpvqyd",
         "name": "Merit Scholarship",
         "amountUsd": 18000,
         "amountType": "full",
@@ -1803,7 +1803,7 @@
     "cheapestProgramTuition": 18000
   },
   {
-    "id": "cmu6qs4vn005gr81v07wad59k",
+    "id": "cmu6tdbpa005gr8rrxit90w7o",
     "slug": "lebanese-american-university",
     "name": "Lebanese American University",
     "country": "Lebanon",
@@ -1819,7 +1819,7 @@
     "descriptionAr": "جامعة معتمدة أمريكياً في لبنان ببرامج قوية في الهندسة والأعمال والفنون.",
     "programs": [
       {
-        "id": "cmu6qs4vo005ir81vzyb0g04x",
+        "id": "cmu6tdbpb005ir8rr0dj5c0v9",
         "name": "BSc Computer Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -1830,7 +1830,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4vo005kr81vm246in88",
+        "id": "cmu6tdbpc005kr8rrhng89o4d",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -1843,7 +1843,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4vp005mr81vvwihg4v6",
+        "id": "cmu6tdbpd005mr8rrrvn7mvjz",
         "name": "LAU Merit Scholarship",
         "amountUsd": 15000,
         "amountType": "full",
@@ -1857,7 +1857,7 @@
     "cheapestProgramTuition": 14000
   },
   {
-    "id": "cmu6qs50t001gr827wxnqv227",
+    "id": "cmu6tdbtq001gr8s38eofhaj7",
     "slug": "lebanese-university",
     "name": "Lebanese University",
     "country": "Lebanon",
@@ -1879,7 +1879,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4ye0004r8271nk8ddqg",
+    "id": "cmu6tdbs00004r8s3l3qby42h",
     "slug": "leeds-beckett-university",
     "name": "Leeds Beckett University",
     "country": "United Kingdom",
@@ -1901,7 +1901,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs50p001er827j8a7hku9",
+    "id": "cmu6tdbtl001er8s35ezx3eal",
     "slug": "lithuanian-university-of-health-sciences",
     "name": "Lithuanian University of Health Sciences",
     "country": "Lithuania",
@@ -1923,7 +1923,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4yh0006r827b08jme2i",
+    "id": "cmu6tdbs30006r8s3g17uvmm6",
     "slug": "liverpool-john-moores-university",
     "name": "Liverpool John Moores University",
     "country": "United Kingdom",
@@ -1945,7 +1945,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4ya0001r827egh1nyjf",
+    "id": "cmu6tdbrw0001r8s3u6sp5eoq",
     "slug": "london-south-bank-university",
     "name": "London South Bank University",
     "country": "United Kingdom",
@@ -1967,7 +1967,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4v1003wr81vfaumycfl",
+    "id": "cmu6tdboa003wr8rrcbhoao7b",
     "slug": "msa-university",
     "name": "MSA University",
     "country": "Egypt",
@@ -1983,7 +1983,7 @@
     "descriptionAr": "جامعة خاصة حديثة بشهادات معتمدة بريطانية عبر جامعات شريكة.",
     "programs": [
       {
-        "id": "cmu6qs4v2003yr81v6h667ln5",
+        "id": "cmu6tdbob003yr8rr51hh3ypr",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -1994,7 +1994,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4v30040r81vrf4xrvff",
+        "id": "cmu6tdboc0040r8rr18lu9wgw",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -2007,7 +2007,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4v30042r81ve3hiss18",
+        "id": "cmu6tdbod0042r8rrmpsc2k2r",
         "name": "MSA Academic Scholarship",
         "amountUsd": 3000,
         "amountType": "partial",
@@ -2021,7 +2021,7 @@
     "cheapestProgramTuition": 8500
   },
   {
-    "id": "cmu6qs4yf0005r8276gvdrfk0",
+    "id": "cmu6tdbs10005r8s3gkm06miq",
     "slug": "manchester-metropolitan-university",
     "name": "Manchester Metropolitan University",
     "country": "United Kingdom",
@@ -2043,7 +2043,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs5040011r827we35ouj1",
+    "id": "cmu6tdbt70011r8s36frgra9m",
     "slug": "mansoura-university",
     "name": "Mansoura University",
     "country": "Egypt",
@@ -2065,7 +2065,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4zf000lr827nh9sq4bd",
+    "id": "cmu6tdbso000lr8s345j06zyv",
     "slug": "marmara-university",
     "name": "Marmara University",
     "country": "Turkey",
@@ -2087,7 +2087,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4on000dr81jhgv2njfa",
+    "id": "cmu6tdbhl000dr8rf40tc5c3d",
     "slug": "middlesex-university-london",
     "name": "Middlesex University London",
     "country": "United Kingdom",
@@ -2103,7 +2103,7 @@
     "descriptionAr": "جامعة متنوعة مقرها لندن مع تركيز دولي قوي وواحدة من أعلى نسب الطلاب الدوليين في المملكة المتحدة.",
     "programs": [
       {
-        "id": "cmu6qs4oo000fr81jg9w2oww5",
+        "id": "cmu6tdbhm000fr8rfp0m5ayzv",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -2114,7 +2114,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4oo000hr81jajmm5vp6",
+        "id": "cmu6tdbho000hr8rfimr9ontx",
         "name": "BA International Business",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -2127,7 +2127,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4op000jr81jfpp0xbcl",
+        "id": "cmu6tdbho000jr8rfqgcl77dc",
         "name": "International Regional Scholarship",
         "amountUsd": 2500,
         "amountType": "partial",
@@ -2141,7 +2141,7 @@
     "cheapestProgramTuition": 17000
   },
   {
-    "id": "cmu6qs4zx000xr827zd0kl16h",
+    "id": "cmu6tdbt2000xr8s3lrygtnvv",
     "slug": "multimedia-university",
     "name": "Multimedia University",
     "country": "Malaysia",
@@ -2163,7 +2163,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4zr000tr8276mdegwur",
+    "id": "cmu6tdbsz000tr8s3n37fw858",
     "slug": "nicolaus-copernicus-university",
     "name": "Nicolaus Copernicus University",
     "country": "Poland",
@@ -2185,7 +2185,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs50u001hr827hlgbh17o",
+    "id": "cmu6tdbtq001hr8s3s86559nb",
     "slug": "notre-dame-university-louaize",
     "name": "Notre Dame University-Louaize",
     "country": "Lebanon",
@@ -2207,7 +2207,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4yu0009r827fdtsdo3k",
+    "id": "cmu6tdbs80009r8s3ji61omad",
     "slug": "oxford-brookes-university",
     "name": "Oxford Brookes University",
     "country": "United Kingdom",
@@ -2229,7 +2229,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs5090014r8277rtsm4k7",
+    "id": "cmu6tdbta0014r8s39gj57pb3",
     "slug": "philadelphia-university-jordan",
     "name": "Philadelphia University",
     "country": "Jordan",
@@ -2251,7 +2251,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4zp000rr827hl55pheo",
+    "id": "cmu6tdbsx000rr8s3qk6wdsr4",
     "slug": "poznan-university-of-technology",
     "name": "Poznan University of Technology",
     "country": "Poland",
@@ -2273,7 +2273,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4tx000zr81vyo15go4x",
+    "id": "cmu6tdbn3000zr8rrjjyud4zu",
     "slug": "rwth-aachen",
     "name": "RWTH Aachen University",
     "country": "Germany",
@@ -2289,7 +2289,7 @@
     "descriptionAr": "أكبر جامعة تقنية في ألمانيا، مشهورة بالهندسة الميكانيكية وعلوم الكمبيوتر.",
     "programs": [
       {
-        "id": "cmu6qs4tx0011r81vnr2pgatc",
+        "id": "cmu6tdbn40011r8rrfx13rpls",
         "name": "BSc Mechanical Engineering (German)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -2300,7 +2300,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4ty0013r81vmiejacqx",
+        "id": "cmu6tdbn40013r8rrsig9optl",
         "name": "MSc Computer Science (English)",
         "degreeLevel": "master",
         "field": "Computer Science",
@@ -2313,7 +2313,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ty0015r81v8028wq56",
+        "id": "cmu6tdbn50015r8rrpwxhlggr",
         "name": "DAAD Scholarship",
         "amountUsd": 10000,
         "amountType": "partial",
@@ -2327,7 +2327,7 @@
     "cheapestProgramTuition": 1500
   },
   {
-    "id": "cmu6qs4yd0003r8274ejj2eut",
+    "id": "cmu6tdbrz0003r8s3xtj1wrcz",
     "slug": "sheffield-hallam-university",
     "name": "Sheffield Hallam University",
     "country": "United Kingdom",
@@ -2349,7 +2349,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs5070013r827fnofd6r3",
+    "id": "cmu6tdbt90013r8s3mbjspwky",
     "slug": "suez-canal-university",
     "name": "Suez Canal University",
     "country": "Egypt",
@@ -2371,7 +2371,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4zy000yr8272vj1llag",
+    "id": "cmu6tdbt3000yr8s3kijmyjg9",
     "slug": "sunway-university",
     "name": "Sunway University",
     "country": "Malaysia",
@@ -2393,7 +2393,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4z1000dr827mjzlc5yy",
+    "id": "cmu6tdbsd000dr8s31pcwexcu",
     "slug": "tu-dortmund",
     "name": "TU Dortmund",
     "country": "Germany",
@@ -2415,7 +2415,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs5060012r827f0oj3c14",
+    "id": "cmu6tdbt70012r8s3f0svupdx",
     "slug": "tanta-university",
     "name": "Tanta University",
     "country": "Egypt",
@@ -2437,7 +2437,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4uw003ir81vqsc0e6ep",
+    "id": "cmu6tdbo3003ir8rrp4tm5d12",
     "slug": "taylors-university",
     "name": "Taylor's University",
     "country": "Malaysia",
@@ -2453,7 +2453,7 @@
     "descriptionAr": "جامعة خاصة رائدة في ماليزيا ببرامج قوية في الضيافة والأعمال والتصميم.",
     "programs": [
       {
-        "id": "cmu6qs4ux003kr81vvnbey0yk",
+        "id": "cmu6tdbo4003kr8rr4at27j42",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -2464,7 +2464,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4ux003mr81v3bhcvr3g",
+        "id": "cmu6tdbo4003mr8rrea8xap1u",
         "name": "BA Hospitality Management",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -2477,7 +2477,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ux003or81va3mjwev7",
+        "id": "cmu6tdbo5003or8rruc9rwrnr",
         "name": "Taylor's Excellence Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
@@ -2491,7 +2491,7 @@
     "cheapestProgramTuition": 7500
   },
   {
-    "id": "cmu6qs4ot000rr81jo7iwm662",
+    "id": "cmu6tdbht000rr8rfezn7ggbx",
     "slug": "tu-berlin",
     "name": "Technical University of Berlin",
     "country": "Germany",
@@ -2507,7 +2507,7 @@
     "descriptionAr": "إحدى أبرز الجامعات التقنية في ألمانيا مع رسوم فصلية رمزية. برامج قوية في الهندسة وعلوم الكمبيوتر والعمارة. معظم البرامج بالألمانية مع تزايد الماجستير بالإنجليزية.",
     "programs": [
       {
-        "id": "cmu6qs4ov000tr81jcvzgoouu",
+        "id": "cmu6tdbhu000tr8rf9d742t5r",
         "name": "BSc Computer Science (German)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -2518,7 +2518,7 @@
         "entryReqs": "TestDaF 4x4 or DSH-2"
       },
       {
-        "id": "cmu6qs4ow000vr81jq3m6o47k",
+        "id": "cmu6tdbhv000vr8rfu4lez5al",
         "name": "MSc Computer Science (English)",
         "degreeLevel": "master",
         "field": "Computer Science",
@@ -2529,7 +2529,7 @@
         "entryReqs": "IELTS 6.5, BSc in CS"
       },
       {
-        "id": "cmu6qs4ow000xr81jinib5ie9",
+        "id": "cmu6tdbhw000xr8rfyaids96h",
         "name": "BSc Mechanical Engineering (German)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -2542,7 +2542,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ox000zr81jknlkbtfz",
+        "id": "cmu6tdbhw000zr8rfwtp5rgrp",
         "name": "DAAD Scholarship",
         "amountUsd": 10000,
         "amountType": "partial",
@@ -2550,7 +2550,7 @@
         "deadline": "2026-10-31"
       },
       {
-        "id": "cmu6qs4ox0011r81jmczoykb7",
+        "id": "cmu6tdbhx0011r8rff3k43db6",
         "name": "Deutschlandstipendium",
         "amountUsd": 3600,
         "amountType": "partial",
@@ -2560,7 +2560,7 @@
     ],
     "reviews": [
       {
-        "id": "cmu6qs4qd0057r81jfhk9a02y",
+        "id": "cmu6tdbjs0057r8rf3utan28q",
         "userName": "Fatima Al-Rashid",
         "userCountry": "Jordan",
         "ratingOverall": 5,
@@ -2578,7 +2578,7 @@
           "easy visa",
           "international community"
         ],
-        "createdAt": "2026-09-18T09:14:19.766Z"
+        "createdAt": "2026-09-18T10:26:47.608Z"
       }
     ],
     "avgRating": 5,
@@ -2586,7 +2586,7 @@
     "cheapestProgramTuition": 1500
   },
   {
-    "id": "cmu6qs4oz0019r81j89rd4htx",
+    "id": "cmu6tdbhz0019r8rf1teepq24",
     "slug": "tu-munich",
     "name": "Technical University of Munich",
     "country": "Germany",
@@ -2602,7 +2602,7 @@
     "descriptionAr": "الجامعة التقنية رقم 1 في ألمانيا (تصنيف QS). مشهورة بالهندسة والعلوم الطبيعية وعلوم الكمبيوتر. لا توجد رسوم دراسية لمعظم البرامج.",
     "programs": [
       {
-        "id": "cmu6qs4p0001br81jb7cv7jpc",
+        "id": "cmu6tdbi0001br8rf4rw0zwmk",
         "name": "BSc Information Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -2613,7 +2613,7 @@
         "entryReqs": "IELTS 6.5, strong math background"
       },
       {
-        "id": "cmu6qs4p1001dr81jb14qz9h2",
+        "id": "cmu6tdbi1001dr8rfaa8iw22a",
         "name": "MSc Aerospace (English)",
         "degreeLevel": "master",
         "field": "Engineering",
@@ -2624,7 +2624,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4p2001fr81j1bjwyhwy",
+        "id": "cmu6tdbi2001fr8rf96a4v82s",
         "name": "BSc Management and Technology (English)",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -2637,7 +2637,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4p3001hr81j8vpi8mit",
+        "id": "cmu6tdbi3001hr8rf8ebb1hvi",
         "name": "TUM Asia Scholarship",
         "amountUsd": 8000,
         "amountType": "partial",
@@ -2651,7 +2651,7 @@
     "cheapestProgramTuition": 1500
   },
   {
-    "id": "cmu6qs4vc004or81vd2b3giue",
+    "id": "cmu6tdbok004or8rrk0hm1bow",
     "slug": "united-arab-emirates-university",
     "name": "United Arab Emirates University",
     "country": "United Arab Emirates",
@@ -2667,7 +2667,7 @@
     "descriptionAr": "أقدم جامعة في الإمارات. برامج قوية في الهندسة والطب والأعمال بالتدريس بالإنجليزية.",
     "programs": [
       {
-        "id": "cmu6qs4vd004qr81v8fj7ufzy",
+        "id": "cmu6tdbok004qr8rriqohzeqd",
         "name": "BSc Chemical Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -2678,7 +2678,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4vd004sr81v38bggbfq",
+        "id": "cmu6tdbol004sr8rrxpv4gcj5",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -2691,7 +2691,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ve004ur81vzxjbyiyt",
+        "id": "cmu6tdbol004ur8rrjvc5cwh3",
         "name": "UAEU Chancellor Scholarship",
         "amountUsd": 25000,
         "amountType": "full",
@@ -2705,7 +2705,7 @@
     "cheapestProgramTuition": 11000
   },
   {
-    "id": "cmu6qs4uu003br81vreg4d777",
+    "id": "cmu6tdbo1003br8rroephnqko",
     "slug": "universiti-kebangsaan-malaysia",
     "name": "Universiti Kebangsaan Malaysia",
     "country": "Malaysia",
@@ -2721,7 +2721,7 @@
     "descriptionAr": "الجامعة الوطنية في ماليزيا، قوية في الطب والهندسة والدراسات الإسلامية.",
     "programs": [
       {
-        "id": "cmu6qs4uu003dr81vka13oqlm",
+        "id": "cmu6tdbo1003dr8rrr3xi85ya",
         "name": "MD Medicine",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -2732,7 +2732,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4uv003fr81vspwqmp72",
+        "id": "cmu6tdbo2003fr8rr05dzhrdy",
         "name": "BSc Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -2745,7 +2745,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4uv003hr81vmaoq0f9y",
+        "id": "cmu6tdbo2003hr8rrojm2sl9u",
         "name": "UKM International Grant",
         "amountUsd": 3000,
         "amountType": "partial",
@@ -2759,7 +2759,7 @@
     "cheapestProgramTuition": 4800
   },
   {
-    "id": "cmu6qs4zt000ur8275hsnzh57",
+    "id": "cmu6tdbsz000ur8s3meunpsaa",
     "slug": "universiti-putra-malaysia",
     "name": "Universiti Putra Malaysia",
     "country": "Malaysia",
@@ -2781,7 +2781,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4ur0034r81vnpclaaef",
+    "id": "cmu6tdbnx0034r8rr4mxsrkou",
     "slug": "universiti-sains-malaysia",
     "name": "Universiti Sains Malaysia",
     "country": "Malaysia",
@@ -2797,7 +2797,7 @@
     "descriptionAr": "ثاني أقدم جامعة في ماليزيا، قوية في العلوم والصيدلة والطب.",
     "programs": [
       {
-        "id": "cmu6qs4us0036r81v2xg78c3u",
+        "id": "cmu6tdbnx0036r8rrth8zzzwb",
         "name": "BSc Pharmacy",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -2808,7 +2808,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4us0038r81vq4td30o0",
+        "id": "cmu6tdbny0038r8rrkcze1ri8",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -2821,7 +2821,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ut003ar81v3t22mtip",
+        "id": "cmu6tdbo0003ar8rrvvatcz9b",
         "name": "USM International Scholarship",
         "amountUsd": 3500,
         "amountType": "partial",
@@ -2835,7 +2835,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4pk002ur81jeirszkpx",
+    "id": "cmu6tdbik002ur8rf1f71eze7",
     "slug": "universiti-teknologi-malaysia",
     "name": "Universiti Teknologi Malaysia",
     "country": "Malaysia",
@@ -2851,7 +2851,7 @@
     "descriptionAr": "الجامعة الماليزية الرائدة في الهندسة والتكنولوجيا. ميسورة التكلفة، تدريس بالإنجليزية، مع توظيف صناعي قوي.",
     "programs": [
       {
-        "id": "cmu6qs4pl002wr81jxg64mb24",
+        "id": "cmu6tdbik002wr8rfj7tcvfav",
         "name": "BEng Civil Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -2862,7 +2862,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4pl002yr81jn5auupg6",
+        "id": "cmu6tdbil002yr8rf5ly9xzuy",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -2875,7 +2875,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4pl0030r81jw8kgdeyf",
+        "id": "cmu6tdbil0030r8rfasmdtxsm",
         "name": "UTM International Grant",
         "amountUsd": 3000,
         "amountType": "partial",
@@ -2889,7 +2889,7 @@
     "cheapestProgramTuition": 4500
   },
   {
-    "id": "cmu6qs4zu000vr827fm91grwn",
+    "id": "cmu6tdbt0000vr8s38rbq6dmm",
     "slug": "universiti-utara-malaysia",
     "name": "Universiti Utara Malaysia",
     "country": "Malaysia",
@@ -2911,7 +2911,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4vq005nr81vbzw2sd8n",
+    "id": "cmu6tdbpe005nr8rrn2es9abo",
     "slug": "university-of-balamand",
     "name": "University of Balamand",
     "country": "Lebanon",
@@ -2927,7 +2927,7 @@
     "descriptionAr": "جامعة لبنانية ببرامج قوية في الهندسة والأعمال وعلوم الصحة.",
     "programs": [
       {
-        "id": "cmu6qs4vr005pr81vinuyeci7",
+        "id": "cmu6tdbpf005pr8rrlyta35lo",
         "name": "BSc Civil Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -2938,7 +2938,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4vs005rr81vtek9d8q7",
+        "id": "cmu6tdbpf005rr8rr7terhtnz",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -2951,7 +2951,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4vs005tr81ve27733tn",
+        "id": "cmu6tdbpg005tr8rrr82olhcu",
         "name": "UOB Scholarship",
         "amountUsd": 4000,
         "amountType": "partial",
@@ -2965,7 +2965,7 @@
     "cheapestProgramTuition": 8500
   },
   {
-    "id": "cmu6qs4yz000cr8275lch9lub",
+    "id": "cmu6tdbsc000cr8s36fa0ipp0",
     "slug": "university-of-bonn",
     "name": "University of Bonn",
     "country": "Germany",
@@ -2987,7 +2987,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4tn000er81v76fazh7i",
+    "id": "cmu6tdbms000er8rryj3e1ob4",
     "slug": "university-of-brighton",
     "name": "University of Brighton",
     "country": "United Kingdom",
@@ -3003,7 +3003,7 @@
     "descriptionAr": "جامعة ساحلية معروفة ببرامج الفنون الإبداعية والهندسة والصيدلة.",
     "programs": [
       {
-        "id": "cmu6qs4to000gr81v2sevc4y3",
+        "id": "cmu6tdbmt000gr8rr2dcnuldc",
         "name": "BSc Pharmacy",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -3014,7 +3014,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4tp000ir81v4i9j6pkt",
+        "id": "cmu6tdbmu000ir8rr5cej00c7",
         "name": "BA Graphic Design",
         "degreeLevel": "bachelor",
         "field": "Arts & Humanities",
@@ -3027,7 +3027,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4tp000kr81vyi5a9jua",
+        "id": "cmu6tdbmu000kr8rrizjhhw2g",
         "name": "Brighton International Scholarship",
         "amountUsd": 3000,
         "amountType": "partial",
@@ -3041,7 +3041,7 @@
     "cheapestProgramTuition": 17000
   },
   {
-    "id": "cmu6qs4yj0007r8275nlheece",
+    "id": "cmu6tdbs50007r8s38n7jv4a9",
     "slug": "university-of-central-lancashire",
     "name": "University of Central Lancashire",
     "country": "United Kingdom",
@@ -3063,7 +3063,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4yw000ar827lrcsm57o",
+    "id": "cmu6tdbsa000ar8s3xj0p4gnr",
     "slug": "university-of-cologne",
     "name": "University of Cologne",
     "country": "Germany",
@@ -3085,7 +3085,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4z9000hr8274f2r0g4h",
+    "id": "cmu6tdbsj000hr8s3t54bw4m5",
     "slug": "university-of-duisburg-essen",
     "name": "University of Duisburg-Essen",
     "country": "Germany",
@@ -3107,7 +3107,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4yb0002r827gme5owcg",
+    "id": "cmu6tdbrx0002r8s3xdsf128d",
     "slug": "university-of-east-london",
     "name": "University of East London",
     "country": "United Kingdom",
@@ -3129,7 +3129,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4u6001kr81vizwwrdfb",
+    "id": "cmu6tdbnd001kr8rrjtq0kcjt",
     "slug": "university-of-freiburg",
     "name": "University of Freiburg",
     "country": "Germany",
@@ -3145,7 +3145,7 @@
     "descriptionAr": "جامعة تاريخية معروفة بعلوم الحياة والطب والدراسات البيئية.",
     "programs": [
       {
-        "id": "cmu6qs4u6001mr81vt1f2l1ed",
+        "id": "cmu6tdbnd001mr8rr3ej0m3o8",
         "name": "BSc Biology (German)",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -3156,7 +3156,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4u6001or81vceig5cm1",
+        "id": "cmu6tdbnd001or8rr7a2xh9vi",
         "name": "MSc Environmental Sciences (English)",
         "degreeLevel": "master",
         "field": "Engineering",
@@ -3169,7 +3169,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4u7001qr81vehows6z4",
+        "id": "cmu6tdbne001qr8rr9qpoedlg",
         "name": "Freiburg International Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
@@ -3183,7 +3183,7 @@
     "cheapestProgramTuition": 1500
   },
   {
-    "id": "cmu6qs4y80000r827dsl5xit0",
+    "id": "cmu6tdbru0000r8s3738d8gru",
     "slug": "university-of-greenwich",
     "name": "University of Greenwich",
     "country": "United Kingdom",
@@ -3205,7 +3205,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4tz0016r81v7rl2j88v",
+    "id": "cmu6tdbn60016r8rrkqkj0owf",
     "slug": "university-of-hamburg",
     "name": "University of Hamburg",
     "country": "Germany",
@@ -3221,7 +3221,7 @@
     "descriptionAr": "جامعة بحثية شاملة في شمال ألمانيا. لا توجد رسوم دراسية لمعظم البرامج.",
     "programs": [
       {
-        "id": "cmu6qs4u00018r81v8mqy7e7t",
+        "id": "cmu6tdbn70018r8rrskit1ltl",
         "name": "BSc Physics (German)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -3232,7 +3232,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4u1001ar81vk6hvburv",
+        "id": "cmu6tdbn8001ar8rrkmj5bm8w",
         "name": "MA International Relations (English)",
         "degreeLevel": "master",
         "field": "Social Sciences",
@@ -3245,7 +3245,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4u2001cr81vplurnqxz",
+        "id": "cmu6tdbn9001cr8rr0ywyd6in",
         "name": "Hamburg International Scholarship",
         "amountUsd": 6000,
         "amountType": "partial",
@@ -3259,7 +3259,7 @@
     "cheapestProgramTuition": 1500
   },
   {
-    "id": "cmu6qs4tk0007r81vw6xn56kx",
+    "id": "cmu6tdbmp0007r8rrn52lyosb",
     "slug": "university-of-hertfordshire",
     "name": "University of Hertfordshire",
     "country": "United Kingdom",
@@ -3275,7 +3275,7 @@
     "descriptionAr": "جامعة حديثة قرب لندن ببرامج قوية في الهندسة وعلوم الكمبيوتر.",
     "programs": [
       {
-        "id": "cmu6qs4tl0009r81v5iqljg10",
+        "id": "cmu6tdbmp0009r8rrd7palryn",
         "name": "BSc Aerospace Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -3286,7 +3286,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4tm000br81vh8f9h3v3",
+        "id": "cmu6tdbmq000br8rr9u3t9f4i",
         "name": "MSc Data Science",
         "degreeLevel": "master",
         "field": "Computer Science",
@@ -3299,7 +3299,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4tm000dr81v720b8j8k",
+        "id": "cmu6tdbmr000dr8rrdgvnhio1",
         "name": "Vice-Chancellor Scholarship",
         "amountUsd": 4000,
         "amountType": "partial",
@@ -3313,7 +3313,7 @@
     "cheapestProgramTuition": 16500
   },
   {
-    "id": "cmu6qs4pr003jr81j9bugqmjm",
+    "id": "cmu6tdbir003jr8rf5s9bwarz",
     "slug": "university-of-jordan",
     "name": "University of Jordan",
     "country": "Jordan",
@@ -3329,7 +3329,7 @@
     "descriptionAr": "أكبر وأقدم جامعة في الأردن. ميسورة التكلفة، تحظى بسمعة طيبة في جميع أنحاء العالم العربي. برامج قوية في الطب والهندسة والأعمال.",
     "programs": [
       {
-        "id": "cmu6qs4ps003lr81jzpw6bpp5",
+        "id": "cmu6tdbis003lr8rfp6t5b4yr",
         "name": "BSc Computer Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -3340,7 +3340,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4ps003nr81jlltp8wli",
+        "id": "cmu6tdbit003nr8rf25uv0xil",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -3351,7 +3351,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4pt003pr81ju0mgjbar",
+        "id": "cmu6tdbit003pr8rfkmklf7d8",
         "name": "MD Medicine",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -3364,7 +3364,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4pt003rr81jsqhnjow6",
+        "id": "cmu6tdbit003rr8rfr0gxv6ct",
         "name": "Jordanian Government Scholarship",
         "amountUsd": 2200,
         "amountType": "full",
@@ -3378,7 +3378,7 @@
     "cheapestProgramTuition": 2000
   },
   {
-    "id": "cmu6qs4um002qr81vxp7mzpz0",
+    "id": "cmu6tdbnr002qr8rroxfkxymo",
     "slug": "university-of-lodz",
     "name": "University of Lodz",
     "country": "Poland",
@@ -3394,7 +3394,7 @@
     "descriptionAr": "جامعة بولندية ميسورة التكلفة مع برامج دولية متنامية.",
     "programs": [
       {
-        "id": "cmu6qs4um002sr81vnhjrqjjm",
+        "id": "cmu6tdbnr002sr8rrlvgvw21o",
         "name": "BA International Relations (English)",
         "degreeLevel": "bachelor",
         "field": "Social Sciences",
@@ -3405,7 +3405,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4un002ur81v3or0mgie",
+        "id": "cmu6tdbns002ur8rr98rvju5z",
         "name": "BSc Computer Science (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -3418,7 +3418,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4un002wr81vd2v7lyfr",
+        "id": "cmu6tdbns002wr8rrw379uwyb",
         "name": "Lodz Merit Scholarship",
         "amountUsd": 2000,
         "amountType": "partial",
@@ -3432,7 +3432,7 @@
     "cheapestProgramTuition": 3000
   },
   {
-    "id": "cmu6qs4pi002lr81jc25nyk3t",
+    "id": "cmu6tdbih002lr8rfaz5brhf5",
     "slug": "university-of-malaya",
     "name": "University of Malaya",
     "country": "Malaysia",
@@ -3448,7 +3448,7 @@
     "descriptionAr": "أعلى جامعة ماليزية تصنيفاً (QS Top 100). رسوم دراسية معقولة وتكاليف معيشة منخفضة تجعلها محببة للطلاب من الشرق الأوسط. برامج بالإنجليزية متاحة على نطاق واسع.",
     "programs": [
       {
-        "id": "cmu6qs4pi002nr81jsgsvcpv2",
+        "id": "cmu6tdbii002nr8rf7sj3lzbi",
         "name": "BEng Computer Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -3459,7 +3459,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4pj002pr81jp4be57l1",
+        "id": "cmu6tdbii002pr8rfohw67w0l",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -3470,7 +3470,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4pj002rr81jdzzbn7w2",
+        "id": "cmu6tdbij002rr8rfhhdlgs31",
         "name": "MSc Data Science",
         "degreeLevel": "master",
         "field": "Computer Science",
@@ -3483,7 +3483,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4pk002tr81jin8x6u6t",
+        "id": "cmu6tdbij002tr8rf1ydkpzog",
         "name": "UM International Scholarship",
         "amountUsd": 4000,
         "amountType": "partial",
@@ -3493,7 +3493,7 @@
     ],
     "reviews": [
       {
-        "id": "cmu6qs4qf005dr81ji8bh4ugi",
+        "id": "cmu6tdbjt005dr8rfkrs3qjf9",
         "userName": "Ahmed Hassan",
         "userCountry": "Egypt",
         "ratingOverall": 4,
@@ -3511,7 +3511,7 @@
           "good ranking",
           "english friendly"
         ],
-        "createdAt": "2026-09-18T09:14:19.767Z"
+        "createdAt": "2026-09-18T10:26:47.610Z"
       }
     ],
     "avgRating": 4,
@@ -3519,7 +3519,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4z3000er827zwuenhuk",
+    "id": "cmu6tdbsd000er8s355seqvk5",
     "slug": "university-of-mannheim",
     "name": "University of Mannheim",
     "country": "Germany",
@@ -3541,7 +3541,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4z5000fr827ya1ebmen",
+    "id": "cmu6tdbsf000fr8s3ivcfl6xa",
     "slug": "university-of-munster",
     "name": "University of Munster",
     "country": "Germany",
@@ -3563,7 +3563,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4oq000kr81jncxcwb1o",
+    "id": "cmu6tdbhp000kr8rfnhfhns0j",
     "slug": "university-of-portsmouth",
     "name": "University of Portsmouth",
     "country": "United Kingdom",
@@ -3579,7 +3579,7 @@
     "descriptionAr": "جامعة ساحلية معروفة بنتائج التوظيف القوية وتكاليف معيشة معقولة مقارنة بلندن.",
     "programs": [
       {
-        "id": "cmu6qs4or000mr81j92x2np4z",
+        "id": "cmu6tdbhq000mr8rfyvi3vwyw",
         "name": "BSc Software Engineering",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -3590,7 +3590,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4os000or81jzp8zdepl",
+        "id": "cmu6tdbhs000or8rfdtexdrg2",
         "name": "MSc Civil Engineering",
         "degreeLevel": "master",
         "field": "Engineering",
@@ -3603,7 +3603,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ot000qr81jn00qxxmo",
+        "id": "cmu6tdbht000qr8rfqfi43qm7",
         "name": "Vice-Chancellor Scholarship",
         "amountUsd": 4000,
         "amountType": "partial",
@@ -3617,7 +3617,7 @@
     "cheapestProgramTuition": 19000
   },
   {
-    "id": "cmu6qs4vh0052r81vxqdd2hqz",
+    "id": "cmu6tdbop0052r8rroq7uvenb",
     "slug": "university-of-sharjah",
     "name": "University of Sharjah",
     "country": "United Arab Emirates",
@@ -3633,7 +3633,7 @@
     "descriptionAr": "جامعة شاملة في الإمارات ببرامج قوية في الطب والهندسة والشريعة.",
     "programs": [
       {
-        "id": "cmu6qs4vh0054r81vsipj7m6e",
+        "id": "cmu6tdbop0054r8rr2y47vmsx",
         "name": "BSc Computer Engineering",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -3644,7 +3644,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4vh0056r81v20dnlclo",
+        "id": "cmu6tdbop0056r8rrtftbb9rx",
         "name": "MD Medicine",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -3657,7 +3657,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4vi0058r81vyub0in1x",
+        "id": "cmu6tdboq0058r8rrrgc0mv3p",
         "name": "UOS Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
@@ -3671,7 +3671,7 @@
     "cheapestProgramTuition": 11000
   },
   {
-    "id": "cmu6qs4ox0012r81jzjuxcim4",
+    "id": "cmu6tdbhx0012r8rfxm6vjaxl",
     "slug": "university-of-stuttgart",
     "name": "University of Stuttgart",
     "country": "Germany",
@@ -3687,7 +3687,7 @@
     "descriptionAr": "جامعة تقنية رائدة في جنوب ألمانيا مع روابط قوية مع صناعة السيارات. رسوم دراسية رمزية.",
     "programs": [
       {
-        "id": "cmu6qs4oy0014r81judxi9843",
+        "id": "cmu6tdbhy0014r8rft7n1nnlt",
         "name": "MSc Mechanical Engineering (English)",
         "degreeLevel": "master",
         "field": "Engineering",
@@ -3698,7 +3698,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4oy0016r81jjvivgruj",
+        "id": "cmu6tdbhy0016r8rfqsdn7bcx",
         "name": "BSc Electrical Engineering (German)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -3711,7 +3711,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4oz0018r81ji03wzt0j",
+        "id": "cmu6tdbhz0018r8rftdgasulc",
         "name": "Baden-Württemberg Scholarship",
         "amountUsd": 6000,
         "amountType": "partial",
@@ -3725,7 +3725,7 @@
     "cheapestProgramTuition": 1500
   },
   {
-    "id": "cmu6qs4tt000sr81vqrap3wt8",
+    "id": "cmu6tdbn1000sr8rrk59ebbzi",
     "slug": "university-of-sunderland",
     "name": "University of Sunderland",
     "country": "United Kingdom",
@@ -3741,7 +3741,7 @@
     "descriptionAr": "جامعة بريطانية ميسورة التكلفة ببرامج قوية في الصيدلة والتمريض والإعلام.",
     "programs": [
       {
-        "id": "cmu6qs4tu000ur81vs2xmx0o1",
+        "id": "cmu6tdbn1000ur8rr1v8y6hgy",
         "name": "BSc Pharmacy",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -3752,7 +3752,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4tv000wr81vyg5zz1ka",
+        "id": "cmu6tdbn2000wr8rrc0bnm2yr",
         "name": "BSc Nursing",
         "degreeLevel": "bachelor",
         "field": "Medicine",
@@ -3765,7 +3765,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4tw000yr81vm5ehzh56",
+        "id": "cmu6tdbn2000yr8rrorma3ddx",
         "name": "Sunderland International Scholarship",
         "amountUsd": 2500,
         "amountType": "partial",
@@ -3779,7 +3779,7 @@
     "cheapestProgramTuition": 15500
   },
   {
-    "id": "cmu6qs4pb0025r81jflx5uohc",
+    "id": "cmu6tdbib0025r8rfypg4szjo",
     "slug": "university-of-warsaw",
     "name": "University of Warsaw",
     "country": "Poland",
@@ -3795,7 +3795,7 @@
     "descriptionAr": "أكبر وأعرق جامعة في بولندا. رسوم دراسية معقولة للطلاب من الاتحاد الأوروبي وخارجه مع تزايد البرامج باللغة الإنجليزية.",
     "programs": [
       {
-        "id": "cmu6qs4pc0027r81jebluv65o",
+        "id": "cmu6tdbic0027r8rfmmz2iijx",
         "name": "BA International Relations (English)",
         "degreeLevel": "bachelor",
         "field": "Social Sciences",
@@ -3806,7 +3806,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4pd0029r81jynljduyi",
+        "id": "cmu6tdbic0029r8rf5lpipmvz",
         "name": "BSc Computer Science (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -3817,7 +3817,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4pe002br81jmzwipprb",
+        "id": "cmu6tdbid002br8rf6qpfv8d0",
         "name": "MA Economics (English)",
         "degreeLevel": "master",
         "field": "Business",
@@ -3830,7 +3830,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4pf002dr81jeqyl7pxw",
+        "id": "cmu6tdbie002dr8rf66ayesge",
         "name": "Polish Government Scholarship",
         "amountUsd": 6000,
         "amountType": "partial",
@@ -3844,7 +3844,7 @@
     "cheapestProgramTuition": 3500
   },
   {
-    "id": "cmu6qs4tg0000r81v4ll1ubmm",
+    "id": "cmu6tdbml0000r8rrj9tokep6",
     "slug": "university-of-westminster",
     "name": "University of Westminster",
     "country": "United Kingdom",
@@ -3860,7 +3860,7 @@
     "descriptionAr": "جامعة في وسط لندن مع تركيز دولي قوي وهيكل طلابي متنوع.",
     "programs": [
       {
-        "id": "cmu6qs4th0002r81vhhylgb2h",
+        "id": "cmu6tdbmm0002r8rrso4vrxwx",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -3871,7 +3871,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4ti0004r81vjjsh6owc",
+        "id": "cmu6tdbmm0004r8rrie2ub9fm",
         "name": "BA Business Management",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -3884,7 +3884,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4tj0006r81vbfsa9emj",
+        "id": "cmu6tdbmn0006r8rr3p24xrbt",
         "name": "Westminster International Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
@@ -3898,7 +3898,7 @@
     "cheapestProgramTuition": 16500
   },
   {
-    "id": "cmu6qs4zq000sr82722nki2ol",
+    "id": "cmu6tdbsx000sr8s3pag83u16",
     "slug": "university-of-wroclaw",
     "name": "University of Wroclaw",
     "country": "Poland",
@@ -3920,7 +3920,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4ym0008r827zbvse2tq",
+    "id": "cmu6tdbs60008r8s35up9mwyy",
     "slug": "university-of-the-west-of-england",
     "name": "University of the West of England",
     "country": "United Kingdom",
@@ -3942,7 +3942,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4q9004zr81jq2e3nfkx",
+    "id": "cmu6tdbja004zr8rfxw825q8o",
     "slug": "vilnius-gediminas-technical-university",
     "name": "Vilnius Gediminas Technical University",
     "country": "Lithuania",
@@ -3958,7 +3958,7 @@
     "descriptionAr": "جامعة تقنية ليتوانية رائدة مع برامج قوية بالإنجليزية في الهندسة وتكنولوجيا المعلومات. تعليم في الاتحاد الأوروبي ميسور التكلفة للغاية.",
     "programs": [
       {
-        "id": "cmu6qs4q90051r81jeogghj8u",
+        "id": "cmu6tdbjo0051r8rfvri2jwlh",
         "name": "BSc Information Systems Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -3969,7 +3969,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4qa0053r81jdxhtgbvl",
+        "id": "cmu6tdbjo0053r8rf0eub3j2h",
         "name": "MSc Civil Engineering (English)",
         "degreeLevel": "master",
         "field": "Engineering",
@@ -3982,7 +3982,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4qa0055r81j10scdmk7",
+        "id": "cmu6tdbjp0055r8rfwqsghm13",
         "name": "VGTU Tuition Waiver",
         "amountUsd": 3800,
         "amountType": "full",
@@ -3996,7 +3996,7 @@
     "cheapestProgramTuition": 3800
   },
   {
-    "id": "cmu6qs4q6004sr81j9cy4awwk",
+    "id": "cmu6tdbj8004sr8rfdl17303s",
     "slug": "vilnius-university",
     "name": "Vilnius University",
     "country": "Lithuania",
@@ -4012,7 +4012,7 @@
     "descriptionAr": "أقدم وأعرق جامعة في ليتوانيا (تأسست 1579). رسوم دراسية معقولة في الاتحاد الأوروبي، برامج بالإنجليزية تتزايد بسرعة.",
     "programs": [
       {
-        "id": "cmu6qs4q7004ur81j10u56l2u",
+        "id": "cmu6tdbj8004ur8rfamg4nx6j",
         "name": "BSc Software Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -4023,7 +4023,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4q7004wr81jcpfc4ink",
+        "id": "cmu6tdbj9004wr8rfynatiq5b",
         "name": "BA International Business (English)",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -4036,7 +4036,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4q8004yr81jv1h3554z",
+        "id": "cmu6tdbja004yr8rf7xqzfczd",
         "name": "Lithuanian State Scholarship",
         "amountUsd": 4000,
         "amountType": "partial",
@@ -4050,7 +4050,7 @@
     "cheapestProgramTuition": 3800
   },
   {
-    "id": "cmu6qs4uk002jr81vvoi3nom2",
+    "id": "cmu6tdbnp002jr8rrizq9zc26",
     "slug": "warsaw-university-of-technology",
     "name": "Warsaw University of Technology",
     "country": "Poland",
@@ -4066,7 +4066,7 @@
     "descriptionAr": "الجامعة التقنية الرائدة في بولندا. برامج هندسية قوية مع خيارات بالإنجليزية.",
     "programs": [
       {
-        "id": "cmu6qs4uk002lr81v4ep24eas",
+        "id": "cmu6tdbnp002lr8rr91fv0ucd",
         "name": "BSc Computer Science (English)",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -4077,7 +4077,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4uk002nr81v9tyuaqcd",
+        "id": "cmu6tdbnp002nr8rrzdxocm2t",
         "name": "BSc Electrical Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -4090,7 +4090,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ul002pr81vcytoy92s",
+        "id": "cmu6tdbnq002pr8rrrjq4k03q",
         "name": "WUT International Scholarship",
         "amountUsd": 3000,
         "amountType": "partial",
@@ -4104,7 +4104,7 @@
     "cheapestProgramTuition": 4000
   },
   {
-    "id": "cmu6qs4zm000pr827om9gg4cp",
+    "id": "cmu6tdbsu000pr8s378ndw965",
     "slug": "wroclaw-university-of-technology",
     "name": "Wroclaw University of Technology",
     "country": "Poland",
@@ -4126,7 +4126,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs50d0016r827gczegyog",
+    "id": "cmu6tdbtc0016r8s3sbzvijsh",
     "slug": "yarmouk-university",
     "name": "Yarmouk University",
     "country": "Jordan",
@@ -4148,7 +4148,7 @@
     "cheapestProgramTuition": 5000
   },
   {
-    "id": "cmu6qs4uf0025r81vk286gth6",
+    "id": "cmu6tdbnl0025r8rrpfamm7sc",
     "slug": "yildiz-technical-university",
     "name": "Yildiz Technical University",
     "country": "Turkey",
@@ -4164,7 +4164,7 @@
     "descriptionAr": "إحدى أبرز الجامعات التقنية في تركيا، قوية في الهندسة والعمارة.",
     "programs": [
       {
-        "id": "cmu6qs4ug0027r81vlx0c7dv5",
+        "id": "cmu6tdbnl0027r8rroeiffivf",
         "name": "BSc Civil Engineering (English)",
         "degreeLevel": "bachelor",
         "field": "Engineering",
@@ -4175,7 +4175,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4ug0029r81vz6xb03po",
+        "id": "cmu6tdbnm0029r8rr01svd61i",
         "name": "BSc Architecture (Turkish)",
         "degreeLevel": "bachelor",
         "field": "Arts & Humanities",
@@ -4188,7 +4188,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4ug002br81vpc7pwt7e",
+        "id": "cmu6tdbnm002br8rr2r79vhq5",
         "name": "YTU International Scholarship",
         "amountUsd": 3500,
         "amountType": "partial",
@@ -4202,7 +4202,7 @@
     "cheapestProgramTuition": 900
   },
   {
-    "id": "cmu6qs4vf004vr81v056vh2dj",
+    "id": "cmu6tdbom004vr8rrcp6k41et",
     "slug": "zayed-university",
     "name": "Zayed University",
     "country": "United Arab Emirates",
@@ -4218,7 +4218,7 @@
     "descriptionAr": "جامعة اتحادية في الإمارات ببرامج قوية في الفنون الليبرالية والأعمال وتكنولوجيا المعلومات. تدريس بالإنجليزية.",
     "programs": [
       {
-        "id": "cmu6qs4vf004xr81vlwqhmzzl",
+        "id": "cmu6tdbon004xr8rrxxdyiw44",
         "name": "BSc Computer Science",
         "degreeLevel": "bachelor",
         "field": "Computer Science",
@@ -4229,7 +4229,7 @@
         "entryReqs": null
       },
       {
-        "id": "cmu6qs4vg004zr81vi6rrkhnh",
+        "id": "cmu6tdbon004zr8rrxb4zwbxe",
         "name": "BBA Business Administration",
         "degreeLevel": "bachelor",
         "field": "Business",
@@ -4242,7 +4242,7 @@
     ],
     "scholarships": [
       {
-        "id": "cmu6qs4vg0051r81vawcqgzw8",
+        "id": "cmu6tdboo0051r8rr7vtodstz",
         "name": "ZU Merit Scholarship",
         "amountUsd": 7000,
         "amountType": "partial",
