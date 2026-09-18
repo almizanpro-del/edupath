@@ -1,9 +1,9 @@
 'use client'
 
 import * as React from 'react'
-import * as Sentry from '@sentry/nextjs'
 import { Button } from '@/components/ui/button'
 import { AlertTriangle, RotateCcw } from 'lucide-react'
+import { captureException } from '@/lib/sentry'
 
 /**
  * Error boundary for the home page.
@@ -22,7 +22,7 @@ export default function Error({
     console.error('[EduPath Error Boundary]', error)
     // Report to Sentry if configured
     if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
-      Sentry.captureException(error)
+      captureException(error)
     }
   }, [error])
 

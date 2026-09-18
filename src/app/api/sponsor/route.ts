@@ -44,7 +44,7 @@ export async function GET() {
     })
 
     // Compute analytics per university
-    const analytics = universities.map(u => {
+    const analytics = await Promise.all(universities.map(async u => {
       const reviews = u.reviews
       const avgRating = reviews.length > 0 ? reviews.reduce((s, r) => s + r.ratingOverall, 0) / reviews.length : 0
       const avgAffordability = reviews.length > 0 ? reviews.reduce((s, r) => s + r.ratingAffordability, 0) / reviews.length : 0
@@ -106,7 +106,7 @@ export async function GET() {
           clickThroughRate,
         },
       }
-    })
+    }))
 
     // Real leads from Lead table (fallback to simulated if DB unavailable)
     let leads: Array<{ id: string; studentName: string; country: string; gpa: number | null; field: string | null; message: string; date: string; status: string }> = []
