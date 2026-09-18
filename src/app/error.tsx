@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import * as Sentry from '@sentry/nextjs'
 import { Button } from '@/components/ui/button'
 import { AlertTriangle, RotateCcw } from 'lucide-react'
 
@@ -8,6 +9,7 @@ import { AlertTriangle, RotateCcw } from 'lucide-react'
  * Error boundary for the home page.
  * Catches any unhandled client-side exceptions and shows a friendly
  * message instead of a blank white screen.
+ * Also reports to Sentry if configured.
  */
 export default function Error({
   error,
@@ -18,6 +20,10 @@ export default function Error({
 }) {
   React.useEffect(() => {
     console.error('[EduPath Error Boundary]', error)
+    // Report to Sentry if configured
+    if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
+      Sentry.captureException(error)
+    }
   }, [error])
 
   return (

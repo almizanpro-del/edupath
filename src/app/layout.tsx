@@ -16,23 +16,39 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "EduPath - Affordable Universities for MENA Students",
-  description: "Discover, compare, and review affordable universities worldwide. Built for Arabic-speaking students seeking quality education without breaking the bank.",
-  keywords: ["EduPath", "university", "admission", "MENA", "Arabic students", "affordable education", "scholarships", "international students"],
+  title: {
+    default: "EduPath - Affordable Universities for MENA Students",
+    template: "%s | EduPath",
+  },
+  description: "Discover, compare, and review 107+ affordable universities across 10 countries. AI essay review, scholarship matching, transfer pathways. Built for Arabic-speaking students.",
+  keywords: [
+    "EduPath", "affordable universities", "MENA students", "Arabic students",
+    "study abroad", "scholarships", "university admission", "Jordan education",
+    "Egypt education", "Turkey universities", "Germany universities", "Malaysia universities",
+    "international students", "transfer credits", "AI essay review", "cost calculator",
+  ],
   authors: [{ name: "EduPath" }],
-  icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+  metadataBase: new URL("https://edupath-amber-three.vercel.app"),
+  alternates: {
+    canonical: "/",
+    languages: { en: "/", ar: "/" },
   },
   openGraph: {
     title: "EduPath - Affordable Universities for MENA Students",
-    description: "Discover, compare, and review affordable universities worldwide.",
+    description: "Discover, compare, and review 107+ affordable universities worldwide. AI essay review, scholarship matching, transfer pathways.",
     siteName: "EduPath",
     type: "website",
+    url: "https://edupath-amber-three.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
-    title: "EduPath",
-    description: "Affordable universities for MENA students",
+    title: "EduPath - Affordable Universities for MENA Students",
+    description: "Discover, compare, and review 107+ affordable universities worldwide.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
   },
 };
 

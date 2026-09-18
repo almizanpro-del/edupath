@@ -27,15 +27,29 @@ export async function POST(req: NextRequest) {
     }
 
     // Create lead
+    // Sanitize all user input to prevent XSS
+    const { sanitizeText, sanitizeEmail, isSafeInput } = await import('@/lib/sanitize')
+    if (!isSafeInput(message)) {
+      return NextResponse.json({ error: 'Invalid content in message' }, { status: 400 })
+    }
+    const safeName = sanitizeText(studentName.trim())
+    const safeEmail = sanitizeEmail(studentEmail.trim())
+    if (!safeEmail) {
+      return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
+    }
+    const safeMessage = sanitizeText(message.trim().slice(0, 2000))
+    const safeCountry = sanitizeText(country || 'Unknown')
+    const safeField = field ? sanitizeText(field) : null
+
     const lead = await db.lead.create({
       data: {
         universityId,
-        studentName: studentName.trim(),
-        studentEmail: studentEmail.trim(),
-        country: country || 'Unknown',
+        studentName: safeName,
+        studentEmail: safeEmail,
+        country: safeCountry,
         gpa: gpa ? Number(gpa) : null,
-        field: field || null,
-        message: message.trim().slice(0, 2000),
+        field: safeField,
+        message: safeMessage,
       },
     })
 
@@ -45,6 +59,19 @@ export async function POST(req: NextRequest) {
       universityId,
       metadata: { leadId: lead.id, field, gpa },
     })
+
+    // Send email notification to the university (if email is configured)
+    try {
+      const { sendLeadNotificationEmail } = await import('@/lib/email')
+      await sendLeadNotificationEmail('sponsor@edupath.com', {
+        studentName: studentName.trim(), studentEmail: studentEmail.trim(),
+        country: country || 'Unknown', gpa: gpa ? Number(gpa) : null,
+        field: field || null, message: message.trim().slice(0, 2000),
+        universityName: uni.name,
+      })
+    } catch {
+      // Email failed — don't block the lead creation
+    }
 
     return NextResponse.json({ leadId: lead.id, status: 'created' })
   } catch (error) {

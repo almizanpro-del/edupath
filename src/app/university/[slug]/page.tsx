@@ -113,5 +113,39 @@ export default async function UniversityPage({
     notFound()
   }
 
-  return <UniversityDetailPage uni={university} />
+  // schema.org/University structured data for SEO rich snippets
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'CollegeOrUniversity',
+    name: university.name,
+    url: university.website,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: university.city,
+      addressCountry: university.country,
+    },
+    aggregateRating: university.avgRating ? {
+      '@type': 'AggregateRating',
+      ratingValue: university.avgRating.toFixed(1),
+      reviewCount: university.reviewCount,
+      bestRating: '5',
+      worstRating: '1',
+    } : undefined,
+    offers: {
+      '@type': 'Offer',
+      price: university.cheapestProgramTuition,
+      priceCurrency: 'USD',
+      description: `Tuition from $${university.cheapestProgramTuition}/year`,
+    },
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <UniversityDetailPage uni={university} />
+    </>
+  )
 }

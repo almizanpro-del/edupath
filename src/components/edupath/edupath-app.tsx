@@ -178,6 +178,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
   const [savedUniversities, setSavedUniversities] = React.useState<Set<string>>(new Set())
   const [showCompare, setShowCompare] = React.useState(false)
   const [filtersOpen, setFiltersOpen] = React.useState(false)
+  const [visibleCount, setVisibleCount] = React.useState(24) // pagination: 24 per page
 
   // Auth state
   const [profile, setProfile] = React.useState<UserProfile | null>(null)
@@ -263,6 +264,11 @@ export function EduPathApp({ universities, countries, stats }: Props) {
 
     return result
   }, [universities, searchQuery, selectedCountries, selectedFields, selectedLanguages, tuitionRange, sortBy])
+
+  // Reset pagination when filters change
+  React.useEffect(() => {
+    setVisibleCount(24)
+  }, [searchQuery, selectedCountries, selectedFields, selectedLanguages, tuitionRange, sortBy])
 
   const toggleCountry = (c: string) => {
     const next = new Set(selectedCountries)
@@ -762,19 +768,36 @@ export function EduPathApp({ universities, countries, stats }: Props) {
             <Button onClick={clearFilters} variant="outline">{t('Directory.clearAll')}</Button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {filtered.map(u => (
-              <UniversityCard
-                key={u.id}
-                uni={u}
-                isSaved={savedUniversities.has(u.id)}
-                isComparing={!!compareList.find(c => c.id === u.id)}
-                onSave={() => toggleSave(u)}
-                onCompare={() => toggleCompare(u)}
-                onOpen={() => router.push(`/university/${u.slug}`)}
-              />
-            ))}
-          </div>
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {filtered.slice(0, visibleCount).map(u => (
+                <UniversityCard
+                  key={u.id}
+                  uni={u}
+                  isSaved={savedUniversities.has(u.id)}
+                  isComparing={!!compareList.find(c => c.id === u.id)}
+                  onSave={() => toggleSave(u)}
+                  onCompare={() => toggleCompare(u)}
+                  onOpen={() => router.push(`/university/${u.slug}`)}
+                />
+              ))}
+            </div>
+            {visibleCount < filtered.length && (
+              <div className="text-center mt-8">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Showing {visibleCount} of {filtered.length} universities
+                </p>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => setVisibleCount(prev => prev + 24)}
+                  className="gap-2"
+                >
+                  Load More ({filtered.length - visibleCount} remaining)
+                </Button>
+              </div>
+            )}
+          </>
         )}
       </section>
 

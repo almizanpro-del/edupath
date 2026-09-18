@@ -1,0 +1,123 @@
+/**
+ * Email service using Resend.
+ * Sends transactional emails: review approved, lead created, deadline alerts.
+ *
+ * Setup: Set RESEND_API_KEY env var. Without it, emails are skipped (logged).
+ * Get a free key at https://resend.com (3000 emails/month free).
+ */
+import { Resend } from 'resend'
+
+let resendInstance: Resend | null = null
+
+function getResend(): Resend | null {
+  const key = process.env.RESEND_API_KEY
+  if (!key) return null
+  if (!resendInstance) resendInstance = new Resend(key)
+  return resendInstance
+}
+
+export function isEmailConfigured(): boolean {
+  return !!process.env.RESEND_API_KEY
+}
+
+const FROM_EMAIL = 'EduPath <noreply@edupath.com>'
+const APP_URL = 'https://edupath-amber-three.vercel.app'
+
+type EmailParams = {
+  to: string
+  subject: string
+  html: string
+}
+
+async function sendEmail({ to, subject, html }: EmailParams): Promise<boolean> {
+  const resend = getResend()
+  if (!resend) {
+    console.log(`[email] Skipped (not configured): ${subject} → ${to}`)
+    return false
+  }
+  try {
+    await resend.emails.send({ from: FROM_EMAIL, to, subject, html })
+    return true
+  } catch (error) {
+    console.error('[email] Send failed:', error)
+    return false
+  }
+}
+
+// ─── Email Templates ─────────────────────────────────────────────────────────
+
+export async function sendReviewApprovedEmail(to: string, universityName: string): Promise<boolean> {
+  return sendEmail({
+    to,
+    subject: `Your review of ${universityName} is now live on EduPath`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h1 style="color: #059669;">Your review is live! 🎉</h1>
+        <p>Great news — your review of <strong>${universityName}</strong> has been approved and is now visible on EduPath.</p>
+        <p>Other MENA students will benefit from your experience. Thank you for contributing to the community!</p>
+        <a href="${APP_URL}/university/${universityName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}" style="display: inline-block; background: #059669; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">View Your Review</a>
+        <p style="color: #6b7280; font-size: 14px; margin-top: 24px;">EduPath — Your path to affordable global education</p>
+      </div>
+    `,
+  })
+}
+
+export async function sendLeadNotificationEmail(to: string, lead: {
+  studentName: string; studentEmail: string; country: string; gpa: number | null
+  field: string | null; message: string; universityName: string
+}): Promise<boolean> {
+  return sendEmail({
+    to,
+    subject: `New student inquiry for ${lead.universityName} — ${lead.studentName}`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h1 style="color: #059669;">New Student Inquiry 📩</h1>
+        <p>A student has expressed interest in <strong>${lead.universityName}</strong> via EduPath.</p>
+        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+          <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Name</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${lead.studentName}</td></tr>
+          <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Email</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${lead.studentEmail}</td></tr>
+          <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Country</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${lead.country}</td></tr>
+          <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">GPA</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${lead.gpa ?? 'Not specified'}</td></tr>
+          <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Field</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${lead.field ?? 'Not specified'}</td></tr>
+        </table>
+        <p style="background: #f9fafb; padding: 12px; border-radius: 8px; border-left: 3px solid #059669;">${lead.message}</p>
+        <p>Reply directly to the student at <a href="mailto:${lead.studentEmail}">${lead.studentEmail}</a></p>
+        <a href="${APP_URL}/sponsor" style="display: inline-block; background: #059669; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">View in Sponsor Dashboard</a>
+        <p style="color: #6b7280; font-size: 14px; margin-top: 24px;">EduPath — Your path to affordable global education</p>
+      </div>
+    `,
+  })
+}
+
+export async function sendDeadlineAlertEmail(to: string, alerts: Array<{
+  universityName: string; deadline: string; programName: string
+}>): Promise<boolean> {
+  const alertRows = alerts.map(a => `
+    <tr>
+      <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;"><strong>${a.universityName}</strong></td>
+      <td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${a.programName}</td>
+      <td style="padding: 8px; border-bottom: 1px solid #e5e7eb; color: #dc2626; font-weight: bold;">${a.deadline}</td>
+    </tr>
+  `).join('')
+
+  return sendEmail({
+    to,
+    subject: `⏰ Application deadlines approaching — ${alerts.length} program${alerts.length > 1 ? 's' : ''}`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h1 style="color: #dc2626;">⏰ Deadlines Approaching</h1>
+        <p>The following application deadlines are coming up for universities you've saved:</p>
+        <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
+          <tr style="background: #f9fafb;">
+            <th style="padding: 8px; text-align: left; border-bottom: 2px solid #e5e7eb;">University</th>
+            <th style="padding: 8px; text-align: left; border-bottom: 2px solid #e5e7eb;">Program</th>
+            <th style="padding: 8px; text-align: left; border-bottom: 2px solid #e5e7eb;">Deadline</th>
+          </tr>
+          ${alertRows}
+        </table>
+        <a href="${APP_URL}" style="display: inline-block; background: #059669; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">View Your Saved Universities</a>
+        <p style="color: #6b7280; font-size: 14px; margin-top: 24px;">EduPath — Your path to affordable global education</p>
+      </div>
+    `,
+  })
+}

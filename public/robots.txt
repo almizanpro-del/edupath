@@ -12,3 +12,11 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Block admin and API from indexing
+Disallow: /admin
+Disallow: /sponsor
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://edupath-amber-three.vercel.app/sitemap.xml

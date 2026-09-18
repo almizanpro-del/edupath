@@ -141,6 +141,22 @@ export async function PATCH(req: NextRequest) {
       data: { moderationStatus: action === 'approve' ? 'approved' : 'rejected' },
     })
 
+    // Send email notification to the reviewer when approved
+    if (action === 'approve') {
+      try {
+        const review = await db.review.findUnique({
+          where: { id: reviewId },
+          include: { user: true, university: true },
+        })
+        if (review?.user?.email) {
+          const { sendReviewApprovedEmail } = await import('@/lib/email')
+          await sendReviewApprovedEmail(review.user.email, review.university.name)
+        }
+      } catch {
+        // Email failed — don't block the approval
+      }
+    }
+
     return NextResponse.json({ reviewId: updated.id, moderationStatus: updated.moderationStatus })
   } catch (error) {
     console.warn('[api/reviews PATCH] Error:', error)
@@ -201,6 +217,14 @@ export async function POST(req: NextRequest) {
     const cleanText = reviewText.trim().slice(0, 5000)
     const cleanTags = (tags as string[]).slice(0, 8).map(t => t.slice(0, 40))
 
+    // Sanitize user input to prevent XSS
+    const { sanitizeText, isSafeInput } = await import('@/lib/sanitize')
+    if (!isSafeInput(cleanText)) {
+      return NextResponse.json({ error: 'Invalid content in review text' }, { status: 400 })
+    }
+    const safeText = sanitizeText(cleanText)
+    const safeTags = cleanTags.map(t => sanitizeText(t))
+
     const review = await db.review.create({
       data: {
         userId: profile.id,
@@ -211,10 +235,10 @@ export async function POST(req: NextRequest) {
         ratingTeaching,
         ratingSafety,
         ratingSocial,
-        reviewText: cleanText,
+        reviewText: safeText,
         moderationStatus: 'pending',
         verifiedEnrollment: profile.verificationStatus === 'verified',
-        tags: JSON.stringify(cleanTags),
+        tags: JSON.stringify(safeTags),
       },
     })
 
