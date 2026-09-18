@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles, Shuffle, Award, Building2, CreditCard } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
@@ -13,7 +14,6 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Separator } from '@/components/ui/separator'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { useToast } from '@/hooks/use-toast'
@@ -28,6 +28,10 @@ import { track } from '@/lib/analytics-client'
 import { EmailCapture } from '@/components/edupath/email-capture'
 import { CurrencySwitcher } from '@/components/edupath/currency-switcher'
 import { ThemeToggle } from '@/components/theme-toggle'
+import {
+  MotionContainer, MotionItem, cardHover, fadeInUp, staggerContainer, staggerItem,
+  Skeleton, UniversityCardSkeleton,
+} from '@/lib/animations'
 import { useTranslations, useLocale } from 'next-intl'
 
 // =================== Types ===================
@@ -404,7 +408,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
     (tuitionRange[0] > 0 || tuitionRange[1] < 25000 ? 1 : 0)
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-emerald-50/40 via-white to-white dark:from-slate-900 dark:via-slate-900 dark:to-slate-950">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-emerald-50/40 via-white to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors duration-300">
       {/* ===== Header ===== */}
       <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur-md dark:bg-slate-900/80">
         <div className="container mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-4">
@@ -414,7 +418,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 <GraduationCap className="size-5 text-white" />
               </div>
               <div className="text-left">
-                <div className="text-lg font-bold leading-none">EduPath</div>
+                <div className="text-lg font-bold leading-none dark:text-white">EduPath</div>
                 <div className="text-[10px] text-muted-foreground leading-none mt-0.5">Your path to affordable global education</div>
               </div>
             </button>
@@ -547,41 +551,81 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       </header>
 
       {/* ===== Hero ===== */}
-      <section className="border-b bg-gradient-to-br from-slate-900 via-teal-900 to-blue-950 text-white">
-        <div className="container mx-auto max-w-7xl px-4 py-16 md:py-24">
-          <div className="max-w-3xl mx-auto text-center">
-            <Badge variant="secondary" className="mb-4 bg-white/15 text-white border-white/20 hover:bg-white/20">
-              {t('Hero.badge')}
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-              {t('Hero.title')}
-            </h1>
-            <p className="text-lg md:text-xl text-white/85 mb-8 leading-relaxed">
-              {t('Hero.subtitle', { count: stats.totalCountries })}
-            </p>
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-teal-950 to-blue-950 text-white">
+        {/* Animated background blobs */}
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div
+            className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-emerald-500/20 blur-3xl"
+            animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+            transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.div
+            className="absolute top-20 -right-40 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl"
+            animate={{ x: [0, -40, 0], y: [0, 50, 0] }}
+            transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.div
+            className="absolute -bottom-40 left-1/3 w-96 h-96 rounded-full bg-teal-500/15 blur-3xl"
+            animate={{ x: [0, 30, 0], y: [0, -40, 0] }}
+            transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </div>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-5 text-muted-foreground" />
-                <Input
-                  placeholder={t('Hero.searchPlaceholder')}
-                  value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
-                  onKeyDown={e => {
-                    if (e.key === 'Enter' && searchQuery.trim()) {
-                      track('search', { metadata: { query: searchQuery } })
-                    }
-                  }}
-                  className="pl-10 h-12 bg-white text-foreground border-0 shadow-lg"
-                />
+        <div className="relative container mx-auto max-w-7xl px-4 py-16 md:py-28">
+          <motion.div
+            className="max-w-3xl mx-auto text-center"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div variants={fadeInUp}>
+              <Badge variant="secondary" className="mb-5 bg-white/10 text-white border-white/20 backdrop-blur-md hover:bg-white/15 transition-colors">
+                <Sparkles className="size-3 mr-1" />
+                {t('Hero.badge')}
+              </Badge>
+            </motion.div>
+
+            <motion.h1
+              variants={fadeInUp}
+              className="text-4xl md:text-6xl font-bold tracking-tight mb-5 bg-gradient-to-br from-white via-emerald-50 to-teal-200 bg-clip-text text-transparent"
+            >
+              {t('Hero.title')}
+            </motion.h1>
+
+            <motion.p
+              variants={fadeInUp}
+              className="text-lg md:text-xl text-white/70 mb-10 leading-relaxed max-w-2xl mx-auto"
+            >
+              {t('Hero.subtitle', { count: stats.totalCountries })}
+            </motion.p>
+
+            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
+              <div className="relative flex-1 group">
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-300" />
+                <div className="relative">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-slate-400" />
+                  <Input
+                    placeholder={t('Hero.searchPlaceholder')}
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter' && searchQuery.trim()) {
+                        track('search', { metadata: { query: searchQuery } })
+                      }
+                    }}
+                    className="pl-12 h-14 bg-white/95 dark:bg-slate-800/95 text-foreground border-0 shadow-2xl rounded-xl backdrop-blur-md"
+                  />
+                </div>
               </div>
               <Sheet open={filtersOpen} onOpenChange={setFiltersOpen}>
                 <SheetTrigger asChild>
-                  <Button size="lg" variant="secondary" className="h-12 gap-2 shadow-lg">
+                  <Button size="lg" className="h-14 gap-2 shadow-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 text-white rounded-xl px-6">
                     <SlidersHorizontal className="size-5" />
                     {t('Hero.filters')}
                     {activeFilterCount > 0 && (
-                      <Badge variant="default" className="ml-1 bg-emerald-600">{activeFilterCount}</Badge>
+                      <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
+                        <Badge className="ml-1 bg-emerald-500 text-white">{activeFilterCount}</Badge>
+                      </motion.div>
                     )}
                   </Button>
                 </SheetTrigger>
@@ -600,105 +644,78 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                       <div className="space-y-2">
                         {countries.map(c => (
                           <div key={c.code} className="flex items-center space-x-2">
-                            <Checkbox
-                              id={`c-${c.code}`}
-                              checked={selectedCountries.has(c.code)}
-                              onCheckedChange={() => toggleCountry(c.code)}
-                            />
+                            <Checkbox id={`c-${c.code}`} checked={selectedCountries.has(c.code)} onCheckedChange={() => toggleCountry(c.code)} />
                             <Label htmlFor={`c-${c.code}`} className="text-sm cursor-pointer flex-1 flex items-center gap-2">
-                              <span>{c.flag}</span>
-                              <span>{c.name}</span>
+                              <span>{c.flag}</span><span>{c.name}</span>
                               <span className="text-xs text-muted-foreground">({c.count})</span>
                             </Label>
                           </div>
                         ))}
                       </div>
                     </div>
-
                     <Separator />
-
                     <div>
                       <Label className="text-sm font-semibold mb-3 block">{t('Filters.fieldOfStudy')}</Label>
                       <div className="space-y-2">
                         {['Computer Science', 'Engineering', 'Business', 'Medicine', 'Social Sciences'].map(f => (
                           <div key={f} className="flex items-center space-x-2">
-                            <Checkbox
-                              id={`f-${f}`}
-                              checked={selectedFields.has(f)}
-                              onCheckedChange={() => toggleField(f)}
-                            />
+                            <Checkbox id={`f-${f}`} checked={selectedFields.has(f)} onCheckedChange={() => toggleField(f)} />
                             <Label htmlFor={`f-${f}`} className="text-sm cursor-pointer">{f}</Label>
                           </div>
                         ))}
                       </div>
                     </div>
-
                     <Separator />
-
                     <div>
                       <Label className="text-sm font-semibold mb-3 block">{t('Filters.languageOfInstruction')}</Label>
                       <div className="space-y-2">
                         {['English', 'Arabic', 'German', 'Turkish'].map(l => (
                           <div key={l} className="flex items-center space-x-2">
-                            <Checkbox
-                              id={`l-${l}`}
-                              checked={selectedLanguages.has(l)}
-                              onCheckedChange={() => toggleLanguage(l)}
-                            />
+                            <Checkbox id={`l-${l}`} checked={selectedLanguages.has(l)} onCheckedChange={() => toggleLanguage(l)} />
                             <Label htmlFor={`l-${l}`} className="text-sm cursor-pointer">{l}</Label>
                           </div>
                         ))}
                       </div>
                     </div>
-
                     <Separator />
-
                     <div>
                       <div className="flex items-center justify-between mb-3">
                         <Label className="text-sm font-semibold">{t('Filters.annualTuition')}</Label>
-                        <span className="text-xs text-muted-foreground">
-                          {formatUsd(tuitionRange[0])} - {formatUsd(tuitionRange[1])}
-                        </span>
+                        <span className="text-xs text-muted-foreground">{formatUsd(tuitionRange[0])} - {formatUsd(tuitionRange[1])}</span>
                       </div>
                       <div className="px-2">
-                        <Slider
-                          value={tuitionRange}
-                          onValueChange={(v) => setTuitionRange(v as [number, number])}
-                          min={0}
-                          max={25000}
-                          step={500}
-                          className="mt-4"
-                        />
+                        <Slider value={tuitionRange} onValueChange={(v) => setTuitionRange(v as [number, number])} min={0} max={25000} step={500} className="mt-4" />
                       </div>
-                      <div className="flex justify-between text-xs text-muted-foreground mt-2">
-                        <span>$0</span>
-                        <span>$25K+</span>
-                      </div>
+                      <div className="flex justify-between text-xs text-muted-foreground mt-2"><span>$0</span><span>$25K+</span></div>
                     </div>
                   </div>
                 </SheetContent>
               </Sheet>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
-              <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/15">
-                <div className="text-2xl font-bold">{stats.totalUniversities}</div>
-                <div className="text-sm text-white/75">{t('Hero.stats.universities')}</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/15">
-                <div className="text-2xl font-bold">{stats.totalCountries}</div>
-                <div className="text-sm text-white/75">{t('Hero.stats.countries')}</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/15">
-                <div className="text-2xl font-bold">{stats.totalPrograms}</div>
-                <div className="text-sm text-white/75">{t('Hero.stats.programs')}</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur rounded-lg p-4 border border-white/15">
-                <div className="text-2xl font-bold">{formatUsdCompact(stats.cheapestTuition)}</div>
-                <div className="text-sm text-white/75">{t('Hero.stats.fromPerYear')}</div>
-              </div>
-            </div>
-          </div>
+            {/* Animated stats */}
+            <motion.div
+              variants={fadeInUp}
+              className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12"
+            >
+              {[
+                { value: stats.totalUniversities, label: t('Hero.stats.universities') },
+                { value: stats.totalCountries, label: t('Hero.stats.countries') },
+                { value: stats.totalPrograms, label: t('Hero.stats.programs') },
+                { value: formatUsdCompact(stats.cheapestTuition), label: t('Hero.stats.fromPerYear') },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  variants={staggerItem}
+                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                  className="bg-white/5 backdrop-blur-xl rounded-2xl p-5 border border-white/10 hover:border-emerald-400/30 transition-colors"
+                >
+                  <div className="text-3xl font-bold bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">{stat.value}</div>
+                  <div className="text-sm text-white/60 mt-1">{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -707,41 +724,37 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         <div className="container mx-auto max-w-7xl px-4 py-10">
           <div className="flex items-end justify-between mb-6">
             <div>
-              <h2 className="text-2xl font-bold mb-1">{t('CountryExplorer.title')}</h2>
+              <h2 className="text-2xl font-bold mb-1 dark:text-white">{t('CountryExplorer.title')}</h2>
               <p className="text-sm text-muted-foreground">{t('CountryExplorer.subtitle')}</p>
             </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-3">
+          <MotionContainer className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-3">
             {countries.map(c => (
-              <button
-                key={c.code}
-                onClick={() => toggleCountry(c.code)}
-                className={cn(
-                  'flex flex-col items-center gap-2 p-4 rounded-lg border transition-all hover:shadow-md',
-                  selectedCountries.has(c.code)
-                    ? 'border-emerald-500 bg-emerald-50 ring-2 ring-emerald-500/20'
-                    : 'border-border bg-white dark:bg-slate-800 hover:border-emerald-300'
-                )}
-              >
-                <Image
-                  src={`https://flagcdn.com/w80/${c.flag}.png`}
-                  alt={c.name}
-                  width={40}
-                  height={28}
-                  className="rounded shadow-sm"
-                  unoptimized
-                />
-                <div className="text-xs font-medium text-center leading-tight">{c.name}</div>
-                <div className="text-[10px] text-muted-foreground">{c.count} unis</div>
-              </button>
+              <MotionItem key={c.code}>
+                <motion.button
+                  onClick={() => toggleCountry(c.code)}
+                  whileHover={{ y: -4, scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className={cn(
+                    'w-full flex flex-col items-center gap-2 p-4 rounded-2xl border transition-all',
+                    selectedCountries.has(c.code)
+                      ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 ring-2 ring-emerald-500/20 shadow-md'
+                      : 'border-border bg-white dark:bg-slate-800 hover:border-emerald-300 dark:hover:border-emerald-700 hover:shadow-md'
+                  )}
+                >
+                  <Image src={`https://flagcdn.com/w80/${c.flag}.png`} alt={c.name} width={40} height={28} className="rounded shadow-sm" unoptimized />
+                  <div className="text-xs font-medium text-center leading-tight dark:text-slate-200">{c.name}</div>
+                  <div className="text-[10px] text-muted-foreground">{c.count} unis</div>
+                </motion.button>
+              </MotionItem>
             ))}
-          </div>
+          </MotionContainer>
         </div>
       </section>
 
       {/* ===== Email Capture (for non-authenticated users) ===== */}
       {!profile && (
-        <section className="bg-white dark:bg-slate-900 border-b py-8">
+        <section className="bg-white dark:bg-slate-900 border-b py-8 dark:border-slate-800">
           <div className="container mx-auto max-w-7xl px-4">
             <EmailCapture />
           </div>
@@ -752,7 +765,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       <section className="container mx-auto max-w-7xl px-4 py-10 flex-1">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-2xl font-bold mb-1">
+            <h2 className="text-2xl font-bold mb-1 dark:text-white">
               {t('Directory.universities', { count: filtered.length })}
             </h2>
             <p className="text-sm text-muted-foreground">
@@ -777,38 +790,36 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         {filtered.length === 0 ? (
           <div className="text-center py-20">
             <div className="text-5xl mb-4">🔍</div>
-            <h3 className="text-xl font-semibold mb-2">{t('Directory.noResults')}</h3>
+            <h3 className="text-xl font-semibold mb-2 dark:text-white">{t('Directory.noResults')}</h3>
             <p className="text-muted-foreground mb-4">{t('Directory.noResultsDesc')}</p>
             <Button onClick={clearFilters} variant="outline">{t('Directory.clearAll')}</Button>
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <MotionContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {filtered.slice(0, visibleCount).map(u => (
-                <UniversityCard
-                  key={u.id}
-                  uni={u}
-                  isSaved={savedUniversities.has(u.id)}
-                  isComparing={!!compareList.find(c => c.id === u.id)}
-                  onSave={() => toggleSave(u)}
-                  onCompare={() => toggleCompare(u)}
-                  onOpen={() => router.push(`/university/${u.slug}`)}
-                />
+                <MotionItem key={u.id}>
+                  <UniversityCard
+                    uni={u}
+                    isSaved={savedUniversities.has(u.id)}
+                    isComparing={!!compareList.find(c => c.id === u.id)}
+                    onSave={() => toggleSave(u)}
+                    onCompare={() => toggleCompare(u)}
+                    onOpen={() => router.push(`/university/${u.slug}`)}
+                  />
+                </MotionItem>
               ))}
-            </div>
+            </MotionContainer>
             {visibleCount < filtered.length && (
               <div className="text-center mt-8">
                 <p className="text-sm text-muted-foreground mb-3">
                   Showing {visibleCount} of {filtered.length} universities
                 </p>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => setVisibleCount(prev => prev + 24)}
-                  className="gap-2"
-                >
-                  Load More ({filtered.length - visibleCount} remaining)
-                </Button>
+                <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="inline-block">
+                  <Button variant="outline" size="lg" onClick={() => setVisibleCount(prev => prev + 24)} className="gap-2">
+                    Load More ({filtered.length - visibleCount} remaining)
+                  </Button>
+                </motion.div>
               </div>
             )}
           </>
@@ -816,7 +827,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       </section>
 
       {/* ===== Footer ===== */}
-      <footer className="border-t bg-slate-50 dark:bg-slate-900 mt-auto">
+      <footer className="border-t bg-slate-50 dark:bg-slate-950 mt-auto dark:border-slate-800">
         <div className="container mx-auto max-w-7xl px-4 py-10">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
@@ -927,7 +938,17 @@ function UniversityCard({
 }) {
   const t = useTranslations('UniversityCard')
   return (
-    <Card className="group hover:shadow-lg transition-all hover:border-emerald-300 cursor-pointer relative" onClick={onOpen}>
+    <motion.div
+      whileHover={{ y: -6 }}
+      transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      className="h-full"
+    >
+      <Card
+        className="group h-full cursor-pointer relative overflow-hidden hover:shadow-xl hover:border-emerald-400/50 dark:hover:border-emerald-600/50 transition-shadow"
+        onClick={onOpen}
+      >
+        {/* Gradient accent bar on top */}
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity" />
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
@@ -940,25 +961,27 @@ function UniversityCard({
                 className="rounded shadow-sm shrink-0"
                 unoptimized
               />
-              <Badge variant="outline" className="text-xs font-normal">
+              <Badge variant="outline" className="text-xs font-normal dark:border-slate-600">
                 <MapPin className="size-3 mr-1" />
                 {uni.city}, {uni.country}
               </Badge>
             </div>
-            <CardTitle className="text-base leading-tight line-clamp-2">{uni.name}</CardTitle>
+            <CardTitle className="text-base leading-tight line-clamp-2 dark:text-white">{uni.name}</CardTitle>
           </div>
-          <Button
-            variant="ghost"
-            size="icon"
-            className={cn('size-8 shrink-0', isSaved && 'text-rose-500')}
-            onClick={(e) => { e.stopPropagation(); onSave() }}
-          >
-            <Heart className={cn('size-4', isSaved && 'fill-current')} />
-          </Button>
+          <motion.div whileHover={{ scale: 1.15 }} whileTap={{ scale: 0.9 }}>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn('size-8 shrink-0', isSaved && 'text-rose-500')}
+              onClick={(e) => { e.stopPropagation(); onSave() }}
+            >
+              <Heart className={cn('size-4 transition-all', isSaved && 'fill-current scale-110')} />
+            </Button>
+          </motion.div>
         </div>
       </CardHeader>
       <CardContent className="space-y-3">
-        <p className="text-sm text-muted-foreground line-clamp-2">{uni.descriptionEn}</p>
+        <p className="text-sm text-muted-foreground line-clamp-2 dark:text-slate-400">{uni.descriptionEn}</p>
 
         {uni.avgRating !== null && uni.reviewCount > 0 ? (
           <div className="flex items-center gap-2">
@@ -969,51 +992,56 @@ function UniversityCard({
           <div className="text-xs text-muted-foreground italic">{t('noReviews')}</div>
         )}
 
-        <div className="grid grid-cols-3 gap-2 pt-3 border-t">
+        <div className="grid grid-cols-3 gap-2 pt-3 border-t dark:border-slate-700">
           <div>
             <div className="text-[10px] text-muted-foreground uppercase tracking-wide">{t('from')}</div>
-            <div className="text-sm font-bold text-emerald-700">{formatUsdCompact(uni.cheapestProgramTuition)}{t('perYear')}</div>
+            <div className="text-sm font-bold text-emerald-700 dark:text-emerald-400">{formatUsdCompact(uni.cheapestProgramTuition)}{t('perYear')}</div>
           </div>
           <div>
             <div className="text-[10px] text-muted-foreground uppercase tracking-wide">{t('living')}</div>
-            <div className="text-sm font-semibold">{formatUsdCompact(uni.livingCostUsd)}{t('perYear')}</div>
+            <div className="text-sm font-semibold dark:text-slate-200">{formatUsdCompact(uni.livingCostUsd)}{t('perYear')}</div>
           </div>
           <div>
             <div className="text-[10px] text-muted-foreground uppercase tracking-wide">{t('intlPct')}</div>
-            <div className="text-sm font-semibold">{uni.intlStudentPct}%</div>
+            <div className="text-sm font-semibold dark:text-slate-200">{uni.intlStudentPct}%</div>
           </div>
         </div>
 
         <div className="flex flex-wrap gap-1.5">
           {uni.programs.slice(0, 3).map(p => (
-            <Badge key={p.id} variant="secondary" className="text-[10px] font-normal">
+            <Badge key={p.id} variant="secondary" className="text-[10px] font-normal dark:bg-slate-700">
               {p.field}
             </Badge>
           ))}
           {uni.programs.length > 3 && (
-            <Badge variant="outline" className="text-[10px] font-normal">
+            <Badge variant="outline" className="text-[10px] font-normal dark:border-slate-600">
               +{uni.programs.length - 3} {t('more')}
             </Badge>
           )}
         </div>
 
         <div className="flex gap-2 pt-2">
-          <Button size="sm" className="flex-1 gap-1" onClick={(e) => { e.stopPropagation(); onOpen() }}>
-            {t('viewDetails')}
-            <ArrowRight className="size-3.5" />
-          </Button>
-          <Button
-            size="sm"
-            variant={isComparing ? 'default' : 'outline'}
-            onClick={(e) => { e.stopPropagation(); onCompare() }}
-            className={cn(isComparing && 'bg-emerald-600 hover:bg-emerald-700')}
-          >
-            <ArrowLeftRight className="size-3.5" />
-            {isComparing ? t('comparing') : t('compare')}
-          </Button>
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="flex-1">
+            <Button size="sm" className="w-full gap-1" onClick={(e) => { e.stopPropagation(); onOpen() }}>
+              {t('viewDetails')}
+              <ArrowRight className="size-3.5 transition-transform group-hover:translate-x-0.5" />
+            </Button>
+          </motion.div>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              size="sm"
+              variant={isComparing ? 'default' : 'outline'}
+              onClick={(e) => { e.stopPropagation(); onCompare() }}
+              className={cn(isComparing && 'bg-emerald-600 hover:bg-emerald-700')}
+            >
+              <ArrowLeftRight className="size-3.5" />
+              {isComparing ? t('comparing') : t('compare')}
+            </Button>
+          </motion.div>
         </div>
       </CardContent>
-    </Card>
+      </Card>
+    </motion.div>
   )
 }
 
