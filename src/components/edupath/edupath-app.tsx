@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
-import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles, Shuffle, Award } from 'lucide-react'
+import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles, Shuffle, Award, Building2 } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -488,11 +488,22 @@ export function EduPathApp({ universities, countries, stats }: Props) {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => setAdminPanelOpen(true)}
+                onClick={() => router.push('/admin')}
                 className="gap-2 border-slate-300 text-slate-700 hover:bg-slate-100"
               >
                 <Shield className="size-4" />
                 <span className="hidden sm:inline">{t('Nav.admin')}</span>
+              </Button>
+            )}
+            {(profile?.role === 'recruiter' || profile?.role === 'admin') && (
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => router.push('/sponsor')}
+                className="gap-2 border-emerald-300 text-emerald-700 hover:bg-emerald-50"
+              >
+                <Building2 className="size-4" />
+                <span className="hidden sm:inline">Sponsor</span>
               </Button>
             )}
             <LocaleSwitcher />

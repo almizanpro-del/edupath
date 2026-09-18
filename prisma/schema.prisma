@@ -26,6 +26,7 @@ model University {
   logoUrl         String?
   descriptionEn   String?
   descriptionAr   String?
+  pendingReview   Boolean  @default(false) // true = scraped, awaiting editorial review
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
