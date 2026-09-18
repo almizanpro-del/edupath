@@ -1,3 +1,4 @@
+']* This file was updated to force Vercel rebuild *
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -107,3 +108,4 @@ export default async function RootLayout({
     </html>
   );
 }
+
