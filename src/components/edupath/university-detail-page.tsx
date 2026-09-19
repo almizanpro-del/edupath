@@ -15,6 +15,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Separator } from '@/components/ui/separator'
+import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { useToast } from '@/hooks/use-toast'
 import { formatUsd, formatUsdCompact, totalCost, countryFlagUrl } from '@/lib/edupath'
 import { cn } from '@/lib/utils'
@@ -99,6 +100,8 @@ export function UniversityDetailPage({ uni }: Props) {
   const [profile, setProfile] = React.useState<UserProfile | null>(null)
   const [authModalOpen, setAuthModalOpen] = React.useState(false)
   const [reviewFormOpen, setReviewFormOpen] = React.useState(false)
+  const [contactOpen, setContactOpen] = React.useState(false)
+  const [showFloatingCta, setShowFloatingCta] = React.useState(false)
   const [reviews, setReviews] = React.useState<Review[]>(uni.reviews)
 
   React.useEffect(() => {
@@ -124,6 +127,16 @@ export function UniversityDetailPage({ uni }: Props) {
       .then(data => { const saved = new Set<string>((data.universities ?? []).map((u: { id: string }) => u.id)); setIsSaved(saved.has(uni.id)) })
       .catch(() => {})
   }, [profile, uni.id])
+
+  // Show floating CTA after user scrolls past the hero (~600px)
+  React.useEffect(() => {
+    const onScroll = () => setShowFloatingCta(window.scrollY > 600)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    onScroll()
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  const openContact = () => { setContactOpen(true); track('contact_open', { universityId: uni.id }) }
 
   const handleSave = async () => {
     if (!profile) { toast({ title: 'Sign in to save universities', description: 'Create a free account to bookmark universities.' }); setAuthModalOpen(true); return }
@@ -219,9 +232,14 @@ export function UniversityDetailPage({ uni }: Props) {
       <div className="container mx-auto max-w-7xl px-4 py-6">
         {/* Action bar */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-6 flex items-center justify-between flex-wrap gap-3">
-          <Button variant="outline" size="sm" onClick={() => router.push(`/claim/${uni.slug}`)} className="gap-2 text-blue-700 dark:text-blue-400 border-blue-300 dark:border-slate-600 hover:bg-blue-50 dark:hover:bg-slate-800">
-            <Building2 className="size-4" />Claim this university
-          </Button>
+          <div className="flex items-center gap-2 flex-wrap">
+            <Button size="sm" onClick={openContact} className="gap-2 bg-orange-500 hover:bg-orange-600 text-white shadow-sm shadow-orange-500/30">
+              <Mail className="size-4" />{t('contact.ctaShort')}
+            </Button>
+            <Button variant="outline" size="sm" onClick={() => router.push(`/claim/${uni.slug}`)} className="gap-2 text-blue-700 dark:text-blue-400 border-blue-300 dark:border-slate-600 hover:bg-blue-50 dark:hover:bg-slate-800">
+              <Building2 className="size-4" />Claim this university
+            </Button>
+          </div>
           <SocialShare url={`https://edupath-amber-three.vercel.app/university/${uni.slug}`} title={`${uni.name} — Tuition, Programs & Reviews | EduPath`} description={uni.descriptionEn} />
         </motion.div>
 
@@ -310,7 +328,10 @@ export function UniversityDetailPage({ uni }: Props) {
                   {/* Quick actions */}
                   <Card className="dark:bg-slate-900 dark:border-slate-800">
                     <CardContent className="pt-4 space-y-2">
-                      <Button className="w-full gap-2" onClick={() => setActiveTab('cost')}>
+                      <Button className="w-full gap-2 bg-orange-500 hover:bg-orange-600 text-white shadow-sm shadow-orange-500/30" onClick={openContact}>
+                        <Mail className="size-4" />{t('contact.cta')}
+                      </Button>
+                      <Button variant="outline" className="w-full gap-2 dark:border-slate-600" onClick={() => setActiveTab('cost')}>
                         <Calculator className="size-4" />Calculate total cost
                       </Button>
                       <Button variant="outline" className="w-full gap-2 dark:border-slate-600" onClick={() => setActiveTab('reviews')}>
@@ -559,8 +580,41 @@ export function UniversityDetailPage({ uni }: Props) {
         </Tabs>
       </div>
 
-      {/* Contact form */}
-      <ContactForm universityId={uni.id} universityName={uni.name} profile={profile} />
+      {/* Floating CTA — appears after scroll */}
+      <AnimatePresence>
+        {showFloatingCta && !contactOpen && (
+          <motion.div
+            initial={{ y: 80, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 80, opacity: 0 }}
+            transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+            className="fixed bottom-4 left-1/2 -translate-x-1/2 z-30 w-[calc(100%-2rem)] max-w-md"
+          >
+            <button
+              onClick={openContact}
+              className="group w-full flex items-center gap-3 rounded-2xl bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl border border-slate-200 dark:border-slate-700 shadow-2xl shadow-slate-900/20 dark:shadow-black/40 p-3 text-left hover:border-orange-400 dark:hover:border-orange-500 transition-colors"
+            >
+              <div className="size-10 rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center text-white shrink-0 shadow-lg shadow-orange-500/30">
+                <Mail className="size-5" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="text-sm font-semibold text-slate-900 dark:text-white truncate">{t('contact.floatingCta')}</div>
+                <div className="text-xs text-muted-foreground dark:text-slate-400 truncate">{t('contact.floatingCtaSub')}</div>
+              </div>
+              <div className="text-xs font-bold text-orange-600 dark:text-orange-400 shrink-0 group-hover:translate-x-0.5 transition-transform">→</div>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Contact form modal */}
+      <ContactDialog
+        open={contactOpen}
+        onOpenChange={setContactOpen}
+        universityId={uni.id}
+        universityName={uni.name}
+        profile={profile}
+      />
 
       {/* Modals */}
       <AuthModal open={authModalOpen} onClose={() => setAuthModalOpen(false)} onAuthed={(p) => setProfile(p)} />
@@ -569,8 +623,16 @@ export function UniversityDetailPage({ uni }: Props) {
   )
 }
 
-// =================== Contact Form ===================
-function ContactForm({ universityId, universityName, profile }: { universityId: string; universityName: string; profile: UserProfile | null }) {
+// =================== Contact Dialog (Modal) ===================
+function ContactDialog({
+  open, onOpenChange, universityId, universityName, profile,
+}: {
+  open: boolean
+  onOpenChange: (v: boolean) => void
+  universityId: string
+  universityName: string
+  profile: UserProfile | null
+}) {
   const { toast } = useToast()
   const t = useTranslations('Detail.contact')
   const [name, setName] = React.useState(profile?.name ?? '')
@@ -586,6 +648,14 @@ function ContactForm({ universityId, universityName, profile }: { universityId: 
     if (profile) { setName(profile.name); setCountry(profile.country); setField(profile.fieldOfInterest ?? '') }
   }, [profile])
 
+  // Reset submitted state when dialog closes
+  React.useEffect(() => {
+    if (!open) {
+      const resetTimer = setTimeout(() => setSubmitted(false), 200)
+      return () => clearTimeout(resetTimer)
+    }
+  }, [open])
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!name || !email || !message) { toast({ title: t('fillRequired'), variant: 'destructive' }); return }
@@ -600,66 +670,75 @@ function ContactForm({ universityId, universityName, profile }: { universityId: 
   }
 
   return (
-    <div className="container mx-auto max-w-2xl px-4 py-10">
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
-        <Card className="overflow-hidden dark:bg-slate-900 dark:border-slate-800">
-          {submitted ? (
-            <CardContent className="pt-10 pb-10 text-center">
-              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', duration: 0.6 }} className="size-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mx-auto mb-4">
-                <CheckCircle2 className="size-8 text-blue-600 dark:text-blue-400" />
-              </motion.div>
-              <h3 className="text-xl font-bold mb-2 dark:text-white">{t('messageSent')}</h3>
-              <p className="text-sm text-muted-foreground mb-4 dark:text-slate-400">{t('messageSentDesc', { name: universityName })}</p>
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="p-0 overflow-hidden max-w-lg gap-0">
+        {submitted ? (
+          <div className="p-8 text-center">
+            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', duration: 0.6 }} className="size-16 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center mx-auto mb-4">
+              <CheckCircle2 className="size-8 text-orange-600 dark:text-orange-400" />
+            </motion.div>
+            <h3 className="text-xl font-bold mb-2 dark:text-white">{t('messageSent')}</h3>
+            <p className="text-sm text-muted-foreground mb-6 dark:text-slate-400">{t('messageSentDesc', { name: universityName })}</p>
+            <div className="flex gap-2 justify-center">
               <Button variant="outline" onClick={() => setSubmitted(false)} className="dark:border-slate-600">{t('sendAnother')}</Button>
-            </CardContent>
-          ) : (
-            <>
-              <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-5 text-white">
-                <div className="flex items-center gap-2">
-                  <Mail className="size-5" />
-                  <h3 className="text-lg font-bold">{t('title', { name: universityName })}</h3>
+              <Button onClick={() => onOpenChange(false)} className="bg-orange-500 hover:bg-orange-600 text-white">OK</Button>
+            </div>
+          </div>
+        ) : (
+          <>
+            {/* Header — deep slate/navy gradient matching the hero (NO light blue) */}
+            <div className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 p-5 text-white">
+              <div className="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-orange-500/20 blur-2xl" />
+              <div className="relative flex items-start gap-3">
+                <div className="size-10 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
+                  <Mail className="size-5 text-orange-400" />
                 </div>
-                <p className="text-sm text-white/80 mt-1">{t('description')}</p>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-lg font-bold leading-tight">{t('title', { name: universityName })}</h3>
+                  <p className="text-xs text-white/60 mt-1 leading-relaxed">{t('description')}</p>
+                </div>
               </div>
-              <CardContent className="pt-6">
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    <div>
-                      <Label htmlFor="contact-name" className="text-xs dark:text-slate-300">{t('yourName')} *</Label>
-                      <Input id="contact-name" value={name} onChange={e => setName(e.target.value)} required className="dark:bg-slate-800 dark:border-slate-700" />
-                    </div>
-                    <div>
-                      <Label htmlFor="contact-email" className="text-xs dark:text-slate-300">{t('email')} *</Label>
-                      <Input id="contact-email" type="email" value={email} onChange={e => setEmail(e.target.value)} required className="dark:bg-slate-800 dark:border-slate-700" />
-                    </div>
+            </div>
+
+            {/* Form body */}
+            <div className="p-5">
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid sm:grid-cols-2 gap-3">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="contact-name" className="text-xs dark:text-slate-300">{t('yourName')} *</Label>
+                    <Input id="contact-name" value={name} onChange={e => setName(e.target.value)} required className="dark:bg-slate-800 dark:border-slate-700" />
                   </div>
-                  <div className="grid sm:grid-cols-3 gap-3">
-                    <div>
-                      <Label htmlFor="contact-country" className="text-xs dark:text-slate-300">{t('country')}</Label>
-                      <Input id="contact-country" value={country} onChange={e => setCountry(e.target.value)} className="dark:bg-slate-800 dark:border-slate-700" />
-                    </div>
-                    <div>
-                      <Label htmlFor="contact-gpa" className="text-xs dark:text-slate-300">{t('gpa')}</Label>
-                      <Input id="contact-gpa" type="number" step="0.1" placeholder="3.5" value={gpa} onChange={e => setGpa(e.target.value)} className="dark:bg-slate-800 dark:border-slate-700" />
-                    </div>
-                    <div>
-                      <Label htmlFor="contact-field" className="text-xs dark:text-slate-300">{t('fieldOfInterest')}</Label>
-                      <Input id="contact-field" value={field} onChange={e => setField(e.target.value)} className="dark:bg-slate-800 dark:border-slate-700" />
-                    </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="contact-email" className="text-xs dark:text-slate-300">{t('email')} *</Label>
+                    <Input id="contact-email" type="email" value={email} onChange={e => setEmail(e.target.value)} required className="dark:bg-slate-800 dark:border-slate-700" />
                   </div>
-                  <div>
-                    <Label htmlFor="contact-msg" className="text-xs dark:text-slate-300">{t('yourMessage')} *</Label>
-                    <Textarea id="contact-msg" rows={4} placeholder={t('messagePlaceholder')} value={message} onChange={e => setMessage(e.target.value)} required maxLength={2000} className="dark:bg-slate-800 dark:border-slate-700" />
+                </div>
+                <div className="grid sm:grid-cols-3 gap-3">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="contact-country" className="text-xs dark:text-slate-300">{t('country')}</Label>
+                    <Input id="contact-country" value={country} onChange={e => setCountry(e.target.value)} className="dark:bg-slate-800 dark:border-slate-700" />
                   </div>
-                  <Button type="submit" className="w-full gap-2 bg-blue-600 hover:bg-blue-700" disabled={submitting}>
-                    {submitting ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}{t('sendInquiry')}
-                  </Button>
-                </form>
-              </CardContent>
-            </>
-          )}
-        </Card>
-      </motion.div>
-    </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="contact-gpa" className="text-xs dark:text-slate-300">{t('gpa')}</Label>
+                    <Input id="contact-gpa" type="number" step="0.1" placeholder="3.5" value={gpa} onChange={e => setGpa(e.target.value)} className="dark:bg-slate-800 dark:border-slate-700" />
+                  </div>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="contact-field" className="text-xs dark:text-slate-300">{t('fieldOfInterest')}</Label>
+                    <Input id="contact-field" value={field} onChange={e => setField(e.target.value)} className="dark:bg-slate-800 dark:border-slate-700" />
+                  </div>
+                </div>
+                <div className="space-y-1.5">
+                  <Label htmlFor="contact-msg" className="text-xs dark:text-slate-300">{t('yourMessage')} *</Label>
+                  <Textarea id="contact-msg" rows={4} placeholder={t('messagePlaceholder')} value={message} onChange={e => setMessage(e.target.value)} required maxLength={2000} className="dark:bg-slate-800 dark:border-slate-700 resize-none" />
+                </div>
+                <Button type="submit" className="w-full gap-2 bg-orange-500 hover:bg-orange-600 text-white shadow-sm shadow-orange-500/30" disabled={submitting}>
+                  {submitting ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}{submitting ? t('submitting') : t('sendInquiry')}
+                </Button>
+              </form>
+            </div>
+          </>
+        )}
+      </DialogContent>
+    </Dialog>
   )
 }

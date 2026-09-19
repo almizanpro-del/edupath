@@ -131,7 +131,12 @@
       "sendAnother": "Send another message",
       "fillRequired": "Please fill in all required fields",
       "failedToSend": "Failed to send",
-      "tryAgain": "Please try again"
+      "tryAgain": "Please try again",
+      "cta": "Contact University",
+      "ctaShort": "Contact",
+      "floatingCta": "Have a question about this university?",
+      "floatingCtaSub": "Get a personal response from the admissions team.",
+      "openForm": "Open contact form"
     }
   },
   "Compare": {
