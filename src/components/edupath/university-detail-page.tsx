@@ -194,14 +194,14 @@ export function UniversityDetailPage({ uni }: Props) {
 
         <div className="relative container mx-auto max-w-7xl px-4 py-10 md:py-16">
           <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col md:flex-row items-start gap-6">
-            {/* Flag/logo */}
-            <motion.div variants={fadeInUp} className="size-20 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 flex items-center justify-center shrink-0 overflow-hidden shadow-2xl">
+            {/* Flag/logo — glassmorphic crest */}
+            <motion.div variants={fadeInUp} className="size-20 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 flex items-center justify-center shrink-0 overflow-hidden shadow-2xl ring-1 ring-white/5">
               <Image src={countryFlagUrl(uni.country, 80)} alt={uni.country} width={56} height={38} className="rounded-lg" unoptimized />
             </motion.div>
 
             {/* Title + meta */}
-            <motion.div variants={fadeInUp} className="flex-1">
-              <h1 className="text-3xl md:text-5xl font-bold mb-3 bg-gradient-to-br from-white via-blue-50 to-blue-200 bg-clip-text text-transparent">{uni.name}</h1>
+            <motion.div variants={fadeInUp} className="flex-1 min-w-0">
+              <h1 className="text-3xl md:text-5xl font-bold mb-3 bg-gradient-to-br from-white via-blue-50 to-blue-200 bg-clip-text text-transparent leading-tight">{uni.name}</h1>
               <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
                 <span className="flex items-center gap-1.5"><MapPin className="size-4" />{uni.city}, {uni.country}</span>
                 <a href={uni.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white hover:underline transition-colors">
@@ -213,15 +213,15 @@ export function UniversityDetailPage({ uni }: Props) {
               </div>
             </motion.div>
 
-            {/* Quick stats badges */}
+            {/* Floating glass stat cards — tuition (blue) + living cost (orange) */}
             <motion.div variants={fadeInUp} className="flex flex-wrap gap-2 md:flex-col md:items-end">
-              <div className="bg-white/10 backdrop-blur-xl rounded-xl px-4 py-2 border border-white/10">
-                <div className="text-[10px] text-white/50 uppercase tracking-wide">Tuition from</div>
-                <div className="text-lg font-bold text-blue-300">{formatUsdCompact(uni.cheapestProgramTuition)}/yr</div>
+              <div className="bg-white/10 backdrop-blur-xl rounded-2xl px-5 py-3 border border-white/15 shadow-xl ring-1 ring-white/5 min-w-[140px]">
+                <div className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Tuition from</div>
+                <div className="text-xl font-bold text-blue-300 mt-0.5">{formatUsdCompact(uni.cheapestProgramTuition)}/yr</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-xl rounded-xl px-4 py-2 border border-white/10">
-                <div className="text-[10px] text-white/50 uppercase tracking-wide">Living cost</div>
-                <div className="text-lg font-bold text-orange-300">{formatUsdCompact(uni.livingCostUsd)}/yr</div>
+              <div className="bg-white/10 backdrop-blur-xl rounded-2xl px-5 py-3 border border-white/15 shadow-xl ring-1 ring-white/5 min-w-[140px]">
+                <div className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Living cost</div>
+                <div className="text-xl font-bold text-orange-300 mt-0.5">{formatUsdCompact(uni.livingCostUsd)}/yr</div>
               </div>
             </motion.div>
           </motion.div>
@@ -233,10 +233,10 @@ export function UniversityDetailPage({ uni }: Props) {
         {/* Action bar */}
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-6 flex items-center justify-between flex-wrap gap-3">
           <div className="flex items-center gap-2 flex-wrap">
-            <Button size="sm" onClick={openContact} className="gap-2 bg-orange-500 hover:bg-orange-600 text-white shadow-sm shadow-orange-500/30">
+            <Button size="sm" onClick={openContact} className="gap-2 bg-orange-500 hover:bg-orange-600 text-white shadow-md shadow-orange-500/30 rounded-full px-5">
               <Mail className="size-4" />{t('contact.ctaShort')}
             </Button>
-            <Button variant="outline" size="sm" onClick={() => router.push(`/claim/${uni.slug}`)} className="gap-2 text-blue-700 dark:text-blue-400 border-blue-300 dark:border-slate-600 hover:bg-blue-50 dark:hover:bg-slate-800">
+            <Button variant="outline" size="sm" onClick={() => router.push(`/claim/${uni.slug}`)} className="gap-2 text-blue-700 dark:text-blue-400 border-blue-300 dark:border-slate-600 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-full">
               <Building2 className="size-4" />Claim this university
             </Button>
           </div>
@@ -254,7 +254,7 @@ export function UniversityDetailPage({ uni }: Props) {
                 { value: 'cost', label: t('tabs.cost'), icon: Calculator },
                 { value: 'reviews', label: `${t('tabs.reviews')} (${reviews.length})`, icon: Star },
               ].map(tab => (
-                <TabsTrigger key={tab.value} value={tab.value} className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent gap-1.5 py-3 px-4 dark:data-[state=active]:border-blue-400">
+                <TabsTrigger key={tab.value} value={tab.value} className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent data-[state=active]:text-blue-700 dark:data-[state=active]:text-blue-400 gap-1.5 py-3 px-4 dark:data-[state=active]:border-blue-400 transition-colors">
                   <tab.icon className="size-4" />
                   <span className="text-sm font-medium">{tab.label}</span>
                 </TabsTrigger>
@@ -268,13 +268,13 @@ export function UniversityDetailPage({ uni }: Props) {
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="grid lg:grid-cols-3 gap-6">
                 {/* Left: description */}
                 <div className="lg:col-span-2 space-y-6">
-                  <Card className="dark:bg-slate-900 dark:border-slate-800">
-                    <CardContent className="pt-6">
+                  <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800 overflow-hidden">
+                    <CardContent className="p-6">
                       <h3 className="font-bold text-lg mb-3 dark:text-white">About {uni.name}</h3>
                       <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">{uni.descriptionEn}</p>
                       {uni.descriptionAr && (
                         <div className="mt-6 pt-6 border-t dark:border-slate-700">
-                          <h4 className="font-semibold mb-2 text-sm text-muted-foreground dark:text-slate-400">{t('descriptionAr')}</h4>
+                          <h4 className="font-semibold mb-2 text-[11px] uppercase tracking-wider text-muted-foreground dark:text-slate-400">{t('descriptionAr')}</h4>
                           <p className="text-base leading-relaxed text-right text-slate-600 dark:text-slate-300" dir="rtl" lang="ar">{uni.descriptionAr}</p>
                         </div>
                       )}
@@ -282,15 +282,15 @@ export function UniversityDetailPage({ uni }: Props) {
                   </Card>
 
                   {/* Programs preview */}
-                  <Card className="dark:bg-slate-900 dark:border-slate-800">
-                    <CardContent className="pt-6">
+                  <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800">
+                    <CardContent className="p-6">
                       <div className="flex items-center justify-between mb-4">
                         <h3 className="font-bold text-lg dark:text-white">Programs offered</h3>
                         <Badge variant="secondary" className="dark:bg-slate-800">{uni.programs.length} total</Badge>
                       </div>
                       <div className="flex flex-wrap gap-2">
                         {uni.programs.map(p => (
-                          <Badge key={p.id} variant="outline" className="gap-1 dark:border-slate-600 dark:text-slate-300">
+                          <Badge key={p.id} variant="outline" className="gap-1 px-3 py-1 rounded-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 dark:text-slate-300 hover:border-blue-300 dark:hover:border-blue-700 transition-colors">
                             <GraduationCap className="size-3" />{p.field} · {p.degreeLevel}
                           </Badge>
                         ))}
@@ -301,24 +301,26 @@ export function UniversityDetailPage({ uni }: Props) {
 
                 {/* Right: stats sidebar */}
                 <div className="space-y-4">
-                  <Card className="dark:bg-slate-900 dark:border-slate-800 overflow-hidden">
+                  <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800 overflow-hidden">
                     <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-4 text-white">
-                      <h3 className="font-bold">Key Stats</h3>
+                      <h3 className="font-bold flex items-center gap-2">
+                        <TrendingUp className="size-4" />Key Stats
+                      </h3>
                     </div>
-                    <CardContent className="pt-4 space-y-3">
+                    <CardContent className="p-2 space-y-1">
                       {[
-                        { icon: DollarSign, label: t('stats.cheapestProgram'), value: formatUsd(uni.cheapestProgramTuition) + '/yr', color: 'text-blue-600 dark:text-blue-400' },
-                        { icon: DollarSign, label: t('stats.livingCost'), value: formatUsd(uni.livingCostUsd) + '/yr', color: 'text-orange-600 dark:text-orange-400' },
-                        { icon: Users, label: t('stats.intlStudents'), value: uni.intlStudentPct + '%', color: 'text-slate-700 dark:text-slate-200' },
-                        { icon: TrendingUp, label: t('stats.acceptance'), value: uni.acceptanceRate !== null ? uni.acceptanceRate + '%' : 'N/A', color: 'text-slate-700 dark:text-slate-200' },
+                        { icon: DollarSign, label: t('stats.cheapestProgram'), value: formatUsd(uni.cheapestProgramTuition) + '/yr', color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-950/40' },
+                        { icon: DollarSign, label: t('stats.livingCost'), value: formatUsd(uni.livingCostUsd) + '/yr', color: 'text-orange-600 dark:text-orange-400', bg: 'bg-orange-50 dark:bg-orange-950/40' },
+                        { icon: Users, label: t('stats.intlStudents'), value: uni.intlStudentPct + '%', color: 'text-slate-700 dark:text-slate-200', bg: 'bg-slate-100 dark:bg-slate-800' },
+                        { icon: TrendingUp, label: t('stats.acceptance'), value: uni.acceptanceRate !== null ? uni.acceptanceRate + '%' : 'N/A', color: 'text-slate-700 dark:text-slate-200', bg: 'bg-slate-100 dark:bg-slate-800' },
                       ].map((stat, i) => (
-                        <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 * i }} className="flex items-center gap-3 py-2 border-b last:border-0 dark:border-slate-700">
-                          <div className="size-9 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
+                        <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 * i }} className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                          <div className={cn('size-9 rounded-xl flex items-center justify-center shrink-0', stat.bg)}>
                             <stat.icon className={cn('size-4', stat.color)} />
                           </div>
-                          <div className="flex-1">
-                            <div className="text-xs text-muted-foreground dark:text-slate-400">{stat.label}</div>
-                            <div className={cn('font-bold', stat.color)}>{stat.value}</div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-[10px] text-muted-foreground uppercase tracking-wider font-medium dark:text-slate-400">{stat.label}</div>
+                            <div className={cn('font-bold text-sm', stat.color)}>{stat.value}</div>
                           </div>
                         </motion.div>
                       ))}
@@ -326,8 +328,8 @@ export function UniversityDetailPage({ uni }: Props) {
                   </Card>
 
                   {/* Quick actions */}
-                  <Card className="dark:bg-slate-900 dark:border-slate-800">
-                    <CardContent className="pt-4 space-y-2">
+                  <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800">
+                    <CardContent className="p-4 space-y-2">
                       <Button className="w-full gap-2 bg-orange-500 hover:bg-orange-600 text-white shadow-sm shadow-orange-500/30" onClick={openContact}>
                         <Mail className="size-4" />{t('contact.cta')}
                       </Button>
@@ -348,11 +350,11 @@ export function UniversityDetailPage({ uni }: Props) {
               <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="grid md:grid-cols-2 gap-4">
                 {uni.programs.map(p => (
                   <motion.div key={p.id} variants={staggerItem}>
-                    <Card className="h-full hover:shadow-lg transition-shadow dark:bg-slate-900 dark:border-slate-800">
-                      <CardContent className="pt-5">
+                    <Card className="h-full rounded-2xl shadow-sm border-slate-200 hover:shadow-md hover:border-blue-200 transition-all dark:bg-slate-900 dark:border-slate-800 dark:hover:border-blue-800">
+                      <CardContent className="p-5">
                         <div className="flex items-start justify-between gap-3 mb-3">
-                          <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-2">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-2 flex-wrap">
                               <Badge variant="outline" className="text-xs capitalize dark:border-slate-600">{p.degreeLevel}</Badge>
                               <Badge variant="secondary" className="text-xs dark:bg-slate-800">{p.field}</Badge>
                               <Badge variant="outline" className="text-xs dark:border-slate-600"><Languages className="size-3 mr-1" />{p.language}</Badge>
@@ -361,7 +363,7 @@ export function UniversityDetailPage({ uni }: Props) {
                           </div>
                           <div className="text-right shrink-0">
                             <div className="text-xl font-bold text-blue-600 dark:text-blue-400">{formatUsd(p.tuitionUsd)}</div>
-                            <div className="text-[10px] text-muted-foreground">{t('programs.perYear')}</div>
+                            <div className="text-[10px] text-muted-foreground uppercase tracking-wider">{t('programs.perYear')}</div>
                           </div>
                         </div>
                         <div className="flex flex-wrap gap-4 text-xs text-muted-foreground pt-3 border-t dark:border-slate-700">
@@ -391,19 +393,21 @@ export function UniversityDetailPage({ uni }: Props) {
                 <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="grid md:grid-cols-2 gap-4">
                   {uni.scholarships.map(s => (
                     <motion.div key={s.id} variants={staggerItem}>
-                      <Card className="h-full hover:shadow-lg transition-shadow dark:bg-slate-900 dark:border-slate-800">
-                        <CardContent className="pt-5">
+                      <Card className="h-full rounded-2xl shadow-sm border-slate-200 hover:shadow-md hover:border-orange-200 transition-all dark:bg-slate-900 dark:border-slate-800 dark:hover:border-orange-800">
+                        <CardContent className="p-5">
                           <div className="flex items-start justify-between gap-3 mb-2">
-                            <div className="flex-1">
+                            <div className="flex-1 min-w-0">
                               <div className="flex items-center gap-2 mb-1">
-                                <Award className="size-4 text-orange-500" />
-                                <h4 className="font-semibold dark:text-white">{s.name}</h4>
+                                <div className="size-7 rounded-lg bg-orange-50 dark:bg-orange-950/40 flex items-center justify-center shrink-0">
+                                  <Award className="size-4 text-orange-600 dark:text-orange-400" />
+                                </div>
+                                <h4 className="font-semibold dark:text-white truncate">{s.name}</h4>
                               </div>
                               <Badge variant="outline" className="capitalize dark:border-slate-600">{s.amountType}</Badge>
                             </div>
                             <div className="text-right shrink-0">
                               <div className="text-xl font-bold text-orange-600 dark:text-orange-400">{formatUsd(s.amountUsd)}</div>
-                              <div className="text-[10px] text-muted-foreground">{s.amountType === 'full' ? t('scholarships.fullCoverage') : t('scholarships.amount')}</div>
+                              <div className="text-[10px] text-muted-foreground uppercase tracking-wider">{s.amountType === 'full' ? t('scholarships.fullCoverage') : t('scholarships.amount')}</div>
                             </div>
                           </div>
                           <p className="text-xs text-muted-foreground dark:text-slate-400 mt-2">{s.eligibility}</p>
@@ -424,15 +428,15 @@ export function UniversityDetailPage({ uni }: Props) {
             <TabsContent value="cost" className="mt-0">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-2xl mx-auto space-y-6">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center size-14 rounded-2xl bg-blue-100 dark:bg-blue-900/30 mb-3">
+                  <div className="inline-flex items-center justify-center size-14 rounded-2xl bg-blue-50 dark:bg-blue-950/40 mb-3 ring-1 ring-blue-100 dark:ring-blue-900/40">
                     <Calculator className="size-7 text-blue-600 dark:text-blue-400" />
                   </div>
                   <h3 className="font-bold text-xl mb-1 dark:text-white">{t('cost.title')}</h3>
                   <p className="text-sm text-muted-foreground dark:text-slate-400">{t('cost.description')}</p>
                 </div>
 
-                <Card className="dark:bg-slate-900 dark:border-slate-800">
-                  <CardContent className="pt-6 space-y-5">
+                <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800">
+                  <CardContent className="p-6 space-y-5">
                     {/* Duration slider */}
                     <div>
                       <div className="flex items-center justify-between mb-2">
@@ -445,7 +449,7 @@ export function UniversityDetailPage({ uni }: Props) {
                     </div>
 
                     {/* Living checkbox */}
-                    <div className="flex items-center space-x-2 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                    <div className="flex items-center space-x-2 p-3 bg-slate-50 dark:bg-slate-800 rounded-xl">
                       <Checkbox id="include-living" checked={includeLiving} onCheckedChange={(v) => setIncludeLiving(v === true)} />
                       <Label htmlFor="include-living" className="text-sm cursor-pointer dark:text-slate-200">
                         {t('cost.includeLiving', { amount: formatUsd(uni.livingCostUsd) })}
@@ -456,21 +460,21 @@ export function UniversityDetailPage({ uni }: Props) {
                     <div className="space-y-3 pt-3 border-t dark:border-slate-700">
                       <div className="flex justify-between items-center">
                         <span className="text-sm text-muted-foreground dark:text-slate-400">{t('cost.tuition', { years: (costDuration / 12).toFixed(1) })}</span>
-                        <span className="font-medium dark:text-slate-200">{formatUsd(Math.round(uni.cheapestProgramTuition * costDuration / 12))}</span>
+                        <span className="font-semibold text-blue-600 dark:text-blue-400 tabular-nums">{formatUsd(Math.round(uni.cheapestProgramTuition * costDuration / 12))}</span>
                       </div>
                       {includeLiving && (
                         <div className="flex justify-between items-center">
                           <span className="text-sm text-muted-foreground dark:text-slate-400">{t('cost.living', { years: (costDuration / 12).toFixed(1) })}</span>
-                          <span className="font-medium dark:text-slate-200">{formatUsd(Math.round(uni.livingCostUsd * costDuration / 12))}</span>
+                          <span className="font-semibold text-orange-600 dark:text-orange-400 tabular-nums">{formatUsd(Math.round(uni.livingCostUsd * costDuration / 12))}</span>
                         </div>
                       )}
                     </div>
 
                     {/* Total */}
-                    <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-5 text-white">
+                    <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-5 text-white shadow-md shadow-blue-600/20">
                       <div className="flex justify-between items-center">
-                        <span className="font-semibold">{t('cost.total')}</span>
-                        <motion.span key={costDuration + String(includeLiving)} initial={{ scale: 0.9, opacity: 0.5 }} animate={{ scale: 1, opacity: 1 }} className="text-3xl font-bold">
+                        <span className="font-semibold text-sm uppercase tracking-wider">{t('cost.total')}</span>
+                        <motion.span key={costDuration + String(includeLiving)} initial={{ scale: 0.9, opacity: 0.5 }} animate={{ scale: 1, opacity: 1 }} className="text-3xl font-bold tabular-nums">
                           {formatUsd(totalCost(uni.cheapestProgramTuition, includeLiving ? uni.livingCostUsd : 0, costDuration))}
                         </motion.span>
                       </div>
@@ -478,7 +482,7 @@ export function UniversityDetailPage({ uni }: Props) {
                   </CardContent>
                 </Card>
 
-                <div className="text-xs text-muted-foreground bg-amber-50 dark:bg-amber-950/20 dark:text-amber-200 border border-amber-200 dark:border-amber-800 rounded-lg p-3">
+                <div className="text-xs text-muted-foreground bg-amber-50 dark:bg-amber-950/20 dark:text-amber-200 border border-amber-200 dark:border-amber-800 rounded-xl p-3">
                   <strong>{t('cost.disclaimer')}</strong>
                 </div>
               </motion.div>
@@ -492,7 +496,7 @@ export function UniversityDetailPage({ uni }: Props) {
                   <div className="font-semibold text-sm dark:text-white">{t('reviews.shareExperience')}</div>
                   <div className="text-xs text-muted-foreground mt-0.5 dark:text-slate-400">{profile ? t('reviews.shareDescLoggedIn') : t('reviews.shareDescLoggedOut')}</div>
                 </div>
-                <Button onClick={openReviewForm} className="gap-2 shrink-0" size="sm">
+                <Button onClick={openReviewForm} className="gap-2 shrink-0 bg-orange-500 hover:bg-orange-600 text-white shadow-sm shadow-orange-500/30" size="sm">
                   <MessageSquarePlus className="size-4" />{t('reviews.writeReview')}
                 </Button>
               </motion.div>
@@ -509,13 +513,13 @@ export function UniversityDetailPage({ uni }: Props) {
                 <>
                   {/* Rating summary */}
                   {avgRating !== null && (
-                    <Card className="dark:bg-slate-900 dark:border-slate-800">
-                      <CardContent className="pt-6">
+                    <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800">
+                      <CardContent className="p-6">
                         <div className="flex flex-col md:flex-row gap-6">
                           <div className="text-center md:text-left">
-                            <div className="text-5xl font-bold dark:text-white">{avgRating.toFixed(1)}</div>
+                            <div className="text-5xl font-bold dark:text-white tabular-nums">{avgRating.toFixed(1)}</div>
                             <StarRating value={avgRating} size={20} />
-                            <div className="text-xs text-muted-foreground mt-1 dark:text-slate-400">{t('reviews.reviewCount', { count: reviews.length })}</div>
+                            <div className="text-xs text-muted-foreground mt-1 dark:text-slate-400 uppercase tracking-wider">{t('reviews.reviewCount', { count: reviews.length })}</div>
                           </div>
                           <div className="flex-1 space-y-2">
                             <RatingBar label={t('reviews.subRatings.affordability')} value={reviews.reduce((s, r) => s + r.ratingAffordability, 0) / reviews.length} />
@@ -533,11 +537,11 @@ export function UniversityDetailPage({ uni }: Props) {
                   <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="space-y-4">
                     {reviews.map(r => (
                       <motion.div key={r.id} variants={staggerItem}>
-                        <Card className="dark:bg-slate-900 dark:border-slate-800">
-                          <CardContent className="pt-5">
+                        <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800">
+                          <CardContent className="p-5">
                             <div className="flex items-start justify-between gap-3 mb-3">
                               <div className="flex items-center gap-3">
-                                <div className="size-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold shrink-0">
+                                <div className="size-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold shrink-0 shadow-sm shadow-blue-600/20">
                                   {r.userName.charAt(0).toUpperCase()}
                                 </div>
                                 <div>
