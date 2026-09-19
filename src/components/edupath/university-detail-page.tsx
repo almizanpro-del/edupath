@@ -67,7 +67,7 @@ function RatingBar({ label, value }: { label: string; value: number }) {
     <div className="flex items-center gap-2">
       <span className="text-xs text-muted-foreground w-28">{label}</span>
       <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
-        <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${(value / 5) * 100}%` }} />
+        <div className="h-full bg-blue-500 rounded-full" style={{ width: `${(value / 5) * 100}%` }} />
       </div>
       <span className="text-xs font-medium w-8 text-right">{value.toFixed(1)}</span>
     </div>
@@ -203,7 +203,7 @@ export function UniversityDetailPage({ uni }: Props) {
   const avgRating = reviews.length > 0 ? reviews.reduce((s, r) => s + r.ratingOverall, 0) / reviews.length : null
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-emerald-50/40 via-white to-white">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50/40 via-white to-white">
       {/* Header */}
       <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur-md">
         <div className="container mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-4">
@@ -227,7 +227,7 @@ export function UniversityDetailPage({ uni }: Props) {
       </header>
 
       {/* Hero header */}
-      <div className="bg-gradient-to-br from-slate-900 via-teal-900 to-blue-950 text-white">
+      <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-blue-950 text-white">
         <div className="container mx-auto max-w-7xl px-4 py-12">
           <div className="flex items-start gap-4">
             <div className="size-16 rounded-xl bg-white/15 flex items-center justify-center shrink-0 overflow-hidden">
@@ -267,7 +267,7 @@ export function UniversityDetailPage({ uni }: Props) {
             variant="outline"
             size="sm"
             onClick={() => router.push(`/claim/${uni.slug}`)}
-            className="gap-2 text-emerald-700 border-emerald-300 hover:bg-emerald-50"
+            className="gap-2 text-blue-700 border-blue-300 hover:bg-blue-50"
           >
             <Building2 className="size-4" />
             Claim this university
@@ -280,11 +280,11 @@ export function UniversityDetailPage({ uni }: Props) {
         </div>
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsList className="bg-transparent h-12 p-0 gap-6 border-b w-full justify-start rounded-none">
-            <TabsTrigger value="overview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.overview')}</TabsTrigger>
-            <TabsTrigger value="programs" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.programs')} ({uni.programs.length})</TabsTrigger>
-            <TabsTrigger value="scholarships" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.scholarships')} ({uni.scholarships.length})</TabsTrigger>
-            <TabsTrigger value="cost" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.cost')}</TabsTrigger>
-            <TabsTrigger value="reviews" className="rounded-none border-b-2 border-transparent data-[state=active]:border-emerald-600 data-[state=active]:bg-transparent">{t('tabs.reviews')} ({reviews.length})</TabsTrigger>
+            <TabsTrigger value="overview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent">{t('tabs.overview')}</TabsTrigger>
+            <TabsTrigger value="programs" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent">{t('tabs.programs')} ({uni.programs.length})</TabsTrigger>
+            <TabsTrigger value="scholarships" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent">{t('tabs.scholarships')} ({uni.scholarships.length})</TabsTrigger>
+            <TabsTrigger value="cost" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent">{t('tabs.cost')}</TabsTrigger>
+            <TabsTrigger value="reviews" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent">{t('tabs.reviews')} ({reviews.length})</TabsTrigger>
           </TabsList>
 
           <div className="mt-6">
@@ -318,7 +318,7 @@ export function UniversityDetailPage({ uni }: Props) {
                         <h4 className="font-semibold">{p.name}</h4>
                       </div>
                       <div className="text-right">
-                        <div className="text-lg font-bold text-emerald-700">{formatUsd(p.tuitionUsd)}</div>
+                        <div className="text-lg font-bold text-blue-700">{formatUsd(p.tuitionUsd)}</div>
                         <div className="text-xs text-muted-foreground">{t('programs.perYear')}</div>
                       </div>
                     </div>
@@ -349,7 +349,7 @@ export function UniversityDetailPage({ uni }: Props) {
                           <Badge variant="outline" className="mt-1 capitalize">{s.amountType}</Badge>
                         </div>
                         <div className="text-right">
-                          <div className="text-lg font-bold text-emerald-700">{formatUsd(s.amountUsd)}</div>
+                          <div className="text-lg font-bold text-blue-700">{formatUsd(s.amountUsd)}</div>
                           <div className="text-xs text-muted-foreground">{s.amountType === 'full' ? t('scholarships.fullCoverage') : t('scholarships.amount')}</div>
                         </div>
                       </div>
@@ -372,7 +372,7 @@ export function UniversityDetailPage({ uni }: Props) {
                 </h4>
                 <p className="text-sm text-muted-foreground mb-4">{t('cost.description')}</p>
               </div>
-              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 space-y-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 space-y-4">
                 <div>
                   <Label className="text-sm font-medium">{t('cost.programDuration', { months: costDuration, years: (costDuration / 12).toFixed(1) })}</Label>
                   <Slider value={[costDuration]} onValueChange={(v) => setCostDuration(v[0])} min={12} max={72} step={6} className="mt-3" />
@@ -402,7 +402,7 @@ export function UniversityDetailPage({ uni }: Props) {
                   <Separator />
                   <div className="flex justify-between items-center pt-2">
                     <span className="font-semibold">{t('cost.total')}</span>
-                    <span className="text-2xl font-bold text-emerald-700">
+                    <span className="text-2xl font-bold text-blue-700">
                       {formatUsd(totalCost(uni.cheapestProgramTuition, includeLiving ? uni.livingCostUsd : 0, costDuration))}
                     </span>
                   </div>
@@ -415,7 +415,7 @@ export function UniversityDetailPage({ uni }: Props) {
 
             <TabsContent value="reviews" className="mt-0 space-y-4">
               {/* Write a review CTA */}
-              <div className="flex items-center justify-between gap-3 p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
+              <div className="flex items-center justify-between gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                 <div>
                   <div className="font-semibold text-sm">{t('reviews.shareExperience')}</div>
                   <div className="text-xs text-muted-foreground mt-0.5">
@@ -437,7 +437,7 @@ export function UniversityDetailPage({ uni }: Props) {
               ) : (
                 <>
                   {avgRating !== null && (
-                    <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-4">
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
                       <div className="flex items-center justify-between mb-3">
                         <div>
                           <div className="text-3xl font-bold">{avgRating.toFixed(1)}</div>
@@ -462,7 +462,7 @@ export function UniversityDetailPage({ uni }: Props) {
                             <div className="flex items-center gap-2">
                               <span className="font-semibold">{r.userName}</span>
                               {r.verifiedEnrollment && (
-                                <Badge variant="outline" className="text-[10px] gap-1 border-emerald-500 text-emerald-700">
+                                <Badge variant="outline" className="text-[10px] gap-1 border-blue-500 text-blue-700">
                                   <CheckCircle2 className="size-3" /> {t('reviews.verifiedStudent')}
                                 </Badge>
                               )}
@@ -562,8 +562,8 @@ function ContactForm({ universityId, universityName, profile }: { universityId: 
         <CardContent className="pt-6">
           {submitted ? (
             <div className="text-center py-8">
-              <div className="size-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
-                <CheckCircle2 className="size-8 text-emerald-600" />
+              <div className="size-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+                <CheckCircle2 className="size-8 text-blue-600" />
               </div>
               <h3 className="text-xl font-bold mb-2">{t('messageSent')}</h3>
               <p className="text-sm text-muted-foreground mb-4">{t('messageSentDesc', { name: universityName })}</p>
@@ -572,7 +572,7 @@ function ContactForm({ universityId, universityName, profile }: { universityId: 
           ) : (
             <>
               <div className="flex items-center gap-2 mb-4">
-                <Mail className="size-5 text-emerald-600" />
+                <Mail className="size-5 text-blue-600" />
                 <h3 className="text-lg font-bold">{t('title', { name: universityName })}</h3>
               </div>
               <p className="text-sm text-muted-foreground mb-4">{t('description')}</p>
@@ -605,7 +605,7 @@ function ContactForm({ universityId, universityName, profile }: { universityId: 
                   <Label htmlFor="contact-msg" className="text-xs">{t('yourMessage')} *</Label>
                   <Textarea id="contact-msg" rows={4} placeholder={t('messagePlaceholder')} value={message} onChange={e => setMessage(e.target.value)} required maxLength={2000} />
                 </div>
-                <Button type="submit" className="w-full gap-2 bg-emerald-600 hover:bg-emerald-700" disabled={submitting}>
+                <Button type="submit" className="w-full gap-2 bg-blue-600 hover:bg-blue-700" disabled={submitting}>
                   {submitting ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
                   {t('sendInquiry')}
                 </Button>

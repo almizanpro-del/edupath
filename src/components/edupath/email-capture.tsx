@@ -44,9 +44,9 @@ export function EmailCapture() {
 
   if (submitted) {
     return (
-      <Card className="max-w-md mx-auto bg-emerald-50 border-emerald-200">
+      <Card className="max-w-md mx-auto bg-blue-50 border-blue-200">
         <CardContent className="pt-6 text-center">
-          <CheckCircle2 className="size-12 text-emerald-600 mx-auto mb-3" />
+          <CheckCircle2 className="size-12 text-blue-600 mx-auto mb-3" />
           <h3 className="font-bold text-lg mb-1">You're subscribed!</h3>
           <p className="text-sm text-muted-foreground">We'll email you deadline alerts and scholarship updates.</p>
         </CardContent>
@@ -55,10 +55,10 @@ export function EmailCapture() {
   }
 
   return (
-    <Card className="max-w-md mx-auto bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200">
+    <Card className="max-w-md mx-auto bg-gradient-to-br from-blue-50 to-blue-50 border-blue-200">
       <CardContent className="pt-6">
         <div className="flex items-center gap-2 mb-2">
-          <Bell className="size-5 text-emerald-600" />
+          <Bell className="size-5 text-blue-600" />
           <h3 className="font-bold text-lg">Get deadline alerts</h3>
         </div>
         <p className="text-sm text-muted-foreground mb-4">
@@ -76,7 +76,7 @@ export function EmailCapture() {
               required
             />
           </div>
-          <Button type="submit" className="gap-2 bg-emerald-600 hover:bg-emerald-700" disabled={submitting}>
+          <Button type="submit" className="gap-2 bg-blue-600 hover:bg-blue-700" disabled={submitting}>
             {submitting ? <Loader2 className="size-4 animate-spin" /> : 'Subscribe'}
           </Button>
         </form>

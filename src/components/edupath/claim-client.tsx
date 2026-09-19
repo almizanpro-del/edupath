@@ -66,7 +66,7 @@ export function ClaimClient({ university }: Props) {
       <header className="sticky top-0 z-40 border-b bg-white">
         <div className="container mx-auto max-w-3xl px-4 py-3 flex items-center gap-3">
           <Button variant="ghost" size="sm" onClick={() => router.push(`/university/${university.slug}`)} className="gap-2"><ArrowLeft className="size-4" /> Back</Button>
-          <div className="flex items-center gap-2"><Building2 className="size-5 text-emerald-600" /><span className="font-bold">Claim University Profile</span></div>
+          <div className="flex items-center gap-2"><Building2 className="size-5 text-blue-600" /><span className="font-bold">Claim University Profile</span></div>
         </div>
       </header>
 
@@ -82,7 +82,7 @@ export function ClaimClient({ university }: Props) {
 
         {submitted ? (
           <Card><CardContent className="pt-6 text-center py-12">
-            <CheckCircle2 className="size-16 text-emerald-600 mx-auto mb-4" />
+            <CheckCircle2 className="size-16 text-blue-600 mx-auto mb-4" />
             <h2 className="text-xl font-bold mb-2">Claim Submitted!</h2>
             <p className="text-sm text-muted-foreground mb-4 max-w-md mx-auto">
               We will verify your affiliation with {university.name} and respond within 3 business days.
@@ -102,11 +102,11 @@ export function ClaimClient({ university }: Props) {
                   If you're an official representative of {university.name}, claim this profile to:
                 </p>
                 <ul className="mt-3 space-y-1.5 text-sm">
-                  <li className="flex items-center gap-2"><CheckCircle2 className="size-4 text-emerald-600" /> Access the sponsor dashboard with analytics</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="size-4 text-emerald-600" /> Receive student leads directly via email</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="size-4 text-emerald-600" /> Update program information and deadlines</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="size-4 text-emerald-600" /> Respond to student reviews</li>
-                  <li className="flex items-center gap-2"><CheckCircle2 className="size-4 text-emerald-600" /> Get featured placement in the directory</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="size-4 text-blue-600" /> Access the sponsor dashboard with analytics</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="size-4 text-blue-600" /> Receive student leads directly via email</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="size-4 text-blue-600" /> Update program information and deadlines</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="size-4 text-blue-600" /> Respond to student reviews</li>
+                  <li className="flex items-center gap-2"><CheckCircle2 className="size-4 text-blue-600" /> Get featured placement in the directory</li>
                 </ul>
               </div>
 
@@ -135,7 +135,7 @@ export function ClaimClient({ university }: Props) {
                   and may contact the university directly. Claims are typically processed within 3 business days.
                 </div>
 
-                <Button type="submit" className="w-full gap-2 bg-emerald-600 hover:bg-emerald-700" disabled={submitting}>
+                <Button type="submit" className="w-full gap-2 bg-blue-600 hover:bg-blue-700" disabled={submitting}>
                   {submitting ? <Loader2 className="size-4 animate-spin" /> : <Building2 className="size-4" />}
                   Submit Claim
                 </Button>

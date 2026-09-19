@@ -98,7 +98,7 @@ export function AdminAnalyticsClient() {
         {/* Top stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
           <StatCard icon={<Users className="size-5 text-blue-600" />} label="Total Users" value={data.users.total.toLocaleString()} sub={`+${data.users.new7d} this week`} />
-          <StatCard icon={<Building2 className="size-5 text-emerald-600" />} label="Universities" value={data.universities.total.toString()} sub={`${data.universities.pendingReview} pending`} />
+          <StatCard icon={<Building2 className="size-5 text-blue-600" />} label="Universities" value={data.universities.total.toString()} sub={`${data.universities.pendingReview} pending`} />
           <StatCard icon={<Mail className="size-5 text-amber-600" />} label="Total Leads" value={data.leads.total.toString()} sub={`+${data.leads.new7d} this week`} />
           <StatCard icon={<DollarSign className="size-5 text-purple-600" />} label="MRR" value={formatUsd(data.revenue.totalMRR)} sub={`${data.revenue.activeSubs} active subs`} />
           <StatCard icon={<TrendingUp className="size-5 text-rose-600" />} label="Events (30d)" value={data.events.total30d.toLocaleString()} sub="tracked actions" />
@@ -122,12 +122,12 @@ export function AdminAnalyticsClient() {
                         <Badge variant="outline" className="capitalize">{tier.replace('_', ' ')}</Badge>
                         <span className="text-sm">{info.count} subscriber{info.count > 1 ? 's' : ''}</span>
                       </div>
-                      <span className="font-bold text-emerald-600">{formatUsd(info.mrr)}/mo</span>
+                      <span className="font-bold text-blue-600">{formatUsd(info.mrr)}/mo</span>
                     </div>
                   ))}
                   <div className="border-t pt-3 flex items-center justify-between">
                     <span className="font-bold">Total MRR</span>
-                    <span className="text-2xl font-bold text-emerald-700">{formatUsd(data.revenue.totalMRR)}/mo</span>
+                    <span className="text-2xl font-bold text-blue-700">{formatUsd(data.revenue.totalMRR)}/mo</span>
                   </div>
                 </div>
               )}
@@ -144,7 +144,7 @@ export function AdminAnalyticsClient() {
                     <span className="text-muted-foreground">{eventLabels[type] ?? type}</span>
                     <div className="flex items-center gap-2">
                       <div className="w-32 h-2 bg-slate-100 rounded-full overflow-hidden">
-                        <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${Math.min(100, (count / data.events.total30d) * 100)}%` }} />
+                        <div className="h-full bg-blue-500 rounded-full" style={{ width: `${Math.min(100, (count / data.events.total30d) * 100)}%` }} />
                       </div>
                       <span className="font-medium w-12 text-right">{count}</span>
                     </div>
@@ -165,7 +165,7 @@ export function AdminAnalyticsClient() {
                 const height = (day.count / max) * 100
                 return (
                   <div key={day.date} className="flex-1 flex flex-col items-center gap-1">
-                    <div className="w-full bg-emerald-200 rounded-t hover:bg-emerald-400 transition-colors" style={{ height: `${height}%`, minHeight: '2px' }} title={`${day.date}: ${day.count} events`} />
+                    <div className="w-full bg-blue-200 rounded-t hover:bg-blue-400 transition-colors" style={{ height: `${height}%`, minHeight: '2px' }} title={`${day.date}: ${day.count} events`} />
                     <span className="text-[10px] text-muted-foreground rotate-45 origin-left">{day.date.slice(5)}</span>
                   </div>
                 )

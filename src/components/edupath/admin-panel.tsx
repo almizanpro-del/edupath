@@ -200,14 +200,14 @@ function ReviewModerationCard({
       {/* Header: user + university */}
       <div className="flex items-start justify-between gap-3 flex-wrap">
         <div className="flex items-start gap-3">
-          <div className="size-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center text-white text-sm font-bold">
+          <div className="size-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-sm font-bold">
             {review.userName.charAt(0).toUpperCase()}
           </div>
           <div>
             <div className="flex items-center gap-2">
               <span className="font-semibold text-sm">{review.userName}</span>
               {review.verifiedEnrollment && (
-                <Badge variant="outline" className="text-[10px] gap-1 border-emerald-500 text-emerald-700">
+                <Badge variant="outline" className="text-[10px] gap-1 border-blue-500 text-blue-700">
                   <Check className="size-3" /> Verified
                 </Badge>
               )}
@@ -265,7 +265,7 @@ function ReviewModerationCard({
         <Button
           size="sm"
           variant="default"
-          className="flex-1 gap-2 bg-emerald-600 hover:bg-emerald-700"
+          className="flex-1 gap-2 bg-blue-600 hover:bg-blue-700"
           onClick={onApprove}
           disabled={actionLoading}
         >

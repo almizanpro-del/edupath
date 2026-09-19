@@ -148,7 +148,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
         className="bg-white w-full max-w-md rounded-2xl overflow-hidden shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-gradient-to-br from-emerald-600 to-teal-700 text-white p-6 relative">
+        <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-6 relative">
           <Button
             variant="ghost"
             size="icon"
@@ -358,7 +358,7 @@ export function UserMenuButton({
         onClick={() => setMenuOpen(!menuOpen)}
         className="gap-2"
       >
-        <div className="size-6 rounded-full bg-gradient-to-br from-emerald-500 to-teal-700 flex items-center justify-center text-white text-xs font-bold">
+        <div className="size-6 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white text-xs font-bold">
           {profile.name.charAt(0).toUpperCase()}
         </div>
         <span className="hidden sm:inline">{profile.name.split(' ')[0]}</span>
@@ -376,7 +376,7 @@ export function UserMenuButton({
                 {profile.country}
               </div>
               {profile.verificationStatus === 'verified' && (
-                <div className="text-[10px] text-emerald-700 mt-1 font-medium">
+                <div className="text-[10px] text-blue-700 mt-1 font-medium">
                   ✓ Verified Student
                 </div>
               )}

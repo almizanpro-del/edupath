@@ -86,7 +86,7 @@ export function SocialShare({ url, title, description }: Props) {
           </a>
         ))}
         <Button variant="ghost" size="icon" onClick={copyLink} className="size-9 hover:bg-slate-100" title="Copy link">
-          {copied ? <Check className="size-4 text-emerald-600" /> : <Link2 className="size-4" />}
+          {copied ? <Check className="size-4 text-blue-600" /> : <Link2 className="size-4" />}
         </Button>
       </div>
     </div>

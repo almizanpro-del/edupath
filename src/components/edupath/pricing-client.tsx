@@ -137,7 +137,7 @@ export function PricingClient() {
             <ArrowLeft className="size-4" /> Back
           </Button>
           <div className="flex items-center gap-2">
-            <CreditCard className="size-5 text-emerald-600" />
+            <CreditCard className="size-5 text-blue-600" />
             <span className="font-bold">Pricing</span>
           </div>
         </div>
@@ -151,7 +151,7 @@ export function PricingClient() {
             Free for students. Premium features for serious applicants. Sponsorships for universities.
           </p>
           {currentTier !== 'free' && (
-            <div className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium">
+            <div className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium">
               <Crown className="size-4" />
               You're on the {currentTier.replace('_', ' ')} plan
               <button onClick={handleManage} className="underline text-xs">Manage</button>
@@ -179,16 +179,16 @@ export function PricingClient() {
           <p className="text-center text-slate-500 mb-8">Start free, upgrade when you're serious</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {TIERS.map(tier => (
-              <Card key={tier.id} className={cn('relative', tier.highlight && 'border-emerald-500 border-2 shadow-lg')}>
+              <Card key={tier.id} className={cn('relative', tier.highlight && 'border-blue-500 border-2 shadow-lg')}>
                 {tier.highlight && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-emerald-600 text-white">Most Popular</Badge>
+                    <Badge className="bg-blue-600 text-white">Most Popular</Badge>
                   </div>
                 )}
                 <CardHeader className="pb-2">
                   <div className="flex items-center gap-2 mb-1">
                     {tier.id === 'free' && <Sparkles className="size-4 text-slate-400" />}
-                    {tier.id === 'premium' && <Sparkles className="size-4 text-emerald-600" />}
+                    {tier.id === 'premium' && <Sparkles className="size-4 text-blue-600" />}
                     {tier.id === 'pro' && <Crown className="size-4 text-blue-600" />}
                     {tier.id === 'vip' && <Crown className="size-4 text-purple-600" />}
                     <span className="font-bold text-lg">{tier.name}</span>
@@ -202,7 +202,7 @@ export function PricingClient() {
                   <ul className="space-y-2 mb-6">
                     {tier.features.map((f, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm">
-                        <Check className="size-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <Check className="size-4 text-blue-600 shrink-0 mt-0.5" />
                         <span>{f}</span>
                       </li>
                     ))}
@@ -228,15 +228,15 @@ export function PricingClient() {
           <p className="text-center text-slate-500 mb-8">Recruit qualified MENA students directly</p>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {SPONSOR_TIERS.map(tier => (
-              <Card key={tier.id} className={cn('relative', tier.highlight && 'border-emerald-500 border-2 shadow-lg')}>
+              <Card key={tier.id} className={cn('relative', tier.highlight && 'border-blue-500 border-2 shadow-lg')}>
                 {tier.highlight && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-emerald-600 text-white">Best Value</Badge>
+                    <Badge className="bg-blue-600 text-white">Best Value</Badge>
                   </div>
                 )}
                 <CardHeader className="pb-2">
                   <div className="flex items-center gap-2 mb-1">
-                    <Building2 className="size-4 text-emerald-600" />
+                    <Building2 className="size-4 text-blue-600" />
                     <span className="font-bold text-lg">{tier.name}</span>
                   </div>
                   <div className="flex items-baseline gap-1">
@@ -248,7 +248,7 @@ export function PricingClient() {
                   <ul className="space-y-2 mb-6">
                     {tier.features.map((f, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm">
-                        <Check className="size-4 text-emerald-600 shrink-0 mt-0.5" />
+                        <Check className="size-4 text-blue-600 shrink-0 mt-0.5" />
                         <span>{f}</span>
                       </li>
                     ))}

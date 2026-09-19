@@ -157,7 +157,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
             <span className="hidden sm:inline">{t('back')}</span>
           </Button>
           <div className="flex items-center gap-2">
-            <Sparkles className="size-5 text-emerald-600" />
+            <Sparkles className="size-5 text-blue-600" />
             <span className="font-bold">{t('title')}</span>
           </div>
         </div>
@@ -166,7 +166,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
       <div className="container mx-auto max-w-5xl px-4 py-8">
         {/* Hero */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-4">
             <Sparkles className="size-4" />
             {t('badge')}
           </div>
@@ -194,7 +194,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <PenLine className="size-5 text-emerald-600" />
+                  <PenLine className="size-5 text-blue-600" />
                   {t('yourEssay')}
                 </CardTitle>
               </CardHeader>
@@ -252,7 +252,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
                       </Label>
                       <span className={cn(
                         'text-xs',
-                        charCount < minChars ? 'text-muted-foreground' : charCount > maxChars ? 'text-rose-500' : 'text-emerald-600'
+                        charCount < minChars ? 'text-muted-foreground' : charCount > maxChars ? 'text-rose-500' : 'text-blue-600'
                       )}>
                         {charCount.toLocaleString()} / {maxChars.toLocaleString()}
                       </span>
@@ -277,7 +277,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
                   <div className="flex gap-2">
                     <Button
                       type="submit"
-                      className="flex-1 gap-2 bg-emerald-600 hover:bg-emerald-700"
+                      className="flex-1 gap-2 bg-blue-600 hover:bg-blue-700"
                       disabled={!canSubmit}
                     >
                       {loading ? (
@@ -314,7 +314,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
             {loading && (
               <Card className="h-full flex items-center justify-center min-h-[400px]">
                 <CardContent className="text-center py-12">
-                  <Loader2 className="size-12 animate-spin text-emerald-600 mx-auto mb-4" />
+                  <Loader2 className="size-12 animate-spin text-blue-600 mx-auto mb-4" />
                   <h3 className="font-semibold text-lg mb-2">{t('aiReviewing')}</h3>
                   <p className="text-sm text-muted-foreground">
                     {t('aiReviewingDesc')}
@@ -341,8 +341,8 @@ export function EssayReviewClient({ universities }: { universities: University[]
             {!loading && !error && !review && (
               <Card className="h-full flex items-center justify-center min-h-[400px] border-dashed">
                 <CardContent className="text-center py-12">
-                  <div className="size-16 rounded-full bg-emerald-100 flex items-center justify-center mx-auto mb-4">
-                    <FileText className="size-8 text-emerald-600" />
+                  <div className="size-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+                    <FileText className="size-8 text-blue-600" />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">{t('resultsAppear')}</h3>
                   <p className="text-sm text-muted-foreground max-w-sm">
@@ -391,13 +391,13 @@ export function EssayReviewClient({ universities }: { universities: University[]
 // =================== Review Results Component ===================
 function ReviewResults({ review, essayText }: { review: Review; essayText: string }) {
   const scoreColor = (score: number) => {
-    if (score >= 4) return 'text-emerald-600'
+    if (score >= 4) return 'text-blue-600'
     if (score >= 3) return 'text-amber-600'
     return 'text-rose-600'
   }
 
   const scoreBg = (score: number) => {
-    if (score >= 4) return 'bg-emerald-50 border-emerald-200'
+    if (score >= 4) return 'bg-blue-50 border-blue-200'
     if (score >= 3) return 'bg-amber-50 border-amber-200'
     return 'bg-rose-50 border-rose-200'
   }
@@ -446,7 +446,7 @@ function ReviewResults({ review, essayText }: { review: Review; essayText: strin
                       key={n}
                       className={cn(
                         'flex-1 h-1.5 rounded-full',
-                        n <= score ? (score >= 4 ? 'bg-emerald-500' : score >= 3 ? 'bg-amber-500' : 'bg-rose-500') : 'bg-slate-200'
+                        n <= score ? (score >= 4 ? 'bg-blue-500' : score >= 3 ? 'bg-amber-500' : 'bg-rose-500') : 'bg-slate-200'
                       )}
                     />
                   ))}
@@ -461,7 +461,7 @@ function ReviewResults({ review, essayText }: { review: Review; essayText: strin
       <Card>
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2 text-base">
-            <CheckCircle2 className="size-5 text-emerald-600" />
+            <CheckCircle2 className="size-5 text-blue-600" />
             Strengths
           </CardTitle>
         </CardHeader>
@@ -469,7 +469,7 @@ function ReviewResults({ review, essayText }: { review: Review; essayText: strin
           <ul className="space-y-2">
             {review.strengths.map((s, i) => (
               <li key={i} className="flex items-start gap-2 text-sm">
-                <span className="text-emerald-600 mt-0.5">✓</span>
+                <span className="text-blue-600 mt-0.5">✓</span>
                 <span>{s}</span>
               </li>
             ))}
@@ -515,7 +515,7 @@ function ReviewResults({ review, essayText }: { review: Review; essayText: strin
                 <div className="text-xs text-muted-foreground">
                   <strong>Issue:</strong> {fb.issue}
                 </div>
-                <div className="text-xs text-emerald-700">
+                <div className="text-xs text-blue-700">
                   <strong>Suggestion:</strong> {fb.suggestion}
                 </div>
               </div>
@@ -525,10 +525,10 @@ function ReviewResults({ review, essayText }: { review: Review; essayText: strin
       )}
 
       {/* Rewrite summary */}
-      <Card className="bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200">
+      <Card className="bg-gradient-to-br from-blue-50 to-blue-50 border-blue-200">
         <CardHeader className="pb-3">
           <CardTitle className="flex items-center gap-2 text-base">
-            <Sparkles className="size-5 text-emerald-600" />
+            <Sparkles className="size-5 text-blue-600" />
             Summary
           </CardTitle>
         </CardHeader>

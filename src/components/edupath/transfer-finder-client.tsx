@@ -78,7 +78,7 @@ export function TransferFinderClient({ universities }: { universities: Universit
             <span className="hidden sm:inline">{t('back')}</span>
           </Button>
           <div className="flex items-center gap-2">
-            <Shuffle className="size-5 text-emerald-600" />
+            <Shuffle className="size-5 text-blue-600" />
             <span className="font-bold">{t('title')}</span>
           </div>
         </div>
@@ -86,7 +86,7 @@ export function TransferFinderClient({ universities }: { universities: Universit
 
       <div className="container mx-auto max-w-7xl px-4 py-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-700 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-4">
             <Shuffle className="size-4" />
             {t('badge')}
           </div>
@@ -124,7 +124,7 @@ export function TransferFinderClient({ universities }: { universities: Universit
                 </Select>
               </div>
               <div className="flex gap-2">
-                <Button onClick={handleSearch} className="gap-2 bg-emerald-600 hover:bg-emerald-700">
+                <Button onClick={handleSearch} className="gap-2 bg-blue-600 hover:bg-blue-700">
                   <Shuffle className="size-4" /> {t('search')}
                 </Button>
                 {(fromId || toId) && (
@@ -138,7 +138,7 @@ export function TransferFinderClient({ universities }: { universities: Universit
         {/* Results */}
         {loading ? (
           <div className="text-center py-20">
-            <Loader2 className="size-10 animate-spin text-emerald-600 mx-auto mb-4" />
+            <Loader2 className="size-10 animate-spin text-blue-600 mx-auto mb-4" />
             <p className="text-muted-foreground">{t('loading')}</p>
           </div>
         ) : pathways.length === 0 ? (
@@ -162,7 +162,7 @@ function PathwayCard({ pathway }: { pathway: Pathway }) {
   const t = useTranslations('TransferFinder')
   const transferPct = Math.round((pathway.creditsAccepted / pathway.totalCredits) * 100)
   const agreementColors: Record<string, string> = {
-    official: 'bg-emerald-100 text-emerald-700 border-emerald-300',
+    official: 'bg-blue-100 text-blue-700 border-blue-300',
     informal: 'bg-amber-100 text-amber-700 border-amber-300',
     'case-by-case': 'bg-blue-100 text-blue-700 border-blue-300',
   }
@@ -179,7 +179,7 @@ function PathwayCard({ pathway }: { pathway: Pathway }) {
               <div className="text-xs text-muted-foreground">{pathway.fromUniversity.city}, {pathway.fromUniversity.country}</div>
             </div>
           </div>
-          <ArrowRight className="size-5 text-emerald-600 mx-2" />
+          <ArrowRight className="size-5 text-blue-600 mx-2" />
           <div className="flex items-center gap-2">
             <Image src={countryFlagUrl(pathway.toUniversity.country, 40)} alt="" width={24} height={16} className="rounded" unoptimized />
             <div>
@@ -194,11 +194,11 @@ function PathwayCard({ pathway }: { pathway: Pathway }) {
           <div className="bg-slate-50 rounded-lg p-3">
             <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><GraduationCap className="size-3" /> {t('creditsTransfer')}</div>
             <div className="text-lg font-bold">{pathway.creditsAccepted}/{pathway.totalCredits}</div>
-            <div className="text-xs text-emerald-600 font-medium">{transferPct}%</div>
+            <div className="text-xs text-blue-600 font-medium">{transferPct}%</div>
           </div>
           <div className="bg-slate-50 rounded-lg p-3">
             <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><DollarSign className="size-3" /> {t('estSavings')}</div>
-            <div className="text-lg font-bold text-emerald-700">{pathway.estimatedSavingsUsd ? formatUsdCompact(pathway.estimatedSavingsUsd) : '—'}</div>
+            <div className="text-lg font-bold text-blue-700">{pathway.estimatedSavingsUsd ? formatUsdCompact(pathway.estimatedSavingsUsd) : '—'}</div>
           </div>
           <div className="bg-slate-50 rounded-lg p-3">
             <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1"><FileText className="size-3" /> {t('agreement')}</div>
@@ -227,7 +227,7 @@ function PathwayCard({ pathway }: { pathway: Pathway }) {
             <span>{transferPct}%</span>
           </div>
           <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
-            <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full" style={{ width: `${transferPct}%` }} />
+            <div className="h-full bg-gradient-to-r from-blue-500 to-blue-500 rounded-full" style={{ width: `${transferPct}%` }} />
           </div>
         </div>
       </CardContent>

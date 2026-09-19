@@ -150,7 +150,7 @@ export function SponsorDashboardClient() {
               <ArrowLeft className="size-4" /> Back
             </Button>
             <div className="flex items-center gap-2">
-              <Building2 className="size-5 text-emerald-600" />
+              <Building2 className="size-5 text-blue-600" />
               <span className="font-bold">{t('title')}</span>
             </div>
           </div>
@@ -175,7 +175,7 @@ export function SponsorDashboardClient() {
             <TabsContent value="overview">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                 <StatCard icon={<Eye className="size-5 text-blue-600" />} label="Total Profile Views" value={totalProfileViews.toLocaleString()} />
-                <StatCard icon={<Users className="size-5 text-emerald-600" />} label="Unique Visitors" value={Math.floor(totalProfileViews * 0.7).toLocaleString()} />
+                <StatCard icon={<Users className="size-5 text-blue-600" />} label="Unique Visitors" value={Math.floor(totalProfileViews * 0.7).toLocaleString()} />
                 <StatCard icon={<Mail className="size-5 text-amber-600" />} label="Total Leads" value={leads.length.toString()} />
                 <StatCard icon={<TrendingUp className="size-5 text-purple-600" />} label="New Leads" value={leads.filter(l => l.status === 'new').length.toString()} />
               </div>
@@ -250,7 +250,7 @@ function MetricBar({ label, value, icon }: { label: string; value: number; icon:
         <span className="font-medium">{value}%</span>
       </div>
       <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-        <div className="h-full bg-emerald-500 rounded-full" style={{ width: `${value}%` }} />
+        <div className="h-full bg-blue-500 rounded-full" style={{ width: `${value}%` }} />
       </div>
     </div>
   )
@@ -258,7 +258,7 @@ function MetricBar({ label, value, icon }: { label: string; value: number; icon:
 
 function UniversityAnalyticsCard({ uni }: { uni: Analytics }) {
   const [expanded, setExpanded] = React.useState(false)
-  const sentimentColor = uni.sentiment.sentimentScore === 'N/A' ? 'text-slate-400' : parseInt(uni.sentiment.sentimentScore) >= 80 ? 'text-emerald-600' : parseInt(uni.sentiment.sentimentScore) >= 60 ? 'text-amber-600' : 'text-rose-600'
+  const sentimentColor = uni.sentiment.sentimentScore === 'N/A' ? 'text-slate-400' : parseInt(uni.sentiment.sentimentScore) >= 80 ? 'text-blue-600' : parseInt(uni.sentiment.sentimentScore) >= 60 ? 'text-amber-600' : 'text-rose-600'
 
   return (
     <Card>
@@ -294,7 +294,7 @@ function UniversityAnalyticsCard({ uni }: { uni: Analytics }) {
           <div className="bg-slate-50 rounded p-2 text-center"><div className="font-bold">{uni.metrics.clickThroughRate}%</div><div className="text-muted-foreground">{t('ctr')}</div></div>
         </div>
 
-        <button onClick={() => setExpanded(!expanded)} className="text-xs text-emerald-600 hover:underline mt-3 flex items-center gap-1">
+        <button onClick={() => setExpanded(!expanded)} className="text-xs text-blue-600 hover:underline mt-3 flex items-center gap-1">
           {expanded ? 'Hide' : 'Show'} review sentiment breakdown
           <ChevronDown className={cn("size-3 transition-transform", expanded && "rotate-180")} />
         </button>
@@ -315,7 +315,7 @@ function UniversityAnalyticsCard({ uni }: { uni: Analytics }) {
 
 function SentimentBar({ label, value }: { label: string; value: number }) {
   const pct = (value / 5) * 100
-  const color = value >= 4 ? 'bg-emerald-500' : value >= 3 ? 'bg-amber-500' : 'bg-rose-500'
+  const color = value >= 4 ? 'bg-blue-500' : value >= 3 ? 'bg-amber-500' : 'bg-rose-500'
   return (
     <div className="flex items-center gap-2">
       <span className="text-xs text-muted-foreground w-28">{label}</span>
@@ -329,7 +329,7 @@ function SentimentBar({ label, value }: { label: string; value: number }) {
 
 function LeadCard({ lead }: { lead: Lead }) {
   const statusColors: Record<string, string> = {
-    new: 'bg-emerald-100 text-emerald-700 border-emerald-300',
+    new: 'bg-blue-100 text-blue-700 border-blue-300',
     contacted: 'bg-amber-100 text-amber-700 border-amber-300',
     closed: 'bg-slate-100 text-slate-600 border-slate-300',
   }

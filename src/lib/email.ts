@@ -52,10 +52,10 @@ export async function sendReviewApprovedEmail(to: string, universityName: string
     subject: `Your review of ${universityName} is now live on EduPath`,
     html: `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-        <h1 style="color: #059669;">Your review is live! 🎉</h1>
+        <h1 style="color: #1d4ed8;">Your review is live! 🎉</h1>
         <p>Great news — your review of <strong>${universityName}</strong> has been approved and is now visible on EduPath.</p>
         <p>Other MENA students will benefit from your experience. Thank you for contributing to the community!</p>
-        <a href="${APP_URL}/university/${universityName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}" style="display: inline-block; background: #059669; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">View Your Review</a>
+        <a href="${APP_URL}/university/${universityName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}" style="display: inline-block; background: #1d4ed8; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">View Your Review</a>
         <p style="color: #6b7280; font-size: 14px; margin-top: 24px;">EduPath — Your path to affordable global education</p>
       </div>
     `,
@@ -71,7 +71,7 @@ export async function sendLeadNotificationEmail(to: string, lead: {
     subject: `New student inquiry for ${lead.universityName} — ${lead.studentName}`,
     html: `
       <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-        <h1 style="color: #059669;">New Student Inquiry 📩</h1>
+        <h1 style="color: #1d4ed8;">New Student Inquiry 📩</h1>
         <p>A student has expressed interest in <strong>${lead.universityName}</strong> via EduPath.</p>
         <table style="width: 100%; border-collapse: collapse; margin: 16px 0;">
           <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Name</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${lead.studentName}</td></tr>
@@ -80,9 +80,9 @@ export async function sendLeadNotificationEmail(to: string, lead: {
           <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">GPA</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${lead.gpa ?? 'Not specified'}</td></tr>
           <tr><td style="padding: 8px; border-bottom: 1px solid #e5e7eb; font-weight: bold;">Field</td><td style="padding: 8px; border-bottom: 1px solid #e5e7eb;">${lead.field ?? 'Not specified'}</td></tr>
         </table>
-        <p style="background: #f9fafb; padding: 12px; border-radius: 8px; border-left: 3px solid #059669;">${lead.message}</p>
+        <p style="background: #f9fafb; padding: 12px; border-radius: 8px; border-left: 3px solid #1d4ed8;">${lead.message}</p>
         <p>Reply directly to the student at <a href="mailto:${lead.studentEmail}">${lead.studentEmail}</a></p>
-        <a href="${APP_URL}/sponsor" style="display: inline-block; background: #059669; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">View in Sponsor Dashboard</a>
+        <a href="${APP_URL}/sponsor" style="display: inline-block; background: #1d4ed8; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">View in Sponsor Dashboard</a>
         <p style="color: #6b7280; font-size: 14px; margin-top: 24px;">EduPath — Your path to affordable global education</p>
       </div>
     `,
@@ -115,7 +115,7 @@ export async function sendDeadlineAlertEmail(to: string, alerts: Array<{
           </tr>
           ${alertRows}
         </table>
-        <a href="${APP_URL}" style="display: inline-block; background: #059669; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">View Your Saved Universities</a>
+        <a href="${APP_URL}" style="display: inline-block; background: #1d4ed8; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">View Your Saved Universities</a>
         <p style="color: #6b7280; font-size: 14px; margin-top: 24px;">EduPath — Your path to affordable global education</p>
       </div>
     `,

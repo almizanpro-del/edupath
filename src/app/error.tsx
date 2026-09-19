@@ -27,7 +27,7 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-emerald-50/40 via-white to-white p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-blue-50/40 via-white to-white p-4">
       <div className="max-w-md w-full bg-white border border-slate-200 rounded-2xl shadow-lg p-8 text-center space-y-4">
         <div className="size-16 rounded-full bg-amber-100 flex items-center justify-center mx-auto">
           <AlertTriangle className="size-8 text-amber-600" />
@@ -48,7 +48,7 @@ export default function Error({
         <div className="flex gap-2">
           <Button
             onClick={reset}
-            className="flex-1 gap-2 bg-emerald-600 hover:bg-emerald-700"
+            className="flex-1 gap-2 bg-blue-600 hover:bg-blue-700"
           >
             <RotateCcw className="size-4" />
             Try again

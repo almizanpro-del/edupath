@@ -153,7 +153,7 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
         className="bg-white w-full sm:max-w-2xl max-h-[95vh] sm:max-h-[90vh] rounded-t-2xl sm:rounded-2xl overflow-hidden flex flex-col shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-gradient-to-br from-emerald-600 to-teal-700 text-white p-6 relative">
+        <div className="bg-gradient-to-br from-blue-600 to-blue-700 text-white p-6 relative">
           <Button
             variant="ghost"
             size="icon"
@@ -243,8 +243,8 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
                     className={cn(
                       'text-xs px-2.5 py-1 rounded-full border transition-colors',
                       tags.includes(tag)
-                        ? 'bg-emerald-100 border-emerald-500 text-emerald-700'
-                        : 'bg-white border-slate-200 hover:border-emerald-300'
+                        ? 'bg-blue-100 border-blue-500 text-blue-700'
+                        : 'bg-white border-slate-200 hover:border-blue-300'
                     )}
                   >
                     {tag}

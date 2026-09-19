@@ -194,7 +194,7 @@ export function AdminCMSClient() {
             <div className="text-xs text-muted-foreground">{t('pendingReview')}</div>
           </CardContent></Card>
           <Card><CardContent className="pt-4 pb-4">
-            <div className="text-2xl font-bold text-emerald-600">{universities.filter(u => !u.pendingReview).length}</div>
+            <div className="text-2xl font-bold text-blue-600">{universities.filter(u => !u.pendingReview).length}</div>
             <div className="text-xs text-muted-foreground">{t('published')}</div>
           </CardContent></Card>
           <Card><CardContent className="pt-4 pb-4">
@@ -231,7 +231,7 @@ export function AdminCMSClient() {
                   </div>
                   <div className="flex items-center gap-1 shrink-0">
                     {u.pendingReview && (
-                      <Button size="sm" variant="ghost" onClick={() => handleApprove(u.id)} className="text-emerald-600 hover:text-emerald-700 gap-1">
+                      <Button size="sm" variant="ghost" onClick={() => handleApprove(u.id)} className="text-blue-600 hover:text-blue-700 gap-1">
                         <Check className="size-4" /> {t('approve')}
                       </Button>
                     )}
@@ -365,7 +365,7 @@ function CreateUniversityModal({ onClose, onCreated }: { onClose: () => void; on
   return (
     <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4" onClick={onClose}>
       <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-2xl overflow-hidden flex flex-col shadow-2xl" onClick={e => e.stopPropagation()}>
-        <div className="bg-emerald-700 text-white p-4 flex items-center justify-between">
+        <div className="bg-blue-700 text-white p-4 flex items-center justify-between">
           <h2 className="font-bold">Add New University</h2>
           <Button variant="ghost" size="icon" onClick={onClose} className="text-white"><X className="size-5" /></Button>
         </div>

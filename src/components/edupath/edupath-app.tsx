@@ -142,7 +142,7 @@ function RatingBar({ label, value }: { label: string; value: number }) {
       <span className="text-xs text-muted-foreground w-28">{label}</span>
       <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
         <div
-          className="h-full bg-emerald-500 rounded-full"
+          className="h-full bg-blue-500 rounded-full"
           style={{ width: `${(value / 5) * 100}%` }}
         />
       </div>
@@ -408,13 +408,13 @@ export function EduPathApp({ universities, countries, stats }: Props) {
     (tuitionRange[0] > 0 || tuitionRange[1] < 25000 ? 1 : 0)
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-emerald-50/40 via-white to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-50/40 via-white to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 transition-colors duration-300">
       {/* ===== Header ===== */}
       <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur-md dark:bg-slate-900/80">
         <div className="container mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <button onClick={() => router.push('/')} className="flex items-center gap-2">
-              <div className="size-9 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center">
+              <div className="size-9 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
                 <GraduationCap className="size-5 text-white" />
               </div>
               <div className="text-left">
@@ -427,7 +427,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 variant="ghost"
                 size="sm"
                 onClick={() => router.push('/essay-review')}
-                className="gap-2 text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+                className="gap-2 text-blue-700 hover:text-blue-800 hover:bg-blue-50"
               >
                 <Sparkles className="size-4" />
                 Essay Review
@@ -436,7 +436,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 variant="ghost"
                 size="sm"
                 onClick={() => router.push('/transfer-finder')}
-                className="gap-2 text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+                className="gap-2 text-blue-700 hover:text-blue-800 hover:bg-blue-50"
               >
                 <Shuffle className="size-4" />
                 Transfer Finder
@@ -445,7 +445,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 variant="ghost"
                 size="sm"
                 onClick={() => router.push('/scholarships')}
-                className="gap-2 text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+                className="gap-2 text-blue-700 hover:text-blue-800 hover:bg-blue-50"
               >
                 <Award className="size-4" />
                 Scholarships
@@ -466,7 +466,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 variant="ghost"
                 size="icon"
                 onClick={() => router.push('/essay-review')}
-                className="text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+                className="text-blue-700 hover:text-blue-800 hover:bg-blue-50"
                 title="Essay Review"
               >
                 <Sparkles className="size-4" />
@@ -475,7 +475,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 variant="ghost"
                 size="icon"
                 onClick={() => router.push('/transfer-finder')}
-                className="text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+                className="text-blue-700 hover:text-blue-800 hover:bg-blue-50"
                 title="Transfer Finder"
               >
                 <Shuffle className="size-4" />
@@ -484,7 +484,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 variant="ghost"
                 size="icon"
                 onClick={() => router.push('/scholarships')}
-                className="text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50"
+                className="text-blue-700 hover:text-blue-800 hover:bg-blue-50"
                 title="Scholarships"
               >
                 <Award className="size-4" />
@@ -532,7 +532,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 variant="outline"
                 size="sm"
                 onClick={() => router.push('/sponsor')}
-                className="gap-2 border-emerald-300 text-emerald-700 hover:bg-emerald-50"
+                className="gap-2 border-blue-300 text-blue-700 hover:bg-blue-50"
               >
                 <Building2 className="size-4" />
                 <span className="hidden sm:inline">Sponsor</span>
@@ -551,11 +551,11 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       </header>
 
       {/* ===== Hero ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-teal-950 to-blue-950 text-white">
+      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-blue-950 text-white">
         {/* Animated background blobs */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
-            className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-emerald-500/20 blur-3xl"
+            className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-blue-500/20 blur-3xl"
             animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
             transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
           />
@@ -565,7 +565,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
             transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
           />
           <motion.div
-            className="absolute -bottom-40 left-1/3 w-96 h-96 rounded-full bg-teal-500/15 blur-3xl"
+            className="absolute -bottom-40 left-1/3 w-96 h-96 rounded-full bg-blue-500/15 blur-3xl"
             animate={{ x: [0, 30, 0], y: [0, -40, 0] }}
             transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
           />
@@ -587,7 +587,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
 
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-6xl font-bold tracking-tight mb-5 bg-gradient-to-br from-white via-emerald-50 to-teal-200 bg-clip-text text-transparent"
+              className="text-4xl md:text-6xl font-bold tracking-tight mb-5 bg-gradient-to-br from-white via-blue-50 to-blue-200 bg-clip-text text-transparent"
             >
               {t('Hero.title')}
             </motion.h1>
@@ -601,7 +601,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
 
             <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
               <div className="relative flex-1 group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-300" />
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-blue-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-300" />
                 <div className="relative">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-slate-400" />
                   <Input
@@ -624,7 +624,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                     {t('Hero.filters')}
                     {activeFilterCount > 0 && (
                       <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                        <Badge className="ml-1 bg-emerald-500 text-white">{activeFilterCount}</Badge>
+                        <Badge className="ml-1 bg-blue-500 text-white">{activeFilterCount}</Badge>
                       </motion.div>
                     )}
                   </Button>
@@ -708,9 +708,9 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                   key={i}
                   variants={staggerItem}
                   whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="bg-white/5 backdrop-blur-xl rounded-2xl p-5 border border-white/10 hover:border-emerald-400/30 transition-colors"
+                  className="bg-white/5 backdrop-blur-xl rounded-2xl p-5 border border-white/10 hover:border-blue-400/30 transition-colors"
                 >
-                  <div className="text-3xl font-bold bg-gradient-to-br from-white to-emerald-200 bg-clip-text text-transparent">{stat.value}</div>
+                  <div className="text-3xl font-bold bg-gradient-to-br from-white to-blue-200 bg-clip-text text-transparent">{stat.value}</div>
                   <div className="text-sm text-white/60 mt-1">{stat.label}</div>
                 </motion.div>
               ))}
@@ -738,8 +738,8 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                   className={cn(
                     'w-full flex flex-col items-center gap-2 p-4 rounded-2xl border transition-all',
                     selectedCountries.has(c.code)
-                      ? 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/30 ring-2 ring-emerald-500/20 shadow-md'
-                      : 'border-border bg-white dark:bg-slate-800 hover:border-emerald-300 dark:hover:border-emerald-700 hover:shadow-md'
+                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/30 ring-2 ring-blue-500/20 shadow-md'
+                      : 'border-border bg-white dark:bg-slate-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md'
                   )}
                 >
                   <Image src={`https://flagcdn.com/w80/${c.flag}.png`} alt={c.name} width={40} height={28} className="rounded shadow-sm" unoptimized />
@@ -752,14 +752,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         </div>
       </section>
 
-      {/* ===== Email Capture (for non-authenticated users) ===== */}
-      {!profile && (
-        <section className="bg-white dark:bg-slate-900 border-b py-8 dark:border-slate-800">
-          <div className="container mx-auto max-w-7xl px-4">
-            <EmailCapture />
-          </div>
-        </section>
-      )}
+      {/* ===== Email Capture (moved below directory so it doesn't block country filter results) ===== */}
 
       {/* ===== Directory ===== */}
       <section className="container mx-auto max-w-7xl px-4 py-10 flex-1">
@@ -826,13 +819,22 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         )}
       </section>
 
+      {/* ===== Email Capture (below directory, doesn't block country filter flow) ===== */}
+      {!profile && (
+        <section className="bg-white dark:bg-slate-900 border-t py-10 dark:border-slate-800">
+          <div className="container mx-auto max-w-7xl px-4">
+            <EmailCapture />
+          </div>
+        </section>
+      )}
+
       {/* ===== Footer ===== */}
       <footer className="border-t bg-slate-50 dark:bg-slate-950 mt-auto dark:border-slate-800">
         <div className="container mx-auto max-w-7xl px-4 py-10">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <div className="flex items-center gap-2 mb-3">
-                <div className="size-7 rounded-lg bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center">
+                <div className="size-7 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
                   <GraduationCap className="size-4 text-white" />
                 </div>
                 <span className="font-bold">EduPath</span>
@@ -944,11 +946,11 @@ function UniversityCard({
       className="h-full"
     >
       <Card
-        className="group h-full cursor-pointer relative overflow-hidden hover:shadow-xl hover:border-emerald-400/50 dark:hover:border-emerald-600/50 transition-shadow"
+        className="group h-full cursor-pointer relative overflow-hidden hover:shadow-xl hover:border-blue-400/50 dark:hover:border-blue-600/50 transition-shadow"
         onClick={onOpen}
       >
         {/* Gradient accent bar on top */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-orange-500 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity" />
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
@@ -995,7 +997,7 @@ function UniversityCard({
         <div className="grid grid-cols-3 gap-2 pt-3 border-t dark:border-slate-700">
           <div>
             <div className="text-[10px] text-muted-foreground uppercase tracking-wide">{t('from')}</div>
-            <div className="text-sm font-bold text-emerald-700 dark:text-emerald-400">{formatUsdCompact(uni.cheapestProgramTuition)}{t('perYear')}</div>
+            <div className="text-sm font-bold text-blue-700 dark:text-blue-400">{formatUsdCompact(uni.cheapestProgramTuition)}{t('perYear')}</div>
           </div>
           <div>
             <div className="text-[10px] text-muted-foreground uppercase tracking-wide">{t('living')}</div>
@@ -1032,7 +1034,7 @@ function UniversityCard({
               size="sm"
               variant={isComparing ? 'default' : 'outline'}
               onClick={(e) => { e.stopPropagation(); onCompare() }}
-              className={cn(isComparing && 'bg-emerald-600 hover:bg-emerald-700')}
+              className={cn(isComparing && 'bg-blue-600 hover:bg-blue-700')}
             >
               <ArrowLeftRight className="size-3.5" />
               {isComparing ? t('comparing') : t('compare')}
@@ -1058,7 +1060,7 @@ function ComparisonTable({ universities }: { universities: University[] }) {
       </span>
     ) },
     { label: t('city'), render: u => u.city },
-    { label: t('cheapestTuition'), render: u => <span className="font-semibold text-emerald-700">{formatUsd(u.cheapestProgramTuition)}</span> },
+    { label: t('cheapestTuition'), render: u => <span className="font-semibold text-blue-700">{formatUsd(u.cheapestProgramTuition)}</span> },
     { label: t('livingCost'), render: u => formatUsd(u.livingCostUsd) },
     { label: t('total3yrCost'), render: u => <span className="font-semibold">{formatUsd(totalCost(u.cheapestProgramTuition, u.livingCostUsd, 36))}</span> },
     { label: t('intlPct'), render: u => `${u.intlStudentPct}%` },
