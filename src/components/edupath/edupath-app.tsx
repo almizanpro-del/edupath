@@ -3,18 +3,15 @@
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles, Shuffle, Award, Building2, CreditCard } from 'lucide-react'
+import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles, Shuffle, Award, Building2, CreditCard, RotateCcw, Globe, Wallet } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Slider } from '@/components/ui/slider'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { Separator } from '@/components/ui/separator'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { useToast } from '@/hooks/use-toast'
 import { formatUsd, formatUsdCompact, totalCost, countryFlagUrl } from '@/lib/edupath'
@@ -185,6 +182,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
   const [savedUniversities, setSavedUniversities] = React.useState<Set<string>>(new Set())
   const [showCompare, setShowCompare] = React.useState(false)
   const [filtersOpen, setFiltersOpen] = React.useState(false)
+  const [countrySearch, setCountrySearch] = React.useState('')
   const [visibleCount, setVisibleCount] = React.useState(24) // pagination: 24 per page
 
   // Auth state
@@ -299,6 +297,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
     setSelectedLanguages(new Set())
     setTuitionRange([0, 25000])
     setSearchQuery('')
+    setCountrySearch('')
   }
 
   const toggleSave = async (uni: University) => {
@@ -617,77 +616,262 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                   />
                 </div>
               </div>
-              <Sheet open={filtersOpen} onOpenChange={setFiltersOpen}>
+              <Sheet open={filtersOpen} onOpenChange={(v) => { setFiltersOpen(v); if (!v) setCountrySearch('') }}>
                 <SheetTrigger asChild>
                   <Button size="lg" className="h-14 gap-2 shadow-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 text-white rounded-xl px-6">
                     <SlidersHorizontal className="size-5" />
                     {t('Hero.filters')}
                     {activeFilterCount > 0 && (
                       <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }}>
-                        <Badge className="ml-1 bg-blue-500 text-white">{activeFilterCount}</Badge>
+                        <Badge className="ml-1 bg-orange-500 text-white">{activeFilterCount}</Badge>
                       </motion.div>
                     )}
                   </Button>
                 </SheetTrigger>
-                <SheetContent className="w-full sm:max-w-md overflow-y-auto">
-                  <SheetHeader>
-                    <SheetTitle className="flex items-center justify-between">
-                      <span>{t('Filters.title')}</span>
+                <SheetContent className="w-full sm:max-w-md p-0 flex flex-col gap-0 overflow-hidden">
+                  {/* ===== Sticky header ===== */}
+                  <div className="relative shrink-0 overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-white p-5 pb-4">
+                    <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-orange-500/20 blur-3xl pointer-events-none" />
+                    <div className="absolute -bottom-10 -left-10 w-32 h-32 rounded-full bg-blue-500/20 blur-3xl pointer-events-none" />
+                    <div className="relative flex items-start justify-between gap-3">
+                      <div className="flex items-start gap-3 min-w-0">
+                        <div className="size-10 rounded-xl bg-orange-500/15 border border-orange-500/30 flex items-center justify-center shrink-0">
+                          <SlidersHorizontal className="size-5 text-orange-400" />
+                        </div>
+                        <div className="min-w-0">
+                          <SheetTitle className="text-lg font-bold text-white leading-tight">{t('Filters.title')}</SheetTitle>
+                          <p className="text-xs text-white/60 mt-0.5">{t('Filters.subtitle')}</p>
+                        </div>
+                      </div>
                       {activeFilterCount > 0 && (
-                        <Button variant="ghost" size="sm" onClick={clearFilters}>{t('Filters.clearAll')}</Button>
+                        <button
+                          onClick={clearFilters}
+                          className="shrink-0 inline-flex items-center gap-1 text-xs font-medium text-white/80 hover:text-white bg-white/10 hover:bg-white/15 border border-white/15 rounded-full px-2.5 py-1 transition-colors"
+                        >
+                          <RotateCcw className="size-3" />
+                          {t('Filters.clearAll')}
+                        </button>
                       )}
-                    </SheetTitle>
-                  </SheetHeader>
-                  <div className="px-4 pb-8 space-y-6 mt-4">
-                    <div>
-                      <Label className="text-sm font-semibold mb-3 block">{t('Filters.country')}</Label>
-                      <div className="space-y-2">
-                        {countries.map(c => (
-                          <div key={c.code} className="flex items-center space-x-2">
-                            <Checkbox id={`c-${c.code}`} checked={selectedCountries.has(c.code)} onCheckedChange={() => toggleCountry(c.code)} />
-                            <Label htmlFor={`c-${c.code}`} className="text-sm cursor-pointer flex-1 flex items-center gap-2">
-                              <span>{c.flag}</span><span>{c.name}</span>
-                              <span className="text-xs text-muted-foreground">({c.count})</span>
-                            </Label>
+                    </div>
+                  </div>
+
+                  {/* ===== Scrollable filter body ===== */}
+                  <div className="flex-1 overflow-y-auto px-4 py-4 space-y-5 bg-slate-50 dark:bg-slate-950">
+
+                    {/* ----- Country section ----- */}
+                    <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+                      <header className="flex items-center gap-2 px-4 pt-3 pb-2">
+                        <div className="size-7 rounded-lg bg-blue-50 dark:bg-blue-950/40 flex items-center justify-center">
+                          <Globe className="size-4 text-blue-600 dark:text-blue-400" />
+                        </div>
+                        <h3 className="text-sm font-semibold dark:text-white">{t('Filters.country')}</h3>
+                        {selectedCountries.size > 0 && (
+                          <Badge variant="secondary" className="ml-auto text-[10px] bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                            {selectedCountries.size}
+                          </Badge>
+                        )}
+                      </header>
+                      <div className="px-4 pb-3">
+                        <div className="relative">
+                          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-muted-foreground" />
+                          <Input
+                            value={countrySearch}
+                            onChange={(e) => setCountrySearch(e.target.value)}
+                            placeholder={t('Filters.searchCountries')}
+                            className="h-8 pl-8 text-xs rounded-lg bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700"
+                          />
+                        </div>
+                      </div>
+                      <div className="max-h-64 overflow-y-auto px-2 pb-2">
+                        {countries
+                          .filter(c => {
+                            if (!countrySearch.trim()) return true
+                            const q = countrySearch.toLowerCase()
+                            return c.name.toLowerCase().includes(q) || c.nameAr.includes(countrySearch) || c.code.toLowerCase().includes(q)
+                          })
+                          .map(c => {
+                            const checked = selectedCountries.has(c.code)
+                            return (
+                              <button
+                                key={c.code}
+                                onClick={() => toggleCountry(c.code)}
+                                className={cn(
+                                  'w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-sm transition-colors group',
+                                  checked
+                                    ? 'bg-blue-50 dark:bg-blue-950/40 text-blue-900 dark:text-blue-100'
+                                    : 'hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200'
+                                )}
+                              >
+                                <Image src={`https://flagcdn.com/w40/${c.flag}.png`} alt={c.name} width={20} height={14} className="rounded-sm shrink-0" unoptimized />
+                                <span className="flex-1 text-left truncate font-medium">{c.name}</span>
+                                <span className={cn('text-[11px] tabular-nums', checked ? 'text-blue-600 dark:text-blue-400' : 'text-muted-foreground')}>
+                                  {c.count}
+                                </span>
+                                <div className={cn(
+                                  'size-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors',
+                                  checked ? 'bg-blue-600 border-blue-600' : 'border-slate-300 dark:border-slate-600 group-hover:border-blue-400'
+                                )}>
+                                  {checked && <CheckCircle2 className="size-3 text-white" />}
+                                </div>
+                              </button>
+                            )
+                          })}
+                        {countrySearch.trim() && countries.filter(c => {
+                          const q = countrySearch.toLowerCase()
+                          return c.name.toLowerCase().includes(q) || c.nameAr.includes(countrySearch) || c.code.toLowerCase().includes(q)
+                        }).length === 0 && (
+                          <div className="text-center py-6 text-xs text-muted-foreground">
+                            {t('Filters.noCountryMatch', { query: countrySearch })}
                           </div>
-                        ))}
+                        )}
+                      </div>
+                    </section>
+
+                    {/* ----- Field of Study (chip pills) ----- */}
+                    <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-3">
+                      <header className="flex items-center gap-2 px-1 pb-3">
+                        <div className="size-7 rounded-lg bg-orange-50 dark:bg-orange-950/40 flex items-center justify-center">
+                          <BookOpen className="size-4 text-orange-600 dark:text-orange-400" />
+                        </div>
+                        <h3 className="text-sm font-semibold dark:text-white">{t('Filters.fieldOfStudy')}</h3>
+                        {selectedFields.size > 0 && (
+                          <Badge variant="secondary" className="ml-auto text-[10px] bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300">
+                            {selectedFields.size}
+                          </Badge>
+                        )}
+                      </header>
+                      <div className="flex flex-wrap gap-1.5">
+                        {['Computer Science', 'Engineering', 'Business', 'Medicine', 'Social Sciences'].map(f => {
+                          const active = selectedFields.has(f)
+                          return (
+                            <motion.button
+                              key={f}
+                              whileTap={{ scale: 0.96 }}
+                              onClick={() => toggleField(f)}
+                              className={cn(
+                                'px-3 py-1.5 rounded-full text-xs font-medium border transition-all',
+                                active
+                                  ? 'bg-orange-500 border-orange-500 text-white shadow-sm shadow-orange-500/30'
+                                  : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-orange-300 dark:hover:border-orange-700 hover:bg-orange-50 dark:hover:bg-orange-950/30'
+                              )}
+                            >
+                              {f}
+                            </motion.button>
+                          )
+                        })}
+                      </div>
+                    </section>
+
+                    {/* ----- Language of Instruction (chip pills) ----- */}
+                    <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-3">
+                      <header className="flex items-center gap-2 px-1 pb-3">
+                        <div className="size-7 rounded-lg bg-blue-50 dark:bg-blue-950/40 flex items-center justify-center">
+                          <Languages className="size-4 text-blue-600 dark:text-blue-400" />
+                        </div>
+                        <h3 className="text-sm font-semibold dark:text-white">{t('Filters.languageOfInstruction')}</h3>
+                        {selectedLanguages.size > 0 && (
+                          <Badge variant="secondary" className="ml-auto text-[10px] bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">
+                            {selectedLanguages.size}
+                          </Badge>
+                        )}
+                      </header>
+                      <div className="flex flex-wrap gap-1.5">
+                        {['English', 'Arabic', 'German', 'Turkish'].map(l => {
+                          const active = selectedLanguages.has(l)
+                          return (
+                            <motion.button
+                              key={l}
+                              whileTap={{ scale: 0.96 }}
+                              onClick={() => toggleLanguage(l)}
+                              className={cn(
+                                'px-3 py-1.5 rounded-full text-xs font-medium border transition-all',
+                                active
+                                  ? 'bg-blue-600 border-blue-600 text-white shadow-sm shadow-blue-600/30'
+                                  : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-blue-300 dark:hover:border-blue-700 hover:bg-blue-50 dark:hover:bg-blue-950/30'
+                              )}
+                            >
+                              {l}
+                            </motion.button>
+                          )
+                        })}
+                      </div>
+                    </section>
+
+                    {/* ----- Tuition (presets + slider) ----- */}
+                    <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-3">
+                      <header className="flex items-center gap-2 px-1 pb-3">
+                        <div className="size-7 rounded-lg bg-orange-50 dark:bg-orange-950/40 flex items-center justify-center">
+                          <Wallet className="size-4 text-orange-600 dark:text-orange-400" />
+                        </div>
+                        <h3 className="text-sm font-semibold dark:text-white">{t('Filters.annualTuition')}</h3>
+                      </header>
+
+                      {/* Preset chips */}
+                      <div className="flex flex-wrap gap-1.5 mb-3">
+                        {[
+                          { label: t('Filters.presetAny'), range: [0, 25000] as [number, number] },
+                          { label: t('Filters.presetUnder5k'), range: [0, 5000] as [number, number] },
+                          { label: t('Filters.presetUnder10k'), range: [0, 10000] as [number, number] },
+                          { label: t('Filters.presetUnder15k'), range: [0, 15000] as [number, number] },
+                        ].map(preset => {
+                          const active = tuitionRange[0] === preset.range[0] && tuitionRange[1] === preset.range[1]
+                          return (
+                            <button
+                              key={preset.label}
+                              onClick={() => setTuitionRange(preset.range)}
+                              className={cn(
+                                'px-2.5 py-1 rounded-full text-[11px] font-medium border transition-all',
+                                active
+                                  ? 'bg-slate-900 dark:bg-white border-slate-900 dark:border-white text-white dark:text-slate-900'
+                                  : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500'
+                              )}
+                            >
+                              {preset.label}
+                            </button>
+                          )
+                        })}
+                      </div>
+
+                      {/* Current range display */}
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-xs text-muted-foreground">{formatUsd(tuitionRange[0])}</span>
+                        <span className="text-xs font-bold text-blue-700 dark:text-blue-400 tabular-nums">
+                          {formatUsd(tuitionRange[0])} – {formatUsd(tuitionRange[1])}
+                        </span>
+                        <span className="text-xs text-muted-foreground">{formatUsd(25000)}+</span>
+                      </div>
+                      <div className="px-2 pt-2">
+                        <Slider
+                          value={tuitionRange}
+                          onValueChange={(v) => setTuitionRange(v as [number, number])}
+                          min={0}
+                          max={25000}
+                          step={500}
+                          className="mt-1"
+                        />
+                      </div>
+                    </section>
+                  </div>
+
+                  {/* ===== Sticky footer with live result count + CTA ===== */}
+                  <div className="shrink-0 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 flex items-center gap-3">
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-bold text-slate-900 dark:text-white leading-tight">
+                        {t('Filters.resultsFound', { count: filtered.length })}
+                      </div>
+                      <div className="text-[11px] text-muted-foreground">
+                        {activeFilterCount > 0
+                          ? `${activeFilterCount} filter${activeFilterCount > 1 ? 's' : ''} active`
+                          : t('Directory.showingAll')}
                       </div>
                     </div>
-                    <Separator />
-                    <div>
-                      <Label className="text-sm font-semibold mb-3 block">{t('Filters.fieldOfStudy')}</Label>
-                      <div className="space-y-2">
-                        {['Computer Science', 'Engineering', 'Business', 'Medicine', 'Social Sciences'].map(f => (
-                          <div key={f} className="flex items-center space-x-2">
-                            <Checkbox id={`f-${f}`} checked={selectedFields.has(f)} onCheckedChange={() => toggleField(f)} />
-                            <Label htmlFor={`f-${f}`} className="text-sm cursor-pointer">{f}</Label>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <Separator />
-                    <div>
-                      <Label className="text-sm font-semibold mb-3 block">{t('Filters.languageOfInstruction')}</Label>
-                      <div className="space-y-2">
-                        {['English', 'Arabic', 'German', 'Turkish'].map(l => (
-                          <div key={l} className="flex items-center space-x-2">
-                            <Checkbox id={`l-${l}`} checked={selectedLanguages.has(l)} onCheckedChange={() => toggleLanguage(l)} />
-                            <Label htmlFor={`l-${l}`} className="text-sm cursor-pointer">{l}</Label>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <Separator />
-                    <div>
-                      <div className="flex items-center justify-between mb-3">
-                        <Label className="text-sm font-semibold">{t('Filters.annualTuition')}</Label>
-                        <span className="text-xs text-muted-foreground">{formatUsd(tuitionRange[0])} - {formatUsd(tuitionRange[1])}</span>
-                      </div>
-                      <div className="px-2">
-                        <Slider value={tuitionRange} onValueChange={(v) => setTuitionRange(v as [number, number])} min={0} max={25000} step={500} className="mt-4" />
-                      </div>
-                      <div className="flex justify-between text-xs text-muted-foreground mt-2"><span>$0</span><span>$25K+</span></div>
-                    </div>
+                    <Button
+                      onClick={() => setFiltersOpen(false)}
+                      className="bg-orange-500 hover:bg-orange-600 text-white shadow-sm shadow-orange-500/30 gap-1.5 shrink-0"
+                    >
+                      {t('Filters.showResults')}
+                      <ArrowRight className="size-4" />
+                    </Button>
                   </div>
                 </SheetContent>
               </Sheet>

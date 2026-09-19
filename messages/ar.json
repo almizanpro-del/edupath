@@ -286,7 +286,18 @@
     "country": "الدولة",
     "fieldOfStudy": "التخصص",
     "languageOfInstruction": "لغة التدريس",
-    "annualTuition": "الرسوم السنوية (دولار أمريكي)"
+    "annualTuition": "الرسوم السنوية (دولار أمريكي)",
+    "subtitle": "حدّد بحثك عن الجامعات",
+    "resultsFound": "{count} جامعة تطابق",
+    "showResults": "عرض النتائج",
+    "searchCountries": "ابحث عن دول...",
+    "presets": "خيارات سريعة",
+    "presetAny": "أي سعر",
+    "presetUnder5k": "أقل من 5 آلاف",
+    "presetUnder10k": "أقل من 10 آلاف",
+    "presetUnder15k": "أقل من 15 ألف",
+    "noCountryMatch": "لا توجد دول تطابق \"{query}\"",
+    "selected": "محدد"
   },
   "TransferFinder": {
     "title": "باحث مسارات التحويل",

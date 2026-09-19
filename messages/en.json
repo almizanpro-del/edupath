@@ -286,7 +286,18 @@
     "country": "Country",
     "fieldOfStudy": "Field of Study",
     "languageOfInstruction": "Language of Instruction",
-    "annualTuition": "Annual Tuition (USD)"
+    "annualTuition": "Annual Tuition (USD)",
+    "subtitle": "Refine your university search",
+    "resultsFound": "{count} universities match",
+    "showResults": "Show results",
+    "searchCountries": "Search countries...",
+    "presets": "Quick presets",
+    "presetAny": "Any price",
+    "presetUnder5k": "Under $5K",
+    "presetUnder10k": "Under $10K",
+    "presetUnder15k": "Under $15K",
+    "noCountryMatch": "No countries match \"{query}\"",
+    "selected": "Selected"
   },
   "TransferFinder": {
     "title": "Transfer Pathway Finder",
