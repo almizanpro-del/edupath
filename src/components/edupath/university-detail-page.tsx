@@ -187,41 +187,113 @@ export function UniversityDetailPage({ uni }: Props) {
 
       {/* Hero section with animated gradient */}
       <div className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-white">
+        {/* Subtle radial grid pattern overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{
+            backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
+            backgroundSize: '32px 32px',
+          }}
+        />
+        {/* Animated glow orbs — slower, more subtle */}
         <div className="absolute inset-0 overflow-hidden">
-          <motion.div className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-blue-500/20 blur-3xl" animate={{ x: [0, 40, 0], y: [0, 20, 0] }} transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }} />
-          <motion.div className="absolute top-10 -right-20 w-80 h-80 rounded-full bg-orange-500/15 blur-3xl" animate={{ x: [0, -30, 0], y: [0, 40, 0] }} transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }} />
+          <motion.div
+            className="absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-blue-500/25 blur-3xl"
+            animate={{ x: [0, 30, 0], y: [0, 15, 0] }}
+            transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <motion.div
+            className="absolute -top-20 -right-32 w-[26rem] h-[26rem] rounded-full bg-orange-500/20 blur-3xl"
+            animate={{ x: [0, -25, 0], y: [0, 30, 0] }}
+            transition={{ duration: 32, repeat: Infinity, ease: 'easeInOut' }}
+          />
         </div>
 
-        <div className="relative container mx-auto max-w-7xl px-4 py-10 md:py-16">
-          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col md:flex-row items-start gap-6">
-            {/* Flag/logo — glassmorphic crest */}
-            <motion.div variants={fadeInUp} className="size-20 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 flex items-center justify-center shrink-0 overflow-hidden shadow-2xl ring-1 ring-white/5">
-              <Image src={countryFlagUrl(uni.country, 80)} alt={uni.country} width={56} height={38} className="rounded-lg" unoptimized />
+        <div className="relative container mx-auto max-w-7xl px-4 py-12 md:py-20">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={staggerContainer}
+            className="flex flex-col md:flex-row items-start gap-8"
+          >
+            {/* University crest — larger, with ring + flag */}
+            <motion.div variants={fadeInUp} className="shrink-0">
+              <div className="size-24 md:size-28 rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 flex items-center justify-center overflow-hidden shadow-2xl ring-1 ring-white/10 ring-offset-2 ring-offset-transparent">
+                <Image
+                  src={countryFlagUrl(uni.country, 96)}
+                  alt={uni.country}
+                  width={72}
+                  height={48}
+                  className="rounded-xl shadow-lg"
+                  unoptimized
+                />
+              </div>
             </motion.div>
 
             {/* Title + meta */}
             <motion.div variants={fadeInUp} className="flex-1 min-w-0">
-              <h1 className="text-3xl md:text-5xl font-bold mb-3 bg-gradient-to-br from-white via-blue-50 to-blue-200 bg-clip-text text-transparent leading-tight">{uni.name}</h1>
-              <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
-                <span className="flex items-center gap-1.5"><MapPin className="size-4" />{uni.city}, {uni.country}</span>
-                <a href={uni.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white hover:underline transition-colors">
-                  <ExternalLink className="size-4" />{t('visitWebsite')}
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-br from-white via-blue-50 to-blue-200 bg-clip-text text-transparent leading-[1.1] tracking-tight">
+                {uni.name}
+              </h1>
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/80">
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="size-4 text-blue-300" />
+                  {uni.city}, {uni.country}
+                </span>
+                <span className="hidden sm:block w-px h-4 bg-white/15" />
+                <a
+                  href={uni.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 hover:text-white hover:underline transition-colors"
+                >
+                  <ExternalLink className="size-4 text-blue-300" />
+                  {t('visitWebsite')}
                 </a>
                 {avgRating !== null && (
-                  <span className="flex items-center gap-1.5"><Star className="size-4 fill-amber-400 text-amber-400" />{avgRating.toFixed(1)} ({reviews.length} reviews)</span>
+                  <>
+                    <span className="hidden sm:block w-px h-4 bg-white/15" />
+                    <span className="flex items-center gap-1.5">
+                      <Star className="size-4 fill-amber-400 text-amber-400" />
+                      <span className="font-semibold text-white">{avgRating.toFixed(1)}</span>
+                      <span className="text-white/60">({reviews.length} reviews)</span>
+                    </span>
+                  </>
                 )}
               </div>
             </motion.div>
 
-            {/* Floating glass stat cards — tuition (blue) + living cost (orange) */}
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-2 md:flex-col md:items-end">
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl px-5 py-3 border border-white/15 shadow-xl ring-1 ring-white/5 min-w-[140px]">
-                <div className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Tuition from</div>
-                <div className="text-xl font-bold text-blue-300 mt-0.5">{formatUsdCompact(uni.cheapestProgramTuition)}/yr</div>
-              </div>
-              <div className="bg-white/10 backdrop-blur-xl rounded-2xl px-5 py-3 border border-white/15 shadow-xl ring-1 ring-white/5 min-w-[140px]">
-                <div className="text-[10px] text-white/50 uppercase tracking-wider font-medium">Living cost</div>
-                <div className="text-xl font-bold text-orange-300 mt-0.5">{formatUsdCompact(uni.livingCostUsd)}/yr</div>
+            {/* Unified glass cost panel — tuition (primary) + living cost (secondary) */}
+            <motion.div variants={fadeInUp} className="w-full md:w-auto shrink-0">
+              <div className="relative bg-white/10 backdrop-blur-2xl rounded-3xl border border-white/15 shadow-2xl ring-1 ring-white/10 overflow-hidden">
+                {/* Subtle top highlight */}
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+
+                <div className="flex md:flex-col divide-x md:divide-x-0 md:divide-y divide-white/10">
+                  {/* Tuition — primary */}
+                  <div className="flex-1 px-6 py-4 md:py-5 min-w-0">
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <DollarSign className="size-3.5 text-blue-300" />
+                      <span className="text-[11px] text-white/60 uppercase tracking-[0.12em] font-semibold">Tuition from</span>
+                    </div>
+                    <div className="text-2xl md:text-3xl font-bold text-white leading-none">
+                      {formatUsdCompact(uni.cheapestProgramTuition)}
+                      <span className="text-sm font-medium text-blue-300 ml-1">/yr</span>
+                    </div>
+                  </div>
+
+                  {/* Living cost — secondary */}
+                  <div className="flex-1 px-6 py-4 md:py-5 min-w-0">
+                    <div className="flex items-center gap-1.5 mb-1">
+                      <DollarSign className="size-3.5 text-orange-300" />
+                      <span className="text-[11px] text-white/60 uppercase tracking-[0.12em] font-semibold">Living cost</span>
+                    </div>
+                    <div className="text-xl md:text-2xl font-bold text-white/90 leading-none">
+                      {formatUsdCompact(uni.livingCostUsd)}
+                      <span className="text-sm font-medium text-orange-300 ml-1">/yr</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </motion.div>
