@@ -2,8 +2,8 @@
 
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
-import Link from 'next/link'
-import { ArrowLeft, DollarSign, Star, Heart, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Mail, Send, Loader2, Building2 } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowLeft, DollarSign, Star, Heart, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Mail, Send, Loader2, Building2, GraduationCap, Award, Globe } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -15,7 +15,6 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Separator } from '@/components/ui/separator'
-import { ScrollArea } from '@/components/ui/scroll-area'
 import { useToast } from '@/hooks/use-toast'
 import { formatUsd, formatUsdCompact, totalCost, countryFlagUrl } from '@/lib/edupath'
 import { cn } from '@/lib/utils'
@@ -25,6 +24,7 @@ import { ReviewForm } from '@/components/edupath/review-form'
 import { createClient } from '@/lib/supabase/client'
 import { track } from '@/lib/analytics-client'
 import { SocialShare } from '@/components/edupath/social-share'
+import { fadeInUp, staggerContainer, staggerItem } from '@/lib/animations'
 
 type Program = {
   id: string; name: string; degreeLevel: string; field: string
@@ -63,13 +63,15 @@ function StarRating({ value, size = 14 }: { value: number; size?: number }) {
 }
 
 function RatingBar({ label, value }: { label: string; value: number }) {
+  const pct = (value / 5) * 100
+  const color = value >= 4 ? 'bg-blue-500' : value >= 3 ? 'bg-amber-500' : 'bg-rose-500'
   return (
     <div className="flex items-center gap-2">
-      <span className="text-xs text-muted-foreground w-28">{label}</span>
-      <div className="flex-1 h-1.5 bg-muted rounded-full overflow-hidden">
-        <div className="h-full bg-blue-500 rounded-full" style={{ width: `${(value / 5) * 100}%` }} />
+      <span className="text-xs text-muted-foreground w-28 dark:text-slate-400">{label}</span>
+      <div className="flex-1 h-2 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden">
+        <motion.div className={cn('h-full rounded-full', color)} initial={{ width: 0 }} animate={{ width: `${pct}%` }} transition={{ duration: 0.6, ease: 'easeOut' }} />
       </div>
-      <span className="text-xs font-medium w-8 text-right">{value.toFixed(1)}</span>
+      <span className="text-xs font-medium w-8 text-right dark:text-slate-200">{value.toFixed(1)}</span>
     </div>
   )
 }
@@ -77,18 +79,8 @@ function RatingBar({ label, value }: { label: string; value: number }) {
 function CalendarIcon({ className }: { className?: string }) {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}>
-      <rect width="18" height="18" x="3" y="4" rx="2" />
-      <path d="M3 10h18M8 2v4M16 2v4" />
+      <rect width="18" height="18" x="3" y="4" rx="2" /><path d="M3 10h18M8 2v4M16 2v4" />
     </svg>
-  )
-}
-
-function StatCard({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
-  return (
-    <div className="bg-slate-50 rounded-lg p-3">
-      <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">{icon}{label}</div>
-      <div className="text-sm font-semibold">{value}</div>
-    </div>
   )
 }
 
@@ -104,390 +96,462 @@ export function UniversityDetailPage({ uni }: Props) {
   const [includeLiving, setIncludeLiving] = React.useState(true)
   const [isSaved, setIsSaved] = React.useState(false)
   const [isComparing, setIsComparing] = React.useState(false)
-  const [compareList, setCompareList] = React.useState<University[]>([])
   const [profile, setProfile] = React.useState<UserProfile | null>(null)
   const [authModalOpen, setAuthModalOpen] = React.useState(false)
   const [reviewFormOpen, setReviewFormOpen] = React.useState(false)
   const [reviews, setReviews] = React.useState<Review[]>(uni.reviews)
 
-  // Track university view on mount
   React.useEffect(() => {
     track('university_view', { universityId: uni.id, metadata: { slug: uni.slug, name: uni.name } })
   }, [uni.id, uni.slug, uni.name])
 
-  // Check auth on mount
   React.useEffect(() => {
     const supabase = createClient()
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session) {
-        fetch('/api/me').then(r => r.json()).then(data => {
-          if (data.profile) setProfile(data.profile)
-        }).catch(() => {})
+        fetch('/api/me').then(r => r.json()).then(data => { if (data.profile) setProfile(data.profile) }).catch(() => {})
       }
     })
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
-      if (event === 'SIGNED_OUT') {
-        setProfile(null)
-        setIsSaved(false)
-      }
+      if (event === 'SIGNED_OUT') { setProfile(null); setIsSaved(false) }
     })
     return () => subscription.unsubscribe()
   }, [])
 
-  // Load saved state
   React.useEffect(() => {
     if (!profile) return
-    fetch('/api/saved-lists')
-      .then(r => r.ok ? r.json() : { universities: [] })
-      .then(data => {
-        const saved = new Set<string>((data.universities ?? []).map((u: { id: string }) => u.id))
-        setIsSaved(saved.has(uni.id))
-      })
+    fetch('/api/saved-lists').then(r => r.ok ? r.json() : { universities: [] })
+      .then(data => { const saved = new Set<string>((data.universities ?? []).map((u: { id: string }) => u.id)); setIsSaved(saved.has(uni.id)) })
       .catch(() => {})
   }, [profile, uni.id])
 
   const handleSave = async () => {
-    if (!profile) {
-      toast({ title: 'Sign in to save universities', description: 'Create a free account to bookmark universities.' })
-      setAuthModalOpen(true)
-      return
-    }
-    const wasSaved = isSaved
-    setIsSaved(!wasSaved)
-    track(wasSaved ? 'unsave' : 'save', { universityId: uni.id })
+    if (!profile) { toast({ title: 'Sign in to save universities', description: 'Create a free account to bookmark universities.' }); setAuthModalOpen(true); return }
+    const wasSaved = isSaved; setIsSaved(!wasSaved); track(wasSaved ? 'unsave' : 'save', { universityId: uni.id })
     try {
-      const res = await fetch('/api/saved-lists', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ universityId: uni.id }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error)
+      const res = await fetch('/api/saved-lists', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ universityId: uni.id }) })
+      const data = await res.json(); if (!res.ok) throw new Error(data.error)
       toast({ title: data.action === 'saved' ? 'Saved to your list' : 'Removed from saved list', description: uni.name })
-    } catch {
-      setIsSaved(wasSaved)
-      toast({ title: 'Failed to save', variant: 'destructive' })
-    }
+    } catch { setIsSaved(wasSaved); toast({ title: 'Failed to save', variant: 'destructive' }) }
   }
 
   const handleCompare = () => {
-    if (isComparing) {
-      setIsComparing(false)
-      toast({ title: 'Removed from comparison', description: uni.name })
-    } else {
-      setIsComparing(true)
-      track('compare', { universityId: uni.id })
-      toast({ title: 'Added to comparison', description: uni.name })
-    }
+    if (isComparing) { setIsComparing(false); toast({ title: 'Removed from comparison', description: uni.name }) }
+    else { setIsComparing(true); track('compare', { universityId: uni.id }); toast({ title: 'Added to comparison', description: uni.name }) }
   }
 
   const openReviewForm = () => {
-    if (!profile) {
-      toast({ title: 'Sign in to write a review', description: 'Reviews help other MENA students make informed decisions.' })
-      setAuthModalOpen(true)
-      return
-    }
+    if (!profile) { toast({ title: 'Sign in to write a review', description: 'Reviews help other MENA students make informed decisions.' }); setAuthModalOpen(true); return }
     setReviewFormOpen(true)
   }
 
   const handleReviewSubmitted = async () => {
-    // Refetch reviews for this university
-    try {
-      const res = await fetch(`/api/reviews?universityId=${uni.id}`)
-      if (!res.ok) return
-      const data = await res.json()
-      if (data.reviews) setReviews(data.reviews)
-    } catch {}
+    try { const res = await fetch(`/api/reviews?universityId=${uni.id}`); if (!res.ok) return; const data = await res.json(); if (data.reviews) setReviews(data.reviews) } catch {}
   }
 
   const avgRating = reviews.length > 0 ? reviews.reduce((s, r) => s + r.ratingOverall, 0) / reviews.length : null
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50/40 via-white to-white">
-      {/* Header */}
-      <header className="sticky top-0 z-40 border-b bg-white/80 backdrop-blur-md">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+      {/* Sticky header */}
+      <header className="sticky top-0 z-40 border-b bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl">
         <div className="container mx-auto max-w-7xl px-4 py-3 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
+          <motion.div initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }}>
             <Button variant="ghost" size="sm" onClick={() => router.push('/')} className="gap-2">
-              <ArrowLeft className="size-4" />
-              <span className="hidden sm:inline">{t('back') || 'Back'}</span>
+              <ArrowLeft className="size-4" /><span className="hidden sm:inline">{t('back') || 'Back'}</span>
             </Button>
-          </div>
+          </motion.div>
           <div className="flex items-center gap-2">
-            <Button size="sm" variant={isComparing ? 'default' : 'outline'} onClick={handleCompare} className="gap-2">
-              <ArrowLeftRight className="size-4" />
-              {isComparing ? t('inCompare') : t('addToCompare')}
+            <Button size="sm" variant={isComparing ? 'default' : 'outline'} onClick={handleCompare} className="gap-2 dark:border-slate-600">
+              <ArrowLeftRight className="size-4" />{isComparing ? t('inCompare') : t('addToCompare')}
             </Button>
             <Button size="sm" variant="secondary" onClick={handleSave} className="gap-2">
-              <Heart className={cn('size-4', isSaved && 'fill-rose-500 text-rose-500')} />
-              {isSaved ? t('saved') : t('save')}
+              <Heart className={cn('size-4 transition-all', isSaved && 'fill-rose-500 text-rose-500 scale-110')} />{isSaved ? t('saved') : t('save')}
             </Button>
           </div>
         </div>
       </header>
 
-      {/* Hero header */}
-      <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-blue-950 text-white">
-        <div className="container mx-auto max-w-7xl px-4 py-12">
-          <div className="flex items-start gap-4">
-            <div className="size-16 rounded-xl bg-white/15 flex items-center justify-center shrink-0 overflow-hidden">
-              <Image
-                src={countryFlagUrl(uni.country, 80)}
-                alt={uni.country}
-                width={48}
-                height={32}
-                className="rounded"
-                unoptimized
-              />
-            </div>
-            <div className="flex-1">
-              <h1 className="text-3xl md:text-4xl font-bold mb-2">{uni.name}</h1>
-              <div className="flex flex-wrap items-center gap-4 text-sm text-white/85">
-                <span className="flex items-center gap-1"><MapPin className="size-4" /> {uni.city}, {uni.country}</span>
-                <a href={uni.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline">
-                  <ExternalLink className="size-4" /> {t('visitWebsite')}
+      {/* Hero section with animated gradient */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-slate-950 text-white">
+        <div className="absolute inset-0 overflow-hidden">
+          <motion.div className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-blue-500/20 blur-3xl" animate={{ x: [0, 40, 0], y: [0, 20, 0] }} transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }} />
+          <motion.div className="absolute top-10 -right-20 w-80 h-80 rounded-full bg-orange-500/15 blur-3xl" animate={{ x: [0, -30, 0], y: [0, 40, 0] }} transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }} />
+        </div>
+
+        <div className="relative container mx-auto max-w-7xl px-4 py-10 md:py-16">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col md:flex-row items-start gap-6">
+            {/* Flag/logo */}
+            <motion.div variants={fadeInUp} className="size-20 rounded-2xl bg-white/10 backdrop-blur-xl border border-white/15 flex items-center justify-center shrink-0 overflow-hidden shadow-2xl">
+              <Image src={countryFlagUrl(uni.country, 80)} alt={uni.country} width={56} height={38} className="rounded-lg" unoptimized />
+            </motion.div>
+
+            {/* Title + meta */}
+            <motion.div variants={fadeInUp} className="flex-1">
+              <h1 className="text-3xl md:text-5xl font-bold mb-3 bg-gradient-to-br from-white via-blue-50 to-blue-200 bg-clip-text text-transparent">{uni.name}</h1>
+              <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
+                <span className="flex items-center gap-1.5"><MapPin className="size-4" />{uni.city}, {uni.country}</span>
+                <a href={uni.website} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white hover:underline transition-colors">
+                  <ExternalLink className="size-4" />{t('visitWebsite')}
                 </a>
                 {avgRating !== null && (
-                  <span className="flex items-center gap-1">
-                    <Star className="size-4 fill-amber-300 text-amber-300" />
-                    {avgRating.toFixed(1)} ({reviews.length})
-                  </span>
+                  <span className="flex items-center gap-1.5"><Star className="size-4 fill-amber-400 text-amber-400" />{avgRating.toFixed(1)} ({reviews.length} reviews)</span>
                 )}
               </div>
-            </div>
-          </div>
+            </motion.div>
+
+            {/* Quick stats badges */}
+            <motion.div variants={fadeInUp} className="flex flex-wrap gap-2 md:flex-col md:items-end">
+              <div className="bg-white/10 backdrop-blur-xl rounded-xl px-4 py-2 border border-white/10">
+                <div className="text-[10px] text-white/50 uppercase tracking-wide">Tuition from</div>
+                <div className="text-lg font-bold text-blue-300">{formatUsdCompact(uni.cheapestProgramTuition)}/yr</div>
+              </div>
+              <div className="bg-white/10 backdrop-blur-xl rounded-xl px-4 py-2 border border-white/10">
+                <div className="text-[10px] text-white/50 uppercase tracking-wide">Living cost</div>
+                <div className="text-lg font-bold text-orange-300">{formatUsdCompact(uni.livingCostUsd)}/yr</div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="container mx-auto max-w-7xl px-4 py-8">
-        {/* Social share */}
-        <div className="mb-6 flex items-center justify-between flex-wrap gap-3">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => router.push(`/claim/${uni.slug}`)}
-            className="gap-2 text-blue-700 border-blue-300 hover:bg-blue-50"
-          >
-            <Building2 className="size-4" />
-            Claim this university
+      {/* Main content area */}
+      <div className="container mx-auto max-w-7xl px-4 py-6">
+        {/* Action bar */}
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mb-6 flex items-center justify-between flex-wrap gap-3">
+          <Button variant="outline" size="sm" onClick={() => router.push(`/claim/${uni.slug}`)} className="gap-2 text-blue-700 dark:text-blue-400 border-blue-300 dark:border-slate-600 hover:bg-blue-50 dark:hover:bg-slate-800">
+            <Building2 className="size-4" />Claim this university
           </Button>
-          <SocialShare
-            url={`https://edupath-amber-three.vercel.app/university/${uni.slug}`}
-            title={`${uni.name} — Tuition, Programs & Reviews | EduPath`}
-            description={uni.descriptionEn}
-          />
-        </div>
+          <SocialShare url={`https://edupath-amber-three.vercel.app/university/${uni.slug}`} title={`${uni.name} — Tuition, Programs & Reviews | EduPath`} description={uni.descriptionEn} />
+        </motion.div>
+
+        {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="bg-transparent h-12 p-0 gap-6 border-b w-full justify-start rounded-none">
-            <TabsTrigger value="overview" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent">{t('tabs.overview')}</TabsTrigger>
-            <TabsTrigger value="programs" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent">{t('tabs.programs')} ({uni.programs.length})</TabsTrigger>
-            <TabsTrigger value="scholarships" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent">{t('tabs.scholarships')} ({uni.scholarships.length})</TabsTrigger>
-            <TabsTrigger value="cost" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent">{t('tabs.cost')}</TabsTrigger>
-            <TabsTrigger value="reviews" className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent">{t('tabs.reviews')} ({reviews.length})</TabsTrigger>
-          </TabsList>
+          <div className="overflow-x-auto pb-1">
+            <TabsList className="bg-transparent h-auto p-0 gap-1 border-b w-max rounded-none">
+              {[
+                { value: 'overview', label: t('tabs.overview'), icon: Globe },
+                { value: 'programs', label: `${t('tabs.programs')} (${uni.programs.length})`, icon: GraduationCap },
+                { value: 'scholarships', label: `${t('tabs.scholarships')} (${uni.scholarships.length})`, icon: Award },
+                { value: 'cost', label: t('tabs.cost'), icon: Calculator },
+                { value: 'reviews', label: `${t('tabs.reviews')} (${reviews.length})`, icon: Star },
+              ].map(tab => (
+                <TabsTrigger key={tab.value} value={tab.value} className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent gap-1.5 py-3 px-4 dark:data-[state=active]:border-blue-400">
+                  <tab.icon className="size-4" />
+                  <span className="text-sm font-medium">{tab.label}</span>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
 
           <div className="mt-6">
-            <TabsContent value="overview" className="mt-0 space-y-6">
-              <p className="text-base leading-relaxed">{uni.descriptionEn}</p>
-              <Separator />
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <StatCard icon={<DollarSign className="size-4" />} label={t('stats.cheapestProgram')} value={formatUsd(uni.cheapestProgramTuition) + '/yr'} />
-                <StatCard icon={<DollarSign className="size-4" />} label={t('stats.livingCost')} value={formatUsd(uni.livingCostUsd) + '/yr'} />
-                <StatCard icon={<Users className="size-4" />} label={t('stats.intlStudents')} value={uni.intlStudentPct + '%'} />
-                <StatCard icon={<TrendingUp className="size-4" />} label={t('stats.acceptance')} value={uni.acceptanceRate !== null ? uni.acceptanceRate + '%' : 'N/A'} />
-              </div>
-              <Separator />
-              <div>
-                <h4 className="font-semibold mb-2 text-sm">{t('descriptionAr')}</h4>
-                <p className="text-base leading-relaxed text-right" dir="rtl" lang="ar">{uni.descriptionAr}</p>
-              </div>
-            </TabsContent>
-
-            <TabsContent value="programs" className="mt-0 space-y-3">
-              {uni.programs.map(p => (
-                <Card key={p.id} className="py-4">
-                  <CardContent className="space-y-2">
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <Badge variant="outline" className="text-xs capitalize">{p.degreeLevel}</Badge>
-                          <Badge variant="secondary" className="text-xs">{p.field}</Badge>
-                          <Badge variant="outline" className="text-xs"><Languages className="size-3 mr-1" />{p.language}</Badge>
-                        </div>
-                        <h4 className="font-semibold">{p.name}</h4>
-                      </div>
-                      <div className="text-right">
-                        <div className="text-lg font-bold text-blue-700">{formatUsd(p.tuitionUsd)}</div>
-                        <div className="text-xs text-muted-foreground">{t('programs.perYear')}</div>
-                      </div>
-                    </div>
-                    <div className="flex flex-wrap gap-4 text-xs text-muted-foreground pt-2 border-t">
-                      <span className="flex items-center gap-1"><Clock className="size-3" /> {p.durationMonths} {t('programs.months')}</span>
-                      {p.deadline && <span className="flex items-center gap-1"><CalendarIcon className="size-3" /> {t('programs.deadline')}: {p.deadline}</span>}
-                    </div>
-                    {p.entryReqs && (
-                      <div className="text-xs text-muted-foreground bg-amber-50 border border-amber-200 rounded p-2">
-                        <strong>{t('programs.entryRequirements')}:</strong> {p.entryReqs}
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
-            </TabsContent>
-
-            <TabsContent value="scholarships" className="mt-0 space-y-3">
-              {uni.scholarships.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground text-sm">{t('scholarships.none')}</div>
-              ) : (
-                uni.scholarships.map(s => (
-                  <Card key={s.id} className="py-4">
-                    <CardContent>
-                      <div className="flex items-start justify-between gap-3 mb-2">
-                        <div className="flex-1">
-                          <h4 className="font-semibold">{s.name}</h4>
-                          <Badge variant="outline" className="mt-1 capitalize">{s.amountType}</Badge>
-                        </div>
-                        <div className="text-right">
-                          <div className="text-lg font-bold text-blue-700">{formatUsd(s.amountUsd)}</div>
-                          <div className="text-xs text-muted-foreground">{s.amountType === 'full' ? t('scholarships.fullCoverage') : t('scholarships.amount')}</div>
-                        </div>
-                      </div>
-                      <p className="text-xs text-muted-foreground">{s.eligibility}</p>
-                      {s.deadline && (
-                        <div className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
-                          <CalendarIcon className="size-3" /> {t('scholarships.applyBy')}: {s.deadline}
+            {/* OVERVIEW TAB */}
+            <TabsContent value="overview" className="mt-0">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.3 }} className="grid lg:grid-cols-3 gap-6">
+                {/* Left: description */}
+                <div className="lg:col-span-2 space-y-6">
+                  <Card className="dark:bg-slate-900 dark:border-slate-800">
+                    <CardContent className="pt-6">
+                      <h3 className="font-bold text-lg mb-3 dark:text-white">About {uni.name}</h3>
+                      <p className="text-base leading-relaxed text-slate-600 dark:text-slate-300">{uni.descriptionEn}</p>
+                      {uni.descriptionAr && (
+                        <div className="mt-6 pt-6 border-t dark:border-slate-700">
+                          <h4 className="font-semibold mb-2 text-sm text-muted-foreground dark:text-slate-400">{t('descriptionAr')}</h4>
+                          <p className="text-base leading-relaxed text-right text-slate-600 dark:text-slate-300" dir="rtl" lang="ar">{uni.descriptionAr}</p>
                         </div>
                       )}
                     </CardContent>
                   </Card>
-                ))
+
+                  {/* Programs preview */}
+                  <Card className="dark:bg-slate-900 dark:border-slate-800">
+                    <CardContent className="pt-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="font-bold text-lg dark:text-white">Programs offered</h3>
+                        <Badge variant="secondary" className="dark:bg-slate-800">{uni.programs.length} total</Badge>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {uni.programs.map(p => (
+                          <Badge key={p.id} variant="outline" className="gap-1 dark:border-slate-600 dark:text-slate-300">
+                            <GraduationCap className="size-3" />{p.field} · {p.degreeLevel}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Right: stats sidebar */}
+                <div className="space-y-4">
+                  <Card className="dark:bg-slate-900 dark:border-slate-800 overflow-hidden">
+                    <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-4 text-white">
+                      <h3 className="font-bold">Key Stats</h3>
+                    </div>
+                    <CardContent className="pt-4 space-y-3">
+                      {[
+                        { icon: DollarSign, label: t('stats.cheapestProgram'), value: formatUsd(uni.cheapestProgramTuition) + '/yr', color: 'text-blue-600 dark:text-blue-400' },
+                        { icon: DollarSign, label: t('stats.livingCost'), value: formatUsd(uni.livingCostUsd) + '/yr', color: 'text-orange-600 dark:text-orange-400' },
+                        { icon: Users, label: t('stats.intlStudents'), value: uni.intlStudentPct + '%', color: 'text-slate-700 dark:text-slate-200' },
+                        { icon: TrendingUp, label: t('stats.acceptance'), value: uni.acceptanceRate !== null ? uni.acceptanceRate + '%' : 'N/A', color: 'text-slate-700 dark:text-slate-200' },
+                      ].map((stat, i) => (
+                        <motion.div key={i} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 * i }} className="flex items-center gap-3 py-2 border-b last:border-0 dark:border-slate-700">
+                          <div className="size-9 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
+                            <stat.icon className={cn('size-4', stat.color)} />
+                          </div>
+                          <div className="flex-1">
+                            <div className="text-xs text-muted-foreground dark:text-slate-400">{stat.label}</div>
+                            <div className={cn('font-bold', stat.color)}>{stat.value}</div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </CardContent>
+                  </Card>
+
+                  {/* Quick actions */}
+                  <Card className="dark:bg-slate-900 dark:border-slate-800">
+                    <CardContent className="pt-4 space-y-2">
+                      <Button className="w-full gap-2" onClick={() => setActiveTab('cost')}>
+                        <Calculator className="size-4" />Calculate total cost
+                      </Button>
+                      <Button variant="outline" className="w-full gap-2 dark:border-slate-600" onClick={() => setActiveTab('reviews')}>
+                        <Star className="size-4" />Read reviews
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
+              </motion.div>
+            </TabsContent>
+
+            {/* PROGRAMS TAB */}
+            <TabsContent value="programs" className="mt-0">
+              <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="grid md:grid-cols-2 gap-4">
+                {uni.programs.map(p => (
+                  <motion.div key={p.id} variants={staggerItem}>
+                    <Card className="h-full hover:shadow-lg transition-shadow dark:bg-slate-900 dark:border-slate-800">
+                      <CardContent className="pt-5">
+                        <div className="flex items-start justify-between gap-3 mb-3">
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <Badge variant="outline" className="text-xs capitalize dark:border-slate-600">{p.degreeLevel}</Badge>
+                              <Badge variant="secondary" className="text-xs dark:bg-slate-800">{p.field}</Badge>
+                              <Badge variant="outline" className="text-xs dark:border-slate-600"><Languages className="size-3 mr-1" />{p.language}</Badge>
+                            </div>
+                            <h4 className="font-semibold dark:text-white">{p.name}</h4>
+                          </div>
+                          <div className="text-right shrink-0">
+                            <div className="text-xl font-bold text-blue-600 dark:text-blue-400">{formatUsd(p.tuitionUsd)}</div>
+                            <div className="text-[10px] text-muted-foreground">{t('programs.perYear')}</div>
+                          </div>
+                        </div>
+                        <div className="flex flex-wrap gap-4 text-xs text-muted-foreground pt-3 border-t dark:border-slate-700">
+                          <span className="flex items-center gap-1"><Clock className="size-3" />{p.durationMonths} {t('programs.months')}</span>
+                          {p.deadline && <span className="flex items-center gap-1"><CalendarIcon className="size-3" />{t('programs.deadline')}: {p.deadline}</span>}
+                        </div>
+                        {p.entryReqs && (
+                          <div className="text-xs text-muted-foreground bg-amber-50 dark:bg-amber-950/20 dark:text-amber-200 border border-amber-200 dark:border-amber-800 rounded-lg p-2 mt-3">
+                            <strong>{t('programs.entryRequirements')}:</strong> {p.entryReqs}
+                          </div>
+                        )}
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </TabsContent>
+
+            {/* SCHOLARSHIPS TAB */}
+            <TabsContent value="scholarships" className="mt-0">
+              {uni.scholarships.length === 0 ? (
+                <div className="text-center py-16">
+                  <Award className="size-12 text-slate-300 mx-auto mb-3" />
+                  <h3 className="font-semibold mb-1 dark:text-white">{t('scholarships.none')}</h3>
+                </div>
+              ) : (
+                <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="grid md:grid-cols-2 gap-4">
+                  {uni.scholarships.map(s => (
+                    <motion.div key={s.id} variants={staggerItem}>
+                      <Card className="h-full hover:shadow-lg transition-shadow dark:bg-slate-900 dark:border-slate-800">
+                        <CardContent className="pt-5">
+                          <div className="flex items-start justify-between gap-3 mb-2">
+                            <div className="flex-1">
+                              <div className="flex items-center gap-2 mb-1">
+                                <Award className="size-4 text-orange-500" />
+                                <h4 className="font-semibold dark:text-white">{s.name}</h4>
+                              </div>
+                              <Badge variant="outline" className="capitalize dark:border-slate-600">{s.amountType}</Badge>
+                            </div>
+                            <div className="text-right shrink-0">
+                              <div className="text-xl font-bold text-orange-600 dark:text-orange-400">{formatUsd(s.amountUsd)}</div>
+                              <div className="text-[10px] text-muted-foreground">{s.amountType === 'full' ? t('scholarships.fullCoverage') : t('scholarships.amount')}</div>
+                            </div>
+                          </div>
+                          <p className="text-xs text-muted-foreground dark:text-slate-400 mt-2">{s.eligibility}</p>
+                          {s.deadline && (
+                            <div className="text-xs text-muted-foreground mt-3 flex items-center gap-1 dark:text-slate-400">
+                              <CalendarIcon className="size-3" />{t('scholarships.applyBy')}: {s.deadline}
+                            </div>
+                          )}
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </motion.div>
               )}
             </TabsContent>
 
-            <TabsContent value="cost" className="mt-0 space-y-4">
-              <div>
-                <h4 className="font-semibold mb-3 flex items-center gap-2">
-                  <Calculator className="size-4" /> {t('cost.title')}
-                </h4>
-                <p className="text-sm text-muted-foreground mb-4">{t('cost.description')}</p>
-              </div>
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 space-y-4">
-                <div>
-                  <Label className="text-sm font-medium">{t('cost.programDuration', { months: costDuration, years: (costDuration / 12).toFixed(1) })}</Label>
-                  <Slider value={[costDuration]} onValueChange={(v) => setCostDuration(v[0])} min={12} max={72} step={6} className="mt-3" />
-                  <div className="flex justify-between text-xs text-muted-foreground mt-1">
-                    <span>{t('cost.1year')}</span>
-                    <span>{t('cost.6years')}</span>
+            {/* COST CALCULATOR TAB */}
+            <TabsContent value="cost" className="mt-0">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-2xl mx-auto space-y-6">
+                <div className="text-center">
+                  <div className="inline-flex items-center justify-center size-14 rounded-2xl bg-blue-100 dark:bg-blue-900/30 mb-3">
+                    <Calculator className="size-7 text-blue-600 dark:text-blue-400" />
                   </div>
+                  <h3 className="font-bold text-xl mb-1 dark:text-white">{t('cost.title')}</h3>
+                  <p className="text-sm text-muted-foreground dark:text-slate-400">{t('cost.description')}</p>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <Checkbox id="include-living" checked={includeLiving} onCheckedChange={(v) => setIncludeLiving(v === true)} />
-                  <Label htmlFor="include-living" className="text-sm cursor-pointer">
-                    {t('cost.includeLiving', { amount: formatUsd(uni.livingCostUsd) })}
-                  </Label>
-                </div>
-                <Separator />
-                <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">{t('cost.tuition', { years: (costDuration / 12).toFixed(1) })}</span>
-                    <span className="font-medium">{formatUsd(Math.round(uni.cheapestProgramTuition * costDuration / 12))}</span>
-                  </div>
-                  {includeLiving && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">{t('cost.living', { years: (costDuration / 12).toFixed(1) })}</span>
-                      <span className="font-medium">{formatUsd(Math.round(uni.livingCostUsd * costDuration / 12))}</span>
+
+                <Card className="dark:bg-slate-900 dark:border-slate-800">
+                  <CardContent className="pt-6 space-y-5">
+                    {/* Duration slider */}
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <Label className="text-sm font-medium dark:text-slate-200">{t('cost.programDuration', { months: costDuration, years: (costDuration / 12).toFixed(1) })}</Label>
+                      </div>
+                      <Slider value={[costDuration]} onValueChange={(v) => setCostDuration(v[0])} min={12} max={72} step={6} className="mt-3" />
+                      <div className="flex justify-between text-xs text-muted-foreground mt-2">
+                        <span>{t('cost.1year')}</span><span>{t('cost.6years')}</span>
+                      </div>
                     </div>
-                  )}
-                  <Separator />
-                  <div className="flex justify-between items-center pt-2">
-                    <span className="font-semibold">{t('cost.total')}</span>
-                    <span className="text-2xl font-bold text-blue-700">
-                      {formatUsd(totalCost(uni.cheapestProgramTuition, includeLiving ? uni.livingCostUsd : 0, costDuration))}
-                    </span>
-                  </div>
+
+                    {/* Living checkbox */}
+                    <div className="flex items-center space-x-2 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg">
+                      <Checkbox id="include-living" checked={includeLiving} onCheckedChange={(v) => setIncludeLiving(v === true)} />
+                      <Label htmlFor="include-living" className="text-sm cursor-pointer dark:text-slate-200">
+                        {t('cost.includeLiving', { amount: formatUsd(uni.livingCostUsd) })}
+                      </Label>
+                    </div>
+
+                    {/* Cost breakdown */}
+                    <div className="space-y-3 pt-3 border-t dark:border-slate-700">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-muted-foreground dark:text-slate-400">{t('cost.tuition', { years: (costDuration / 12).toFixed(1) })}</span>
+                        <span className="font-medium dark:text-slate-200">{formatUsd(Math.round(uni.cheapestProgramTuition * costDuration / 12))}</span>
+                      </div>
+                      {includeLiving && (
+                        <div className="flex justify-between items-center">
+                          <span className="text-sm text-muted-foreground dark:text-slate-400">{t('cost.living', { years: (costDuration / 12).toFixed(1) })}</span>
+                          <span className="font-medium dark:text-slate-200">{formatUsd(Math.round(uni.livingCostUsd * costDuration / 12))}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Total */}
+                    <div className="bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl p-5 text-white">
+                      <div className="flex justify-between items-center">
+                        <span className="font-semibold">{t('cost.total')}</span>
+                        <motion.span key={costDuration + String(includeLiving)} initial={{ scale: 0.9, opacity: 0.5 }} animate={{ scale: 1, opacity: 1 }} className="text-3xl font-bold">
+                          {formatUsd(totalCost(uni.cheapestProgramTuition, includeLiving ? uni.livingCostUsd : 0, costDuration))}
+                        </motion.span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <div className="text-xs text-muted-foreground bg-amber-50 dark:bg-amber-950/20 dark:text-amber-200 border border-amber-200 dark:border-amber-800 rounded-lg p-3">
+                  <strong>{t('cost.disclaimer')}</strong>
                 </div>
-              </div>
-              <div className="text-xs text-muted-foreground bg-amber-50 border border-amber-200 rounded p-3">
-                <strong>{t('cost.disclaimer')}</strong>
-              </div>
+              </motion.div>
             </TabsContent>
 
+            {/* REVIEWS TAB */}
             <TabsContent value="reviews" className="mt-0 space-y-4">
-              {/* Write a review CTA */}
-              <div className="flex items-center justify-between gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              {/* Write review CTA */}
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex items-center justify-between gap-3 p-5 bg-gradient-to-r from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-slate-900 border border-blue-200 dark:border-blue-800 rounded-2xl">
                 <div>
-                  <div className="font-semibold text-sm">{t('reviews.shareExperience')}</div>
-                  <div className="text-xs text-muted-foreground mt-0.5">
-                    {profile ? t('reviews.shareDescLoggedIn') : t('reviews.shareDescLoggedOut')}
-                  </div>
+                  <div className="font-semibold text-sm dark:text-white">{t('reviews.shareExperience')}</div>
+                  <div className="text-xs text-muted-foreground mt-0.5 dark:text-slate-400">{profile ? t('reviews.shareDescLoggedIn') : t('reviews.shareDescLoggedOut')}</div>
                 </div>
-                <Button onClick={openReviewForm} className="gap-2" size="sm">
-                  <MessageSquarePlus className="size-4" />
-                  {t('reviews.writeReview')}
+                <Button onClick={openReviewForm} className="gap-2 shrink-0" size="sm">
+                  <MessageSquarePlus className="size-4" />{t('reviews.writeReview')}
                 </Button>
-              </div>
+              </motion.div>
 
               {reviews.length === 0 ? (
-                <div className="text-center py-12">
-                  <div className="text-4xl mb-3">✍️</div>
-                  <h4 className="font-semibold mb-1">{t('reviews.noReviews')}</h4>
-                  <p className="text-sm text-muted-foreground">{t('reviews.noReviewsDesc', { name: uni.name })}</p>
+                <div className="text-center py-16">
+                  <div className="inline-flex items-center justify-center size-14 rounded-2xl bg-slate-100 dark:bg-slate-800 mb-3">
+                    <Star className="size-7 text-slate-400" />
+                  </div>
+                  <h4 className="font-semibold mb-1 dark:text-white">{t('reviews.noReviews')}</h4>
+                  <p className="text-sm text-muted-foreground dark:text-slate-400">{t('reviews.noReviewsDesc', { name: uni.name })}</p>
                 </div>
               ) : (
                 <>
+                  {/* Rating summary */}
                   {avgRating !== null && (
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
-                      <div className="flex items-center justify-between mb-3">
-                        <div>
-                          <div className="text-3xl font-bold">{avgRating.toFixed(1)}</div>
-                          <StarRating value={avgRating} size={16} />
-                          <div className="text-xs text-muted-foreground mt-1">{t('reviews.reviewCount', { count: reviews.length })}</div>
-                        </div>
-                      </div>
-                      <div className="space-y-2">
-                        <RatingBar label={t('reviews.subRatings.affordability')} value={reviews.reduce((s, r) => s + r.ratingAffordability, 0) / reviews.length} />
-                        <RatingBar label={t('reviews.subRatings.teaching')} value={reviews.reduce((s, r) => s + r.ratingTeaching, 0) / reviews.length} />
-                        <RatingBar label={t('reviews.subRatings.visa')} value={reviews.reduce((s, r) => s + r.ratingVisa, 0) / reviews.length} />
-                        <RatingBar label={t('reviews.subRatings.safety')} value={reviews.reduce((s, r) => s + r.ratingSafety, 0) / reviews.length} />
-                        <RatingBar label={t('reviews.subRatings.social')} value={reviews.reduce((s, r) => s + r.ratingSocial, 0) / reviews.length} />
-                      </div>
-                    </div>
-                  )}
-                  {reviews.map(r => (
-                    <Card key={r.id} className="py-4">
-                      <CardContent>
-                        <div className="flex items-start justify-between gap-3 mb-2">
-                          <div>
-                            <div className="flex items-center gap-2">
-                              <span className="font-semibold">{r.userName}</span>
-                              {r.verifiedEnrollment && (
-                                <Badge variant="outline" className="text-[10px] gap-1 border-blue-500 text-blue-700">
-                                  <CheckCircle2 className="size-3" /> {t('reviews.verifiedStudent')}
-                                </Badge>
-                              )}
-                            </div>
-                            <div className="text-xs text-muted-foreground flex items-center gap-1">
-                              <MapPin className="size-3" /> {r.userCountry}
-                            </div>
+                    <Card className="dark:bg-slate-900 dark:border-slate-800">
+                      <CardContent className="pt-6">
+                        <div className="flex flex-col md:flex-row gap-6">
+                          <div className="text-center md:text-left">
+                            <div className="text-5xl font-bold dark:text-white">{avgRating.toFixed(1)}</div>
+                            <StarRating value={avgRating} size={20} />
+                            <div className="text-xs text-muted-foreground mt-1 dark:text-slate-400">{t('reviews.reviewCount', { count: reviews.length })}</div>
                           </div>
-                          <StarRating value={r.ratingOverall} />
-                        </div>
-                        <p className="text-sm leading-relaxed my-3">{r.reviewText}</p>
-                        <div className="flex flex-wrap gap-1.5 mb-3">
-                          {r.tags.map((tag, i) => (
-                            <Badge key={i} variant="secondary" className="text-[10px]">{tag}</Badge>
-                          ))}
-                        </div>
-                        <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t">
-                          <span>{new Date(r.createdAt).toLocaleDateString(locale === 'ar' ? 'ar-EG' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
-                          <Button variant="ghost" size="sm" className="h-7 gap-1 text-xs">
-                            <ThumbsUp className="size-3" /> {t('reviews.helpful')} ({r.helpfulCount})
-                          </Button>
+                          <div className="flex-1 space-y-2">
+                            <RatingBar label={t('reviews.subRatings.affordability')} value={reviews.reduce((s, r) => s + r.ratingAffordability, 0) / reviews.length} />
+                            <RatingBar label={t('reviews.subRatings.teaching')} value={reviews.reduce((s, r) => s + r.ratingTeaching, 0) / reviews.length} />
+                            <RatingBar label={t('reviews.subRatings.visa')} value={reviews.reduce((s, r) => s + r.ratingVisa, 0) / reviews.length} />
+                            <RatingBar label={t('reviews.subRatings.safety')} value={reviews.reduce((s, r) => s + r.ratingSafety, 0) / reviews.length} />
+                            <RatingBar label={t('reviews.subRatings.social')} value={reviews.reduce((s, r) => s + r.ratingSocial, 0) / reviews.length} />
+                          </div>
                         </div>
                       </CardContent>
                     </Card>
-                  ))}
+                  )}
+
+                  {/* Review cards */}
+                  <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="space-y-4">
+                    {reviews.map(r => (
+                      <motion.div key={r.id} variants={staggerItem}>
+                        <Card className="dark:bg-slate-900 dark:border-slate-800">
+                          <CardContent className="pt-5">
+                            <div className="flex items-start justify-between gap-3 mb-3">
+                              <div className="flex items-center gap-3">
+                                <div className="size-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center text-white font-bold shrink-0">
+                                  {r.userName.charAt(0).toUpperCase()}
+                                </div>
+                                <div>
+                                  <div className="flex items-center gap-2">
+                                    <span className="font-semibold dark:text-white">{r.userName}</span>
+                                    {r.verifiedEnrollment && (
+                                      <Badge variant="outline" className="text-[10px] gap-1 border-blue-500 text-blue-700 dark:text-blue-400 dark:border-blue-700">
+                                        <CheckCircle2 className="size-3" />{t('reviews.verifiedStudent')}
+                                      </Badge>
+                                    )}
+                                  </div>
+                                  <div className="text-xs text-muted-foreground flex items-center gap-1 dark:text-slate-400">
+                                    <MapPin className="size-3" />{r.userCountry}
+                                  </div>
+                                </div>
+                              </div>
+                              <StarRating value={r.ratingOverall} />
+                            </div>
+                            <p className="text-sm leading-relaxed my-3 dark:text-slate-300">{r.reviewText}</p>
+                            <div className="flex flex-wrap gap-1.5 mb-3">
+                              {r.tags.map((tag, i) => (
+                                <Badge key={i} variant="secondary" className="text-[10px] dark:bg-slate-800">{tag}</Badge>
+                              ))}
+                            </div>
+                            <div className="flex items-center justify-between text-xs text-muted-foreground pt-3 border-t dark:border-slate-700">
+                              <span>{new Date(r.createdAt).toLocaleDateString(locale === 'ar' ? 'ar-EG' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                              <Button variant="ghost" size="sm" className="h-7 gap-1 text-xs">
+                                <ThumbsUp className="size-3" />{t('reviews.helpful')} ({r.helpfulCount})
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </motion.div>
+                    ))}
+                  </motion.div>
                 </>
               )}
             </TabsContent>
@@ -495,18 +559,12 @@ export function UniversityDetailPage({ uni }: Props) {
         </Tabs>
       </div>
 
-      {/* Contact form section */}
+      {/* Contact form */}
       <ContactForm universityId={uni.id} universityName={uni.name} profile={profile} />
 
-      {/* Auth + Review modals */}
+      {/* Modals */}
       <AuthModal open={authModalOpen} onClose={() => setAuthModalOpen(false)} onAuthed={(p) => setProfile(p)} />
-      <ReviewForm
-        open={reviewFormOpen}
-        onClose={() => setReviewFormOpen(false)}
-        universityId={uni.id}
-        universityName={uni.name}
-        onSubmitted={handleReviewSubmitted}
-      />
+      <ReviewForm open={reviewFormOpen} onClose={() => setReviewFormOpen(false)} universityId={uni.id} universityName={uni.name} onSubmitted={handleReviewSubmitted} />
     </div>
   )
 }
@@ -525,95 +583,83 @@ function ContactForm({ universityId, universityName, profile }: { universityId: 
   const [submitted, setSubmitted] = React.useState(false)
 
   React.useEffect(() => {
-    if (profile) {
-      setName(profile.name)
-      setCountry(profile.country)
-      setField(profile.fieldOfInterest ?? '')
-    }
+    if (profile) { setName(profile.name); setCountry(profile.country); setField(profile.fieldOfInterest ?? '') }
   }, [profile])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!name || !email || !message) {
-      toast({ title: t('fillRequired'), variant: 'destructive' })
-      return
-    }
+    if (!name || !email || !message) { toast({ title: t('fillRequired'), variant: 'destructive' }); return }
     setSubmitting(true)
     try {
-      const res = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ universityId, studentName: name, studentEmail: email, country, gpa, field, message }),
-      })
-      const data = await res.json()
-      if (!res.ok) throw new Error(data.error)
-      setSubmitted(true)
-      setMessage('')
+      const res = await fetch('/api/leads', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ universityId, studentName: name, studentEmail: email, country, gpa, field, message }) })
+      const data = await res.json(); if (!res.ok) throw new Error(data.error)
+      setSubmitted(true); setMessage('')
       toast({ title: t('messageSent'), description: t('messageSentDesc', { name: universityName }) })
-    } catch (err) {
-      toast({ title: t('failedToSend'), description: err instanceof Error ? err.message : t('tryAgain'), variant: 'destructive' })
-    }
+    } catch (err) { toast({ title: t('failedToSend'), description: err instanceof Error ? err.message : t('tryAgain'), variant: 'destructive' }) }
     setSubmitting(false)
   }
 
   return (
-    <div className="container mx-auto max-w-7xl px-4 py-8 border-t">
-      <Card className="max-w-2xl mx-auto">
-        <CardContent className="pt-6">
+    <div className="container mx-auto max-w-2xl px-4 py-10">
+      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+        <Card className="overflow-hidden dark:bg-slate-900 dark:border-slate-800">
           {submitted ? (
-            <div className="text-center py-8">
-              <div className="size-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
-                <CheckCircle2 className="size-8 text-blue-600" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">{t('messageSent')}</h3>
-              <p className="text-sm text-muted-foreground mb-4">{t('messageSentDesc', { name: universityName })}</p>
-              <Button variant="outline" onClick={() => setSubmitted(false)}>{t('sendAnother')}</Button>
-            </div>
+            <CardContent className="pt-10 pb-10 text-center">
+              <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', duration: 0.6 }} className="size-16 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center mx-auto mb-4">
+                <CheckCircle2 className="size-8 text-blue-600 dark:text-blue-400" />
+              </motion.div>
+              <h3 className="text-xl font-bold mb-2 dark:text-white">{t('messageSent')}</h3>
+              <p className="text-sm text-muted-foreground mb-4 dark:text-slate-400">{t('messageSentDesc', { name: universityName })}</p>
+              <Button variant="outline" onClick={() => setSubmitted(false)} className="dark:border-slate-600">{t('sendAnother')}</Button>
+            </CardContent>
           ) : (
             <>
-              <div className="flex items-center gap-2 mb-4">
-                <Mail className="size-5 text-blue-600" />
-                <h3 className="text-lg font-bold">{t('title', { name: universityName })}</h3>
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-5 text-white">
+                <div className="flex items-center gap-2">
+                  <Mail className="size-5" />
+                  <h3 className="text-lg font-bold">{t('title', { name: universityName })}</h3>
+                </div>
+                <p className="text-sm text-white/80 mt-1">{t('description')}</p>
               </div>
-              <p className="text-sm text-muted-foreground mb-4">{t('description')}</p>
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <div className="grid sm:grid-cols-2 gap-3">
-                  <div>
-                    <Label htmlFor="contact-name" className="text-xs">{t('yourName')} *</Label>
-                    <Input id="contact-name" value={name} onChange={e => setName(e.target.value)} required />
+              <CardContent className="pt-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    <div>
+                      <Label htmlFor="contact-name" className="text-xs dark:text-slate-300">{t('yourName')} *</Label>
+                      <Input id="contact-name" value={name} onChange={e => setName(e.target.value)} required className="dark:bg-slate-800 dark:border-slate-700" />
+                    </div>
+                    <div>
+                      <Label htmlFor="contact-email" className="text-xs dark:text-slate-300">{t('email')} *</Label>
+                      <Input id="contact-email" type="email" value={email} onChange={e => setEmail(e.target.value)} required className="dark:bg-slate-800 dark:border-slate-700" />
+                    </div>
+                  </div>
+                  <div className="grid sm:grid-cols-3 gap-3">
+                    <div>
+                      <Label htmlFor="contact-country" className="text-xs dark:text-slate-300">{t('country')}</Label>
+                      <Input id="contact-country" value={country} onChange={e => setCountry(e.target.value)} className="dark:bg-slate-800 dark:border-slate-700" />
+                    </div>
+                    <div>
+                      <Label htmlFor="contact-gpa" className="text-xs dark:text-slate-300">{t('gpa')}</Label>
+                      <Input id="contact-gpa" type="number" step="0.1" placeholder="3.5" value={gpa} onChange={e => setGpa(e.target.value)} className="dark:bg-slate-800 dark:border-slate-700" />
+                    </div>
+                    <div>
+                      <Label htmlFor="contact-field" className="text-xs dark:text-slate-300">{t('fieldOfInterest')}</Label>
+                      <Input id="contact-field" value={field} onChange={e => setField(e.target.value)} className="dark:bg-slate-800 dark:border-slate-700" />
+                    </div>
                   </div>
                   <div>
-                    <Label htmlFor="contact-email" className="text-xs">{t('email')} *</Label>
-                    <Input id="contact-email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+                    <Label htmlFor="contact-msg" className="text-xs dark:text-slate-300">{t('yourMessage')} *</Label>
+                    <Textarea id="contact-msg" rows={4} placeholder={t('messagePlaceholder')} value={message} onChange={e => setMessage(e.target.value)} required maxLength={2000} className="dark:bg-slate-800 dark:border-slate-700" />
                   </div>
-                </div>
-                <div className="grid sm:grid-cols-3 gap-3">
-                  <div>
-                    <Label htmlFor="contact-country" className="text-xs">{t('country')}</Label>
-                    <Input id="contact-country" value={country} onChange={e => setCountry(e.target.value)} />
-                  </div>
-                  <div>
-                    <Label htmlFor="contact-gpa" className="text-xs">{t('gpa')}</Label>
-                    <Input id="contact-gpa" type="number" step="0.1" placeholder="3.5" value={gpa} onChange={e => setGpa(e.target.value)} />
-                  </div>
-                  <div>
-                    <Label htmlFor="contact-field" className="text-xs">{t('fieldOfInterest')}</Label>
-                    <Input id="contact-field" value={field} onChange={e => setField(e.target.value)} />
-                  </div>
-                </div>
-                <div>
-                  <Label htmlFor="contact-msg" className="text-xs">{t('yourMessage')} *</Label>
-                  <Textarea id="contact-msg" rows={4} placeholder={t('messagePlaceholder')} value={message} onChange={e => setMessage(e.target.value)} required maxLength={2000} />
-                </div>
-                <Button type="submit" className="w-full gap-2 bg-blue-600 hover:bg-blue-700" disabled={submitting}>
-                  {submitting ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
-                  {t('sendInquiry')}
-                </Button>
-              </form>
+                  <Button type="submit" className="w-full gap-2 bg-blue-600 hover:bg-blue-700" disabled={submitting}>
+                    {submitting ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}{t('sendInquiry')}
+                  </Button>
+                </form>
+              </CardContent>
             </>
           )}
-        </CardContent>
-      </Card>
+        </Card>
+      </motion.div>
     </div>
   )
 }
