@@ -3,8 +3,12 @@ import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { getStripe, isStripeConfigured, TIERS, type TierId } from '@/lib/stripe'
+import { requireSameOrigin } from '@/lib/csrf'
 
 export async function POST(req: NextRequest) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   if (!isStripeConfigured()) {
     return NextResponse.json({
       error: 'Stripe not configured',

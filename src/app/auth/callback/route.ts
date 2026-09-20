@@ -9,7 +9,18 @@ import { createClient } from '@/lib/supabase/server'
 export async function GET(req: NextRequest) {
   const url = new URL(req.url)
   const code = url.searchParams.get('code')
-  const next = url.searchParams.get('next') ?? '/'
+  const rawNext = url.searchParams.get('next') ?? '/'
+
+  // Validate the redirect target to prevent open-redirect attacks.
+  // Only allow same-origin relative paths: must start with a single '/'
+  // and must NOT start with '//', '/', or contain protocol schemes.
+  const isSafeNext =
+    typeof rawNext === 'string' &&
+    rawNext.startsWith('/') &&
+    !rawNext.startsWith('//') &&
+    !rawNext.startsWith('/\\') &&
+    !/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(rawNext)
+  const safeNext = isSafeNext ? rawNext : '/'
 
   if (code) {
     const supabase = await createClient()
@@ -20,5 +31,5 @@ export async function GET(req: NextRequest) {
     }
   }
 
-  return NextResponse.redirect(`${url.origin}${next}`)
+  return NextResponse.redirect(`${url.origin}${safeNext}`)
 }

@@ -10,6 +10,7 @@ import { NextResponse, NextRequest } from 'next/server'
 import { db } from '@/lib/db'
 import staticUniversities from '@/data/static-universities.json'
 import ZAI from 'z-ai-web-dev-sdk'
+import { requireSameOrigin } from '@/lib/csrf'
 
 type Scholarship = {
   id: string
@@ -23,6 +24,9 @@ type Scholarship = {
 }
 
 export async function POST(req: NextRequest) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   try {
     const body = await req.json()
     const { gpa, field, country, languageScore, budget, degreeLevel } = body

@@ -5,6 +5,7 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
+import { requireSameOrigin } from '@/lib/csrf'
 
 async function getProfile() {
   const supabase = await createClient()
@@ -19,6 +20,9 @@ async function getProfile() {
 
 // POST — submit a claim
 export async function POST(req: NextRequest) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   const profile = await getProfile()
   if (!profile) return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
 
@@ -69,23 +73,26 @@ export async function GET() {
       orderBy: { createdAt: 'desc' },
     })
 
-    const parsed = claims.map(c => {
-      const meta = JSON.parse(c.metadata)
-      return {
-        id: c.id,
-        universityId: c.universityId,
-        universityName: c.university.name,
-        universitySlug: c.university.slug,
-        universityCountry: c.university.country,
-        claimantName: meta.claimantName,
-        claimantEmail: meta.claimantEmail,
-        officialName: meta.officialName,
-        officialEmail: meta.officialEmail,
-        officialTitle: meta.officialTitle,
-        proofUrl: meta.proofUrl,
-        status: meta.status,
-        submittedAt: c.createdAt.toISOString(),
-      }
+    const parsed = claims
+      .filter(c => c.university !== null)
+      .map(c => {
+        const meta = JSON.parse(c.metadata)
+        const uni = c.university!
+        return {
+          id: c.id,
+          universityId: c.universityId,
+          universityName: uni.name,
+          universitySlug: uni.slug,
+          universityCountry: uni.country,
+          claimantName: meta.claimantName,
+          claimantEmail: meta.claimantEmail,
+          officialName: meta.officialName,
+          officialEmail: meta.officialEmail,
+          officialTitle: meta.officialTitle,
+          proofUrl: meta.proofUrl,
+          status: meta.status,
+          submittedAt: c.createdAt.toISOString(),
+        }
     })
 
     return NextResponse.json({ claims: parsed })
@@ -96,6 +103,9 @@ export async function GET() {
 
 // PATCH — admin approves/rejects a claim
 export async function PATCH(req: NextRequest) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   const profile = await getProfile()
   if (!profile || profile.role !== 'admin') {
     return NextResponse.json({ error: 'Admin access required' }, { status: 403 })

@@ -3,20 +3,24 @@
  * Cron job: checks all programs with deadlines within 7 days,
  * finds users who saved the related universities, and sends email alerts.
  *
- * Set up as a Vercel Cron job (vercel.json) or external cron:
- *   0 9 * * * curl https://edupath-amber-three.vercel.app/api/cron/deadline-alerts
+ * Configured as a Vercel Cron job (vercel.json) running daily at 09:00 UTC.
+ * Vercel Cron automatically sends `Authorization: Bearer <CRON_SECRET>`
+ * when CRON_SECRET is set in the environment.
  *
- * Requires RESEND_API_KEY to actually send emails.
+ * REQUIRES `CRON_SECRET` env var — the endpoint returns 401 if it is unset.
+ * REQUIRES `RESEND_API_KEY` to actually send emails.
  */
 import { NextResponse, NextRequest } from 'next/server'
 import { db } from '@/lib/db'
 import { sendDeadlineAlertEmail } from '@/lib/email'
 
 export async function GET(req: NextRequest) {
-  // Simple auth: require a secret header to prevent abuse
+  // Auth: require a secret header to prevent abuse.
+  // Fail-closed: if CRON_SECRET is not set, reject all requests.
+  // (Configure CRON_SECRET in your environment to enable this endpoint.)
   const authHeader = req.headers.get('authorization')
   const cronSecret = process.env.CRON_SECRET
-  if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
+  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 

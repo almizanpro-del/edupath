@@ -257,6 +257,7 @@ function MetricBar({ label, value, icon }: { label: string; value: number; icon:
 }
 
 function UniversityAnalyticsCard({ uni }: { uni: Analytics }) {
+  const t = useTranslations('Sponsor')
   const [expanded, setExpanded] = React.useState(false)
   const sentimentColor = uni.sentiment.sentimentScore === 'N/A' ? 'text-slate-400' : parseInt(uni.sentiment.sentimentScore) >= 80 ? 'text-blue-600' : parseInt(uni.sentiment.sentimentScore) >= 60 ? 'text-amber-600' : 'text-rose-600'
 

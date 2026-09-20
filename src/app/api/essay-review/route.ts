@@ -15,6 +15,7 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import ZAI from 'z-ai-web-dev-sdk'
+import { requireSameOrigin } from '@/lib/csrf'
 
 // Simple in-memory rate limiting (per server instance)
 // In production, use Redis or DB-backed tracking
@@ -85,6 +86,9 @@ Rules:
 - Respond in the same language as the essay (English essay → English feedback, Arabic essay → Arabic feedback)`
 
 export async function POST(req: NextRequest) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   try {
     // Auth check
     const supabase = await createClient()

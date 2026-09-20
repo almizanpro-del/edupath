@@ -7,6 +7,7 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
+import { requireSameOrigin } from '@/lib/csrf'
 
 async function requireAdmin() {
   const supabase = await createClient()
@@ -54,6 +55,9 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   const profile = await requireAdmin()
   if (!profile) return NextResponse.json({ error: 'Admin access required' }, { status: 403 })
 

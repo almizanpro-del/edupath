@@ -6,8 +6,12 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { db } from '@/lib/db'
 import { trackEvent } from '@/lib/analytics'
+import { requireSameOrigin } from '@/lib/csrf'
 
 export async function POST(req: NextRequest) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   try {
     const body = await req.json()
     const { universityId, studentName, studentEmail, country, gpa, field, message } = body

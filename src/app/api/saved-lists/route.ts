@@ -9,6 +9,7 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
+import { requireSameOrigin } from '@/lib/csrf'
 
 async function getOrCreateProfile() {
   const supabase = await createClient()
@@ -83,6 +84,9 @@ export async function GET() {
 
 // Toggle save/unsave a university
 export async function POST(req: NextRequest) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   try {
     const profile = await getOrCreateProfile()
     if (!profile) {

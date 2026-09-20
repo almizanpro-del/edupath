@@ -100,7 +100,7 @@ export function AdminAnalyticsClient() {
           <StatCard icon={<Users className="size-5 text-blue-600" />} label="Total Users" value={data.users.total.toLocaleString()} sub={`+${data.users.new7d} this week`} />
           <StatCard icon={<Building2 className="size-5 text-blue-600" />} label="Universities" value={data.universities.total.toString()} sub={`${data.universities.pendingReview} pending`} />
           <StatCard icon={<Mail className="size-5 text-amber-600" />} label="Total Leads" value={data.leads.total.toString()} sub={`+${data.leads.new7d} this week`} />
-          <StatCard icon={<DollarSign className="size-5 text-purple-600" />} label="MRR" value={formatUsd(data.revenue.totalMRR)} sub={`${data.revenue.activeSubs} active subs`} />
+          <StatCard icon={<DollarSign className="size-5 text-purple-600" />} label="MRR" value={formatUsd(data.revenue.totalMRR)} sub={`${data.revenue.activeSubscriptions} active subs`} />
           <StatCard icon={<TrendingUp className="size-5 text-rose-600" />} label="Events (30d)" value={data.events.total30d.toLocaleString()} sub="tracked actions" />
           <StatCard icon={<BarChart3 className="size-5 text-slate-600" />} label="Reviews" value={data.content.reviews.toString()} sub={`${data.content.pendingReviews} pending`} />
         </div>

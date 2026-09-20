@@ -6,12 +6,14 @@ const globalForPrisma = globalThis as unknown as {
 
 // Only log queries in development — production logs would be too noisy
 // and would also fail silently if the DB is unavailable.
-const logConfig = process.env.NODE_ENV === 'development' ? ['query'] : []
+const logConfig = process.env.NODE_ENV === 'development'
+  ? (['query'] as const)
+  : ([] as const)
 
 export const db =
   globalForPrisma.prisma ??
   new PrismaClient({
-    log: logConfig,
+    log: [...logConfig],
   })
 
 if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = db

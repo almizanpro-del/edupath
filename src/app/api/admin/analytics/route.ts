@@ -82,7 +82,7 @@ export async function GET() {
     const topUniversityIds = Object.entries(universityViews)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 10)
-    const topUniversities = []
+    const topUniversities: Array<{ name: string; slug: string; country: string; views: number }> = []
     for (const [id, views] of topUniversityIds) {
       const uni = await db.university.findUnique({ where: { id }, select: { name: true, slug: true, country: true } })
       if (uni) topUniversities.push({ ...uni, views })

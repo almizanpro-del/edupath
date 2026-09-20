@@ -71,7 +71,7 @@ export function SocialShare({ url, title, description }: Props) {
         Share:
       </span>
       {/* Native share for mobile */}
-      {typeof navigator !== 'undefined' && navigator.share && (
+      {typeof navigator !== 'undefined' && typeof navigator.share === 'function' && (
         <Button variant="outline" size="sm" onClick={nativeShare} className="gap-2 md:hidden">
           <Share2 className="size-4" /> Share
         </Button>

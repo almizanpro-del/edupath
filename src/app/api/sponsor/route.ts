@@ -29,13 +29,17 @@ export async function GET() {
     return NextResponse.json({ error: 'Sponsor access required' }, { status: 403 })
   }
 
-  // For MVP: recruiters can view analytics for ALL universities (in production,
-  // each recruiter would be linked to a specific university via a sponsor relation).
-  // Admins can also view this dashboard.
+  // Recruiters are scoped to a single university (stored in fieldOfInterest
+  // when their claim is approved — see /api/claim/route.ts PATCH handler).
+  // Admins can view all universities.
+  const recruiterUniversityId =
+    profile.role === 'recruiter' ? profile.fieldOfInterest : undefined
 
   try {
     const universities = await db.university.findMany({
-      where: { pendingReview: false },
+      where: recruiterUniversityId
+        ? { id: recruiterUniversityId, pendingReview: false }
+        : { pendingReview: false },
       include: {
         reviews: { where: { moderationStatus: 'approved' }, select: { ratingOverall: true, ratingAffordability: true, ratingTeaching: true, ratingVisa: true, ratingSafety: true, ratingSocial: true } },
         _count: { select: { programs: true, scholarships: true, reviews: true } },
@@ -108,10 +112,12 @@ export async function GET() {
       }
     }))
 
-    // Real leads from Lead table (fallback to simulated if DB unavailable)
+    // Real leads from Lead table (fallback to simulated if DB unavailable).
+    // Recruiters only see leads for their own university; admins see all.
     let leads: Array<{ id: string; studentName: string; country: string; gpa: number | null; field: string | null; message: string; date: string; status: string }> = []
     try {
       const dbLeads = await db.lead.findMany({
+        where: recruiterUniversityId ? { universityId: recruiterUniversityId } : undefined,
         orderBy: { createdAt: 'desc' },
         take: 50,
       })

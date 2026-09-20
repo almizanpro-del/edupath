@@ -13,6 +13,7 @@ import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { parseTags } from '@/lib/edupath'
 import staticUniversities from '@/data/static-universities.json'
+import { requireSameOrigin } from '@/lib/csrf'
 
 async function getOrCreateProfile() {
   const supabase = await createClient()
@@ -124,6 +125,9 @@ export async function GET(req: NextRequest) {
 
 // PATCH — moderate a review (admin only)
 export async function PATCH(req: NextRequest) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   try {
     const profile = await getOrCreateProfile()
     if (!profile || profile.role !== 'admin') {
@@ -168,6 +172,9 @@ export async function PATCH(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   try {
     const profile = await getOrCreateProfile()
     if (!profile) {

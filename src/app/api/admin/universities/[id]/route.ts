@@ -2,6 +2,7 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
+import { requireSameOrigin } from '@/lib/csrf'
 
 async function requireAdmin() {
   const supabase = await createClient()
@@ -17,6 +18,9 @@ async function requireAdmin() {
 }
 
 export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   const profile = await requireAdmin()
   if (!profile) return NextResponse.json({ error: 'Admin access required' }, { status: 403 })
 
@@ -49,6 +53,9 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
 }
 
 export async function DELETE(req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   const profile = await requireAdmin()
   if (!profile) return NextResponse.json({ error: 'Admin access required' }, { status: 403 })
 

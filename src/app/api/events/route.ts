@@ -7,8 +7,12 @@ import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { trackEvent, type EventType } from '@/lib/analytics'
+import { requireSameOrigin } from '@/lib/csrf'
 
 export async function POST(req: NextRequest) {
+  const csrfError = requireSameOrigin(req)
+  if (csrfError) return csrfError
+
   try {
     const body = await req.json()
     const { eventType, universityId, metadata } = body
