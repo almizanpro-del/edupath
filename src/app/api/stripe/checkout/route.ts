@@ -4,6 +4,7 @@ import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { getStripe, isStripeConfigured, TIERS, type TierId } from '@/lib/stripe'
 import { requireSameOrigin } from '@/lib/csrf'
+import { stripeCheckoutSchema, validateBody } from '@/lib/validation'
 
 export async function POST(req: NextRequest) {
   const csrfError = requireSameOrigin(req)
@@ -21,7 +22,11 @@ export async function POST(req: NextRequest) {
   if (!user) return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
 
   const body = await req.json()
-  const { tierId } = body as { tierId: TierId }
+  const validation = validateBody(stripeCheckoutSchema, body)
+  if (!validation.success) {
+    return NextResponse.json({ error: validation.error }, { status: 400 })
+  }
+  const { tierId } = validation.data as { tierId: TierId }
 
   const tier = TIERS.find(t => t.id === tierId)
   if (!tier || !tier.priceId) {

@@ -6,7 +6,10 @@ import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { requireSameOrigin } from '@/lib/csrf'
-import { claimSchema, claimPatchSchema, validateBody } from '@/lib/validation'
+import { claimSchema, validateBody } from '@/lib/validation'
+import { z } from 'zod'
+
+const nonEmptyString = z.string().trim().min(1).max(10_000)
 
 async function getProfile() {
   const supabase = await createClient()
@@ -123,11 +126,17 @@ export async function PATCH(req: NextRequest) {
 
   try {
     const body = await req.json()
-    const { claimId, action } = body // action: 'approve' | 'reject'
-
-    if (!claimId || !action) {
-      return NextResponse.json({ error: 'claimId and action required' }, { status: 400 })
+    const validation = validateBody(
+      z.object({
+        claimId: nonEmptyString,
+        action: z.enum(['approve', 'reject']),
+      }),
+      body
+    )
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 })
     }
+    const { claimId, action } = validation.data
 
     const event = await db.analyticsEvent.findUnique({ where: { id: claimId } })
     if (!event || event.eventType !== 'university_claim') {
