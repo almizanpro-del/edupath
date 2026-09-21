@@ -1,0 +1,14 @@
+# EduPath University Data Scraper
+#
+# Dependencies:
+#   pip install -r requirements.txt
+#
+# Usage:
+#   python -m scraper.pipeline --source openalex --countries Jordan,Egypt --dry-run
+#   python -m scraper.pipeline --source wikipedia --limit 20
+#   python -m pytest scraper/tests/ -v
+
+requests>=2.31.0
+rapidfuzz>=3.5.0
+pytest>=7.4.0
+pytest-cov>=4.1.0
