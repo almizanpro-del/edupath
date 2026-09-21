@@ -189,3 +189,44 @@ model Subscription {
   @@index([userId])
   @@index([stripeCustomerId])
 }
+
+/// Staging table for scraped university data awaiting admin review.
+/// Records are created by the scraper pipeline (scripts/scraper/) and
+/// promoted to the University table when an admin approves them.
+model ScrapedUniversity {
+  id              String   @id @default(cuid())
+  slug            String
+  name            String
+  country         String
+  city            String
+  website         String?
+  tuitionUsd      Int      @default(0)
+  livingCostUsd   Int      @default(0)
+  intlStudentPct  Float    @default(0)
+  acceptanceRate  Float?
+  currency        String   @default("USD")
+  logoUrl         String?
+  descriptionEn   String?
+  descriptionAr   String?
+
+  // Scraper metadata
+  source          String   // openalex | wikipedia | curated
+  normalizedName  String   // normalized form for dedup comparison
+  qualityScore    Int      @default(0) // 0-100
+  qualityBreakdown String? // JSON string of per-field breakdown
+  status          String   @default("manual_review") // auto_rejected | manual_review | auto_approved | approved | rejected
+  scrapedAt       DateTime @default(now())
+  reviewedAt      DateTime?
+  reviewedBy      String?  // User.id of admin who reviewed
+
+  // Raw data from source (JSON)
+  rawData         String?  // JSON string of original source record
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([source, country])
+  @@index([normalizedName])
+  @@index([status])
+  @@index([qualityScore])
+}
