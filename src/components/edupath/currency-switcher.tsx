@@ -1,15 +1,19 @@
 'use client'
 
 import * as React from 'react'
-import { Coins } from 'lucide-react'
+import { Coins, AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { CURRENCIES, type CurrencyCode, EXCHANGE_RATES } from '@/lib/currency'
+import {
+  CURRENCIES, type CurrencyCode, EXCHANGE_RATES,
+  getSnapshotAge, isOutdatedSnapshot,
+} from '@/lib/currency'
 
 const STORAGE_KEY = 'edupath_currency'
 
@@ -41,6 +45,8 @@ export function CurrencySwitcher() {
     )
   }
 
+  const outdated = isOutdatedSnapshot()
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -55,6 +61,17 @@ export function CurrencySwitcher() {
             {c.flag} {c.code} — {c.name}
           </DropdownMenuItem>
         ))}
+        <DropdownMenuSeparator />
+        <div className="px-2 py-1.5 text-[10px] text-muted-foreground">
+          {outdated ? (
+            <span className="flex items-center gap-1 text-amber-600">
+              <AlertCircle className="size-3" />
+              Rates may be outdated ({getSnapshotAge()})
+            </span>
+          ) : (
+            <span>Rates updated {getSnapshotAge()}</span>
+          )}
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   )

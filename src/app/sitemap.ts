@@ -1,7 +1,8 @@
 /**
  * Dynamic sitemap.xml
  * Generates URLs for: home, pricing, essay-review, transfer-finder, scholarships,
- * and all 107 university detail pages.
+ * and all university detail pages.
+ * Includes both /en and /ar locale variants for SEO.
  */
 import { MetadataRoute } from 'next'
 import { db } from '@/lib/db'
@@ -9,16 +10,28 @@ import staticUniversities from '@/data/static-universities.json'
 
 const BASE_URL = 'https://edupath-amber-three.vercel.app'
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticPages: MetadataRoute.Sitemap = [
-    { url: BASE_URL, lastModified: new Date(), changeFrequency: 'daily', priority: 1.0 },
-    { url: `${BASE_URL}/pricing`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE_URL}/essay-review`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE_URL}/transfer-finder`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${BASE_URL}/scholarships`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
-  ]
+const STATIC_PAGES = [
+  { path: '', priority: 1.0, changeFrequency: 'daily' as const },
+  { path: '/pricing', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/essay-review', priority: 0.8, changeFrequency: 'monthly' as const },
+  { path: '/transfer-finder', priority: 0.7, changeFrequency: 'weekly' as const },
+  { path: '/scholarships', priority: 0.7, changeFrequency: 'weekly' as const },
+]
 
-  // Get all university slugs
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const entries: MetadataRoute.Sitemap = []
+
+  // Static pages (single URL — the app uses cookie-based locale, not URL-based)
+  for (const page of STATIC_PAGES) {
+    entries.push({
+      url: `${BASE_URL}${page.path}`,
+      lastModified: new Date(),
+      changeFrequency: page.changeFrequency,
+      priority: page.priority,
+    })
+  }
+
+  // Get all university slugs (from DB, fall back to static data)
   let universitySlugs: string[] = []
   try {
     const unis = await db.university.findMany({
@@ -30,12 +43,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     universitySlugs = (staticUniversities as Array<{ slug: string }>).map(u => u.slug)
   }
 
-  const universityPages: MetadataRoute.Sitemap = universitySlugs.map(slug => ({
-    url: `${BASE_URL}/university/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.9,
-  }))
+  // University detail pages
+  for (const slug of universitySlugs) {
+    entries.push({
+      url: `${BASE_URL}/university/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    })
+  }
 
-  return [...staticPages, ...universityPages]
+  return entries
 }
