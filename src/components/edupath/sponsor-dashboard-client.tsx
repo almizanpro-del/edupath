@@ -250,7 +250,7 @@ function MetricBar({ label, value, icon }: { label: string; value: number; icon:
         <span className="font-medium">{value}%</span>
       </div>
       <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-        <div className="h-full bg-blue-500 rounded-full" style={{ width: `${value}%` }} />
+        <div className="h-full bg-blue-950/50 rounded-full" style={{ width: `${value}%` }} />
       </div>
     </div>
   )
@@ -316,7 +316,7 @@ function UniversityAnalyticsCard({ uni }: { uni: Analytics }) {
 
 function SentimentBar({ label, value }: { label: string; value: number }) {
   const pct = (value / 5) * 100
-  const color = value >= 4 ? 'bg-blue-500' : value >= 3 ? 'bg-amber-500' : 'bg-rose-500'
+  const color = value >= 4 ? 'bg-blue-950/50' : value >= 3 ? 'bg-amber-500' : 'bg-rose-500'
   return (
     <div className="flex items-center gap-2">
       <span className="text-xs text-muted-foreground w-28">{label}</span>
@@ -330,7 +330,7 @@ function SentimentBar({ label, value }: { label: string; value: number }) {
 
 function LeadCard({ lead }: { lead: Lead }) {
   const statusColors: Record<string, string> = {
-    new: 'bg-blue-100 text-blue-700 border-blue-300',
+    new: 'bg-blue-600/10 text-blue-700 dark:bg-blue-600/20 dark:text-blue-300 border-blue-300',
     contacted: 'bg-amber-100 text-amber-700 border-amber-300',
     closed: 'bg-slate-100 text-slate-600 border-slate-300',
   }

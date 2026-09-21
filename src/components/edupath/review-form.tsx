@@ -159,6 +159,7 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
             size="icon"
             className="absolute top-3 right-3 text-white hover:bg-white/20"
             onClick={onClose}
+            aria-label="Close"
           >
             <X className="size-5" />
           </Button>
@@ -243,7 +244,7 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
                     className={cn(
                       'text-xs px-2.5 py-1 rounded-full border transition-colors',
                       tags.includes(tag)
-                        ? 'bg-blue-100 border-blue-500 text-blue-700'
+                        ? 'bg-blue-600/10 border-blue-500 text-blue-700'
                         : 'bg-white border-slate-200 hover:border-blue-300'
                     )}
                   >

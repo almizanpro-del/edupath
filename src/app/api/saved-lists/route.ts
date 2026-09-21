@@ -10,6 +10,7 @@ import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { requireSameOrigin } from '@/lib/csrf'
+import { savedListSchema, validateBody } from '@/lib/validation'
 
 async function getOrCreateProfile() {
   const supabase = await createClient()
@@ -94,12 +95,17 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json()
-    const { universityId } = body
-    if (!universityId || typeof universityId !== 'string') {
-      return NextResponse.json({ error: 'universityId required' }, { status: 400 })
+    const validation = validateBody(savedListSchema, body)
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 })
     }
+    const { universityId } = validation.data
 
-    const uni = await db.university.findUnique({ where: { id: universityId } })
+    // Existence check — only need the id
+    const uni = await db.university.findUnique({
+      where: { id: universityId },
+      select: { id: true },
+    })
     if (!uni) {
       return NextResponse.json({ error: 'University not found' }, { status: 404 })
     }

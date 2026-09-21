@@ -15,7 +15,13 @@ export async function GET() {
 
   let profile
   try {
-    profile = await db.user.findUnique({ where: { supabaseId: user.id } })
+    profile = await db.user.findUnique({
+        where: { supabaseId: user.id },
+        select: {
+          id: true, role: true, name: true, email: true,
+          country: true, fieldOfInterest: true, verificationStatus: true,
+        },
+      })
     if (!profile) {
       profile = await db.user.create({
         data: { supabaseId: user.id, email: user.email ?? '', name: user.user_metadata?.full_name ?? 'Sponsor', country: 'Jordan', role: 'student' },
@@ -47,8 +53,30 @@ export async function GET() {
       orderBy: { name: 'asc' },
     })
 
-    // Compute analytics per university
-    const analytics = await Promise.all(universities.map(async u => {
+    // Batch-fetch all analytics events for the universities in a single query
+    // (avoids N+1 — was 1 query per university inside the map below).
+    const universityIds = universities.map(u => u.id)
+    const eventCounts = new Map<string, { views: number; comparisons: number; saves: number }>()
+    try {
+      const grouped = await db.analyticsEvent.groupBy({
+        by: ['universityId', 'eventType'],
+        where: { universityId: { in: universityIds } },
+        _count: true,
+      })
+      for (const g of grouped) {
+        if (!g.universityId) continue
+        const entry = eventCounts.get(g.universityId) ?? { views: 0, comparisons: 0, saves: 0 }
+        if (g.eventType === 'university_view') entry.views = g._count
+        else if (g.eventType === 'compare') entry.comparisons = g._count
+        else if (g.eventType === 'save') entry.saves = g._count
+        eventCounts.set(g.universityId, entry)
+      }
+    } catch {
+      // DB unavailable — will use simulated fallback per university below
+    }
+
+    // Compute analytics per university (no DB calls inside the map)
+    const analytics = universities.map(u => {
       const reviews = u.reviews
       const avgRating = reviews.length > 0 ? reviews.reduce((s, r) => s + r.ratingOverall, 0) / reviews.length : 0
       const avgAffordability = reviews.length > 0 ? reviews.reduce((s, r) => s + r.ratingAffordability, 0) / reviews.length : 0
@@ -57,20 +85,17 @@ export async function GET() {
       const avgSafety = reviews.length > 0 ? reviews.reduce((s, r) => s + r.ratingSafety, 0) / reviews.length : 0
       const avgSocial = reviews.length > 0 ? reviews.reduce((s, r) => s + r.ratingSocial, 0) / reviews.length : 0
 
-      // Real analytics from AnalyticsEvent table (fallback to simulated if no events yet)
-      let profileViews = 0
-      let comparisonAppearances = 0
-      let saveCount = 0
-      try {
-        const events = await db.analyticsEvent.findMany({
-          where: { universityId: u.id },
-          select: { eventType: true },
-        })
-        profileViews = events.filter(e => e.eventType === 'university_view').length
-        comparisonAppearances = events.filter(e => e.eventType === 'compare').length
-        saveCount = events.filter(e => e.eventType === 'save').length
-      } catch {
-        // DB unavailable — use simulated fallback
+      // Read from the pre-fetched event counts (fallback to simulated)
+      let profileViews: number
+      let comparisonAppearances: number
+      let saveCount: number
+      const entry = eventCounts.get(u.id)
+      if (entry) {
+        profileViews = entry.views
+        comparisonAppearances = entry.comparisons
+        saveCount = entry.saves
+      } else {
+        // Simulated fallback
         const seed = u.id.charCodeAt(0) + u.id.charCodeAt(1)
         profileViews = Math.floor(50 + (seed % 500))
         comparisonAppearances = Math.floor(profileViews * 0.3)
@@ -110,7 +135,7 @@ export async function GET() {
           clickThroughRate,
         },
       }
-    }))
+    })
 
     // Real leads from Lead table (fallback to simulated if DB unavailable).
     // Recruiters only see leads for their own university; admins see all.

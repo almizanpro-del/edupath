@@ -8,7 +8,13 @@ async function requireAdmin() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return null
-  let profile = await db.user.findUnique({ where: { supabaseId: user.id } })
+  let profile = await db.user.findUnique({
+        where: { supabaseId: user.id },
+        select: {
+          id: true, role: true, name: true, email: true,
+          country: true, fieldOfInterest: true, verificationStatus: true,
+        },
+      })
   if (!profile) {
     profile = await db.user.create({
       data: { supabaseId: user.id, email: user.email ?? '', name: 'Admin', country: 'Jordan', role: 'student' },

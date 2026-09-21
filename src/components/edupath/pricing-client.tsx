@@ -151,7 +151,7 @@ export function PricingClient() {
             Free for students. Premium features for serious applicants. Sponsorships for universities.
           </p>
           {currentTier !== 'free' && (
-            <div className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-blue-100 text-blue-700 text-sm font-medium">
+            <div className="inline-flex items-center gap-2 mt-4 px-4 py-2 rounded-full bg-blue-600/10 text-blue-700 dark:bg-blue-600/20 dark:text-blue-300 text-sm font-medium">
               <Crown className="size-4" />
               You're on the {currentTier.replace('_', ' ')} plan
               <button onClick={handleManage} className="underline text-xs">Manage</button>

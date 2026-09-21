@@ -11,6 +11,8 @@ import { db } from '@/lib/db'
 import staticUniversities from '@/data/static-universities.json'
 import ZAI from 'z-ai-web-dev-sdk'
 import { requireSameOrigin } from '@/lib/csrf'
+import { rateLimit } from '@/lib/rate-limit'
+import { scholarshipMatchSchema, validateBody } from '@/lib/validation'
 
 type Scholarship = {
   id: string
@@ -27,20 +29,34 @@ export async function POST(req: NextRequest) {
   const csrfError = requireSameOrigin(req)
   if (csrfError) return csrfError
 
+  // Rate limit: 3 matches per hour per IP (LLM calls are expensive)
+  const limited = rateLimit(req, { windowMs: 60 * 60_000, max: 3, prefix: 'scholarship-match' })
+  if (limited) return limited
+
   try {
     const body = await req.json()
-    const { gpa, field, country, languageScore, budget, degreeLevel } = body
-
-    // Validate
-    if (!gpa || !field) {
-      return NextResponse.json({ error: 'GPA and field of study are required' }, { status: 400 })
+    const validation = validateBody(scholarshipMatchSchema, body)
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 })
     }
+    const { gpa, field, country, degreeLevel } = validation.data
+    const languageScore = typeof body.languageScore === 'number' ? body.languageScore : undefined
+    const budget = typeof body.budget === 'number' ? body.budget : undefined
 
-    // Fetch all scholarships
+    // Fetch all scholarships (with select to limit payload)
     let scholarships: Scholarship[] = []
     try {
       const unis = await db.university.findMany({
-        include: { scholarships: true },
+        select: {
+          name: true,
+          country: true,
+          scholarships: {
+            select: {
+              id: true, name: true, amountUsd: true, amountType: true,
+              eligibility: true, deadline: true,
+            },
+          },
+        },
       })
       scholarships = unis.flatMap(u =>
         u.scholarships.map(s => ({

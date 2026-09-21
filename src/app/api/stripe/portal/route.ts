@@ -18,7 +18,13 @@ export async function POST(req: NextRequest) {
   if (!user) return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
 
   try {
-    let profile = await db.user.findUnique({ where: { supabaseId: user.id } })
+    let profile = await db.user.findUnique({
+        where: { supabaseId: user.id },
+        select: {
+          id: true, role: true, name: true, email: true,
+          country: true, fieldOfInterest: true, verificationStatus: true,
+        },
+      })
     if (!profile) return NextResponse.json({ error: 'Profile not found' }, { status: 404 })
 
     const sub = await db.subscription.findUnique({ where: { userId: profile.id } })

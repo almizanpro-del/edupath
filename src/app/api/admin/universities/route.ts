@@ -8,12 +8,19 @@ import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { requireSameOrigin } from '@/lib/csrf'
+import { adminUniversityCreateSchema, validateBody } from '@/lib/validation'
 
 async function requireAdmin() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return null
-  let profile = await db.user.findUnique({ where: { supabaseId: user.id } })
+  let profile = await db.user.findUnique({
+        where: { supabaseId: user.id },
+        select: {
+          id: true, role: true, name: true, email: true,
+          country: true, fieldOfInterest: true, verificationStatus: true,
+        },
+      })
   if (!profile) {
     profile = await db.user.create({
       data: {
@@ -63,18 +70,21 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json()
-    const { name, country, city, website, tuitionUsd, livingCostUsd, intlStudentPct, acceptanceRate, currency, descriptionEn, descriptionAr } = body
-    if (!name || !country) {
-      return NextResponse.json({ error: 'Name and country are required' }, { status: 400 })
+    const validation = validateBody(adminUniversityCreateSchema, body)
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 })
     }
+    const { name, country, city, website, tuitionUsd, livingCostUsd, intlStudentPct, acceptanceRate, currency, descriptionEn, descriptionAr } = validation.data
 
     const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
     const uni = await db.university.create({
-      data: { slug, name, country, city: city || '', website: website || '',
-        tuitionUsd: tuitionUsd || 5000, livingCostUsd: livingCostUsd || 6000,
-        intlStudentPct: intlStudentPct || 15, acceptanceRate: acceptanceRate ?? null,
-        currency: currency || 'USD', descriptionEn: descriptionEn || '', descriptionAr: descriptionAr || '',
-        pendingReview: false },
+      data: {
+        slug, name, country, city, website,
+        tuitionUsd, livingCostUsd, intlStudentPct,
+        acceptanceRate: acceptanceRate ?? null,
+        currency, descriptionEn, descriptionAr: descriptionAr ?? '',
+        pendingReview: false,
+      },
     })
     return NextResponse.json({ university: uni })
   } catch (error) {

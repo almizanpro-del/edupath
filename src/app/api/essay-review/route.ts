@@ -9,16 +9,17 @@
  * - Line-level feedback (quote, issue, suggestion)
  * - Rewrite summary
  *
- * Rate limiting: simple in-memory per-user tracking (1 review per session for MVP).
- * Production would use DB-backed usage tracking with tier-based limits.
+ * Rate limiting: 3 reviews per hour per user (in-memory, per-instance).
+ * Note: in serverless, each instance has its own map — for true distributed
+ * limiting, use Upstash Redis or DB-backed tracking.
  */
 import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import ZAI from 'z-ai-web-dev-sdk'
 import { requireSameOrigin } from '@/lib/csrf'
+import { essayReviewSchema, validateBody } from '@/lib/validation'
 
-// Simple in-memory rate limiting (per server instance)
-// In production, use Redis or DB-backed tracking
+// In-memory per-user rate limiting (per server instance)
 const reviewTimestamps = new Map<string, number[]>()
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000 // 1 hour
 const RATE_LIMIT_MAX = 3 // 3 reviews per hour per user
@@ -107,20 +108,16 @@ export async function POST(req: NextRequest) {
       }, { status: 429 })
     }
 
-    // Parse request
+    // Parse + validate request body
     const body = await req.json()
-    const { essayText, targetUniversity, targetProgram, applicantCountry } = body
-
-    // Validation
-    if (!essayText || typeof essayText !== 'string') {
-      return NextResponse.json({ error: 'Essay text is required' }, { status: 400 })
+    const validation = validateBody(essayReviewSchema, body)
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 })
     }
-    if (essayText.trim().length < 50) {
-      return NextResponse.json({ error: 'Essay must be at least 50 characters' }, { status: 400 })
-    }
-    if (essayText.length > 10000) {
-      return NextResponse.json({ error: 'Essay must be under 10,000 characters' }, { status: 400 })
-    }
+    const { essayText } = validation.data
+    const targetUniversity = typeof body.targetUniversity === 'string' ? body.targetUniversity : undefined
+    const targetProgram = typeof body.targetProgram === 'string' ? body.targetProgram : undefined
+    const applicantCountry = typeof body.applicantCountry === 'string' ? body.applicantCountry : undefined
 
     // Build user prompt
     const userPrompt = `Please review the following university application essay.

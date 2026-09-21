@@ -307,7 +307,7 @@ function EditUniversityModal({ university, onClose, onSaved }: { university: Uni
       <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-2xl overflow-hidden flex flex-col shadow-2xl" onClick={e => e.stopPropagation()}>
         <div className="bg-slate-800 text-white p-4 flex items-center justify-between">
           <h2 className="font-bold">Edit: {university.name}</h2>
-          <Button variant="ghost" size="icon" onClick={onClose} className="text-white"><X className="size-5" /></Button>
+          <Button variant="ghost" size="icon" onClick={onClose} className="text-white" aria-label="Close"><X className="size-5" /></Button>
         </div>
         <ScrollArea className="flex-1">
           <div className="p-6 space-y-4">
@@ -367,7 +367,7 @@ function CreateUniversityModal({ onClose, onCreated }: { onClose: () => void; on
       <div className="bg-white w-full max-w-2xl max-h-[90vh] rounded-2xl overflow-hidden flex flex-col shadow-2xl" onClick={e => e.stopPropagation()}>
         <div className="bg-blue-700 text-white p-4 flex items-center justify-between">
           <h2 className="font-bold">Add New University</h2>
-          <Button variant="ghost" size="icon" onClick={onClose} className="text-white"><X className="size-5" /></Button>
+          <Button variant="ghost" size="icon" onClick={onClose} className="text-white" aria-label="Close"><X className="size-5" /></Button>
         </div>
         <ScrollArea className="flex-1">
           <div className="p-6 space-y-4">

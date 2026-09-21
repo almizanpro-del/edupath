@@ -166,7 +166,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
       <div className="container mx-auto max-w-5xl px-4 py-8">
         {/* Hero */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-600/10 text-blue-700 dark:bg-blue-600/20 dark:text-blue-300 text-sm font-medium mb-4">
             <Sparkles className="size-4" />
             {t('badge')}
           </div>
@@ -341,7 +341,7 @@ export function EssayReviewClient({ universities }: { universities: University[]
             {!loading && !error && !review && (
               <Card className="h-full flex items-center justify-center min-h-[400px] border-dashed">
                 <CardContent className="text-center py-12">
-                  <div className="size-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+                  <div className="size-16 rounded-full bg-blue-600/10 flex items-center justify-center mx-auto mb-4">
                     <FileText className="size-8 text-blue-600" />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">{t('resultsAppear')}</h3>
@@ -397,7 +397,7 @@ function ReviewResults({ review, essayText }: { review: Review; essayText: strin
   }
 
   const scoreBg = (score: number) => {
-    if (score >= 4) return 'bg-blue-50 border-blue-200'
+    if (score >= 4) return 'bg-blue-950/5 border-blue-600/20'
     if (score >= 3) return 'bg-amber-50 border-amber-200'
     return 'bg-rose-50 border-rose-200'
   }
@@ -446,7 +446,7 @@ function ReviewResults({ review, essayText }: { review: Review; essayText: strin
                       key={n}
                       className={cn(
                         'flex-1 h-1.5 rounded-full',
-                        n <= score ? (score >= 4 ? 'bg-blue-500' : score >= 3 ? 'bg-amber-500' : 'bg-rose-500') : 'bg-slate-200'
+                        n <= score ? (score >= 4 ? 'bg-blue-950/50' : score >= 3 ? 'bg-amber-500' : 'bg-rose-500') : 'bg-slate-200'
                       )}
                     />
                   ))}

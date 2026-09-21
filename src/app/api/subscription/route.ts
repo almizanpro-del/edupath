@@ -13,7 +13,13 @@ export async function GET() {
   }
 
   try {
-    let profile = await db.user.findUnique({ where: { supabaseId: user.id } })
+    let profile = await db.user.findUnique({
+        where: { supabaseId: user.id },
+        select: {
+          id: true, role: true, name: true, email: true,
+          country: true, fieldOfInterest: true, verificationStatus: true,
+        },
+      })
     if (!profile) {
       return NextResponse.json({ tier: 'free', entitlements: getEntitlements('free'), stripeConfigured: isStripeConfigured() })
     }

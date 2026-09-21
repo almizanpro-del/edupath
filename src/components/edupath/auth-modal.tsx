@@ -154,6 +154,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
             size="icon"
             className="absolute top-3 right-3 text-white hover:bg-white/20"
             onClick={onClose}
+            aria-label="Close"
           >
             <X className="size-5" />
           </Button>

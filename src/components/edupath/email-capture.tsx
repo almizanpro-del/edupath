@@ -44,7 +44,7 @@ export function EmailCapture() {
 
   if (submitted) {
     return (
-      <Card className="max-w-md mx-auto bg-blue-50 border-blue-200">
+      <Card className="max-w-md mx-auto bg-blue-950/5 border-blue-600/20">
         <CardContent className="pt-6 text-center">
           <CheckCircle2 className="size-12 text-blue-600 mx-auto mb-3" />
           <h3 className="font-bold text-lg mb-1">You're subscribed!</h3>

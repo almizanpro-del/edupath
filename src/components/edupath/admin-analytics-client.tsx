@@ -144,7 +144,7 @@ export function AdminAnalyticsClient() {
                     <span className="text-muted-foreground">{eventLabels[type] ?? type}</span>
                     <div className="flex items-center gap-2">
                       <div className="w-32 h-2 bg-slate-100 rounded-full overflow-hidden">
-                        <div className="h-full bg-blue-500 rounded-full" style={{ width: `${Math.min(100, (count / data.events.total30d) * 100)}%` }} />
+                        <div className="h-full bg-blue-950/50 rounded-full" style={{ width: `${Math.min(100, (count / data.events.total30d) * 100)}%` }} />
                       </div>
                       <span className="font-medium w-12 text-right">{count}</span>
                     </div>
@@ -165,7 +165,7 @@ export function AdminAnalyticsClient() {
                 const height = (day.count / max) * 100
                 return (
                   <div key={day.date} className="flex-1 flex flex-col items-center gap-1">
-                    <div className="w-full bg-blue-200 rounded-t hover:bg-blue-400 transition-colors" style={{ height: `${height}%`, minHeight: '2px' }} title={`${day.date}: ${day.count} events`} />
+                    <div className="w-full bg-blue-600/40 rounded-t hover:bg-blue-400 transition-colors" style={{ height: `${height}%`, minHeight: '2px' }} title={`${day.date}: ${day.count} events`} />
                     <span className="text-[10px] text-muted-foreground rotate-45 origin-left">{day.date.slice(5)}</span>
                   </div>
                 )

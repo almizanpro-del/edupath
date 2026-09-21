@@ -14,6 +14,8 @@ import { db } from '@/lib/db'
 import { parseTags } from '@/lib/edupath'
 import staticUniversities from '@/data/static-universities.json'
 import { requireSameOrigin } from '@/lib/csrf'
+import { reviewSchema, validateBody } from '@/lib/validation'
+import { z } from 'zod'
 
 async function getOrCreateProfile() {
   const supabase = await createClient()
@@ -135,18 +137,31 @@ export async function PATCH(req: NextRequest) {
     }
 
     const body = await req.json()
-    const { reviewId, action } = body
-    if (!reviewId || !action || !['approve', 'reject'].includes(action)) {
-      return NextResponse.json({ error: 'reviewId and action (approve|reject) required' }, { status: 400 })
+    // Validate: accept both legacy { action: 'approve'|'reject' } and new { moderationStatus }
+    const validation = validateBody(
+      z.object({
+        reviewId: z.string().trim().min(1),
+        action: z.enum(['approve', 'reject']).optional(),
+        moderationStatus: z.enum(['approved', 'rejected', 'pending']).optional(),
+      }),
+      body
+    )
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 })
+    }
+    const { reviewId, action, moderationStatus } = validation.data
+    const finalStatus = moderationStatus ?? (action === 'approve' ? 'approved' : 'rejected')
+    if (!finalStatus || !['approved', 'rejected'].includes(finalStatus)) {
+      return NextResponse.json({ error: 'Invalid moderation status' }, { status: 400 })
     }
 
     const updated = await db.review.update({
       where: { id: reviewId },
-      data: { moderationStatus: action === 'approve' ? 'approved' : 'rejected' },
+      data: { moderationStatus: finalStatus },
     })
 
     // Send email notification to the reviewer when approved
-    if (action === 'approve') {
+    if (finalStatus === 'approved') {
       try {
         const review = await db.review.findUnique({
           where: { id: reviewId },
@@ -182,6 +197,10 @@ export async function POST(req: NextRequest) {
     }
 
     const body = await req.json()
+    const validation = validateBody(reviewSchema, body)
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 })
+    }
     const {
       universityId,
       ratingOverall,
@@ -192,21 +211,12 @@ export async function POST(req: NextRequest) {
       ratingSocial,
       reviewText,
       tags = [],
-    } = body
+    } = validation.data
 
-    if (!universityId || typeof universityId !== 'string') {
-      return NextResponse.json({ error: 'universityId required' }, { status: 400 })
-    }
-    if (!reviewText || reviewText.trim().length < 20) {
-      return NextResponse.json({ error: 'Review text must be at least 20 characters' }, { status: 400 })
-    }
-    for (const r of [ratingOverall, ratingAffordability, ratingVisa, ratingTeaching, ratingSafety, ratingSocial]) {
-      if (typeof r !== 'number' || r < 1 || r > 5) {
-        return NextResponse.json({ error: 'All ratings must be 1-5' }, { status: 400 })
-      }
-    }
-
-    const uni = await db.university.findUnique({ where: { id: universityId } })
+    const uni = await db.university.findUnique({
+      where: { id: universityId },
+      select: { id: true, name: true },
+    })
     if (!uni) {
       return NextResponse.json({ error: 'University not found' }, { status: 404 })
     }
@@ -221,16 +231,13 @@ export async function POST(req: NextRequest) {
       )
     }
 
-    const cleanText = reviewText.trim().slice(0, 5000)
-    const cleanTags = (tags as string[]).slice(0, 8).map(t => t.slice(0, 40))
-
-    // Sanitize user input to prevent XSS
+    // Sanitize user input to prevent XSS (zod already validated types/sizes)
     const { sanitizeText, isSafeInput } = await import('@/lib/sanitize')
-    if (!isSafeInput(cleanText)) {
+    if (!isSafeInput(reviewText)) {
       return NextResponse.json({ error: 'Invalid content in review text' }, { status: 400 })
     }
-    const safeText = sanitizeText(cleanText)
-    const safeTags = cleanTags.map(t => sanitizeText(t))
+    const safeText = sanitizeText(reviewText)
+    const safeTags = tags.map(t => sanitizeText(t))
 
     const review = await db.review.create({
       data: {

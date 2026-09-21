@@ -32,7 +32,13 @@ export async function POST(req: NextRequest) {
 
   try {
     // Find or create Prisma user
-    let profile = await db.user.findUnique({ where: { supabaseId: user.id } })
+    let profile = await db.user.findUnique({
+        where: { supabaseId: user.id },
+        select: {
+          id: true, role: true, name: true, email: true,
+          country: true, fieldOfInterest: true, verificationStatus: true,
+        },
+      })
     if (!profile) {
       profile = await db.user.create({
         data: { supabaseId: user.id, email: user.email ?? '', name: user.user_metadata?.full_name ?? 'Student', country: 'Jordan' },

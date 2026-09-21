@@ -10,7 +10,13 @@ export async function GET() {
   if (!user) return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
 
   try {
-    let profile = await db.user.findUnique({ where: { supabaseId: user.id } })
+    let profile = await db.user.findUnique({
+        where: { supabaseId: user.id },
+        select: {
+          id: true, role: true, name: true, email: true,
+          country: true, fieldOfInterest: true, verificationStatus: true,
+        },
+      })
     if (!profile) {
       profile = await db.user.create({ data: { supabaseId: user.id, email: user.email ?? '', name: 'Admin', country: 'Jordan', role: 'student' } })
     }
@@ -82,10 +88,19 @@ export async function GET() {
     const topUniversityIds = Object.entries(universityViews)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 10)
+    // Single query to fetch all top universities (avoids N+1 — was 1 query per university)
+    const topUnis = await db.university.findMany({
+      where: { id: { in: topUniversityIds.map(([id]) => id) } },
+      select: { id: true, name: true, slug: true, country: true },
+    })
+    const uniById = new Map(topUnis.map(u => [u.id, u]))
     const topUniversities: Array<{ name: string; slug: string; country: string; views: number }> = []
     for (const [id, views] of topUniversityIds) {
-      const uni = await db.university.findUnique({ where: { id }, select: { name: true, slug: true, country: true } })
-      if (uni) topUniversities.push({ ...uni, views })
+      const uni = uniById.get(id)
+      if (uni) {
+        const { id: _id, ...rest } = uni
+        topUniversities.push({ ...rest, views })
+      }
     }
 
     // Daily event trend (last 14 days)

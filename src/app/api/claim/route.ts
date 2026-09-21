@@ -6,12 +6,19 @@ import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { requireSameOrigin } from '@/lib/csrf'
+import { claimSchema, claimPatchSchema, validateBody } from '@/lib/validation'
 
 async function getProfile() {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return null
-  let profile = await db.user.findUnique({ where: { supabaseId: user.id } })
+  let profile = await db.user.findUnique({
+        where: { supabaseId: user.id },
+        select: {
+          id: true, role: true, name: true, email: true,
+          country: true, fieldOfInterest: true, verificationStatus: true,
+        },
+      })
   if (!profile) {
     profile = await db.user.create({ data: { supabaseId: user.id, email: user.email ?? '', name: user.user_metadata?.full_name ?? 'User', country: 'Jordan', role: 'student' } })
   }
@@ -28,13 +35,16 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json()
-    const { universityId, officialName, officialEmail, officialTitle, proofUrl } = body
-
-    if (!universityId || !officialEmail) {
-      return NextResponse.json({ error: 'universityId and officialEmail are required' }, { status: 400 })
+    const validation = validateBody(claimSchema, body)
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 })
     }
+    const { universityId, officialName, officialEmail, officialTitle, proofUrl } = validation.data
 
-    const uni = await db.university.findUnique({ where: { id: universityId } })
+    const uni = await db.university.findUnique({
+      where: { id: universityId },
+      select: { id: true, name: true },
+    })
     if (!uni) return NextResponse.json({ error: 'University not found' }, { status: 404 })
 
     // Store the claim as an analytics event (lightweight — no separate table needed for MVP)

@@ -65,7 +65,7 @@ function StarRating({ value, size = 14 }: { value: number; size?: number }) {
 
 function RatingBar({ label, value }: { label: string; value: number }) {
   const pct = (value / 5) * 100
-  const color = value >= 4 ? 'bg-blue-500' : value >= 3 ? 'bg-amber-500' : 'bg-rose-500'
+  const color = value >= 4 ? 'bg-blue-950/50' : value >= 3 ? 'bg-amber-500' : 'bg-rose-500'
   return (
     <div className="flex items-center gap-2">
       <span className="text-xs text-muted-foreground w-28 dark:text-slate-400">{label}</span>
@@ -198,7 +198,7 @@ export function UniversityDetailPage({ uni }: Props) {
         {/* Animated glow orbs — slower, more subtle */}
         <div className="absolute inset-0 overflow-hidden">
           <motion.div
-            className="absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-blue-500/25 blur-3xl"
+            className="absolute -top-32 -left-32 w-[28rem] h-[28rem] rounded-full bg-blue-950/50/25 blur-3xl"
             animate={{ x: [0, 30, 0], y: [0, 15, 0] }}
             transition={{ duration: 28, repeat: Infinity, ease: 'easeInOut' }}
           />
@@ -308,7 +308,7 @@ export function UniversityDetailPage({ uni }: Props) {
             <Button size="sm" onClick={openContact} className="gap-2 bg-orange-500 hover:bg-orange-600 text-white shadow-md shadow-orange-500/30 rounded-full px-5">
               <Mail className="size-4" />{t('contact.ctaShort')}
             </Button>
-            <Button variant="outline" size="sm" onClick={() => router.push(`/claim/${uni.slug}`)} className="gap-2 text-blue-700 dark:text-blue-400 border-blue-300 dark:border-slate-600 hover:bg-blue-50 dark:hover:bg-slate-800 rounded-full">
+            <Button variant="outline" size="sm" onClick={() => router.push(`/claim/${uni.slug}`)} className="gap-2 text-blue-700 dark:text-blue-400 border-blue-300 dark:border-slate-600 hover:bg-blue-950/5 dark:hover:bg-slate-800 rounded-full">
               <Building2 className="size-4" />Claim this university
             </Button>
           </div>
@@ -381,7 +381,7 @@ export function UniversityDetailPage({ uni }: Props) {
                     </div>
                     <CardContent className="p-2 space-y-1">
                       {[
-                        { icon: DollarSign, label: t('stats.cheapestProgram'), value: formatUsd(uni.cheapestProgramTuition) + '/yr', color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-950/40' },
+                        { icon: DollarSign, label: t('stats.cheapestProgram'), value: formatUsd(uni.cheapestProgramTuition) + '/yr', color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-950/5 dark:bg-blue-950/40' },
                         { icon: DollarSign, label: t('stats.livingCost'), value: formatUsd(uni.livingCostUsd) + '/yr', color: 'text-orange-600 dark:text-orange-400', bg: 'bg-orange-50 dark:bg-orange-950/40' },
                         { icon: Users, label: t('stats.intlStudents'), value: uni.intlStudentPct + '%', color: 'text-slate-700 dark:text-slate-200', bg: 'bg-slate-100 dark:bg-slate-800' },
                         { icon: TrendingUp, label: t('stats.acceptance'), value: uni.acceptanceRate !== null ? uni.acceptanceRate + '%' : 'N/A', color: 'text-slate-700 dark:text-slate-200', bg: 'bg-slate-100 dark:bg-slate-800' },
@@ -500,7 +500,7 @@ export function UniversityDetailPage({ uni }: Props) {
             <TabsContent value="cost" className="mt-0">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-2xl mx-auto space-y-6">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center size-14 rounded-2xl bg-blue-50 dark:bg-blue-950/40 mb-3 ring-1 ring-blue-100 dark:ring-blue-900/40">
+                  <div className="inline-flex items-center justify-center size-14 rounded-2xl bg-blue-950/5 dark:bg-blue-950/40 mb-3 ring-1 ring-blue-600/20 dark:ring-blue-900/40">
                     <Calculator className="size-7 text-blue-600 dark:text-blue-400" />
                   </div>
                   <h3 className="font-bold text-xl mb-1 dark:text-white">{t('cost.title')}</h3>

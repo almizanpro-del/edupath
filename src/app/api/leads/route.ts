@@ -7,42 +7,46 @@ import { NextResponse, NextRequest } from 'next/server'
 import { db } from '@/lib/db'
 import { trackEvent } from '@/lib/analytics'
 import { requireSameOrigin } from '@/lib/csrf'
+import { rateLimit } from '@/lib/rate-limit'
+import { leadSchema, validateBody } from '@/lib/validation'
 
 export async function POST(req: NextRequest) {
   const csrfError = requireSameOrigin(req)
   if (csrfError) return csrfError
 
+  // Rate limit: 5 leads per minute per IP (prevents mass-mail abuse)
+  const limited = rateLimit(req, { windowMs: 60_000, max: 5, prefix: 'leads' })
+  if (limited) return limited
+
   try {
     const body = await req.json()
-    const { universityId, studentName, studentEmail, country, gpa, field, message } = body
-
-    // Validation
-    if (!universityId || !studentName || !studentEmail || !message) {
-      return NextResponse.json({ error: 'universityId, studentName, studentEmail, and message are required' }, { status: 400 })
+    const validation = validateBody(leadSchema, body)
+    if (!validation.success) {
+      return NextResponse.json({ error: validation.error }, { status: 400 })
     }
-    if (message.trim().length < 10) {
-      return NextResponse.json({ error: 'Message must be at least 10 characters' }, { status: 400 })
-    }
+    const { universityId, studentName, studentEmail, country, gpa, field, message } = validation.data
 
     // Check university exists
-    const uni = await db.university.findUnique({ where: { id: universityId } })
+    const uni = await db.university.findUnique({
+      where: { id: universityId },
+      select: { id: true, name: true },
+    })
     if (!uni) {
       return NextResponse.json({ error: 'University not found' }, { status: 404 })
     }
 
-    // Create lead
-    // Sanitize all user input to prevent XSS
+    // Create lead — zod already validated types, sanitize for XSS
     const { sanitizeText, sanitizeEmail, isSafeInput } = await import('@/lib/sanitize')
     if (!isSafeInput(message)) {
       return NextResponse.json({ error: 'Invalid content in message' }, { status: 400 })
     }
-    const safeName = sanitizeText(studentName.trim())
-    const safeEmail = sanitizeEmail(studentEmail.trim())
+    const safeName = sanitizeText(studentName)
+    const safeEmail = sanitizeEmail(studentEmail)
     if (!safeEmail) {
       return NextResponse.json({ error: 'Invalid email address' }, { status: 400 })
     }
-    const safeMessage = sanitizeText(message.trim().slice(0, 2000))
-    const safeCountry = sanitizeText(country || 'Unknown')
+    const safeMessage = sanitizeText(message)
+    const safeCountry = country ? sanitizeText(country) : 'Unknown'
     const safeField = field ? sanitizeText(field) : null
 
     const lead = await db.lead.create({
@@ -51,7 +55,7 @@ export async function POST(req: NextRequest) {
         studentName: safeName,
         studentEmail: safeEmail,
         country: safeCountry,
-        gpa: gpa ? Number(gpa) : null,
+        gpa: gpa ?? null,
         field: safeField,
         message: safeMessage,
       },
@@ -61,7 +65,7 @@ export async function POST(req: NextRequest) {
     await trackEvent({
       eventType: 'contact_form',
       universityId,
-      metadata: { leadId: lead.id, field, gpa },
+      metadata: { leadId: lead.id, field: safeField, gpa },
     })
 
     // Send email notification to the university + platform admins (if email is configured)
@@ -69,7 +73,7 @@ export async function POST(req: NextRequest) {
       const { sendLeadNotificationEmail } = await import('@/lib/email')
       const leadData = {
         studentName: safeName, studentEmail: safeEmail,
-        country: safeCountry, gpa: gpa ? Number(gpa) : null,
+        country: safeCountry, gpa: gpa ?? null,
         field: safeField, message: safeMessage,
         universityName: uni.name,
       }
@@ -78,6 +82,7 @@ export async function POST(req: NextRequest) {
       // 2. If the university has a claimed sponsor email, email them directly
       const sponsor = await db.user.findFirst({
         where: { role: 'recruiter', fieldOfInterest: uni.id },
+        select: { email: true },
       }).catch(() => null)
       if (sponsor?.email) {
         await sendLeadNotificationEmail(sponsor.email, leadData)

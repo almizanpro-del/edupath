@@ -86,7 +86,7 @@ export function TransferFinderClient({ universities }: { universities: Universit
 
       <div className="container mx-auto max-w-7xl px-4 py-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-600/10 text-blue-700 dark:bg-blue-600/20 dark:text-blue-300 text-sm font-medium mb-4">
             <Shuffle className="size-4" />
             {t('badge')}
           </div>
@@ -162,9 +162,9 @@ function PathwayCard({ pathway }: { pathway: Pathway }) {
   const t = useTranslations('TransferFinder')
   const transferPct = Math.round((pathway.creditsAccepted / pathway.totalCredits) * 100)
   const agreementColors: Record<string, string> = {
-    official: 'bg-blue-100 text-blue-700 border-blue-300',
+    official: 'bg-blue-600/10 text-blue-700 dark:bg-blue-600/20 dark:text-blue-300 border-blue-300',
     informal: 'bg-amber-100 text-amber-700 border-amber-300',
-    'case-by-case': 'bg-blue-100 text-blue-700 border-blue-300',
+    'case-by-case': 'bg-blue-600/10 text-blue-700 dark:bg-blue-600/20 dark:text-blue-300 border-blue-300',
   }
 
   return (

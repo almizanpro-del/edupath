@@ -75,8 +75,8 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
   }
 
   const scoreColor = (score: number) => {
-    if (score >= 90) return { bg: 'bg-blue-50 border-blue-300', text: 'text-blue-700', bar: 'bg-blue-500' }
-    if (score >= 70) return { bg: 'bg-blue-50 border-blue-300', text: 'text-blue-700', bar: 'bg-blue-500' }
+    if (score >= 90) return { bg: 'bg-blue-600/10 border-blue-600/30', text: 'text-blue-700', bar: 'bg-blue-950/50' }
+    if (score >= 70) return { bg: 'bg-blue-600/10 border-blue-600/30', text: 'text-blue-700', bar: 'bg-blue-950/50' }
     return { bg: 'bg-amber-50 border-amber-300', text: 'text-amber-700', bar: 'bg-amber-500' }
   }
 
@@ -97,7 +97,7 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
 
       <div className="container mx-auto max-w-5xl px-4 py-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-600/10 text-blue-700 dark:bg-blue-600/20 dark:text-blue-300 text-sm font-medium mb-4">
             <Sparkles className="size-4" />
             {t('badge')}
           </div>
@@ -179,7 +179,7 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
             {!loading && matches.length === 0 && (
               <Card className="flex items-center justify-center min-h-[400px] border-dashed">
                 <CardContent className="text-center py-12">
-                  <div className="size-16 rounded-full bg-blue-100 flex items-center justify-center mx-auto mb-4">
+                  <div className="size-16 rounded-full bg-blue-600/10 flex items-center justify-center mx-auto mb-4">
                     <Award className="size-8 text-blue-600" />
                   </div>
                   <h3 className="font-semibold text-lg mb-2">{t('yourMatches')}</h3>
@@ -238,7 +238,7 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
                         </div>
 
                         {/* Tips */}
-                        <div className="text-xs bg-blue-50 border border-blue-200 rounded p-2 flex items-start gap-2">
+                        <div className="text-xs bg-blue-950/5 border border-blue-600/20 rounded p-2 flex items-start gap-2">
                           <Lightbulb className="size-3 text-blue-600 mt-0.5 shrink-0" />
                           <span><strong>{t('tip')}:</strong> {m.tips}</span>
                         </div>

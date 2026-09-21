@@ -24,19 +24,19 @@ export function SocialShare({ url, title, description }: Props) {
     {
       name: 'WhatsApp',
       icon: MessageCircle,
-      color: 'hover:bg-green-50 hover:text-green-600',
+      color: 'hover:bg-orange-950/5 hover:text-orange-600',
       href: `https://wa.me/?text=${shareTitle}%20${shareUrl}`,
     },
     {
       name: 'Facebook',
       icon: Facebook,
-      color: 'hover:bg-blue-50 hover:text-blue-600',
+      color: 'hover:bg-blue-950/5 hover:text-blue-600',
       href: `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}&quote=${shareTitle}`,
     },
     {
       name: 'Twitter',
       icon: Twitter,
-      color: 'hover:bg-sky-50 hover:text-sky-500',
+      color: 'hover:bg-slate-100 hover:text-slate-700',
       href: `https://twitter.com/intent/tweet?text=${shareTitle}&url=${shareUrl}`,
     },
   ]
@@ -85,7 +85,7 @@ export function SocialShare({ url, title, description }: Props) {
             </Button>
           </a>
         ))}
-        <Button variant="ghost" size="icon" onClick={copyLink} className="size-9 hover:bg-slate-100" title="Copy link">
+        <Button variant="ghost" size="icon" onClick={copyLink} className="size-9 hover:bg-slate-100" aria-label="Copy link">
           {copied ? <Check className="size-4 text-blue-600" /> : <Link2 className="size-4" />}
         </Button>
       </div>
