@@ -91,6 +91,7 @@ export function UniversityDetailPage({ uni }: Props) {
   const router = useRouter()
   const { toast } = useToast()
   const t = useTranslations('Detail')
+  const tToast = useTranslations('Toast')
   const locale = useLocale()
   const [activeTab, setActiveTab] = React.useState('overview')
   const [costDuration, setCostDuration] = React.useState(36)
@@ -139,22 +140,22 @@ export function UniversityDetailPage({ uni }: Props) {
   const openContact = () => { setContactOpen(true); track('contact_open', { universityId: uni.id }) }
 
   const handleSave = async () => {
-    if (!profile) { toast({ title: 'Sign in to save universities', description: 'Create a free account to bookmark universities.' }); setAuthModalOpen(true); return }
+    if (!profile) { toast({ title: tToast('signInToSave'), description: tToast('signInToSaveDesc') }); setAuthModalOpen(true); return }
     const wasSaved = isSaved; setIsSaved(!wasSaved); track(wasSaved ? 'unsave' : 'save', { universityId: uni.id })
     try {
       const res = await fetch('/api/saved-lists', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ universityId: uni.id }) })
       const data = await res.json(); if (!res.ok) throw new Error(data.error)
-      toast({ title: data.action === 'saved' ? 'Saved to your list' : 'Removed from saved list', description: uni.name })
-    } catch { setIsSaved(wasSaved); toast({ title: 'Failed to save', variant: 'destructive' }) }
+      toast({ title: data.action === 'saved' ? tToast('savedToList') : tToast('removedFromSaved'), description: uni.name })
+    } catch { setIsSaved(wasSaved); toast({ title: tToast('failedToSave'), variant: 'destructive' }) }
   }
 
   const handleCompare = () => {
-    if (isComparing) { setIsComparing(false); toast({ title: 'Removed from comparison', description: uni.name }) }
-    else { setIsComparing(true); track('compare', { universityId: uni.id }); toast({ title: 'Added to comparison', description: uni.name }) }
+    if (isComparing) { setIsComparing(false); toast({ title: tToast('compareRemoved'), description: uni.name }) }
+    else { setIsComparing(true); track('compare', { universityId: uni.id }); toast({ title: tToast('compareAdded'), description: uni.name }) }
   }
 
   const openReviewForm = () => {
-    if (!profile) { toast({ title: 'Sign in to write a review', description: 'Reviews help other MENA students make informed decisions.' }); setAuthModalOpen(true); return }
+    if (!profile) { toast({ title: tToast('signInToReview'), description: tToast('signInToReviewDesc') }); setAuthModalOpen(true); return }
     setReviewFormOpen(true)
   }
 

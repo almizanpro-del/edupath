@@ -2,10 +2,14 @@ import { db } from '@/lib/db'
 import staticUniversities from '@/data/static-universities.json'
 import { TransferFinderClient } from '@/components/edupath/transfer-finder-client'
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = {
-  title: 'Transfer Pathway Finder - EduPath',
-  description: 'Find credit transfer agreements between universities. Save thousands by starting at an affordable university and transferring to complete your degree.',
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('Metadata')
+  return {
+    title: t('transferFinderTitle'),
+    description: t('transferFinderDesc'),
+  }
 }
 
 export const dynamic = 'force-dynamic'

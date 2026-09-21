@@ -8,6 +8,7 @@ import { parseTags } from '@/lib/edupath'
 import { UniversityDetailPage } from '@/components/edupath/university-detail-page'
 import staticUniversities from '@/data/static-universities.json'
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
 // Pre-generate the most popular university pages at build time
 export async function generateStaticParams() {
@@ -20,11 +21,16 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const uni = (staticUniversities as Array<{ slug: string; name: string; descriptionEn: string; country: string }>).find(u => u.slug === slug)
-  if (!uni) return { title: 'University not found - EduPath' }
+  const t = await getTranslations('Metadata')
+  const uni = (staticUniversities as Array<{ slug: string; name: string; descriptionEn: string; country: string; cheapestProgramTuition: number; programs: unknown[]; scholarships: unknown[] }>).find(u => u.slug === slug)
+  if (!uni) return { title: t('universityNotFound') }
   return {
-    title: `${uni.name} - Tuition, Programs, Reviews | EduPath`,
-    description: uni.descriptionEn.slice(0, 160),
+    title: t('universityTitle', { name: uni.name }),
+    description: t('universityDesc', {
+      tuition: uni.cheapestProgramTuition,
+      programCount: uni.programs.length,
+      scholarshipCount: uni.scholarships.length,
+    }),
     openGraph: {
       title: `${uni.name} | EduPath`,
       description: uni.descriptionEn.slice(0, 160),

@@ -303,8 +303,8 @@ export function EduPathApp({ universities, countries, stats }: Props) {
   const toggleSave = async (uni: University) => {
     if (!profile) {
       toast({
-        title: 'Sign in to save universities',
-        description: 'Create a free account to bookmark universities and write reviews.',
+        title: t('Toast.signInToSave'),
+        description: t('Toast.signInToSaveDesc'),
       })
       setAuthModalOpen(true)
       return
@@ -327,7 +327,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       const data = await res.json()
       if (!res.ok) throw new Error(data.error)
       toast({
-        title: data.action === 'saved' ? 'Saved to your list' : 'Removed from saved list',
+        title: data.action === 'saved' ? t('Toast.savedToList') : t('Toast.removedFromSaved'),
         description: uni.name,
       })
     } catch (err) {
@@ -335,7 +335,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       const rollback = new Set(savedUniversities)
       if (wasSaved) rollback.add(uni.id); else rollback.delete(uni.id)
       setSavedUniversities(rollback)
-      toast({ title: 'Failed to save', variant: 'destructive' })
+      toast({ title: t('Toast.failedToSave'), variant: 'destructive' })
     }
   }
 
@@ -344,14 +344,14 @@ export function EduPathApp({ universities, countries, stats }: Props) {
     await supabase.auth.signOut()
     setProfile(null)
     setSavedUniversities(new Set())
-    toast({ title: 'Signed out', description: 'See you soon!' })
+    toast({ title: t('Toast.signedOut'), description: t('Toast.signedOutDesc') })
   }
 
   const openReviewForm = (uni: University) => {
     if (!profile) {
       toast({
-        title: 'Sign in to write a review',
-        description: 'Reviews help other MENA students make informed decisions.',
+        title: t('Toast.signInToReview'),
+        description: t('Toast.signInToReviewDesc'),
       })
       setAuthModalOpen(true)
       return
@@ -392,8 +392,8 @@ export function EduPathApp({ universities, countries, stats }: Props) {
     } else {
       if (compareList.length >= 3) {
         toast({
-          title: 'Compare list full',
-          description: 'You can compare up to 3 universities at a time. Remove one to add another.',
+          title: t('Toast.compareFull'),
+          description: t('Toast.compareFullDesc'),
           variant: 'destructive',
         })
         return
@@ -418,7 +418,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
               </div>
               <div className="text-left">
                 <div className="text-lg font-bold leading-none dark:text-white">EduPath</div>
-                <div className="text-[10px] text-muted-foreground leading-none mt-0.5">Your path to affordable global education</div>
+                <div className="text-[10px] text-muted-foreground leading-none mt-0.5">{t('Nav.tagline')}</div>
               </div>
             </button>
             <nav className="hidden md:flex items-center gap-1 ml-4">
@@ -429,7 +429,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 className="gap-2 text-blue-700 hover:text-blue-800 hover:bg-blue-950/5"
               >
                 <Sparkles className="size-4" />
-                Essay Review
+                {t('Nav.essayReview')}
               </Button>
               <Button
                 variant="ghost"
@@ -438,7 +438,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 className="gap-2 text-blue-700 hover:text-blue-800 hover:bg-blue-950/5"
               >
                 <Shuffle className="size-4" />
-                Transfer Finder
+                {t('Nav.transferFinder')}
               </Button>
               <Button
                 variant="ghost"
@@ -447,7 +447,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 className="gap-2 text-blue-700 hover:text-blue-800 hover:bg-blue-950/5"
               >
                 <Award className="size-4" />
-                Scholarships
+                {t('Nav.scholarships')}
               </Button>
               <Button
                 variant="ghost"
@@ -456,7 +456,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 className="gap-2 text-slate-700 hover:text-slate-900 hover:bg-slate-100"
               >
                 <CreditCard className="size-4" />
-                Pricing
+                {t('Nav.pricing')}
               </Button>
             </nav>
             {/* Mobile: condensed nav */}
@@ -466,8 +466,8 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 size="icon"
                 onClick={() => router.push('/essay-review')}
                 className="text-blue-700 hover:text-blue-800 hover:bg-blue-950/5"
-                title="Essay Review"
-                aria-label="Essay Review"
+                title={t('Nav.essayReview')}
+                aria-label={t('Nav.essayReview')}
               >
                 <Sparkles className="size-4" />
               </Button>
@@ -476,8 +476,8 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 size="icon"
                 onClick={() => router.push('/transfer-finder')}
                 className="text-blue-700 hover:text-blue-800 hover:bg-blue-950/5"
-                title="Transfer Finder"
-                aria-label="Transfer Finder"
+                title={t('Nav.transferFinder')}
+                aria-label={t('Nav.transferFinder')}
               >
                 <Shuffle className="size-4" />
               </Button>
@@ -486,8 +486,8 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 size="icon"
                 onClick={() => router.push('/scholarships')}
                 className="text-blue-700 hover:text-blue-800 hover:bg-blue-950/5"
-                title="Scholarships"
-                aria-label="Scholarships"
+                title={t('Nav.scholarships')}
+                aria-label={t('Nav.scholarships')}
               >
                 <Award className="size-4" />
               </Button>
@@ -496,8 +496,8 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 size="icon"
                 onClick={() => router.push('/pricing')}
                 className="text-slate-700 hover:text-slate-900 hover:bg-slate-100"
-                title="Pricing"
-                aria-label="Pricing"
+                title={t('Nav.pricing')}
+                aria-label={t('Nav.pricing')}
               >
                 <CreditCard className="size-4" />
               </Button>
@@ -538,7 +538,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 className="gap-2 border-blue-300 text-blue-700 hover:bg-blue-950/5"
               >
                 <Building2 className="size-4" />
-                <span className="hidden sm:inline">Sponsor</span>
+                <span className="hidden sm:inline">{t('Nav.sponsor')}</span>
               </Button>
             )}
             <LocaleSwitcher />
@@ -865,7 +865,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                       </div>
                       <div className="text-[11px] text-muted-foreground">
                         {activeFilterCount > 0
-                          ? `${activeFilterCount} filter${activeFilterCount > 1 ? 's' : ''} active`
+                          ? t('Directory.filtersApplied', { count: activeFilterCount })
                           : t('Directory.showingAll')}
                       </div>
                     </div>
@@ -994,11 +994,11 @@ export function EduPathApp({ universities, countries, stats }: Props) {
             {visibleCount < filtered.length && (
               <div className="text-center mt-8">
                 <p className="text-sm text-muted-foreground mb-3">
-                  Showing {visibleCount} of {filtered.length} universities
+                  {t('Directory.showingOf', { visible: visibleCount, total: filtered.length })}
                 </p>
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="inline-block">
                   <Button variant="outline" size="lg" onClick={() => setVisibleCount(prev => prev + 24)} className="gap-2">
-                    Load More ({filtered.length - visibleCount} remaining)
+                    {t('Directory.loadMore', { remaining: filtered.length - visibleCount })}
                   </Button>
                 </motion.div>
               </div>

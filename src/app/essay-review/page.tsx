@@ -6,10 +6,14 @@ import { db } from '@/lib/db'
 import staticUniversities from '@/data/static-universities.json'
 import { EssayReviewClient } from '@/components/edupath/essay-review-client'
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = {
-  title: 'AI Essay Review - EduPath',
-  description: 'Get instant AI-powered feedback on your university application essay. 4-dimension rubric scoring with line-level suggestions.',
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('Metadata')
+  return {
+    title: t('essayReviewTitle'),
+    description: t('essayReviewDesc'),
+  }
 }
 
 export const dynamic = 'force-dynamic'

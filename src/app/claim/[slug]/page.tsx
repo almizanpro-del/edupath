@@ -2,8 +2,16 @@ import { db } from '@/lib/db'
 import staticUniversities from '@/data/static-universities.json'
 import { ClaimClient } from '@/components/edupath/claim-client'
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = { title: 'Claim University - EduPath' }
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('Metadata')
+  return {
+    title: t('claimTitle'),
+    description: t('claimDesc'),
+  }
+}
+
 export const dynamic = 'force-dynamic'
 
 export default async function ClaimPage({ params }: { params: Promise<{ slug: string }> }) {

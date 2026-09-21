@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Tajawal } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const geistSans = Geist({
@@ -23,48 +23,51 @@ const tajawal = Tajawal({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "EduPath - Affordable Universities for MENA Students",
-    template: "%s | EduPath",
-  },
-  description: "Discover, compare, and review 107+ affordable universities across 10 countries. AI essay review, scholarship matching, transfer pathways. Built for Arabic-speaking students.",
-  keywords: [
-    "EduPath", "affordable universities", "MENA students", "Arabic students",
-    "study abroad", "scholarships", "university admission", "Jordan education",
-    "Egypt education", "Turkey universities", "Germany universities", "Malaysia universities",
-    "international students", "transfer credits", "AI essay review", "cost calculator",
-  ],
-  authors: [{ name: "EduPath" }],
-  metadataBase: new URL("https://edupath-amber-three.vercel.app"),
-  alternates: {
-    canonical: "/",
-    languages: { en: "/", ar: "/" },
-  },
-  openGraph: {
-    title: "EduPath - Affordable Universities for MENA Students",
-    description: "Discover, compare, and review 107+ affordable universities worldwide. AI essay review, scholarship matching, transfer pathways.",
-    siteName: "EduPath",
-    type: "website",
-    url: "https://edupath-amber-three.vercel.app",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "EduPath - Affordable Universities for MENA Students",
-    description: "Discover, compare, and review 107+ affordable universities worldwide.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
-  manifest: "/manifest.json",
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: "default",
-    title: "EduPath",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("Metadata");
+  return {
+    title: {
+      default: t("titleDefault"),
+      template: "%s | EduPath",
+    },
+    description: t("description"),
+    keywords: [
+      "EduPath", "affordable universities", "MENA students", "Arabic students",
+      "study abroad", "scholarships", "university admission", "Jordan education",
+      "Egypt education", "Turkey universities", "Germany universities", "Malaysia universities",
+      "international students", "transfer credits", "AI essay review", "cost calculator",
+    ],
+    authors: [{ name: "EduPath" }],
+    metadataBase: new URL("https://edupath-amber-three.vercel.app"),
+    alternates: {
+      canonical: "/",
+      languages: { en: "/", ar: "/" },
+    },
+    openGraph: {
+      title: t("ogTitle"),
+      description: t("ogDescription"),
+      siteName: "EduPath",
+      type: "website",
+      url: "https://edupath-amber-three.vercel.app",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("twitterTitle"),
+      description: t("twitterDescription"),
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    },
+    manifest: "/manifest.json",
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: "default",
+      title: "EduPath",
+    },
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: [

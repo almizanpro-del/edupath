@@ -1,9 +1,13 @@
 import { SponsorDashboardClient } from '@/components/edupath/sponsor-dashboard-client'
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = {
-  title: 'Sponsor Dashboard - EduPath',
-  description: 'University sponsor analytics: profile views, leads, review sentiment, and comparison appearances.',
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('Metadata')
+  return {
+    title: t('sponsorTitle'),
+    description: t('sponsorDesc'),
+  }
 }
 
 export const dynamic = 'force-dynamic'

@@ -1,9 +1,13 @@
 import { AdminCMSClient } from '@/components/edupath/admin-cms-client'
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = {
-  title: 'Admin CMS - EduPath',
-  description: 'Editorial review of scraped university data. Approve, edit, or delete universities.',
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('Metadata')
+  return {
+    title: t('adminTitle'),
+    description: t('adminDesc'),
+  }
 }
 
 export const dynamic = 'force-dynamic'

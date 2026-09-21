@@ -4,7 +4,13 @@
     "compare": "Compare",
     "signIn": "Sign In",
     "admin": "Admin",
-    "signOut": "Sign out"
+    "signOut": "Sign out",
+    "tagline": "Your path to affordable global education",
+    "essayReview": "Essay Review",
+    "transferFinder": "Transfer Finder",
+    "scholarships": "Scholarships",
+    "pricing": "Pricing",
+    "sponsor": "Sponsor"
   },
   "Hero": {
     "badge": "For MENA students",
@@ -37,7 +43,9 @@
     },
     "noResults": "No universities match your filters",
     "noResultsDesc": "Try widening your tuition range or clearing some filters.",
-    "clearAll": "Clear all filters"
+    "clearAll": "Clear all filters",
+    "showingOf": "Showing {visible} of {total} universities",
+    "loadMore": "Load More ({remaining} remaining)"
   },
   "UniversityCard": {
     "from": "From",
@@ -744,5 +752,32 @@
     "evtUniversityClaim": "University Claims",
     "evtFilterApply": "Filter Applies",
     "evtShare": "Shares"
+  },
+  "Metadata": {
+    "titleDefault": "EduPath - Affordable Universities for MENA Students",
+    "description": "Discover, compare, and review 107+ affordable universities across 10 countries. AI essay review, scholarship matching, transfer pathways. Built for Arabic-speaking students.",
+    "ogTitle": "EduPath - Affordable Universities for MENA Students",
+    "ogDescription": "Discover, compare, and review 107+ affordable universities worldwide. AI essay review, scholarship matching, transfer pathways.",
+    "twitterTitle": "EduPath - Affordable Universities for MENA Students",
+    "twitterDescription": "Discover, compare, and review 107+ affordable universities worldwide.",
+    "adminTitle": "Admin CMS - EduPath",
+    "adminDesc": "Manage universities, programs, and reviews.",
+    "adminAnalyticsTitle": "Admin Analytics - EduPath",
+    "adminAnalyticsDesc": "Platform-wide metrics and user behavior insights.",
+    "essayReviewTitle": "AI Essay Review - EduPath",
+    "essayReviewDesc": "Get instant AI feedback on your university application essay. Scored on structure, tone, clarity, and cultural fit.",
+    "pricingTitle": "Pricing - EduPath",
+    "pricingDesc": "Free for students. Premium features for serious applicants. Sponsorships for universities.",
+    "scholarshipsTitle": "Scholarship Matcher - EduPath",
+    "scholarshipsDesc": "Find scholarships you actually qualify for. AI-powered matching based on your GPA, field, and country.",
+    "transferFinderTitle": "Transfer Finder - EduPath",
+    "transferFinderDesc": "Discover transfer pathways between universities. See which credits transfer and where you can go next.",
+    "sponsorTitle": "Sponsor Dashboard - EduPath",
+    "sponsorDesc": "Analytics and lead management for university sponsors.",
+    "universityNotFound": "University not found - EduPath",
+    "universityTitle": "{name} - Tuition, Programs, Reviews | EduPath",
+    "universityDesc": "Tuition from {tuition}/yr. {programCount} programs, {scholarshipCount} scholarships. Read verified reviews from students.",
+    "claimTitle": "Claim University - EduPath",
+    "claimDesc": "Claim your university profile to access analytics and lead management."
   }
 }

@@ -2,10 +2,14 @@ import { db } from '@/lib/db'
 import staticUniversities from '@/data/static-universities.json'
 import { ScholarshipMatcherClient } from '@/components/edupath/scholarship-matcher-client'
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
-export const metadata: Metadata = {
-  title: 'Financial Aid Matcher - EduPath',
-  description: 'AI-powered scholarship matching. Enter your profile and get personalized scholarship matches with match scores and application tips.',
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations('Metadata')
+  return {
+    title: t('scholarshipsTitle'),
+    description: t('scholarshipsDesc'),
+  }
 }
 
 export const dynamic = 'force-dynamic'
