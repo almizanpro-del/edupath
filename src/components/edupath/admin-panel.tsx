@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { X, Shield, Check, XCircle, Loader2, Inbox, Clock, Star, MapPin, ExternalLink } from 'lucide-react'
+import { X, Shield, Check, XCircle, Loader2, Inbox, Clock, Star, MapPin } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ScrollArea } from '@/components/ui/scroll-area'
@@ -9,6 +9,7 @@ import { Separator } from '@/components/ui/separator'
 import { useToast } from '@/hooks/use-toast'
 import { countryFlag } from '@/lib/edupath'
 import { cn } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
 
 type PendingReview = {
   id: string
@@ -39,6 +40,7 @@ type Props = {
 
 export function AdminPanel({ open, onClose }: Props) {
   const { toast } = useToast()
+  const t = useTranslations('Admin')
   const [reviews, setReviews] = React.useState<PendingReview[]>([])
   const [loading, setLoading] = React.useState(false)
   const [actionLoading, setActionLoading] = React.useState<string | null>(null)
@@ -50,8 +52,8 @@ export function AdminPanel({ open, onClose }: Props) {
       if (!res.ok) {
         const data = await res.json()
         toast({
-          title: 'Failed to load pending reviews',
-          description: data.error || 'Unknown error',
+          title: t('loadFailed'),
+          description: data.error || t('networkErrorDesc'),
           variant: 'destructive',
         })
         setReviews([])
@@ -59,15 +61,15 @@ export function AdminPanel({ open, onClose }: Props) {
       }
       const data = await res.json()
       setReviews(data.reviews ?? [])
-    } catch (e) {
+    } catch {
       toast({
-        title: 'Network error',
-        description: 'Could not reach server.',
+        title: t('networkError'),
+        description: t('networkErrorDesc'),
         variant: 'destructive',
       })
     }
     setLoading(false)
-  }, [toast])
+  }, [toast, t])
 
   React.useEffect(() => {
     if (open) loadPending()
@@ -86,22 +88,25 @@ export function AdminPanel({ open, onClose }: Props) {
       const data = await res.json()
       if (!res.ok) {
         toast({
-          title: 'Moderation failed',
+          title: t('moderationFailed'),
           description: data.error,
           variant: 'destructive',
         })
         return
       }
+      const reviewName = reviews.find(r => r.id === reviewId)?.userName ?? ''
       toast({
-        title: action === 'approve' ? 'Review approved' : 'Review rejected',
-        description: `Review by ${reviews.find(r => r.id === reviewId)?.userName} has been ${action}d.`,
+        title: action === 'approve' ? t('approved') : t('rejected'),
+        description: action === 'approve'
+          ? t('approvedDesc', { name: reviewName })
+          : t('rejectedDesc', { name: reviewName }),
       })
       // Remove from list
       setReviews(prev => prev.filter(r => r.id !== reviewId))
-    } catch (e) {
+    } catch {
       toast({
-        title: 'Network error',
-        description: 'Could not reach server.',
+        title: t('networkError'),
+        description: t('networkErrorDesc'),
         variant: 'destructive',
       })
     }
@@ -133,11 +138,11 @@ export function AdminPanel({ open, onClose }: Props) {
               <Shield className="size-6" />
             </div>
             <div>
-              <h2 className="text-xl font-bold">Admin: Review Moderation</h2>
+              <h2 className="text-xl font-bold">{t('title')}</h2>
               <p className="text-sm text-white/85">
                 {reviews.length > 0
-                  ? `${reviews.length} review${reviews.length > 1 ? 's' : ''} awaiting moderation`
-                  : 'No pending reviews — all caught up!'}
+                  ? t('pendingCount', { count: reviews.length })
+                  : t('noPending')}
               </p>
             </div>
           </div>
@@ -147,10 +152,10 @@ export function AdminPanel({ open, onClose }: Props) {
         <div className="border-b px-6 py-3 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Inbox className="size-4" />
-            <span>Pending queue</span>
+            <span>{t('pendingQueue')}</span>
           </div>
           <Button variant="outline" size="sm" onClick={loadPending} disabled={loading}>
-            {loading ? <Loader2 className="size-4 animate-spin" /> : 'Refresh'}
+            {loading ? <Loader2 className="size-4 animate-spin" /> : t('refresh')}
           </Button>
         </div>
 
@@ -160,14 +165,14 @@ export function AdminPanel({ open, onClose }: Props) {
             {loading && reviews.length === 0 ? (
               <div className="text-center py-12">
                 <Loader2 className="size-8 animate-spin text-muted-foreground mx-auto mb-3" />
-                <p className="text-sm text-muted-foreground">Loading pending reviews...</p>
+                <p className="text-sm text-muted-foreground">{t('loading')}</p>
               </div>
             ) : reviews.length === 0 ? (
               <div className="text-center py-16">
                 <div className="text-5xl mb-3">🎉</div>
-                <h3 className="text-lg font-semibold mb-1">All caught up!</h3>
+                <h3 className="text-lg font-semibold mb-1">{t('allCaughtUp')}</h3>
                 <p className="text-sm text-muted-foreground">
-                  No reviews are pending moderation. New submissions will appear here automatically.
+                  {t('allCaughtUpDesc')}
                 </p>
               </div>
             ) : (
@@ -196,6 +201,7 @@ function ReviewModerationCard({
   onReject: () => void
   actionLoading: boolean
 }) {
+  const t = useTranslations('Admin')
   return (
     <div className="border rounded-lg p-4 space-y-3">
       {/* Header: user + university */}
@@ -209,7 +215,7 @@ function ReviewModerationCard({
               <span className="font-semibold text-sm">{review.userName}</span>
               {review.verifiedEnrollment && (
                 <Badge variant="outline" className="text-[10px] gap-1 border-blue-500 text-blue-700">
-                  <Check className="size-3" /> Verified
+                  <Check className="size-3" /> {t('approved').replace('Review ', '')}
                 </Badge>
               )}
             </div>
@@ -254,11 +260,11 @@ function ReviewModerationCard({
 
       {/* Sub-ratings */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 text-xs">
-        <SubRating label="Afford" value={review.ratingAffordability} />
-        <SubRating label="Teaching" value={review.ratingTeaching} />
-        <SubRating label="Visa" value={review.ratingVisa} />
-        <SubRating label="Safety" value={review.ratingSafety} />
-        <SubRating label="Social" value={review.ratingSocial} />
+        <SubRating label={t('subAfford')} value={review.ratingAffordability} />
+        <SubRating label={t('subTeaching')} value={review.ratingTeaching} />
+        <SubRating label={t('subVisa')} value={review.ratingVisa} />
+        <SubRating label={t('subSafety')} value={review.ratingSafety} />
+        <SubRating label={t('subSocial')} value={review.ratingSocial} />
       </div>
 
       {/* Actions */}
@@ -271,7 +277,7 @@ function ReviewModerationCard({
           disabled={actionLoading}
         >
           {actionLoading ? <Loader2 className="size-4 animate-spin" /> : <Check className="size-4" />}
-          Approve
+          {t('approve')}
         </Button>
         <Button
           size="sm"
@@ -281,7 +287,7 @@ function ReviewModerationCard({
           disabled={actionLoading}
         >
           {actionLoading ? <Loader2 className="size-4 animate-spin" /> : <XCircle className="size-4" />}
-          Reject
+          {t('reject')}
         </Button>
       </div>
     </div>

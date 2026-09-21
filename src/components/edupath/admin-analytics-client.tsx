@@ -12,6 +12,7 @@ import { AuthModal, type UserProfile } from '@/components/edupath/auth-modal'
 import { createClient } from '@/lib/supabase/client'
 import Image from 'next/image'
 import { countryFlagUrl, formatUsd } from '@/lib/edupath'
+import { useTranslations } from 'next-intl'
 
 type Analytics = {
   users: { total: number; new30d: number; new7d: number }
@@ -30,6 +31,7 @@ type Analytics = {
 export function AdminAnalyticsClient() {
   const router = useRouter()
   const { toast } = useToast()
+  const t = useTranslations('AdminAnalytics')
   const [profile, setProfile] = React.useState<UserProfile | null>(null)
   const [authModalOpen, setAuthModalOpen] = React.useState(false)
   const [loading, setLoading] = React.useState(true)
@@ -54,15 +56,15 @@ export function AdminAnalyticsClient() {
       const res = await fetch('/api/admin/analytics')
       const d = await res.json()
       if (res.ok) setData(d)
-      else if (res.status === 403) toast({ title: 'Admin access required', variant: 'destructive' })
-    } catch { toast({ title: 'Failed to load', variant: 'destructive' }) }
+      else if (res.status === 403) toast({ title: t('adminRequired'), variant: 'destructive' })
+    } catch { toast({ title: t('loadFailed'), variant: 'destructive' }) }
     setLoading(false)
-  }, [toast])
+  }, [toast, t])
 
   React.useEffect(() => { if (profile?.role === 'admin') loadData() }, [profile, loadData])
 
-  if (!profile) return <GateScreen title="Admin Access Required" desc="Sign in with an admin account." onSignIn={() => setAuthModalOpen(true)} authModalOpen={authModalOpen} setAuthModalOpen={setAuthModalOpen} setProfile={setProfile} />
-  if (profile.role !== 'admin') return <GateScreen title="Not an Admin" desc="Run: bun run scripts/promote-admin.ts your@email.com" onSignIn={() => {}} authModalOpen={false} setAuthModalOpen={() => {}} setProfile={() => {}} />
+  if (!profile) return <GateScreen title={t('adminRequired')} desc={t('signInDesc')} onSignIn={() => setAuthModalOpen(true)} authModalOpen={authModalOpen} setAuthModalOpen={setAuthModalOpen} setProfile={setProfile} t={t} />
+  if (profile.role !== 'admin') return <GateScreen title={t('notAdmin')} desc={t('notAdminDesc')} onSignIn={() => {}} authModalOpen={false} setAuthModalOpen={() => {}} setProfile={() => {}} t={t} />
 
   if (loading) return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center">
@@ -72,14 +74,16 @@ export function AdminAnalyticsClient() {
 
   if (!data) return (
     <div className="min-h-screen bg-slate-50 flex items-center justify-center">
-      <AlertCircle className="size-8 text-amber-500 mr-2" /><span>Failed to load analytics</span>
+      <AlertCircle className="size-8 text-amber-500 mr-2" /><span>{t('loadFailed')}</span>
     </div>
   )
 
   const eventLabels: Record<string, string> = {
-    university_view: 'University Views', search: 'Searches', compare: 'Comparisons',
-    save: 'Saves', essay_review: 'Essay Reviews', scholarship_match: 'Scholarship Matches',
-    transfer_view: 'Transfer Views', contact_form: 'Contact Forms', email_capture: 'Email Captures',
+    university_view: t('evtUniversityView'), search: t('evtSearch'), compare: t('evtCompare'),
+    save: t('evtSave'), essay_review: t('evtEssayReview'), scholarship_match: t('evtScholarshipMatch'),
+    transfer_view: t('evtTransferView'), contact_form: t('evtContactForm'), email_capture: t('evtEmailCapture'),
+    contact_open: t('evtContactOpen'), contact_submit: t('evtContactSubmit'),
+    university_claim: t('evtUniversityClaim'), filter_apply: t('evtFilterApply'), share: t('evtShare'),
   }
 
   return (
@@ -87,47 +91,47 @@ export function AdminAnalyticsClient() {
       <header className="sticky top-0 z-40 border-b bg-white">
         <div className="container mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Button variant="ghost" size="sm" onClick={() => router.push('/admin')} className="gap-2"><ArrowLeft className="size-4" /> CMS</Button>
-            <div className="flex items-center gap-2"><BarChart3 className="size-5 text-slate-700" /><span className="font-bold">Platform Analytics</span></div>
+            <Button variant="ghost" size="sm" onClick={() => router.push('/admin')} className="gap-2"><ArrowLeft className="size-4" /> {t('cms')}</Button>
+            <div className="flex items-center gap-2"><BarChart3 className="size-5 text-slate-700" /><span className="font-bold">{t('title')}</span></div>
           </div>
-          <Button variant="outline" size="sm" onClick={loadData}>Refresh</Button>
+          <Button variant="outline" size="sm" onClick={loadData}>{t('refresh')}</Button>
         </div>
       </header>
 
       <div className="container mx-auto max-w-7xl px-4 py-6 space-y-6">
         {/* Top stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-          <StatCard icon={<Users className="size-5 text-blue-600" />} label="Total Users" value={data.users.total.toLocaleString()} sub={`+${data.users.new7d} this week`} />
-          <StatCard icon={<Building2 className="size-5 text-blue-600" />} label="Universities" value={data.universities.total.toString()} sub={`${data.universities.pendingReview} pending`} />
-          <StatCard icon={<Mail className="size-5 text-amber-600" />} label="Total Leads" value={data.leads.total.toString()} sub={`+${data.leads.new7d} this week`} />
-          <StatCard icon={<DollarSign className="size-5 text-purple-600" />} label="MRR" value={formatUsd(data.revenue.totalMRR)} sub={`${data.revenue.activeSubscriptions} active subs`} />
-          <StatCard icon={<TrendingUp className="size-5 text-rose-600" />} label="Events (30d)" value={data.events.total30d.toLocaleString()} sub="tracked actions" />
-          <StatCard icon={<BarChart3 className="size-5 text-slate-600" />} label="Reviews" value={data.content.reviews.toString()} sub={`${data.content.pendingReviews} pending`} />
+          <StatCard icon={<Users className="size-5 text-blue-600" />} label={t('totalUsers')} value={data.users.total.toLocaleString()} sub={`+${data.users.new7d} ${t('thisWeek')}`} />
+          <StatCard icon={<Building2 className="size-5 text-blue-600" />} label={t('universities')} value={data.universities.total.toString()} sub={`${data.universities.pendingReview} ${t('pendingReview')}`} />
+          <StatCard icon={<Mail className="size-5 text-amber-600" />} label={t('totalLeads')} value={data.leads.total.toString()} sub={`+${data.leads.new7d} ${t('thisWeek')}`} />
+          <StatCard icon={<DollarSign className="size-5 text-purple-600" />} label={t('mrr')} value={formatUsd(data.revenue.totalMRR)} sub={`${data.revenue.activeSubscriptions} ${t('activeSubs')}`} />
+          <StatCard icon={<TrendingUp className="size-5 text-rose-600" />} label={t('events30d')} value={data.events.total30d.toLocaleString()} sub={t('trackedActions')} />
+          <StatCard icon={<BarChart3 className="size-5 text-slate-600" />} label={t('reviews')} value={data.content.reviews.toString()} sub={`${data.content.pendingReviews} ${t('pendingReview')}`} />
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
           {/* Revenue breakdown */}
           <Card>
-            <CardHeader><CardTitle>Revenue Breakdown</CardTitle></CardHeader>
+            <CardHeader><CardTitle>{t('revenueBreakdown')}</CardTitle></CardHeader>
             <CardContent>
               {!data.revenue.stripeConfigured ? (
-                <p className="text-sm text-muted-foreground">Stripe not configured. Set STRIPE_SECRET_KEY to enable payments.</p>
+                <p className="text-sm text-muted-foreground">{t('stripeNotConfigured')}</p>
               ) : Object.keys(data.revenue.byTier).length === 0 ? (
-                <p className="text-sm text-muted-foreground">No active subscriptions yet.</p>
+                <p className="text-sm text-muted-foreground">{t('noSubscriptions')}</p>
               ) : (
                 <div className="space-y-3">
                   {Object.entries(data.revenue.byTier).map(([tier, info]) => (
                     <div key={tier} className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Badge variant="outline" className="capitalize">{tier.replace('_', ' ')}</Badge>
-                        <span className="text-sm">{info.count} subscriber{info.count > 1 ? 's' : ''}</span>
+                        <span className="text-sm">{info.count} {info.count > 1 ? t('subscribers') : t('subscriber')}</span>
                       </div>
-                      <span className="font-bold text-blue-600">{formatUsd(info.mrr)}/mo</span>
+                      <span className="font-bold text-blue-600">{formatUsd(info.mrr)}{t('perMonth')}</span>
                     </div>
                   ))}
                   <div className="border-t pt-3 flex items-center justify-between">
-                    <span className="font-bold">Total MRR</span>
-                    <span className="text-2xl font-bold text-blue-700">{formatUsd(data.revenue.totalMRR)}/mo</span>
+                    <span className="font-bold">{t('totalMrr')}</span>
+                    <span className="text-2xl font-bold text-blue-700">{formatUsd(data.revenue.totalMRR)}{t('perMonth')}</span>
                   </div>
                 </div>
               )}
@@ -136,7 +140,7 @@ export function AdminAnalyticsClient() {
 
           {/* Event types */}
           <Card>
-            <CardHeader><CardTitle>Event Types (30 days)</CardTitle></CardHeader>
+            <CardHeader><CardTitle>{t('eventsByType')}</CardTitle></CardHeader>
             <CardContent>
               <div className="space-y-2">
                 {Object.entries(data.events.byType).sort((a, b) => b[1] - a[1]).map(([type, count]) => (
@@ -157,7 +161,7 @@ export function AdminAnalyticsClient() {
 
         {/* Daily trend */}
         <Card>
-          <CardHeader><CardTitle>Daily Activity (Last 14 Days)</CardTitle></CardHeader>
+          <CardHeader><CardTitle>{t('dailyActivity')}</CardTitle></CardHeader>
           <CardContent>
             <div className="flex items-end gap-1 h-40">
               {data.events.dailyTrend.map((day) => {
@@ -165,7 +169,7 @@ export function AdminAnalyticsClient() {
                 const height = (day.count / max) * 100
                 return (
                   <div key={day.date} className="flex-1 flex flex-col items-center gap-1">
-                    <div className="w-full bg-blue-600/40 rounded-t hover:bg-blue-400 transition-colors" style={{ height: `${height}%`, minHeight: '2px' }} title={`${day.date}: ${day.count} events`} />
+                    <div className="w-full bg-blue-600/40 rounded-t hover:bg-blue-400 transition-colors" style={{ height: `${height}%`, minHeight: '2px' }} title={`${day.date}: ${day.count} ${t('events')}`} />
                     <span className="text-[10px] text-muted-foreground rotate-45 origin-left">{day.date.slice(5)}</span>
                   </div>
                 )
@@ -176,10 +180,10 @@ export function AdminAnalyticsClient() {
 
         {/* Top universities */}
         <Card>
-          <CardHeader><CardTitle>Top 10 Universities by Views</CardTitle></CardHeader>
+          <CardHeader><CardTitle>{t('topUniversities')}</CardTitle></CardHeader>
           <CardContent>
             {data.events.topUniversities.length === 0 ? (
-              <p className="text-sm text-muted-foreground">No university views tracked yet.</p>
+              <p className="text-sm text-muted-foreground">{t('noUniversityViews')}</p>
             ) : (
               <div className="space-y-2">
                 {data.events.topUniversities.map((uni, i) => (
@@ -187,7 +191,7 @@ export function AdminAnalyticsClient() {
                     <span className="text-sm font-bold text-muted-foreground w-6">#{i + 1}</span>
                     <Image src={countryFlagUrl(uni.country, 40)} alt="" width={20} height={14} className="rounded" unoptimized />
                     <span className="flex-1 text-sm font-medium">{uni.name}</span>
-                    <Badge variant="secondary">{uni.views} views</Badge>
+                    <Badge variant="secondary">{uni.views} {t('views')}</Badge>
                   </div>
                 ))}
               </div>
@@ -212,9 +216,10 @@ function StatCard({ icon, label, value, sub }: { icon: React.ReactNode; label: s
   )
 }
 
-function GateScreen({ title, desc, onSignIn, authModalOpen, setAuthModalOpen, setProfile }: {
+function GateScreen({ title, desc, onSignIn, authModalOpen, setAuthModalOpen, setProfile, t }: {
   title: string; desc: string; onSignIn: () => void; authModalOpen: boolean
   setAuthModalOpen: (v: boolean) => void; setProfile: (p: UserProfile) => void
+  t: (key: string) => string
 }) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50">
@@ -223,7 +228,7 @@ function GateScreen({ title, desc, onSignIn, authModalOpen, setAuthModalOpen, se
           <Shield className="size-12 text-slate-400 mx-auto mb-4" />
           <h2 className="text-xl font-bold mb-2">{title}</h2>
           <p className="text-sm text-muted-foreground mb-4">{desc}</p>
-          <Button onClick={onSignIn}>Sign In</Button>
+          <Button onClick={onSignIn}>{t('signIn')}</Button>
         </CardContent>
       </Card>
       <AuthModal open={authModalOpen} onClose={() => setAuthModalOpen(false)} onAuthed={(p) => setProfile(p)} />

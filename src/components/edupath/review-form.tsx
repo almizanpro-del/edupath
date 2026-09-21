@@ -9,6 +9,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
 import { useToast } from '@/hooks/use-toast'
 import { cn } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
 
 type Props = {
   open: boolean
@@ -18,36 +19,9 @@ type Props = {
   onSubmitted: () => void
 }
 
-const RATING_DIMENSIONS: Array<{
-  key: string
-  label: string
-  hint: string
-}> = [
-  { key: 'ratingOverall', label: 'Overall', hint: 'Your overall experience' },
-  { key: 'ratingAffordability', label: 'Affordability', hint: 'Tuition + living cost value' },
-  { key: 'ratingTeaching', label: 'Teaching quality', hint: 'Faculty, curriculum, facilities' },
-  { key: 'ratingVisa', label: 'Visa process', hint: 'Difficulty of obtaining student visa' },
-  { key: 'ratingSafety', label: 'Safety', hint: 'Campus + city safety' },
-  { key: 'ratingSocial', label: 'Social life', hint: 'Community, events, integration' },
-]
-
-const TAG_SUGGESTIONS = [
-  'affordable',
-  'great teaching',
-  'easy visa',
-  'international community',
-  'beautiful campus',
-  'good career services',
-  'halal friendly',
-  'prestigious',
-  'competitive',
-  'modern campus',
-  'expensive',
-  'poor housing',
-]
-
 export function ReviewForm({ open, onClose, universityId, universityName, onSubmitted }: Props) {
   const { toast } = useToast()
+  const t = useTranslations('ReviewForm')
   const [ratings, setRatings] = React.useState<Record<string, number>>({
     ratingOverall: 5,
     ratingAffordability: 5,
@@ -61,15 +35,26 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
   const [customTag, setCustomTag] = React.useState('')
   const [loading, setLoading] = React.useState(false)
 
+  const RATING_DIMENSIONS: Array<{ key: string; label: string; hint: string }> = [
+    { key: 'ratingOverall', label: t('dimOverall'), hint: t('dimOverallHint') },
+    { key: 'ratingAffordability', label: t('dimAffordability'), hint: t('dimAffordabilityHint') },
+    { key: 'ratingTeaching', label: t('dimTeaching'), hint: t('dimTeachingHint') },
+    { key: 'ratingVisa', label: t('dimVisa'), hint: t('dimVisaHint') },
+    { key: 'ratingSafety', label: t('dimSafety'), hint: t('dimSafetyHint') },
+    { key: 'ratingSocial', label: t('dimSocial'), hint: t('dimSocialHint') },
+  ]
+
+  const TAG_SUGGESTIONS = [
+    t('tagAffordable'), t('tagGreatTeaching'), t('tagEasyVisa'), t('tagIntlCommunity'),
+    t('tagBeautifulCampus'), t('tagGoodCareer'), t('tagHalalFriendly'), t('tagPrestigious'),
+    t('tagCompetitive'), t('tagModernCampus'), t('tagExpensive'), t('tagPoorHousing'),
+  ]
+
   React.useEffect(() => {
     if (!open) {
       setRatings({
-        ratingOverall: 5,
-        ratingAffordability: 5,
-        ratingTeaching: 5,
-        ratingVisa: 5,
-        ratingSafety: 5,
-        ratingSocial: 5,
+        ratingOverall: 5, ratingAffordability: 5, ratingTeaching: 5,
+        ratingVisa: 5, ratingSafety: 5, ratingSocial: 5,
       })
       setReviewText('')
       setTags([])
@@ -85,14 +70,14 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
   }
 
   const addCustomTag = () => {
-    const t = customTag.trim().toLowerCase()
-    if (!t) return
-    if (tags.includes(t)) return
+    const newTag = customTag.trim().toLowerCase()
+    if (!newTag) return
+    if (tags.includes(newTag)) return
     if (tags.length >= 8) {
-      toast({ title: 'Max 8 tags', variant: 'destructive' })
+      toast({ title: t('maxTags'), variant: 'destructive' })
       return
     }
-    setTags([...tags, t])
+    setTags([...tags, newTag])
     setCustomTag('')
   }
 
@@ -100,8 +85,8 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
     e.preventDefault()
     if (reviewText.trim().length < 20) {
       toast({
-        title: 'Review too short',
-        description: 'Please write at least 20 characters.',
+        title: t('reviewTooShort'),
+        description: t('reviewTooShortDesc'),
         variant: 'destructive',
       })
       return
@@ -121,23 +106,23 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
       const data = await res.json()
       if (!res.ok) {
         toast({
-          title: 'Submission failed',
-          description: data.error || 'Unknown error',
+          title: t('submissionFailed'),
+          description: data.error || t('networkErrorDesc'),
           variant: 'destructive',
         })
         setLoading(false)
         return
       }
       toast({
-        title: 'Review published!',
-        description: 'Thanks for sharing your experience.',
+        title: t('published'),
+        description: t('publishedDesc'),
       })
       onSubmitted()
       onClose()
-    } catch (err) {
+    } catch {
       toast({
-        title: 'Network error',
-        description: 'Could not reach server. Try again.',
+        title: t('networkError'),
+        description: t('networkErrorDesc'),
         variant: 'destructive',
       })
     }
@@ -168,7 +153,7 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
               <MessageSquarePlus className="size-6" />
             </div>
             <div>
-              <h2 className="text-xl font-bold">Write a Review</h2>
+              <h2 className="text-xl font-bold">{t('title')}</h2>
               <p className="text-sm text-white/85">{universityName}</p>
             </div>
           </div>
@@ -178,7 +163,7 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
           <form onSubmit={handleSubmit} className="p-6 space-y-6">
             {/* Ratings */}
             <div className="space-y-4">
-              <Label className="text-sm font-semibold">Your ratings</Label>
+              <Label className="text-sm font-semibold">{t('ratings')}</Label>
               <div className="grid sm:grid-cols-2 gap-4">
                 {RATING_DIMENSIONS.map(dim => (
                   <div key={dim.key} className="bg-slate-50 rounded-lg p-3">
@@ -194,6 +179,7 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
                           type="button"
                           onClick={() => setRatings(prev => ({ ...prev, [dim.key]: n }))}
                           className="p-0.5"
+                          aria-label={`${dim.label} ${n}`}
                         >
                           <Star
                             className={cn(
@@ -214,11 +200,11 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
             {/* Review text */}
             <div className="space-y-2">
               <Label htmlFor="review-text" className="text-sm font-semibold">
-                Your review <span className="text-xs text-muted-foreground font-normal">(min 20 chars, max 5000)</span>
+                {t('reviewText')} <span className="text-xs text-muted-foreground font-normal">{t('reviewTextHint')}</span>
               </Label>
               <Textarea
                 id="review-text"
-                placeholder="Share your experience: quality of teaching, affordability, social life, visa process, anything future students should know..."
+                placeholder={t('reviewTextPlaceholder')}
                 value={reviewText}
                 onChange={(e) => setReviewText(e.target.value)}
                 rows={5}
@@ -233,7 +219,7 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
             {/* Tags */}
             <div className="space-y-2">
               <Label className="text-sm font-semibold">
-                Tags <span className="text-xs text-muted-foreground font-normal">(optional, up to 8)</span>
+                {t('tags')} <span className="text-xs text-muted-foreground font-normal">{t('tagsHint')}</span>
               </Label>
               <div className="flex flex-wrap gap-1.5 mb-2">
                 {TAG_SUGGESTIONS.map(tag => (
@@ -269,7 +255,7 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
               <div className="flex gap-2">
                 <Input
                   type="text"
-                  placeholder="Add custom tag..."
+                  placeholder={t('addCustomTag')}
                   value={customTag}
                   onChange={(e) => setCustomTag(e.target.value)}
                   onKeyDown={(e) => {
@@ -281,7 +267,7 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
                   className="text-sm"
                 />
                 <Button type="button" size="sm" variant="outline" onClick={addCustomTag}>
-                  Add
+                  {t('add')}
                 </Button>
               </div>
             </div>
@@ -289,15 +275,14 @@ export function ReviewForm({ open, onClose, universityId, universityName, onSubm
             {/* Submit */}
             <div className="flex gap-2 pt-2 border-t">
               <Button type="button" variant="outline" className="flex-1" onClick={onClose}>
-                Cancel
+                {t('cancel')}
               </Button>
               <Button type="submit" className="flex-1 gap-2" disabled={loading}>
-                {loading ? <Loader2 className="size-4 animate-spin" /> : 'Publish Review'}
+                {loading ? <Loader2 className="size-4 animate-spin" /> : t('publish')}
               </Button>
             </div>
             <p className="text-xs text-muted-foreground text-center">
-              Your review will be visible publicly. Reviews are auto-approved in this MVP demo;
-              production builds moderate reviews via admin queue.
+              {t('footerNote')}
             </p>
           </form>
         </div>

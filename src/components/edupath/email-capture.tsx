@@ -6,9 +6,11 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent } from '@/components/ui/card'
 import { useToast } from '@/hooks/use-toast'
+import { useTranslations } from 'next-intl'
 
 export function EmailCapture() {
   const { toast } = useToast()
+  const t = useTranslations('EmailCapture')
   const [email, setEmail] = React.useState('')
   const [submitting, setSubmitting] = React.useState(false)
   const [submitted, setSubmitted] = React.useState(false)
@@ -16,7 +18,7 @@ export function EmailCapture() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      toast({ title: 'Please enter a valid email', variant: 'destructive' })
+      toast({ title: t('invalidEmail'), variant: 'destructive' })
       return
     }
     setSubmitting(true)
@@ -33,11 +35,11 @@ export function EmailCapture() {
       })
       if (!res.ok) throw new Error()
       setSubmitted(true)
-      toast({ title: 'You\'re subscribed!', description: 'We\'ll send you deadline alerts and scholarship updates.' })
+      toast({ title: t('subscribedToast'), description: t('subscribedToastDesc') })
     } catch {
       // Still show success — the event tracking is best-effort
       setSubmitted(true)
-      toast({ title: 'You\'re subscribed!', description: 'We\'ll send you deadline alerts and scholarship updates.' })
+      toast({ title: t('subscribedToast'), description: t('subscribedToastDesc') })
     }
     setSubmitting(false)
   }
@@ -47,8 +49,8 @@ export function EmailCapture() {
       <Card className="max-w-md mx-auto bg-blue-950/5 border-blue-600/20">
         <CardContent className="pt-6 text-center">
           <CheckCircle2 className="size-12 text-blue-600 mx-auto mb-3" />
-          <h3 className="font-bold text-lg mb-1">You're subscribed!</h3>
-          <p className="text-sm text-muted-foreground">We'll email you deadline alerts and scholarship updates.</p>
+          <h3 className="font-bold text-lg mb-1">{t('submittedTitle')}</h3>
+          <p className="text-sm text-muted-foreground">{t('submittedDesc')}</p>
         </CardContent>
       </Card>
     )
@@ -59,25 +61,26 @@ export function EmailCapture() {
       <CardContent className="pt-6">
         <div className="flex items-center gap-2 mb-2">
           <Bell className="size-5 text-blue-600" />
-          <h3 className="font-bold text-lg">Get deadline alerts</h3>
+          <h3 className="font-bold text-lg">{t('title')}</h3>
         </div>
         <p className="text-sm text-muted-foreground mb-4">
-          Free email alerts when application deadlines approach. No spam, unsubscribe anytime.
+          {t('subtitle')}
         </p>
         <form onSubmit={handleSubmit} className="flex gap-2">
           <div className="relative flex-1">
             <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
             <Input
               type="email"
-              placeholder="you@example.com"
+              placeholder={t('placeholder')}
               value={email}
               onChange={e => setEmail(e.target.value)}
               className="pl-9"
               required
+              aria-label={t('placeholder')}
             />
           </div>
           <Button type="submit" className="gap-2 bg-blue-600 hover:bg-blue-700" disabled={submitting}>
-            {submitting ? <Loader2 className="size-4 animate-spin" /> : 'Subscribe'}
+            {submitting ? <Loader2 className="size-4 animate-spin" /> : t('subscribe')}
           </Button>
         </form>
       </CardContent>

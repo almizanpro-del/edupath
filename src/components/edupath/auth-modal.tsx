@@ -11,6 +11,7 @@ import { useToast } from '@/hooks/use-toast'
 import { createClient } from '@/lib/supabase/client'
 import { COUNTRIES } from '@/lib/edupath'
 import { cn } from '@/lib/utils'
+import { useTranslations } from 'next-intl'
 
 export type UserProfile = {
   id: string
@@ -29,6 +30,7 @@ type Props = {
 
 export function AuthModal({ open, onClose, onAuthed }: Props) {
   const { toast } = useToast()
+  const t = useTranslations('Auth')
   const supabase = createClient()
   const [mode, setMode] = React.useState<'signin' | 'signup'>('signin')
   const [loading, setLoading] = React.useState(false)
@@ -55,14 +57,14 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
     const { error } = await supabase.auth.signInWithPassword({ email, password })
     if (error) {
       toast({
-        title: 'Sign in failed',
+        title: t('signInFailed'),
         description: error.message,
         variant: 'destructive',
       })
       setLoading(false)
       return
     }
-    toast({ title: 'Welcome back!', description: email })
+    toast({ title: t('welcomeBack'), description: email })
     // Fetch profile
     await fetchProfile()
     setLoading(false)
@@ -84,7 +86,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
     })
     if (error) {
       toast({
-        title: 'Sign up failed',
+        title: t('signUpFailed'),
         description: error.message,
         variant: 'destructive',
       })
@@ -94,12 +96,12 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
     if (data.user && !data.session) {
       // Email confirmation required
       toast({
-        title: 'Check your email',
-        description: 'We sent a confirmation link. Click it to activate your account, then sign in.',
+        title: t('checkEmail'),
+        description: t('checkEmailDesc'),
       })
       setMode('signin')
     } else if (data.session) {
-      toast({ title: 'Account created!', description: `Welcome, ${fullName}!` })
+      toast({ title: t('accountCreated'), description: `${t('welcomeBack')}, ${fullName}!` })
       await fetchProfile()
       onClose()
     }
@@ -129,7 +131,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
     })
     if (error) {
       toast({
-        title: 'Google sign-in failed',
+        title: t('googleFailed'),
         description: error.message,
         variant: 'destructive',
       })
@@ -163,8 +165,8 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
               <UserCircle2 className="size-7" />
             </div>
             <div>
-              <h2 className="text-xl font-bold">Welcome to EduPath</h2>
-              <p className="text-sm text-white/85">Sign in to save universities and write reviews</p>
+              <h2 className="text-xl font-bold">{t('welcome')}</h2>
+              <p className="text-sm text-white/85">{t('welcomeDesc')}</p>
             </div>
           </div>
         </div>
@@ -172,8 +174,8 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
         <div className="p-6">
           <Tabs value={mode} onValueChange={(v) => setMode(v as 'signin' | 'signup')}>
             <TabsList className="grid w-full grid-cols-2">
-              <TabsTrigger value="signin">Sign In</TabsTrigger>
-              <TabsTrigger value="signup">Create Account</TabsTrigger>
+              <TabsTrigger value="signin">{t('signIn')}</TabsTrigger>
+              <TabsTrigger value="signup">{t('createAccount')}</TabsTrigger>
             </TabsList>
 
             {/* Google OAuth - shared between sign in and sign up */}
@@ -190,11 +192,11 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
                 ) : (
                   <GoogleIcon className="size-5" />
                 )}
-                Continue with Google
+                {t('continueWithGoogle')}
               </Button>
               <div className="flex items-center gap-3">
                 <div className="flex-1 h-px bg-border" />
-                <span className="text-xs text-muted-foreground uppercase tracking-wide">or</span>
+                <span className="text-xs text-muted-foreground uppercase tracking-wide">{t('or')}</span>
                 <div className="flex-1 h-px bg-border" />
               </div>
             </div>
@@ -202,7 +204,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
             <TabsContent value="signin" className="mt-0">
               <form onSubmit={handleSignIn} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="signin-email">Email</Label>
+                  <Label htmlFor="signin-email">{t('email')}</Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                     <Input
@@ -217,7 +219,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="signin-password">Password</Label>
+                  <Label htmlFor="signin-password">{t('password')}</Label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                     <Input
@@ -232,7 +234,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
                   </div>
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? <Loader2 className="size-4 animate-spin" /> : 'Sign In'}
+                  {loading ? <Loader2 className="size-4 animate-spin" /> : t('signInBtn')}
                 </Button>
               </form>
             </TabsContent>
@@ -240,7 +242,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
             <TabsContent value="signup" className="mt-4">
               <form onSubmit={handleSignUp} className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="signup-name">Full name</Label>
+                  <Label htmlFor="signup-name">{t('fullName')}</Label>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                     <Input
@@ -255,7 +257,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="signup-email">Email</Label>
+                  <Label htmlFor="signup-email">{t('email')}</Label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                     <Input
@@ -270,7 +272,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="signup-password">Password</Label>
+                  <Label htmlFor="signup-password">{t('password')}</Label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-muted-foreground" />
                     <Input
@@ -286,10 +288,10 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="signup-country">Country</Label>
+                  <Label htmlFor="signup-country">{t('country')}</Label>
                   <Select value={country} onValueChange={setCountry}>
                     <SelectTrigger id="signup-country">
-                      <SelectValue placeholder="Select your country" />
+                      <SelectValue placeholder={t('selectCountry')} />
                     </SelectTrigger>
                     <SelectContent>
                       {COUNTRIES.map(c => (
@@ -316,10 +318,10 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
                   </Select>
                 </div>
                 <Button type="submit" className="w-full" disabled={loading}>
-                  {loading ? <Loader2 className="size-4 animate-spin" /> : 'Create Account'}
+                  {loading ? <Loader2 className="size-4 animate-spin" /> : t('createAccountBtn')}
                 </Button>
                 <p className="text-xs text-muted-foreground text-center">
-                  By signing up you agree to our terms. We never share your data.
+                  {t('termsNote')}
                 </p>
               </form>
             </TabsContent>
@@ -340,13 +342,15 @@ export function UserMenuButton({
   onSignInClick: () => void
   onSignOut: () => void
 }) {
+  const t = useTranslations('Auth')
+  const tNav = useTranslations('Nav')
   const [menuOpen, setMenuOpen] = React.useState(false)
 
   if (!profile) {
     return (
       <Button variant="outline" size="sm" onClick={onSignInClick} className="gap-2">
         <User className="size-4" />
-        Sign In
+        {tNav('signIn')}
       </Button>
     )
   }
@@ -378,7 +382,7 @@ export function UserMenuButton({
               </div>
               {profile.verificationStatus === 'verified' && (
                 <div className="text-[10px] text-blue-700 mt-1 font-medium">
-                  ✓ Verified Student
+                  ✓ {t('welcomeBack')}
                 </div>
               )}
             </div>
@@ -390,7 +394,7 @@ export function UserMenuButton({
               className="w-full text-left px-3 py-2 text-sm hover:bg-slate-50 flex items-center gap-2 text-rose-600"
             >
               <LogOut className="size-4" />
-              Sign out
+              {tNav('signOut')}
             </button>
           </div>
         </>
