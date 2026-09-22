@@ -70,6 +70,54 @@ CURATED_UNIVERSITIES = [
     {"name": "Lebanese University", "country": "Lebanon", "city": "Beirut"},
     {"name": "Lithuanian University of Health Sciences", "country": "Lithuania", "city": "Kaunas"},
     {"name": "ISM University of Management and Economics", "country": "Lithuania", "city": "Vilnius"},
+
+    # Russia
+    {"name": "Lomonosov Moscow State University", "country": "Russia", "city": "Moscow"},
+    {"name": "Saint Petersburg State University", "country": "Russia", "city": "Saint Petersburg"},
+    {"name": "Moscow Institute of Physics and Technology", "country": "Russia", "city": "Moscow"},
+    {"name": "Bauman Moscow State Technical University", "country": "Russia", "city": "Moscow"},
+    {"name": "Tomsk State University", "country": "Russia", "city": "Tomsk"},
+    {"name": "Novosibirsk State University", "country": "Russia", "city": "Novosibirsk"},
+    {"name": "Kazan Federal University", "country": "Russia", "city": "Kazan"},
+    {"name": "Ural Federal University", "country": "Russia", "city": "Yekaterinburg"},
+    {"name": "Higher School of Economics", "country": "Russia", "city": "Moscow"},
+    {"name": "ITMO University", "country": "Russia", "city": "Saint Petersburg"},
+    {"name": "Peoples' Friendship University of Russia", "country": "Russia", "city": "Moscow"},
+    {"name": "Far Eastern Federal University", "country": "Russia", "city": "Vladivostok"},
+
+    # Uzbekistan
+    {"name": "National University of Uzbekistan", "country": "Uzbekistan", "city": "Tashkent"},
+    {"name": "Tashkent University of Information Technologies", "country": "Uzbekistan", "city": "Tashkent"},
+    {"name": "Samarkand State University", "country": "Uzbekistan", "city": "Samarkand"},
+    {"name": "Tashkent State Technical University", "country": "Uzbekistan", "city": "Tashkent"},
+    {"name": "Tashkent Medical Academy", "country": "Uzbekistan", "city": "Tashkent"},
+    {"name": "Westminster International University in Tashkent", "country": "Uzbekistan", "city": "Tashkent"},
+    {"name": "Management Development Institute of Singapore in Tashkent", "country": "Uzbekistan", "city": "Tashkent"},
+    {"name": "Bukhara State University", "country": "Uzbekistan", "city": "Bukhara"},
+
+    # Kazakhstan
+    {"name": "Kazakh National University", "country": "Kazakhstan", "city": "Almaty"},
+    {"name": "Kazakh-British Technical University", "country": "Kazakhstan", "city": "Almaty"},
+    {"name": "Nazarbayev University", "country": "Kazakhstan", "city": "Astana"},
+    {"name": "University of International Business", "country": "Kazakhstan", "city": "Almaty"},
+    {"name": "Kazakh University of Economics", "country": "Kazakhstan", "city": "Almaty"},
+    {"name": "Astana Medical University", "country": "Kazakhstan", "city": "Astana"},
+    {"name": "South Kazakhstan State University", "country": "Kazakhstan", "city": "Shymkent"},
+    {"name": "Eurasian National University", "country": "Kazakhstan", "city": "Astana"},
+    {"name": "Al-Farabi Kazakh National University", "country": "Kazakhstan", "city": "Almaty"},
+    {"name": "KIMEP University", "country": "Kazakhstan", "city": "Almaty"},
+
+    # Georgia
+    {"name": "Tbilisi State University", "country": "Georgia", "city": "Tbilisi"},
+    {"name": "Georgian Technical University", "country": "Georgia", "city": "Tbilisi"},
+    {"name": "Tbilisi State Medical University", "country": "Georgia", "city": "Tbilisi"},
+    {"name": "Free University of Tbilisi", "country": "Georgia", "city": "Tbilisi"},
+    {"name": "Caucasus University", "country": "Georgia", "city": "Tbilisi"},
+    {"name": "University of Georgia", "country": "Georgia", "city": "Tbilisi"},
+    {"name": "Ilia State University", "country": "Georgia", "city": "Tbilisi"},
+    {"name": "Georgian American University", "country": "Georgia", "city": "Tbilisi"},
+    {"name": "International Black Sea University", "country": "Georgia", "city": "Tbilisi"},
+    {"name": "Akaki Tsereteli State University", "country": "Georgia", "city": "Kutaisi"},
 ]
 
 

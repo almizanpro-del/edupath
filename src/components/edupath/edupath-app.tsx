@@ -780,7 +780,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                         )}
                       </header>
                       <div className="flex flex-wrap gap-1.5">
-                        {['English', 'Arabic', 'German', 'Turkish'].map(l => {
+                        {['English', 'Arabic', 'German', 'Turkish', 'Russian'].map(l => {
                           const active = selectedLanguages.has(l)
                           return (
                             <motion.button

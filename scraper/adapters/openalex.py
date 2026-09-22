@@ -163,6 +163,10 @@ class OpenAlexAdapter(BaseAdapter):
             "bangladesh": "BD",
             "indonesia": "ID",
             "philippines": "PH",
+            "russia": "RU",
+            "uzbekistan": "UZ",
+            "kazakhstan": "KZ",
+            "georgia": "GE",
         }
         return country_codes.get(country.lower().strip())
 
@@ -182,5 +186,7 @@ class OpenAlexAdapter(BaseAdapter):
             "CN": "China", "JP": "Japan", "KR": "South Korea",
             "IN": "India", "PK": "Pakistan", "BD": "Bangladesh",
             "ID": "Indonesia", "PH": "Philippines",
+            "RU": "Russia", "UZ": "Uzbekistan", "KZ": "Kazakhstan",
+            "GE": "Georgia",
         }
         return code_map.get(code.upper(), code)

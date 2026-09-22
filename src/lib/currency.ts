@@ -6,10 +6,10 @@
  * or similar service. The CRON_SECRET env var must be set to enable the
  * refresh endpoint.
  *
- * Supports 9 currencies: USD, EUR, GBP, JOD, AED, EGP, SAR, TRY, MYR.
+ * Supports 13 currencies: USD, EUR, GBP, JOD, AED, EGP, SAR, TRY, MYR, RUB, UZS, KZT, GEL.
  */
 
-export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'JOD' | 'AED' | 'EGP' | 'SAR' | 'TRY' | 'MYR'
+export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'JOD' | 'AED' | 'EGP' | 'SAR' | 'TRY' | 'MYR' | 'RUB' | 'UZS' | 'KZT' | 'GEL'
 
 /**
  * FX rate snapshot — 1 USD = X local currency.
@@ -27,6 +27,10 @@ export const FX_SNAPSHOT = {
     SAR: 3.75,
     TRY: 34.0,
     MYR: 4.45,
+    RUB: 92.0,
+    UZS: 12700.0,
+    KZT: 470.0,
+    GEL: 2.7,
   } as Record<CurrencyCode, number>,
 }
 
@@ -43,6 +47,10 @@ export const CURRENCY_SYMBOLS: Record<CurrencyCode, string> = {
   SAR: 'SAR ',
   TRY: '₺',
   MYR: 'RM ',
+  RUB: '₽',
+  UZS: 'UZS ',
+  KZT: 'KZT ',
+  GEL: 'GEL ',
 }
 
 export const CURRENCIES: Array<{ code: CurrencyCode; name: string; flag: string }> = [
@@ -55,6 +63,10 @@ export const CURRENCIES: Array<{ code: CurrencyCode; name: string; flag: string 
   { code: 'SAR', name: 'Saudi Riyal', flag: '🇸🇦' },
   { code: 'TRY', name: 'Turkish Lira', flag: '🇹🇷' },
   { code: 'MYR', name: 'Malaysian Ringgit', flag: '🇲🇾' },
+  { code: 'RUB', name: 'Russian Ruble', flag: '🇷🇺' },
+  { code: 'UZS', name: 'Uzbekistani Som', flag: '🇺🇿' },
+  { code: 'KZT', name: 'Kazakhstani Tenge', flag: '🇰🇿' },
+  { code: 'GEL', name: 'Georgian Lari', flag: '🇬🇪' },
 ]
 
 /**

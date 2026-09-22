@@ -21,6 +21,10 @@ export const COUNTRIES: Country[] = [
   { code: 'Jordan', name: 'Jordan', nameAr: 'الأردن', flag: 'jo' },
   { code: 'United Arab Emirates', name: 'United Arab Emirates', nameAr: 'الإمارات', flag: 'ae' },
   { code: 'Lebanon', name: 'Lebanon', nameAr: 'لبنان', flag: 'lb' },
+  { code: 'Russia', name: 'Russia', nameAr: 'روسيا', flag: 'ru' },
+  { code: 'Uzbekistan', name: 'Uzbekistan', nameAr: 'أوزبكستان', flag: 'uz' },
+  { code: 'Kazakhstan', name: 'Kazakhstan', nameAr: 'كازاخستان', flag: 'kz' },
+  { code: 'Georgia', name: 'Georgia', nameAr: 'جورجيا', flag: 'ge' },
 ]
 
 export const FIELDS_OF_STUDY = [
@@ -33,7 +37,7 @@ export const FIELDS_OF_STUDY = [
 
 export const DEGREE_LEVELS = ['bachelor', 'master', 'phd'] as const
 
-export const LANGUAGES = ['English', 'Arabic', 'German', 'Turkish'] as const
+export const LANGUAGES = ['English', 'Arabic', 'German', 'Turkish', 'Russian'] as const
 
 /**
  * Format USD amount with $ sign and thousands separator.
