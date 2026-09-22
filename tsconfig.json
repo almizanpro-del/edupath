@@ -40,6 +40,8 @@
     "node_modules",
     "examples",
     "skills",
+    "scripts",
+    "scraper",
     "vitest.config.ts",
     "vitest.setup.ts",
     "src/**/*.test.ts",
