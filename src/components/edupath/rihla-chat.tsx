@@ -18,7 +18,7 @@ interface Message {
 }
 
 type Props = {
-  onComplete: (sessionId: string) => void
+  onComplete: (sessionId: string, profile?: unknown) => void
 }
 
 export function RihlaChat({ onComplete }: Props) {
@@ -64,7 +64,7 @@ export function RihlaChat({ onComplete }: Props) {
 
       if (data.intakeComplete && data.sessionId) {
         // Brief delay so user sees the completion message
-        setTimeout(() => onComplete(data.sessionId), 1500)
+        setTimeout(() => onComplete(data.sessionId, data.profile), 1500)
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : t('errorOccurred'))

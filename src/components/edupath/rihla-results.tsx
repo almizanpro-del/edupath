@@ -44,9 +44,10 @@ type Match = {
 type Props = {
   sessionId: string
   onStartOver: () => void
+  intakeProfile?: unknown
 }
 
-export function RihlaResults({ sessionId, onStartOver }: Props) {
+export function RihlaResults({ sessionId, onStartOver, intakeProfile }: Props) {
   const router = useRouter()
   const { toast } = useToast()
   const t = useTranslations('Agent')
@@ -72,7 +73,7 @@ export function RihlaResults({ sessionId, onStartOver }: Props) {
     fetch('/api/agent/match', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sessionId }),
+      body: JSON.stringify({ sessionId, profile: intakeProfile }),
     })
       .then(async res => {
         const data = await res.json()

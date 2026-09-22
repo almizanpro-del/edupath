@@ -5,7 +5,9 @@
  * Body: { sessionId: string }
  * Response: { matches: AgentMatchResult[] }
  *
- * Requires a completed intake session. Persists matches to AgentMatch table.
+ * Works with both DB-persisted sessions and in-memory sessions (when DB
+ * is unavailable). For in-memory sessions, the profile is passed from
+ * the intake route via the request body.
  */
 import { NextResponse, NextRequest } from 'next/server'
 import { db } from '@/lib/db'
@@ -23,58 +25,75 @@ export async function POST(req: NextRequest) {
   if (limited) return limited
 
   try {
-    const { sessionId } = await req.json() as { sessionId?: string }
+    const body = await req.json()
+    const { sessionId, profile: inlineProfile } = body as {
+      sessionId?: string
+      profile?: IntakeProfile
+    }
 
     if (!sessionId) {
       return NextResponse.json({ error: 'sessionId is required' }, { status: 400 })
     }
 
-    const session = await db.intakeSession.findUnique({
-      where: { id: sessionId },
-    })
+    let profile: IntakeProfile | null = null
 
-    if (!session) {
-      return NextResponse.json({ error: 'Session not found' }, { status: 404 })
+    // Try to load from DB first
+    try {
+      const session = await db.intakeSession.findUnique({
+        where: { id: sessionId },
+      })
+
+      if (session && session.status === 'completed') {
+        profile = {
+          nationality: session.nationality ?? undefined,
+          educationLevel: session.educationLevel ?? undefined,
+          fieldOfInterest: session.fieldOfInterest ?? undefined,
+          preferredCountries: session.preferredCountries
+            ? JSON.parse(session.preferredCountries)
+            : [],
+          budgetUsd: session.budgetUsd ?? undefined,
+          languagePref: session.languagePref ?? undefined,
+          degreeLevel: session.degreeLevel ?? undefined,
+          careerGoal: session.careerGoal ?? undefined,
+          specialRequirements: session.specialRequirements ?? undefined,
+          language: session.language,
+        }
+      }
+    } catch {
+      // DB unavailable — check for inline profile
     }
 
-    if (session.status !== 'completed') {
+    // Fall back to inline profile (from in-memory intake)
+    if (!profile && inlineProfile) {
+      profile = inlineProfile
+    }
+
+    if (!profile) {
       return NextResponse.json(
-        { error: 'Intake not complete. Finish the conversation first.' },
+        { error: 'Session not found or intake not complete' },
         { status: 400 }
       )
-    }
-
-    // Build profile from session
-    const profile: IntakeProfile = {
-      nationality: session.nationality ?? undefined,
-      educationLevel: session.educationLevel ?? undefined,
-      fieldOfInterest: session.fieldOfInterest ?? undefined,
-      preferredCountries: session.preferredCountries
-        ? JSON.parse(session.preferredCountries)
-        : [],
-      budgetUsd: session.budgetUsd ?? undefined,
-      languagePref: session.languagePref ?? undefined,
-      degreeLevel: session.degreeLevel ?? undefined,
-      careerGoal: session.careerGoal ?? undefined,
-      specialRequirements: session.specialRequirements ?? undefined,
-      language: session.language,
     }
 
     // Find matches
     const matches = await findMatches(profile)
 
-    // Persist matches to DB (delete old ones first if re-running)
-    await db.agentMatch.deleteMany({ where: { sessionId } })
-    if (matches.length > 0) {
-      await db.agentMatch.createMany({
-        data: matches.map(m => ({
-          sessionId,
-          universityId: m.id,
-          programId: m.matchedProgram?.id ?? null,
-          relevanceScore: m.relevanceScore,
-          explanation: m.explanation,
-        })),
-      })
+    // Persist matches to DB (non-critical)
+    try {
+      await db.agentMatch.deleteMany({ where: { sessionId } })
+      if (matches.length > 0) {
+        await db.agentMatch.createMany({
+          data: matches.map(m => ({
+            sessionId,
+            universityId: m.id,
+            programId: m.matchedProgram?.id ?? null,
+            relevanceScore: m.relevanceScore,
+            explanation: m.explanation,
+          })),
+        })
+      }
+    } catch {
+      // DB unavailable — matches still returned to client
     }
 
     return NextResponse.json({

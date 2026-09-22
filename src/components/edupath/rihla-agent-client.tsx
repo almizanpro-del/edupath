@@ -18,14 +18,17 @@ export function RihlaAgentClient() {
 
   const [phase, setPhase] = React.useState<Phase>('chat')
   const [sessionId, setSessionId] = React.useState<string | null>(null)
+  const [intakeProfile, setIntakeProfile] = React.useState<unknown>(null)
 
-  const handleComplete = (sid: string) => {
+  const handleComplete = (sid: string, profile?: unknown) => {
     setSessionId(sid)
+    setIntakeProfile(profile)
     setPhase('results')
   }
 
   const handleStartOver = () => {
     setSessionId(null)
+    setIntakeProfile(null)
     setPhase('chat')
   }
 
@@ -62,7 +65,11 @@ export function RihlaAgentClient() {
           </div>
         ) : (
           sessionId && (
-            <RihlaResults sessionId={sessionId} onStartOver={handleStartOver} />
+            <RihlaResults
+              sessionId={sessionId}
+              onStartOver={handleStartOver}
+              intakeProfile={intakeProfile}
+            />
           )
         )}
       </div>
