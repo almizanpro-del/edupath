@@ -170,6 +170,7 @@ function CalendarIcon({ className }: { className?: string }) {
 export function EduPathApp({ universities, countries, stats }: Props) {
   const { toast } = useToast()
   const t = useTranslations()
+  const locale = useLocale()
   const router = useRouter()
   const [searchQuery, setSearchQuery] = React.useState('')
   const [selectedCountries, setSelectedCountries] = React.useState<Set<string>>(new Set())
@@ -879,6 +880,26 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                   </div>
                 </SheetContent>
               </Sheet>
+            </motion.div>
+
+            {/* Rihla AI Agent CTA */}
+            <motion.div
+              variants={fadeInUp}
+              className="mt-8 max-w-2xl mx-auto"
+            >
+              <button
+                onClick={() => router.push('/agent')}
+                className="group w-full flex items-center gap-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white p-4 shadow-lg transition-all hover:shadow-xl"
+              >
+                <div className="size-12 rounded-xl bg-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                  <Sparkles className="size-6 text-white" />
+                </div>
+                <div className="flex-1 text-left">
+                  <div className="font-bold text-lg">{t('Agent.heroCta')}</div>
+                  <div className="text-sm text-white/70">{t('Agent.heroCtaDesc')}</div>
+                </div>
+                <ArrowRight className={cn('size-5 text-white/70 group-hover:translate-x-1 transition-transform', locale === 'ar' && 'rotate-180')} />
+              </button>
             </motion.div>
 
             {/* Animated stats */}

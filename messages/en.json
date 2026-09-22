@@ -781,7 +781,9 @@
     "claimTitle": "Claim University - EduPath",
     "claimDesc": "Claim your university profile to access analytics and lead management.",
     "adminScrapedTitle": "Scraped Universities - EduPath",
-    "adminScrapedDesc": "Review and approve scraped university data from OpenAlex and Wikipedia."
+    "adminScrapedDesc": "Review and approve scraped university data from OpenAlex and Wikipedia.",
+    "agentTitle": "Rihla — AI University Advisor | EduPath",
+    "agentDesc": "Chat with Rihla, our AI advisor, and get personalized university recommendations in 2 minutes."
   },
   "AdminScraped": {
     "title": "Scraped Universities",
@@ -825,5 +827,38 @@
     "scrapedAt": "Scraped At",
     "source": "Source",
     "description": "Description"
+  },
+  "Agent": {
+    "title": "Find Your Perfect University",
+    "subtitle": "Chat with Rihla, your AI advisor",
+    "badge": "AI-Powered",
+    "startChat": "Start Chat",
+    "placeholder": "Type your answer...",
+    "sending": "Sending...",
+    "results": "Your Matches",
+    "resultsDesc": "Based on your conversation, here are the best matches for you",
+    "whyMatch": "Why this matches you",
+    "saveToList": "Save to My List",
+    "saved": "Saved",
+    "startOver": "Start Over",
+    "loadingMatches": "Finding your matches...",
+    "loadingMatchesDesc": "Rihla is analyzing your profile against 129 universities",
+    "noMatches": "No matches found",
+    "noMatchesDesc": "Try adjusting your budget or preferred countries",
+    "relevanceScore": "Match Score",
+    "matchedProgram": "Matched Program",
+    "scholarshipsAvailable": "Scholarships Available",
+    "calculateCost": "Calculate Full Cost",
+    "compare": "Compare",
+    "viewDetails": "View Details",
+    "greeting": "Hello! I'm Rihla, your AI university advisor. I'll help you find the perfect university. To start, what's your nationality?",
+    "heroCta": "Try Rihla — Find Your Match in 2 Minutes",
+    "heroCtaDesc": "Chat with our AI advisor and get personalized university recommendations",
+    "anonymousNote": "You can chat anonymously. Sign in to save your matches.",
+    "intakeComplete": "Intake Complete!",
+    "intakeCompleteDesc": "Rihla is finding your best matches...",
+    "errorOccurred": "An error occurred",
+    "tryAgain": "Try Again",
+    "back": "Back"
   }
 }

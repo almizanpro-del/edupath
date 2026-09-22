@@ -27,6 +27,11 @@ model University {
   descriptionEn   String?
   descriptionAr   String?
   pendingReview   Boolean  @default(false) // true = scraped, awaiting editorial review
+  // Rihla agent enrichment fields
+  hasHalalFood            Boolean? @default(true)
+  hasPrayerFacilities     Boolean? @default(true)
+  hasGenderSegregatedHousing Boolean? @default(false)
+  hasFamilyAccommodation  Boolean? @default(false)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -37,6 +42,7 @@ model University {
   transferTo      TransferPathway[] @relation("TransferTo")
   events          AnalyticsEvent[]
   leads           Lead[]
+  agentMatches    AgentMatch[]
 }
 
 model Program {
@@ -51,6 +57,7 @@ model Program {
   tuitionUsd      Int
   deadline        String?
   entryReqs       String?
+  agentMatches    AgentMatch[]
 
   @@index([universityId])
 }
@@ -83,6 +90,7 @@ model User {
   reviews         Review[]
   savedLists      SavedList[]
   subscription    Subscription?
+  intakeSessions  IntakeSession[]
 }
 
 model Review {
@@ -229,4 +237,62 @@ model ScrapedUniversity {
   @@index([normalizedName])
   @@index([status])
   @@index([qualityScore])
+}
+
+/// Rihla AI agent — conversational intake session
+model IntakeSession {
+  id              String   @id @default(cuid())
+  userId          String?
+  user            User?    @relation(fields: [userId], references: [id])
+  language        String   @default("en") // "en" | "ar"
+  status          String   @default("in_progress") // in_progress | completed | abandoned
+
+  // Structured intake fields (nullable until collected)
+  nationality       String?
+  educationLevel    String?
+  fieldOfInterest   String?
+  preferredCountries String? // JSON array as string for SQLite compat
+  budgetUsd         Int?
+  languagePref      String?
+  degreeLevel       String?
+  careerGoal        String?
+  specialRequirements String?
+
+  // Conversation transcript
+  messages        IntakeMessage[]
+  matches         AgentMatch[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status])
+}
+
+model IntakeMessage {
+  id         String   @id @default(cuid())
+  sessionId  String
+  session    IntakeSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role       String   // "user" | "assistant" | "system"
+  content    String
+  createdAt  DateTime @default(now())
+
+  @@index([sessionId])
+}
+
+/// Rihla AI agent — match with LLM-generated explanation
+model AgentMatch {
+  id           String   @id @default(cuid())
+  sessionId    String
+  session      IntakeSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  universityId String
+  university   University @relation(fields: [universityId], references: [id])
+  programId    String?
+  program      Program?  @relation(fields: [programId], references: [id])
+  relevanceScore Float
+  explanation  String   // LLM-generated "Why this matches you" (in session language)
+  createdAt    DateTime @default(now())
+
+  @@index([sessionId])
+  @@index([universityId])
 }
