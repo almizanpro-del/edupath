@@ -1,30 +1,48 @@
 /**
  * Input sanitization utilities.
- * Prevents XSS by stripping HTML tags and dangerous characters from user input.
- * Used for: review text, lead messages, university descriptions, names.
+ *
+ * IMPORTANT: React automatically escapes text rendered in JSX ({variable}).
+ * So we do NOT HTML-escape user input before storing it in the database.
+ * Doing so causes double-escaping (users see &#x27; instead of ').
+ *
+ * These functions focus on:
+ *   - Stripping dangerous HTML tags/scripts (defense-in-depth)
+ *   - Validating email/URL formats
+ *   - Truncating to safe lengths
+ *
+ * XSS prevention is handled by React at render time.
+ * Only use HTML escaping if rendering with dangerouslySetInnerHTML
+ * (which we don't do with user-generated content).
  */
 
 /**
- * Strip all HTML tags from a string. Escapes < > & " ' characters.
- * Use for any user-generated text that will be rendered in the browser.
+ * Strip script tags and event handlers from user input.
+ * Does NOT HTML-escape — React handles that at render time.
+ * Use for any user-generated text before storing in the database.
  */
 export function sanitizeText(input: string): string {
   if (!input) return ''
   return input
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;')
-    .replace(/\//g, '&#x2F;')
+    // Remove script tags and their content
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    // Remove event handlers (onclick=, onerror=, etc.)
+    .replace(/\son\w+\s*=\s*"[^"]*"/gi, '')
+    .replace(/\son\w+\s*=\s*'[^']*'/gi, '')
+    .replace(/\son\w+\s*=\s*[^\s>]+/gi, '')
+    // Remove javascript: URLs
+    .replace(/javascript:/gi, '')
+    // Remove iframe/embed/object tags
+    .replace(/<\/?(iframe|embed|object|script)\b[^>]*>/gi, '')
+    // Trim whitespace
+    .trim()
 }
 
 /**
  * Sanitize text but preserve basic line breaks.
- * Converts \n to <br> for display, after sanitizing.
+ * Returns the text with \n preserved (React can render with whitespace-pre-wrap).
  */
 export function sanitizeTextWithBreaks(input: string): string {
-  return sanitizeText(input).replace(/\n/g, '<br>')
+  return sanitizeText(input)
 }
 
 /**

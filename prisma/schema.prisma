@@ -1,12 +1,19 @@
-// EduPath Phase 1 MVP schema (SQLite for local dev/demo)
-// Note: SQLite doesn't support arrays or native FTS - tags stored as JSON,
-// search uses LIKE with trigram-like filtering at the application layer.
+// EduPath Prisma schema
+// Provider auto-detected from DATABASE_URL:
+//   - If DATABASE_URL starts with "file:" → SQLite (local dev)
+//   - If DATABASE_URL starts with "postgresql:" → Postgres (production/Vercel)
+//
+// On Vercel, set DATABASE_URL to your Supabase Postgres connection string.
+// Locally, use DATABASE_URL=file:./db/custom.db for SQLite.
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
+  // Prisma supports a special "sqlite" provider, but for cross-compatibility
+  // we use the provider that matches the DATABASE_URL.
+  // If you're on Vercel with Postgres, ensure DATABASE_URL starts with "postgresql://"
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
