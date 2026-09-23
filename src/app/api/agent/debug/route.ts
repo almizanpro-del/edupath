@@ -1,22 +1,18 @@
 /**
  * GET /api/agent/debug
- * Temporary debug endpoint — tests different ZAI API URLs.
+ * Temporary debug endpoint — tests multiple ZAI API URLs.
  * REMOVE THIS FILE AFTER DEBUGGING.
  */
 import { NextResponse } from 'next/server'
 
 export async function GET() {
-  const envVars: Record<string, string> = {
-    ZAI_BASE_URL: process.env.ZAI_BASE_URL || 'NOT SET',
-    ZAI_API_KEY: process.env.ZAI_API_KEY ? 'SET' : 'NOT SET',
-    ZAI_TOKEN: process.env.ZAI_TOKEN ? `SET (${process.env.ZAI_TOKEN.length} chars)` : 'NOT SET',
-  }
   const tests: Record<string, unknown> = {}
 
-  // Test different base URLs
   const urlsToTest = [
-    'https://api.z.ai/v1',
-    'https://internal-api.z.ai/v1',
+    'https://api.z.ai/api/v1',
+    'https://api.z.ai/api/paas/v4',
+    'https://open.bigmodel.cn/api/paas/v4',
+    'https://api.z.ai',
   ]
 
   for (const baseUrl of urlsToTest) {
@@ -46,10 +42,10 @@ export async function GET() {
     } catch (err) {
       tests[baseUrl] = {
         success: false,
-        error: err instanceof Error ? err.message : String(err),
+        error: err instanceof Error ? err.message.slice(0, 200) : String(err),
       }
     }
   }
 
-  return NextResponse.json({ envVars, tests })
+  return NextResponse.json({ tests })
 }
