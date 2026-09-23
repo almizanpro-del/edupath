@@ -9,7 +9,7 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { db } from '@/lib/db'
 import staticUniversities from '@/data/static-universities.json'
-import { getZaiClient } from '@/lib/zai-client'
+import { chatCompletion } from '@/lib/llm'
 import { requireSameOrigin } from '@/lib/csrf'
 import { rateLimit } from '@/lib/rate-limit'
 import { scholarshipMatchSchema, validateBody } from '@/lib/validation'
@@ -84,8 +84,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ matches: [] })
     }
 
-    // Use AI to rank scholarships
-    const zai = await getZaiClient()
+    // Use AI to rank scholarships (unified multi-provider LLM client)
     const systemPrompt = `You are an expert scholarship matcher for MENA students applying to international universities. You analyze student profiles and scholarship eligibility criteria to find the best matches.
 
 Respond with STRICT JSON only (no markdown, no code fences). Schema:
@@ -120,15 +119,15 @@ ${JSON.stringify(scholarships, null, 2)}
 
 Find the best matches for this student. Respond with ONLY valid JSON.`
 
-    const completion = await zai.chat.completions.create({
-      messages: [
-        { role: 'assistant', content: systemPrompt },
+    const result = await chatCompletion(
+      [
+        { role: 'system', content: systemPrompt },
         { role: 'user', content: userPrompt },
       ],
-      thinking: { type: 'disabled' },
-    })
+      { thinkingDisabled: true }
+    )
 
-    let raw = completion.choices[0]?.message?.content ?? ''
+    let raw = result.content ?? ''
     // Clean markdown fences
     if (raw.startsWith('```')) {
       raw = raw.replace(/^```(?:json)?\s*\n?/, '').replace(/\n?```$/, '')
@@ -139,8 +138,8 @@ Find the best matches for this student. Respond with ONLY valid JSON.`
       raw = raw.substring(start, end + 1)
     }
 
-    const result = JSON.parse(raw)
-    const matches = (result.matches || []).map((m: { scholarshipId: string; matchScore: number; reasoning: string; tips: string }) => {
+    const parsed = JSON.parse(raw)
+    const matches = (parsed.matches || []).map((m: { scholarshipId: string; matchScore: number; reasoning: string; tips: string }) => {
       const scholarship = scholarships.find(s => s.id === m.scholarshipId)
       return { ...m, scholarship }
     }).filter((m: { scholarship: Scholarship }) => m.scholarship)

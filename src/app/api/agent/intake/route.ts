@@ -134,17 +134,13 @@ export async function POST(req: NextRequest) {
     await import('@/lib/agent/rihla')
   const messages = buildMessages(history, message, language)
 
-  // 4. Call LLM (z-ai-web-dev-sdk)
+  // 4. Call LLM (unified multi-provider client)
   let reply: string
   let llmFailed = false
   try {
-    const { getZaiClient } = await import('@/lib/zai-client')
-    const zai = await getZaiClient()
-    const completion = await zai.chat.completions.create({
-      messages,
-      thinking: { type: 'disabled' },
-    })
-    reply = completion.choices[0]?.message?.content || ''
+    const { chatCompletion } = await import('@/lib/llm')
+    const result = await chatCompletion(messages, { thinkingDisabled: true })
+    reply = result.content
     if (!reply) throw new Error('Empty LLM response')
   } catch (err) {
     console.error('[api/agent/intake] LLM error:', err instanceof Error ? err.message : err)

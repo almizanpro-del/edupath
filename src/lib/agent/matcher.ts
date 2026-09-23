@@ -9,7 +9,7 @@
 
 import { db } from '@/lib/db'
 import staticUniversities from '@/data/static-universities.json'
-import { getZaiClient } from '@/lib/zai-client'
+import { chatCompletion } from '@/lib/llm'
 import type { IntakeProfile } from './rihla'
 
 type Program = {
@@ -263,15 +263,14 @@ ${programInfo}International students: ${uni.intlStudentPct}%.
 Write EXACTLY 2 sentences ${langInstruction} explaining why this university is a great match for this student. Be specific about budget, location, or program fit. Be encouraging. Do not use markdown.`
 
   try {
-    const zai = await getZaiClient()
-    const completion = await zai.chat.completions.create({
-      messages: [
-        { role: 'assistant', content: `You are a helpful university advisor. Write in ${lang}.` },
+    const result = await chatCompletion(
+      [
+        { role: 'system', content: `You are a helpful university advisor. Write in ${lang}.` },
         { role: 'user', content: prompt },
       ],
-      thinking: { type: 'disabled' },
-    })
-    const explanation = completion.choices[0]?.message?.content?.trim()
+      { thinkingDisabled: true }
+    )
+    const explanation = result.content.trim()
     if (explanation) return explanation
   } catch (err) {
     console.error('[matcher] LLM explanation failed:', err)
