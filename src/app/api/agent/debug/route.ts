@@ -6,7 +6,7 @@
 import { NextResponse } from 'next/server'
 
 export async function GET() {
-  const results: Record<string, unknown> = {
+  const results: { envVars: Record<string, string>; tests: Record<string, unknown> } = {
     envVars: {
       ZAI_BASE_URL: process.env.ZAI_BASE_URL || 'NOT SET',
       ZAI_API_KEY: process.env.ZAI_API_KEY ? 'SET' : 'NOT SET',
