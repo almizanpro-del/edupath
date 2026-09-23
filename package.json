@@ -11,6 +11,7 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "postinstall": "prisma generate",
+    "prebuild": "node -e \"const fs=require('fs');const c={baseUrl:process.env.ZAI_BASE_URL||'https://internal-api.z.ai/v1',apiKey:process.env.ZAI_API_KEY||'Z.ai',chatId:process.env.ZAI_CHAT_ID||'',token:process.env.ZAI_TOKEN||'',userId:process.env.ZAI_USER_ID||''};try{fs.writeFileSync('.z-ai-config',JSON.stringify(c))}catch(e){}\"",
     "db:push": "prisma db push --accept-data-loss",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",

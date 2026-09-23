@@ -9,7 +9,7 @@
 import { NextResponse, NextRequest } from 'next/server'
 import { db } from '@/lib/db'
 import staticUniversities from '@/data/static-universities.json'
-import ZAI from 'z-ai-web-dev-sdk'
+import { getZaiClient } from '@/lib/zai-client'
 import { requireSameOrigin } from '@/lib/csrf'
 import { rateLimit } from '@/lib/rate-limit'
 import { scholarshipMatchSchema, validateBody } from '@/lib/validation'
@@ -85,7 +85,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Use AI to rank scholarships
-    const zai = await ZAI.create()
+    const zai = await getZaiClient()
     const systemPrompt = `You are an expert scholarship matcher for MENA students applying to international universities. You analyze student profiles and scholarship eligibility criteria to find the best matches.
 
 Respond with STRICT JSON only (no markdown, no code fences). Schema:

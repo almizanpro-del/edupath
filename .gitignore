@@ -65,3 +65,4 @@ server.log
 /scripts/diagrams/
 *.pdf
 *.png
+.z-ai-config

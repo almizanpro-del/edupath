@@ -6,8 +6,7 @@
  * Asks one question at a time, never pushy.
  */
 
-export const RIHLA_SYSTEM_PROMPT = `You are "Rihla" (رِحلة), a friendly university advisor for students from the MENA region.
-Your goal is to help them find the perfect university program abroad.
+export const RIHLA_SYSTEM_PROMPT = `You are "Rihla" (رِحلة), a friendly university advisor for students from the MENA region. Your goal is to help them find the perfect university program abroad.
 
 RULES:
 1. Detect the user's language from their first message. Respond in the SAME language (Arabic or English).
@@ -32,8 +31,7 @@ RULES:
 8. Never invent universities. Only reference what the search returns.
 9. Keep each response under 3 sentences.
 
-IMPORTANT: The preferredCountries field must always be a JSON array (e.g. ["Turkey", "Germany"]).
-If the user says "anywhere", use an empty array [].`
+IMPORTANT: The preferredCountries field must always be a JSON array (e.g. ["Turkey", "Germany"]). If the user says "anywhere", use an empty array [].`
 
 export type IntakeProfile = {
   nationality?: string
@@ -53,7 +51,6 @@ export type IntakeProfile = {
  * the INTAKE_COMPLETE marker.
  */
 export function parseIntakeComplete(reply: string): IntakeProfile | null {
-  // Match ```json ... ``` block containing INTAKE_COMPLETE
   const jsonMatch = reply.match(/```json\s*\n([\s\S]*?)\n```/)
   if (!jsonMatch) return null
 
@@ -76,9 +73,15 @@ export function isIntakeComplete(reply: string): boolean {
 }
 
 /**
- * Build the LLM message history from the session.
- * Note: z-ai-web-dev-sdk uses 'assistant' role for system prompts
- * (not 'system' like OpenAI).
+ * Build the LLM messages for the ZAI SDK.
+ *
+ * The ZAI SDK works best with a simple 2-message format:
+ *   1. assistant message with the system prompt
+ *   2. user message with the conversation history + new message
+ *
+ * We embed the conversation history into the user message rather than
+ * sending a long array of back-and-forth messages, which can cause
+ * API errors with some models.
  */
 export function buildMessages(
   sessionMessages: Array<{ role: string; content: string }>,
@@ -90,26 +93,24 @@ export function buildMessages(
       ? 'مرحباً! أنا رِحلة، مستشارك الجامعي الذكي. سأساعدك في العثور على الجامعة المثالية لك. لتبدأ، ما هي جنسيتك؟'
       : "Hello! I'm Rihla, your AI university advisor. I'll help you find the perfect university. To start, what's your nationality?"
 
-  const hasGreeting = sessionMessages.some(
-    m => m.role === 'assistant' && m.content === greeting
-  )
-
-  const history: Array<{ role: 'assistant' | 'user'; content: string }> = [
-    { role: 'assistant', content: RIHLA_SYSTEM_PROMPT },
-  ]
-
-  if (!hasGreeting) {
-    history.push({ role: 'assistant', content: greeting })
-  }
-
+  // Build conversation history as a single text block
+  let historyText = ''
   for (const m of sessionMessages) {
-    history.push({
-      role: m.role === 'user' ? 'user' : 'assistant',
-      content: m.content,
-    })
+    if (m.role === 'user') {
+      historyText += `Student: ${m.content}\n`
+    } else if (m.role === 'assistant' && m.content !== greeting) {
+      historyText += `Rihla: ${m.content}\n`
+    }
   }
 
-  history.push({ role: 'user', content: newMessage })
+  // The user's new message
+  historyText += `Student: ${newMessage}`
 
-  return history
+  return [
+    { role: 'assistant', content: RIHLA_SYSTEM_PROMPT },
+    {
+      role: 'user',
+      content: `Conversation so far:\n${historyText}\n\nRespond as Rihla. Remember: ask only ONE question at a time, respond in the student's language (${language === 'ar' ? 'Arabic' : 'English'}), and be encouraging.`,
+    },
+  ]
 }

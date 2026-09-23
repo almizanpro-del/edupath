@@ -15,7 +15,7 @@ import { createClient } from '@/lib/supabase/server'
 import { requireSameOrigin } from '@/lib/csrf'
 import { rateLimit } from '@/lib/rate-limit'
 import { buildMessages, parseIntakeComplete, isIntakeComplete, type IntakeProfile } from '@/lib/agent/rihla'
-import ZAI from 'z-ai-web-dev-sdk'
+import { getZaiClient } from '@/lib/zai-client'
 
 // In-memory session store for when DB is unavailable
 const memorySessions = new Map<string, { language: string; messages: Array<{ role: string; content: string }> }>()
@@ -107,7 +107,7 @@ export async function POST(req: NextRequest) {
     let reply: string
     let llmFailed = false
     try {
-      const zai = await ZAI.create()
+      const zai = await getZaiClient()
       const completion = await zai.chat.completions.create({
         messages,
         thinking: { type: 'disabled' },
@@ -115,7 +115,8 @@ export async function POST(req: NextRequest) {
       reply = completion.choices[0]?.message?.content || ''
       if (!reply) throw new Error('Empty LLM response')
     } catch (err) {
-      console.error('[api/agent/intake] LLM error:', err)
+      console.error('[api/agent/intake] LLM error:', err instanceof Error ? err.message : err)
+      console.error('[api/agent/intake] LLM error full:', err)
       llmFailed = true
       reply = language === 'ar'
         ? 'عذراً، أواجه مشكلة تقنية حالياً. يرجى المحاولة مرة أخرى أو استخدم الفلاتر اليدوية في الصفحة الرئيسية.'
@@ -173,6 +174,9 @@ export async function POST(req: NextRequest) {
       intakeComplete,
       profile,
       llmFailed,
+      debugError: llmFailed && process.env.NODE_ENV === 'development'
+        ? 'LLM call failed — check server logs for [api/agent/intake] LLM error'
+        : undefined,
     })
   } catch (error) {
     console.error('[api/agent/intake] Fatal error:', error)

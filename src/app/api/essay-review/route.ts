@@ -15,7 +15,7 @@
  */
 import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import ZAI from 'z-ai-web-dev-sdk'
+import { getZaiClient } from '@/lib/zai-client'
 import { requireSameOrigin } from '@/lib/csrf'
 import { essayReviewSchema, validateBody } from '@/lib/validation'
 
@@ -134,7 +134,7 @@ ${essayText.trim()}
 Evaluate this essay strictly per the rubric. Cite exact phrases from the essay in your line_feedback. Be specific and actionable. Respond with ONLY valid JSON — no markdown, no code fences, no preamble.`
 
     // Call AI
-    const zai = await ZAI.create()
+    const zai = await getZaiClient()
     const completion = await zai.chat.completions.create({
       messages: [
         { role: 'assistant', content: SYSTEM_PROMPT },

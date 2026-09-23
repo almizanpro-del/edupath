@@ -9,7 +9,7 @@
 
 import { db } from '@/lib/db'
 import staticUniversities from '@/data/static-universities.json'
-import ZAI from 'z-ai-web-dev-sdk'
+import { getZaiClient } from '@/lib/zai-client'
 import type { IntakeProfile } from './rihla'
 
 type Program = {
@@ -263,7 +263,7 @@ ${programInfo}International students: ${uni.intlStudentPct}%.
 Write EXACTLY 2 sentences ${langInstruction} explaining why this university is a great match for this student. Be specific about budget, location, or program fit. Be encouraging. Do not use markdown.`
 
   try {
-    const zai = await ZAI.create()
+    const zai = await getZaiClient()
     const completion = await zai.chat.completions.create({
       messages: [
         { role: 'assistant', content: `You are a helpful university advisor. Write in ${lang}.` },
