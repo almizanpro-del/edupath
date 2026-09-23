@@ -265,9 +265,11 @@ Write EXACTLY 2 sentences ${langInstruction} explaining why this university is a
   try {
     const zai = await ZAI.create()
     const completion = await zai.chat.completions.create({
-      messages: [{ role: 'user', content: prompt }],
-      temperature: 0.6,
-      max_tokens: 150,
+      messages: [
+        { role: 'assistant', content: `You are a helpful university advisor. Write in ${lang}.` },
+        { role: 'user', content: prompt },
+      ],
+      thinking: { type: 'disabled' },
     })
     const explanation = completion.choices[0]?.message?.content?.trim()
     if (explanation) return explanation

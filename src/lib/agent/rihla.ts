@@ -77,12 +77,14 @@ export function isIntakeComplete(reply: string): boolean {
 
 /**
  * Build the LLM message history from the session.
+ * Note: z-ai-web-dev-sdk uses 'assistant' role for system prompts
+ * (not 'system' like OpenAI).
  */
 export function buildMessages(
   sessionMessages: Array<{ role: string; content: string }>,
   newMessage: string,
   language: string
-): Array<{ role: 'system' | 'user' | 'assistant'; content: string }> {
+): Array<{ role: 'assistant' | 'user'; content: string }> {
   const greeting =
     language === 'ar'
       ? 'مرحباً! أنا رِحلة، مستشارك الجامعي الذكي. سأساعدك في العثور على الجامعة المثالية لك. لتبدأ، ما هي جنسيتك؟'
@@ -92,8 +94,8 @@ export function buildMessages(
     m => m.role === 'assistant' && m.content === greeting
   )
 
-  const history: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> = [
-    { role: 'system', content: RIHLA_SYSTEM_PROMPT },
+  const history: Array<{ role: 'assistant' | 'user'; content: string }> = [
+    { role: 'assistant', content: RIHLA_SYSTEM_PROMPT },
   ]
 
   if (!hasGreeting) {
@@ -102,7 +104,7 @@ export function buildMessages(
 
   for (const m of sessionMessages) {
     history.push({
-      role: m.role as 'user' | 'assistant',
+      role: m.role === 'user' ? 'user' : 'assistant',
       content: m.content,
     })
   }

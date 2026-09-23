@@ -110,8 +110,7 @@ export async function POST(req: NextRequest) {
       const zai = await ZAI.create()
       const completion = await zai.chat.completions.create({
         messages,
-        temperature: 0.7,
-        max_tokens: 500,
+        thinking: { type: 'disabled' },
       })
       reply = completion.choices[0]?.message?.content || ''
       if (!reply) throw new Error('Empty LLM response')
