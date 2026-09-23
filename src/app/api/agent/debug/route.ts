@@ -6,20 +6,17 @@
 import { NextResponse } from 'next/server'
 
 export async function GET() {
-  const results: { envVars: Record<string, string>; tests: Record<string, unknown> } = {
-    envVars: {
-      ZAI_BASE_URL: process.env.ZAI_BASE_URL || 'NOT SET',
-      ZAI_API_KEY: process.env.ZAI_API_KEY ? 'SET' : 'NOT SET',
-      ZAI_TOKEN: process.env.ZAI_TOKEN ? `SET (${process.env.ZAI_TOKEN.length} chars)` : 'NOT SET',
-    },
-    tests: {},
+  const envVars: Record<string, string> = {
+    ZAI_BASE_URL: process.env.ZAI_BASE_URL || 'NOT SET',
+    ZAI_API_KEY: process.env.ZAI_API_KEY ? 'SET' : 'NOT SET',
+    ZAI_TOKEN: process.env.ZAI_TOKEN ? `SET (${process.env.ZAI_TOKEN.length} chars)` : 'NOT SET',
   }
+  const tests: Record<string, unknown> = {}
 
   // Test different base URLs
   const urlsToTest = [
     'https://api.z.ai/v1',
     'https://internal-api.z.ai/v1',
-    'https://open.bigmodel.cn/api/paas/v4',
   ]
 
   for (const baseUrl of urlsToTest) {
@@ -42,17 +39,17 @@ export async function GET() {
         ],
         thinking: { type: 'disabled' },
       })
-      results.tests[baseUrl] = {
+      tests[baseUrl] = {
         success: true,
         response: completion.choices[0]?.message?.content?.slice(0, 50) || 'EMPTY',
       }
     } catch (err) {
-      results.tests[baseUrl] = {
+      tests[baseUrl] = {
         success: false,
         error: err instanceof Error ? err.message : String(err),
       }
     }
   }
 
-  return NextResponse.json(results)
+  return NextResponse.json({ envVars, tests })
 }
