@@ -7,35 +7,39 @@ on:
     branches: [main]
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
-          cache: 'npm'
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install
 
       - name: Generate Prisma client
         run: npx prisma generate
 
       - name: Type check
-        run: npx tsc --noEmit
+        run: bunx tsc --noEmit
+
+      - name: Lint
+        run: bun run lint
 
       - name: Run tests
-        run: npm test
+        run: bunx vitest run
 
       - name: Build
-        run: npx next build
+        run: bun run build
         env:
-          # Minimal env vars for build to succeed
           DATABASE_URL: "file:./test.db"
           NEXT_PUBLIC_SUPABASE_URL: "https://mock.supabase.co"
           NEXT_PUBLIC_SUPABASE_ANON_KEY: "mock-key"
-        # Skip the cp commands in the build script
-        # (they only matter for standalone deployment)
+          SUPABASE_URL: "https://mock.supabase.co"
+          SUPABASE_ANON_KEY: "mock-key"
+          SUPABASE_SECRET_KEY: "mock-secret"
+          SUPABASE_JWKS_URL: "https://mock.supabase.co/auth/v1/.well-known/jwks.json"
+          CRON_SECRET: "test-secret"

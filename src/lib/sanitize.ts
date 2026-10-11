@@ -74,12 +74,4 @@ export function truncate(text: string, maxLength: number): string {
   return text.slice(0, maxLength - 3) + '...'
 }
 
-/**
- * Validate that a string contains no script tags or event handlers.
- * Returns true if safe.
- */
-export function isSafeInput(input: string): boolean {
-  const lower = input.toLowerCase()
-  const dangerous = ['<script', 'javascript:', 'onerror=', 'onload=', 'onclick=', 'onmouseover=', '<iframe', '<embed', '<object']
-  return !dangerous.some(d => lower.includes(d))
-}
+

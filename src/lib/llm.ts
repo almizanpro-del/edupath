@@ -153,11 +153,13 @@ export async function chatCompletion(
 ): Promise<ChatCompletionResult> {
   const errors: string[] = []
 
-  // 1. ZAI sandbox (works in dev — config at /etc/.z-ai-config)
-  try {
-    return await tryZaiSandbox(messages, opts)
-  } catch (err) {
-    errors.push(`ZAI-sandbox: ${err instanceof Error ? err.message : err}`)
+  // 1. ZAI sandbox (dev only — will always fail in production)
+  if (process.env.NODE_ENV !== 'production') {
+    try {
+      return await tryZaiSandbox(messages, opts)
+    } catch (err) {
+      errors.push(`ZAI-sandbox: ${err instanceof Error ? err.message : err}`)
+    }
   }
 
   // 2. OpenAI

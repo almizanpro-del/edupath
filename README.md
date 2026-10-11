@@ -148,6 +148,25 @@ New reviews go to a `pending` state and appear in the admin moderation queue. To
 3. Refresh the page — an "Admin" button will appear in the header
 4. Click it to open the moderation panel where you can approve or reject pending reviews
 
+## Security
+
+- CSRF protection on all state-changing API routes via `Sec-Fetch-Site` and Origin header validation
+- Rate limiting on API routes (in-memory per-instance; use Upstash Redis for distributed deployments)
+- Zod schema validation on all API inputs
+- CSP and security headers configured in `next.config.ts`
+- Supabase Auth with server-side session handling
+- React's built-in XSS escaping for all user-generated content
+
+## Testing
+
+```bash
+bunx vitest run        # Run unit tests
+bun run lint           # Run ESLint
+bunx tsc --noEmit      # Type check
+```
+
+Test files are located alongside source files as `*.test.ts`.
+
 ## Database Migration: SQLite → Supabase Postgres
 
 The dev environment uses SQLite (zero-config). For production, migrate to Supabase Postgres:

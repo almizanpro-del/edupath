@@ -50,7 +50,7 @@ export function getCollegeOrUniversitySchema(uni: University) {
 }
 
 export function getOrganizationSchema() {
-  const base = 'https://edupath-amber-three.vercel.app'
+  const base = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
@@ -66,7 +66,7 @@ export function getOrganizationSchema() {
 }
 
 export function getWebSiteSchema() {
-  const base = 'https://edupath-amber-three.vercel.app'
+  const base = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000'
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
