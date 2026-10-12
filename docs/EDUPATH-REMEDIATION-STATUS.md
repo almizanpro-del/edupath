@@ -1,79 +1,127 @@
 # EduPath Remediation Status
 
 **Last updated:** 2026-10-13
-**Current phase:** Phase 0 (Audit) → Phase 1 (Data Integrity)
+**Current phase:** Production Blocker Remediation Sprint
 
 ---
 
-## Phase 0 — Baseline Audit
-- [x] Inspect codebase architecture
-- [x] Establish functional inventory
-- [x] Produce baseline audit report (`docs/audit/EDUPATH-BASELINE-AUDIT.md`)
-- [x] Identify data quality issues
-- [x] Identify security findings
-- [x] Identify Rihla AI issues
-- [x] Identify Arabic/RTL gaps
+## Production Blocker Sprint (2026-10-13)
 
-## Phase 1 — University & Program Data Integrity
-- [ ] Add data provenance fields to schema (source, verifiedStatus, lastVerified, sourceUrl)
-- [ ] Mark all existing data as `UNVERIFIED`
-- [ ] Add uncertainty labels to tuition display
-- [ ] Audit tuition data for duplicates and implausible values
-- [ ] Create data quality report
-- [ ] Add `dataQualityScore` to University model
+### WS1 — Misleading Financial Data (P0) — FIXED_AND_VERIFIED
+- [x] Created `src/lib/financial.ts` with `evaluateTuition()`, `calculateTotalCost()`, `auditUniversityData()`
+- [x] Known seed defaults ($5000, $3500, etc.) flagged as "Estimated"
+- [x] Missing tuition returns null (not $0) — UI shows "Unknown"
+- [x] Cost calculator uses `calculateTotalCost()` — returns null for missing data
+- [x] Rihla matcher reduces weight on unverified tuition (40→25 pts)
+- [x] LLM explanation prompt discloses "UNVERIFIED"
+- [x] 20 financial tests added
+- [ ] Verify actual tuition data against official sources
+- [ ] Set verifiedStatus + sourceUrl for each university
 
-## Phase 2 — Affordability & Total-Cost Engine
-- [ ] Extend cost calculator with transparent component breakdown
-- [ ] Add mandatory fees, visa, insurance, travel, one-time costs
-- [ ] Mark cost components as required/optional/estimated/unknown
-- [ ] Add currency conversion transparency (rate source + date)
-- [ ] Add budget feasibility analysis
-- [ ] Extract cost calculation into reusable testable module
+### WS2 — Review/Verification Claims (P0) — FIXED_AND_VERIFIED
+- [x] "Verified Student" badge → "Student Reviewer" (EN + AR)
+- [x] Badge color changed from blue to neutral slate
+- [x] Footer: "RTL coming" → "RTL"
+- [x] Footer: "Verified Reviews" → "Student Reviews"
+- [x] Footer disclaimer updated (removed verification claims)
+- [ ] Implement actual student enrollment verification
 
-## Phase 3 — Rihla AI Advisor
-- [ ] Separate deterministic matching from LLM generation
-- [ ] Add eligibility classification (ELIGIBLE / POTENTIALLY / NOT / UNVERIFIED)
-- [ ] Ground LLM explanations in actual DB records
-- [ ] Validate LLM output against database
-- [ ] Add fallback when AI unavailable (structured results without explanations)
-- [ ] Add test scenarios (budget too low, missing data, AI failure)
+### WS3 — Rihla in Production (P0) — PARTIALLY_FIXED
+- [x] Graceful degradation: llmFailed shows helpful fallback message
+- [x] Rihla scoring adjusted for unverified data
+- [x] LLM prompt discloses unverified tuition
+- [ ] Set OPENAI_API_KEY or XAI_API_KEY on Vercel (EXTERNAL DEPENDENCY)
+- [ ] Add eligibility classification
+- [ ] Add LLM output validation
+- [ ] Add Rihla integration tests
 
-## Phase 4 — Reviews, Verification & Trust
-- [ ] Remove "verified student" badge until verification process exists
-- [ ] Add review disclosure: "Unverified" label on all reviews
-- [ ] Add privacy policy page
-- [ ] Add terms of service page
-- [ ] Add data verification methodology page
-- [ ] Add AI limitations disclosure
+### WS4 — GitHub Actions CI (P0) — FIXED_NOT_DEPLOYED
+- [x] Fixed YAML syntax: `branches: ain]` → `branches: [main]`
+- [x] Replaced bun with npm throughout
+- [x] Added Python tests to CI
+- [ ] Verify CI runs successfully on GitHub Actions
 
-## Phase 5 — Arabic, RTL & UX
-- [ ] Translate remaining 55 Arabic descriptions
-- [ ] Add Arabic program/scholarship name translations
-- [ ] Audit RTL layout across all breakpoints
-- [ ] Add accessibility audit (WCAG 2.2 AA)
+### WS5 — Cost Calculator (P1) — PARTIALLY_FIXED
+- [x] Shows "Unknown" instead of $0 for missing tuition
+- [x] Shows warning when total can't be calculated
+- [ ] Add mandatory fees, visa, insurance, travel, setup costs
+- [ ] Distinguish one-time vs recurring costs
+- [ ] Extract into reusable testable module
+- [ ] Add currency conversion transparency
 
-## Phase 6 — Administration
-- [ ] Consolidate requireAdmin() into shared helper
-- [ ] Add audit logging for admin actions
-- [ ] Add data completeness dashboard
+### WS6 — Integration Tests (P1) — PARTIALLY_FIXED
+- [x] 20 financial tests added (total: 75 JS + 61 Python)
+- [ ] API route integration tests
+- [ ] E2E tests (Playwright)
+- [ ] Auth/authorization tests
+- [ ] Rihla pipeline tests
 
-## Phase 7 — Security & Operations
-- [ ] Remove debug route
-- [ ] Verify all CSRF/rate-limit/zod coverage
-- [ ] Add account deletion mechanism
-- [ ] Audit PII in logs
-
-## Phase 8 — Testing
-- [ ] Add cost calculation tests
-- [ ] Add LLM response parsing tests
-- [ ] Add API route integration tests
-- [ ] Add auth/authorization tests
-- [ ] Add E2E test scenarios
+### WS7 — Deployment (—) — Code pushed, UNVERIFIED
+- [x] Code committed and pushed (`e54b7d9`)
+- [ ] Verify Vercel build succeeded
+- [ ] Test affected live user journeys
+- [ ] Confirm no regressions
 
 ---
 
-## Immediate Actions (P0)
-- [x] Remove debug route (`/api/agent/debug`)
-- [ ] Add `verifiedStatus` field to University schema (default: `UNVERIFIED`)
-- [ ] Add uncertainty label to tuition display
-- [ ] Add `sourceUrl` + `lastVerified` fields to University + Program
+## Previous Phases
+
+### Phase 0 — Baseline Audit — COMPLETED
+- [x] docs/audit/EDUPATH-BASELINE-AUDIT.md
+- [x] docs/audit/EDUPATH-IMPLEMENTATION-CHANGE-REPORT.md
+
+### Phase 1 — Data Provenance — PARTIALLY_FIXED
+- [x] Schema fields added (verifiedStatus, sourceUrl, lastVerifiedAt, dataQualityScore)
+- [x] "Unverified Data" badge on university detail page
+- [x] Financial data utilities (evaluateTuition, calculateTotalCost, auditUniversityData)
+- [ ] Verify data against official sources
+- [ ] Populate dataQualityScore for all records
+
+### Phase 2 — Affordability Engine — PARTIALLY_FIXED
+- [x] Cost calculator shows "Unknown" for missing data
+- [x] Unverified data warning
+- [ ] Full component breakdown (fees, visa, insurance, travel, setup)
+- [ ] Reusable calculation module
+- [ ] Budget feasibility analysis
+
+### Phase 3 — Rihla AI — PARTIALLY_FIXED
+- [x] Intake + match + results architecture
+- [x] Unified LLM client (ZAI → OpenAI → Grok)
+- [x] Graceful degradation for LLM failures
+- [x] Scoring adjusted for unverified data
+- [ ] LLM working on Vercel (requires API key)
+- [ ] Eligibility classification
+- [ ] LLM output validation
+
+### Phase 4 — Reviews & Trust — PARTIALLY_FIXED
+- [x] "Verified Student" badge relabeled
+- [x] Footer claims corrected
+- [ ] Privacy policy page
+- [ ] Terms of service page
+- [ ] Account deletion mechanism
+
+### Phase 5 — Arabic & RTL — PARTIALLY_FIXED
+- [x] 784 translation keys × 2 languages
+- [x] RTL layout works
+- [x] Footer text corrected
+- [ ] Translate 55 missing Arabic descriptions
+- [ ] Translate program/scholarship names in data
+
+### Phase 6 — Administration — PARTIALLY_FIXED
+- [x] Shared auth-helpers.ts created
+- [ ] Wire shared helper into all 4 admin routes
+- [ ] Add audit logging
+- [ ] Add program-level editing
+
+### Phase 7 — Security — MOSTLY_FIXED
+- [x] CSRF, rate limiting, zod validation, security headers
+- [x] Debug route removed
+- [ ] Privacy policy
+- [ ] Account deletion
+- [ ] Distributed rate limiting (Upstash Redis)
+
+### Phase 8 — Testing — PARTIALLY_FIXED
+- [x] 75 JS tests + 61 Python tests
+- [x] Financial data tests (missing, stale, estimated, verified)
+- [ ] Integration tests
+- [ ] E2E tests
