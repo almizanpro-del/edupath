@@ -145,7 +145,9 @@
       "floatingCta": "Have a question about this university?",
       "floatingCtaSub": "Get a personal response from the admissions team.",
       "openForm": "Open contact form"
-    }
+    },
+    "unverifiedData": "Unverified Data",
+    "unverifiedWarning": "All financial data is currently unverified. Please confirm actual fees with the official university website."
   },
   "Compare": {
     "title": "Compare {count} {count, plural, one {university} other {universities}}",

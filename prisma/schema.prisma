@@ -39,6 +39,12 @@ model University {
   hasPrayerFacilities     Boolean? @default(true)
   hasGenderSegregatedHousing Boolean? @default(false)
   hasFamilyAccommodation  Boolean? @default(false)
+  // Data provenance fields (Phase 1 — Data Integrity)
+  verifiedStatus  String   @default("UNVERIFIED") // UNVERIFIED | OFFICIAL_SOURCE_VERIFIED | THIRD_PARTY_CORROBORATED | ESTIMATED | STALE | CONFLICTING_SOURCES
+  sourceUrl       String?  // URL of the official source where data was verified
+  sourceCategory  String?  // official | government | third_party | estimated | user_submitted
+  lastVerifiedAt  DateTime? // When the data was last checked against the source
+  dataQualityScore Int     @default(0) // 0-100 completeness score
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -64,6 +70,10 @@ model Program {
   tuitionUsd      Int
   deadline        String?
   entryReqs       String?
+  // Data provenance fields (Phase 1 — Data Integrity)
+  verifiedStatus  String   @default("UNVERIFIED") // UNVERIFIED | OFFICIAL_SOURCE_VERIFIED | ESTIMATED | STALE
+  sourceUrl       String?  // Official program page URL
+  lastVerifiedAt  DateTime?
   agentMatches    AgentMatch[]
 
   @@index([universityId])

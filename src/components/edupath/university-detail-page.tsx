@@ -270,6 +270,15 @@ export function UniversityDetailPage({ uni }: Props) {
                 {/* Subtle top highlight */}
                 <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
+                {/* Data trust badge */}
+                {(uni as Record<string, unknown>).verifiedStatus === 'UNVERIFIED' || !(uni as Record<string, unknown>).verifiedStatus ? (
+                  <div className="bg-amber-500/20 border-b border-amber-500/30 px-4 py-1.5 text-center">
+                    <span className="text-[10px] text-amber-200 font-medium uppercase tracking-wider">
+                      {locale === 'ar' ? 'بيانات غير موثقة' : 'Unverified Data'}
+                    </span>
+                  </div>
+                ) : null}
+
                 <div className="flex md:flex-col divide-x md:divide-x-0 md:divide-y divide-white/10">
                   {/* Tuition — primary */}
                   <div className="flex-1 px-6 py-4 md:py-5 min-w-0">
@@ -555,8 +564,13 @@ export function UniversityDetailPage({ uni }: Props) {
                   </CardContent>
                 </Card>
 
-                <div className="text-xs text-muted-foreground bg-amber-50 dark:bg-amber-950/20 dark:text-amber-200 border border-amber-200 dark:border-amber-800 rounded-xl p-3">
+                <div className="text-xs text-muted-foreground bg-amber-50 dark:bg-amber-950/20 dark:text-amber-200 border border-amber-200 dark:border-amber-800 rounded-xl p-3 space-y-1">
                   <strong>{t('cost.disclaimer')}</strong>
+                  <p className="mt-1">
+                    {locale === 'ar'
+                      ? '⚠️ جميع البيانات المالية غير موثقة حالياً. يرجى التأكد من الرسوم الفعلية من موقع الجامعة الرسمي.'
+                      : '⚠️ All financial data is currently unverified. Please confirm actual fees with the official university website.'}
+                  </p>
                 </div>
               </motion.div>
             </TabsContent>
