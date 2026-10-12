@@ -167,6 +167,7 @@ export function TransferFinderClient({ universities }: { universities: Universit
 
 function PathwayCard({ pathway }: { pathway: Pathway }) {
   const t = useTranslations('TransferFinder')
+  const router = useRouter()
   const transferPct = Math.round((pathway.creditsAccepted / pathway.totalCredits) * 100)
   const agreementColors: Record<string, string> = {
     official: 'bg-blue-600/10 text-blue-700 dark:bg-blue-600/20 dark:text-blue-300 border-blue-300',
@@ -177,23 +178,29 @@ function PathwayCard({ pathway }: { pathway: Pathway }) {
   return (
     <Card className="overflow-hidden">
       <CardContent className="pt-6">
-        {/* From → To header */}
+        {/* From → To header — clickable links */}
         <div className="flex items-center gap-3 mb-4 flex-wrap">
-          <div className="flex items-center gap-2">
+          <button
+            onClick={() => router.push(`/university/${pathway.fromUniversity.slug}`)}
+            className="flex items-center gap-2 hover:underline"
+          >
             <Image src={countryFlagUrl(pathway.fromUniversity.country, 40)} alt="" width={24} height={16} className="rounded" unoptimized />
-            <div>
-              <div className="font-semibold text-sm">{pathway.fromUniversity.name}</div>
+            <div className="text-left">
+              <div className="font-semibold text-sm text-blue-600">{pathway.fromUniversity.name}</div>
               <div className="text-xs text-muted-foreground">{pathway.fromUniversity.city}, {pathway.fromUniversity.country}</div>
             </div>
-          </div>
+          </button>
           <ArrowRight className="size-5 text-blue-600 mx-2" />
-          <div className="flex items-center gap-2">
+          <button
+            onClick={() => router.push(`/university/${pathway.toUniversity.slug}`)}
+            className="flex items-center gap-2 hover:underline"
+          >
             <Image src={countryFlagUrl(pathway.toUniversity.country, 40)} alt="" width={24} height={16} className="rounded" unoptimized />
-            <div>
-              <div className="font-semibold text-sm">{pathway.toUniversity.name}</div>
+            <div className="text-left">
+              <div className="font-semibold text-sm text-blue-600">{pathway.toUniversity.name}</div>
               <div className="text-xs text-muted-foreground">{pathway.toUniversity.city}, {pathway.toUniversity.country}</div>
             </div>
-          </div>
+          </button>
         </div>
 
         {/* Stats row */}
@@ -236,6 +243,11 @@ function PathwayCard({ pathway }: { pathway: Pathway }) {
           <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
             <div className="h-full bg-gradient-to-r from-blue-500 to-blue-500 rounded-full" style={{ width: `${transferPct}%` }} />
           </div>
+        </div>
+
+        {/* Explanation */}
+        <div className="text-xs text-muted-foreground bg-slate-50 dark:bg-slate-800 rounded-lg p-2 mt-2">
+          💡 {t('explanation') || 'Start cheaper, transfer later. Always confirm with both universities.'}
         </div>
       </CardContent>
     </Card>

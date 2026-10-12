@@ -393,7 +393,8 @@
     "creditsAccepted": "Credits accepted",
     "official": "official",
     "informal": "informal",
-    "caseByCase": "case by case"
+    "caseByCase": "case by case",
+    "explanation": "Start cheaper, transfer later. Always confirm with both universities."
   },
   "Scholarships": {
     "title": "Financial Aid Matcher",
