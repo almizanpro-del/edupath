@@ -391,7 +391,7 @@ export function UniversityDetailPage({ uni }: Props) {
                 { value: 'programs', label: `${t('tabs.programs')} (${uni.programs.length})`, icon: GraduationCap },
                 { value: 'scholarships', label: `${t('tabs.scholarships')} (${uni.scholarships.length})`, icon: Award },
                 { value: 'cost', label: t('tabs.cost'), icon: Calculator },
-                { value: 'reviews', label: `${t('tabs.reviews')} (${reviews.length})`, icon: Star },
+                { value: 'reviews', label: `${t('tabs.reviews')} (${realReviews.length})`, icon: Star },
                 { value: 'visa', label: t('tabs.visa'), icon: Plane },
               ].map(tab => (
                 <TabsTrigger key={tab.value} value={tab.value} className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent data-[state=active]:text-blue-700 dark:data-[state=active]:text-blue-400 gap-1.5 py-3 px-4 dark:data-[state=active]:border-blue-400 transition-colors">
