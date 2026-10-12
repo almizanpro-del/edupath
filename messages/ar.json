@@ -10,7 +10,8 @@
     "transferFinder": "باحث التحويل",
     "scholarships": "المنح الدراسية",
     "pricing": "الأسعار",
-    "sponsor": "راعي"
+    "sponsor": "راعي",
+    "explore": "استكشف"
   },
   "Hero": {
     "badge": "لطلاب الشرق الأوسط وشمال أفريقيا",
@@ -71,7 +72,8 @@
       "programs": "البرامج",
       "scholarships": "المنح",
       "cost": "حاسبة التكلفة",
-      "reviews": "المراجعات"
+      "reviews": "المراجعات",
+      "visa": "التأشيرة والملاحظات"
     },
     "stats": {
       "cheapestProgram": "أرخص برنامج",

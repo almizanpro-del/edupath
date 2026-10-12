@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowLeft, DollarSign, Star, Heart, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Mail, Send, Loader2, Building2, GraduationCap, Award, Globe } from 'lucide-react'
+import { ArrowLeft, DollarSign, Star, Heart, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Mail, Send, Loader2, Building2, GraduationCap, Award, Globe, Plane, FileText, Info } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -336,6 +336,7 @@ export function UniversityDetailPage({ uni }: Props) {
                 { value: 'scholarships', label: `${t('tabs.scholarships')} (${uni.scholarships.length})`, icon: Award },
                 { value: 'cost', label: t('tabs.cost'), icon: Calculator },
                 { value: 'reviews', label: `${t('tabs.reviews')} (${reviews.length})`, icon: Star },
+                { value: 'visa', label: t('tabs.visa'), icon: Plane },
               ].map(tab => (
                 <TabsTrigger key={tab.value} value={tab.value} className="rounded-none border-b-2 border-transparent data-[state=active]:border-blue-600 data-[state=active]:bg-transparent data-[state=active]:text-blue-700 dark:data-[state=active]:text-blue-400 gap-1.5 py-3 px-4 dark:data-[state=active]:border-blue-400 transition-colors">
                   <tab.icon className="size-4" />
@@ -677,6 +678,106 @@ export function UniversityDetailPage({ uni }: Props) {
                   </motion.div>
                 </>
               )}
+            </TabsContent>
+
+            {/* VISA & MENA NOTES TAB */}
+            <TabsContent value="visa" className="mt-0">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="max-w-3xl space-y-6">
+                <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="size-10 rounded-xl bg-blue-600/10 flex items-center justify-center">
+                        <Plane className="size-5 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-lg dark:text-white">{t('tabs.visa')}</h3>
+                        <p className="text-xs text-muted-foreground">{uni.country}</p>
+                      </div>
+                    </div>
+                    <div className="bg-slate-50 dark:bg-slate-800 rounded-xl p-4">
+                      <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300 whitespace-pre-line">
+                        {(uni as Record<string, unknown>).visaNotes as string || (locale === 'ar'
+                          ? 'تحقق من أقرب سفارة أو قنصلية لمتطلبات تأشيرة الطالب. عادةً ما يتطلب: خط قبول جامعي، جواز سفر ساري، إثبات مالي، وتأمين صحي.'
+                          : 'Check with the nearest embassy or consulate for student visa requirements. Typically requires: university acceptance letter, valid passport, financial proof, and health insurance.')}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Application checklist */}
+                <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="size-10 rounded-xl bg-orange-500/10 flex items-center justify-center">
+                        <FileText className="size-5 text-orange-600 dark:text-orange-400" />
+                      </div>
+                      <h3 className="font-bold text-lg dark:text-white">
+                        {locale === 'ar' ? 'قائمة طلب التقديم' : 'Application Checklist'}
+                      </h3>
+                    </div>
+                    <ul className="space-y-2">
+                      {[
+                        locale === 'ar' ? 'خط قبول من الجامعة' : 'University acceptance letter',
+                        locale === 'ar' ? 'جواز سفر ساري المفعول (6+ أشهر)' : 'Valid passport (6+ months validity)',
+                        locale === 'ar' ? 'إثبات مالي للرسوم وتكاليف المعيشة' : 'Financial proof for tuition and living costs',
+                        locale === 'ar' ? 'شهادة صحية / فحص طبي' : 'Medical certificate / health check',
+                        locale === 'ar' ? 'تأمين صحي' : 'Health insurance',
+                        locale === 'ar' ? 'صور شخصية' : 'Passport-size photographs',
+                        locale === 'ar' ? 'شهادة إتقان اللغة (IELTS/TOEFL)' : 'Language proficiency certificate (IELTS/TOEFL)',
+                        locale === 'ar' ? 'السجل الأكاديمي موثق' : 'Authenticated academic transcripts',
+                      ].map((item, i) => (
+                        <li key={i} className="flex items-start gap-2 text-sm">
+                          <CheckCircle2 className="size-4 text-blue-600 dark:text-blue-400 shrink-0 mt-0.5" />
+                          <span className="text-slate-700 dark:text-slate-300">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+
+                {/* MENA-specific notes */}
+                <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className="size-10 rounded-xl bg-blue-600/10 flex items-center justify-center">
+                        <Info className="size-5 text-blue-600 dark:text-blue-400" />
+                      </div>
+                      <h3 className="font-bold text-lg dark:text-white">
+                        {locale === 'ar' ? 'ملاحظات لطلاب الشرق الأوسط' : 'Notes for MENA Students'}
+                      </h3>
+                    </div>
+                    <div className="space-y-3 text-sm text-slate-700 dark:text-slate-300">
+                      <p>
+                        {locale === 'ar'
+                          ? '📊 قد تحتاج إلى تصديق وثائقك من وزارة الخارجية والسفارة المعنية.'
+                          : '📊 You may need to authenticate your documents via your Ministry of Foreign Affairs and the destination country\u2019s embassy.'}
+                      </p>
+                      <p>
+                        {locale === 'ar'
+                          ? '🕌 تحقق من توفر الطعام الحلال ومرافق الصلاة في الحرم الجامعي.'
+                          : '🕌 Check availability of halal food options and prayer facilities on campus.'}
+                      </p>
+                      <p>
+                        {locale === 'ar'
+                          ? '💰 قد تحتاج إلى فتح حساب بنكي محلي بعد الوصول لإثبات الإقامة.'
+                          : '💰 You may need to open a local bank account after arrival for residence permit proof.'}
+                      </p>
+                      <p>
+                        {locale === 'ar'
+                          ? '🏠 ابحث عن خيارات السكن المبكرة — السكن الجامعي قد يكون محدوداً.'
+                          : '🏠 Research housing options early \u2014 university dormitories may be limited.'}
+                      </p>
+                      <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-lg p-3 mt-3">
+                        <p className="text-xs text-amber-800 dark:text-amber-200">
+                          {locale === 'ar'
+                            ? '⚠️ هذه معلومات عامة. تحقق دائماً من السفارة المعنية للمتطلبات الحالية.'
+                            : '⚠️ This is general guidance. Always verify current requirements with the relevant embassy.'}
+                        </p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </TabsContent>
           </div>
         </Tabs>

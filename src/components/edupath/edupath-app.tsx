@@ -422,15 +422,31 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 <div className="text-[10px] text-muted-foreground leading-none mt-0.5">{t('Nav.tagline')}</div>
               </div>
             </button>
+            {/* Desktop nav — user-journey oriented */}
             <nav className="hidden md:flex items-center gap-1 ml-4">
+              {/* Explore section */}
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => router.push('/essay-review')}
+                onClick={() => {
+                  const dir = document.getElementById('directory')
+                  if (dir) dir.scrollIntoView({ behavior: 'smooth' })
+                  else router.push('/')
+                }}
                 className="gap-2 text-blue-700 hover:text-blue-800 hover:bg-blue-950/5"
               >
-                <Sparkles className="size-4" />
-                {t('Nav.essayReview')}
+                <Globe2 className="size-4" />
+                {t('Nav.explore') || 'Explore'}
+              </Button>
+              {/* Tools dropdown — condensed */}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => router.push('/scholarships')}
+                className="gap-2 text-blue-700 hover:text-blue-800 hover:bg-blue-950/5"
+              >
+                <Award className="size-4" />
+                {t('Nav.scholarships')}
               </Button>
               <Button
                 variant="ghost"
@@ -444,11 +460,20 @@ export function EduPathApp({ universities, countries, stats }: Props) {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={() => router.push('/scholarships')}
+                onClick={() => router.push('/essay-review')}
                 className="gap-2 text-blue-700 hover:text-blue-800 hover:bg-blue-950/5"
               >
-                <Award className="size-4" />
-                {t('Nav.scholarships')}
+                <Sparkles className="size-4" />
+                {t('Nav.essayReview')}
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => router.push('/agent')}
+                className="gap-2 text-orange-600 hover:text-orange-700 hover:bg-orange-950/5"
+              >
+                <Sparkles className="size-4" />
+                Rihla AI
               </Button>
               <Button
                 variant="ghost"
@@ -465,12 +490,12 @@ export function EduPathApp({ universities, countries, stats }: Props) {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => router.push('/essay-review')}
+                onClick={() => router.push('/scholarships')}
                 className="text-blue-700 hover:text-blue-800 hover:bg-blue-950/5"
-                title={t('Nav.essayReview')}
-                aria-label={t('Nav.essayReview')}
+                title={t('Nav.scholarships')}
+                aria-label={t('Nav.scholarships')}
               >
-                <Sparkles className="size-4" />
+                <Award className="size-4" />
               </Button>
               <Button
                 variant="ghost"
@@ -485,12 +510,22 @@ export function EduPathApp({ universities, countries, stats }: Props) {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={() => router.push('/scholarships')}
+                onClick={() => router.push('/essay-review')}
                 className="text-blue-700 hover:text-blue-800 hover:bg-blue-950/5"
-                title={t('Nav.scholarships')}
-                aria-label={t('Nav.scholarships')}
+                title={t('Nav.essayReview')}
+                aria-label={t('Nav.essayReview')}
               >
-                <Award className="size-4" />
+                <Sparkles className="size-4" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => router.push('/agent')}
+                className="text-orange-600 hover:text-orange-700"
+                title="Rihla AI"
+                aria-label="Rihla AI"
+              >
+                <Sparkles className="size-4" />
               </Button>
               <Button
                 variant="ghost"
@@ -964,7 +999,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       {/* ===== Email Capture (moved below directory so it doesn't block country filter results) ===== */}
 
       {/* ===== Directory ===== */}
-      <section className="container mx-auto max-w-7xl px-4 py-10 flex-1">
+      <section id="directory" className="container mx-auto max-w-7xl px-4 py-10 flex-1 scroll-mt-20">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-bold mb-1 dark:text-white">

@@ -10,7 +10,8 @@
     "transferFinder": "Transfer Finder",
     "scholarships": "Scholarships",
     "pricing": "Pricing",
-    "sponsor": "Sponsor"
+    "sponsor": "Sponsor",
+    "explore": "Explore"
   },
   "Hero": {
     "badge": "For MENA students",
@@ -71,7 +72,8 @@
       "programs": "Programs",
       "scholarships": "Scholarships",
       "cost": "Cost Calculator",
-      "reviews": "Reviews"
+      "reviews": "Reviews",
+      "visa": "Visa & Notes"
     },
     "stats": {
       "cheapestProgram": "Cheapest program",

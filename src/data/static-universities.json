@@ -23,8 +23,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 4200,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-01",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmh3g0031oqpdtk1xvr27",
@@ -34,8 +34,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 4200,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -367,7 +367,8 @@
     ],
     "avgRating": 4.3,
     "reviewCount": 15,
-    "cheapestProgramTuition": 4200
+    "cheapestProgramTuition": 4200,
+    "visaNotes": "Student visa (D-type). Acceptance letter + financial proof required. Visa fee: ~€80. Temporary residence card after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh8w0019oqpp62t4t2fm",
@@ -394,7 +395,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhhi00droqq15shu6hhs",
@@ -405,7 +406,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhhj00dtoqq187hdze47",
@@ -416,7 +417,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhhj00dvoqq1cl3jdm8e",
@@ -427,7 +428,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhhk00dxoqq1dohcdwt2",
@@ -438,7 +439,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -702,7 +703,8 @@
     ],
     "avgRating": 4.3,
     "reviewCount": 12,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student Residence Visa sponsored by university. Medical fitness test required. Emirates ID mandatory. Visa fee: ~$270. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh8n0010oqpp9apbgmwe",
@@ -729,7 +731,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhgk00azoqq181y0fh5d",
@@ -740,7 +742,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhgk00b1oqq11qewm0vg",
@@ -751,7 +753,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhgl00b3oqq1pz29qlg4",
@@ -762,7 +764,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhgm00b5oqq1atnkv07i",
@@ -773,7 +775,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -994,7 +996,8 @@
     ],
     "avgRating": 3.7,
     "reviewCount": 10,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student visa from Egyptian consulate. University acceptance letter required. Visa fee: ~$25. Residence permit after arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cmu7cmh8y001boqppin4k421v",
@@ -1021,7 +1024,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhhq00edoqq12bgag674",
@@ -1032,7 +1035,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhhr00efoqq1nuskl6fl",
@@ -1043,7 +1046,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhhr00ehoqq121fi7t9u",
@@ -1054,7 +1057,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -1300,7 +1303,8 @@
     ],
     "avgRating": 4.0,
     "reviewCount": 11,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Residence Visa sponsored by university. Medical fitness test required. Emirates ID mandatory. Visa fee: ~$270. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh8x001aoqppubez6y7f",
@@ -1327,7 +1331,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhhn00e3oqq1r4tkxf8w",
@@ -1338,7 +1342,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhhn00e5oqq1xqkmr55t",
@@ -1349,7 +1353,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -1480,7 +1484,8 @@
     ],
     "avgRating": 4.0,
     "reviewCount": 5,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student Residence Visa sponsored by university. Medical fitness test required. Emirates ID mandatory. Visa fee: ~$270. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh8w0018oqppdroixqbv",
@@ -1507,7 +1512,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhhf00dhoqq1animc6cc",
@@ -1518,7 +1523,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhhf00djoqq1l8qlh2t5",
@@ -1529,7 +1534,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -1741,7 +1746,8 @@
     ],
     "avgRating": 4.3,
     "reviewCount": 9,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa/residence permit. University sponsorship required. Visa fee: ~$40. Health insurance recommended. Processing: 1-2 weeks."
   },
   {
     "id": "cmu7cmh400043oqpdgggoebhb",
@@ -1767,8 +1773,8 @@
         "durationMonths": 60,
         "language": "English",
         "tuitionUsd": 2500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-15",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmh410047oqpdsn7zzpzg",
@@ -1778,8 +1784,8 @@
         "durationMonths": 72,
         "language": "English",
         "tuitionUsd": 4000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -2029,7 +2035,8 @@
     ],
     "avgRating": 3.7,
     "reviewCount": 11,
-    "cheapestProgramTuition": 2500
+    "cheapestProgramTuition": 2500,
+    "visaNotes": "Student visa from Egyptian consulate. University acceptance letter required. Visa fee: ~$25. Residence permit after arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cmu7cmgxx0031oqp1rkdxs1h5",
@@ -2056,7 +2063,7 @@
         "language": "English",
         "tuitionUsd": 14000,
         "deadline": "2026-06-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmgxy0035oqp184q4ngen",
@@ -2067,7 +2074,7 @@
         "language": "English",
         "tuitionUsd": 13500,
         "deadline": "2026-06-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmgxy0037oqp1q1fazxzf",
@@ -2078,7 +2085,7 @@
         "language": "English",
         "tuitionUsd": 15000,
         "deadline": "2026-07-30",
-        "entryReqs": null
+        "entryReqs": "Bachelor's degree. Minimum IELTS 6.5. CV and motivation letter. Some programs require GRE/GMAT."
       }
     ],
     "scholarships": [
@@ -2267,7 +2274,8 @@
     ],
     "avgRating": 4.5,
     "reviewCount": 8,
-    "cheapestProgramTuition": 13500
+    "cheapestProgramTuition": 13500,
+    "visaNotes": "Student visa from Egyptian consulate. University acceptance letter required. Visa fee: ~$25. Residence permit after arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cmu7cmgyd004hoqp1tcoz5bzm",
@@ -2294,7 +2302,7 @@
         "language": "English",
         "tuitionUsd": 16500,
         "deadline": "2026-06-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmgye004loqp1245hz9hl",
@@ -2305,7 +2313,7 @@
         "language": "English",
         "tuitionUsd": 16000,
         "deadline": "2026-06-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmgye004noqp1ihqq6aln",
@@ -2316,7 +2324,7 @@
         "language": "English",
         "tuitionUsd": 22000,
         "deadline": "2026-03-31",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -2627,7 +2635,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 14,
-    "cheapestProgramTuition": 16000
+    "cheapestProgramTuition": 16000,
+    "visaNotes": "Student visa from Lebanese consulate. University enrollment proof required. Visa fee: ~$35. Residence permit after arrival. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmgya0048oqp19gwymz99",
@@ -2654,7 +2663,7 @@
         "language": "English",
         "tuitionUsd": 17000,
         "deadline": "2026-06-30",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmgyc004coqp1d32thl6w",
@@ -2665,7 +2674,7 @@
         "language": "English",
         "tuitionUsd": 16500,
         "deadline": "2026-06-30",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -2956,7 +2965,8 @@
     ],
     "avgRating": 3.5,
     "reviewCount": 13,
-    "cheapestProgramTuition": 16500
+    "cheapestProgramTuition": 16500,
+    "visaNotes": "Student Residence Visa sponsored by university. Medical fitness test required. Emirates ID mandatory. Visa fee: ~$270. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh44004hoqpdbt8m0q6r",
@@ -2982,8 +2992,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 3500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-01",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmh45004loqpdyyuzvliu",
@@ -2993,8 +3003,8 @@
         "durationMonths": 48,
         "language": "Arabic",
         "tuitionUsd": 3000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-01",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -3221,7 +3231,8 @@
     ],
     "avgRating": 4.5,
     "reviewCount": 10,
-    "cheapestProgramTuition": 3000
+    "cheapestProgramTuition": 3000,
+    "visaNotes": "Student visa/residence permit. University sponsorship required. Visa fee: ~$40. Health insurance recommended. Processing: 1-2 weeks."
   },
   {
     "id": "cmu7cmh87000moqppkew53mie",
@@ -3248,7 +3259,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhe8006loqq1wb9dnz9g",
@@ -3259,7 +3270,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhe8006noqq1l08onai1",
@@ -3270,7 +3281,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -3547,7 +3558,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 13,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh2y001roqpddlu8yn03",
@@ -3573,8 +3585,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 800,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmh30001voqpdz608wo2p",
@@ -3584,8 +3596,8 @@
         "durationMonths": 72,
         "language": "Turkish",
         "tuitionUsd": 900,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -3847,7 +3859,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 12,
-    "cheapestProgramTuition": 800
+    "cheapestProgramTuition": 800,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh8s0015oqppccyprg9u",
@@ -3874,7 +3887,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhh300cloqq10ln26y3w",
@@ -3885,7 +3898,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhh300cnoqq1cv527z0r",
@@ -3896,7 +3909,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhh400cpoqq1f8b85x93",
@@ -3907,7 +3920,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhh500croqq195dltmqj",
@@ -3918,7 +3931,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -4181,7 +4194,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 12,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student visa/residence permit. University sponsorship required. Visa fee: ~$40. Health insurance recommended. Processing: 1-2 weeks."
   },
   {
     "id": "cmu7cmh89000ooqpp8l7vhfux",
@@ -4208,7 +4222,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmheg0075oqq1k4x4nnd2",
@@ -4219,7 +4233,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmheg0077oqq1fg4sa6sk",
@@ -4230,7 +4244,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -4458,7 +4472,8 @@
     ],
     "avgRating": 3.7,
     "reviewCount": 10,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh7y000goqpphkspxefm",
@@ -4485,7 +4500,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhdm004voqq1ees2b60p",
@@ -4496,7 +4511,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhdn004xoqq12fpx2xnz",
@@ -4507,7 +4522,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhdn004zoqq10r2hgqm9",
@@ -4518,7 +4533,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhdn0051oqq1b7bstln9",
@@ -4529,7 +4544,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -4669,7 +4684,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 6,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh37002coqpd0i61xsan",
@@ -4695,8 +4711,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 16000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmh38002goqpdnvzh7ku5",
@@ -4706,8 +4722,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 15500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -4955,7 +4971,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 11,
-    "cheapestProgramTuition": 15500
+    "cheapestProgramTuition": 15500,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmgxe001ioqp1x8kxsrex",
@@ -4993,7 +5010,7 @@
         "language": "English",
         "tuitionUsd": 800,
         "deadline": "2026-07-01",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmgxh001ooqp1mr0gho6s",
@@ -5004,7 +5021,7 @@
         "language": "English",
         "tuitionUsd": 1000,
         "deadline": "2026-06-15",
-        "entryReqs": null
+        "entryReqs": "Bachelor's degree. Minimum IELTS 6.5. CV and motivation letter. Some programs require GRE/GMAT."
       }
     ],
     "scholarships": [
@@ -5230,7 +5247,8 @@
     ],
     "avgRating": 4.5,
     "reviewCount": 10,
-    "cheapestProgramTuition": 800
+    "cheapestProgramTuition": 800,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmgy0003coqp168mq54un",
@@ -5257,7 +5275,7 @@
         "language": "Arabic",
         "tuitionUsd": 2500,
         "deadline": "2026-08-01",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmgy1003goqp186erwf0n",
@@ -5268,7 +5286,7 @@
         "language": "English",
         "tuitionUsd": 3000,
         "deadline": "2026-08-01",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -5574,7 +5592,8 @@
     ],
     "avgRating": 4.0,
     "reviewCount": 14,
-    "cheapestProgramTuition": 2500
+    "cheapestProgramTuition": 2500,
+    "visaNotes": "Student visa from Egyptian consulate. University acceptance letter required. Visa fee: ~$25. Residence permit after arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cmu7cmh8z001coqpp84luewlh",
@@ -5601,7 +5620,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhhu00enoqq1qo9vj3mm",
@@ -5612,7 +5631,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhhv00epoqq1gkuson51",
@@ -5623,7 +5642,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhhv00eroqq1cx6q6cop",
@@ -5634,7 +5653,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -5809,7 +5828,8 @@
     ],
     "avgRating": 4.7,
     "reviewCount": 7,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Residence Visa sponsored by university. Medical fitness test required. Emirates ID mandatory. Visa fee: ~$270. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmgwq0002oqp1h1yptzg2",
@@ -5847,7 +5867,7 @@
         "language": "English",
         "tuitionUsd": 18500,
         "deadline": "2026-06-30",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmgwu0008oqp1ysx9s4mo",
@@ -5858,7 +5878,7 @@
         "language": "English",
         "tuitionUsd": 21000,
         "deadline": "2026-08-15",
-        "entryReqs": null
+        "entryReqs": "Undergraduate degree with minimum 2.8 GPA. Two letters of recommendation. Research proposal for thesis programs."
       }
     ],
     "scholarships": [
@@ -6068,7 +6088,8 @@
     ],
     "avgRating": 3.7,
     "reviewCount": 9,
-    "cheapestProgramTuition": 18500
+    "cheapestProgramTuition": 18500,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh88000noqppxg00y1q1",
@@ -6095,7 +6116,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmheb006toqq1owfuowuh",
@@ -6106,7 +6127,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhec006voqq1w548i7ak",
@@ -6117,7 +6138,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhed006xoqq1z88zkz32",
@@ -6128,7 +6149,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -6255,7 +6276,8 @@
     ],
     "avgRating": 3.4,
     "reviewCount": 5,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh82000joqppm6rtlo50",
@@ -6282,7 +6304,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhdx005toqq10ach015k",
@@ -6293,7 +6315,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhdx005voqq1r39d53t0",
@@ -6304,7 +6326,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhdy005xoqq1g96ews6s",
@@ -6315,7 +6337,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -6558,7 +6580,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 11,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh81000ioqppyv47mi64",
@@ -6585,7 +6608,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhds005hoqq12mwxyjmg",
@@ -6596,7 +6619,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhds005joqq1qiw4h4ym",
@@ -6607,7 +6630,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhdt005loqq1agivbkn2",
@@ -6618,7 +6641,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhdu005noqq1rwux4xfk",
@@ -6629,7 +6652,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -6851,7 +6874,8 @@
     ],
     "avgRating": 4.4,
     "reviewCount": 10,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh83000koqppqs2acplw",
@@ -6878,7 +6902,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhe00063oqq1z6ihnbq7",
@@ -6889,7 +6913,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhe10065oqq18nkjx1ct",
@@ -6900,7 +6924,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -7071,7 +7095,8 @@
     ],
     "avgRating": 4.0,
     "reviewCount": 7,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh8c000qoqppbdx00l95",
@@ -7098,7 +7123,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmheq007poqq1r7i7wa9r",
@@ -7109,7 +7134,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmheq007roqq1xkrkcvdt",
@@ -7120,7 +7145,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmher007toqq1i3ro0313",
@@ -7131,7 +7156,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -7420,7 +7445,8 @@
     ],
     "avgRating": 3.7,
     "reviewCount": 13,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student visa (D-type). Acceptance letter + financial proof required. Visa fee: ~€80. Temporary residence card after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh42004aoqpdrvy35rek",
@@ -7446,8 +7472,8 @@
         "durationMonths": 60,
         "language": "English",
         "tuitionUsd": 4500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-15",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmh43004eoqpd464cy8ok",
@@ -7457,8 +7483,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 4200,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-15",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -7727,7 +7753,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 12,
-    "cheapestProgramTuition": 4200
+    "cheapestProgramTuition": 4200,
+    "visaNotes": "Student visa/residence permit. University sponsorship required. Visa fee: ~$40. Health insurance recommended. Processing: 1-2 weeks."
   },
   {
     "id": "cmu7cmh3r003poqpdeep1nqef",
@@ -7753,8 +7780,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 12000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmh3r003toqpdybn8b56c",
@@ -7764,8 +7791,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 12000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -8059,7 +8086,8 @@
     ],
     "avgRating": 3.7,
     "reviewCount": 14,
-    "cheapestProgramTuition": 12000
+    "cheapestProgramTuition": 12000,
+    "visaNotes": "Student visa from Egyptian consulate. University acceptance letter required. Visa fee: ~$25. Residence permit after arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cmu7cmh7t000boqppj3r3to6l",
@@ -8086,7 +8114,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhcz003foqq19y009a5r",
@@ -8097,7 +8125,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhd3003hoqq1nu061j3i",
@@ -8108,7 +8136,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -8403,7 +8431,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 13,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh32001yoqpdwgbxp2jx",
@@ -8429,8 +8458,8 @@
         "durationMonths": 72,
         "language": "English",
         "tuitionUsd": 1200,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmh340022oqpd39qzlsyi",
@@ -8440,8 +8469,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 850,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -8720,7 +8749,8 @@
     ],
     "avgRating": 3.6,
     "reviewCount": 13,
-    "cheapestProgramTuition": 850
+    "cheapestProgramTuition": 850,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh98001ioqpp2yzjqk4w",
@@ -8747,7 +8777,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhj500ghoqq1tvsx32i7",
@@ -8758,7 +8788,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhj600gjoqq19zupfi2i",
@@ -8769,7 +8799,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhj600gloqq1nhrtmjia",
@@ -8780,7 +8810,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhj700gnoqq1u2zl2htz",
@@ -8791,7 +8821,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -8996,7 +9026,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 9,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student visa from Lebanese consulate. University enrollment proof required. Visa fee: ~$35. Residence permit after arrival. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh8v0017oqppvbxef1ix",
@@ -9023,7 +9054,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhha00d5oqq1pqeacvoa",
@@ -9034,7 +9065,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhhb00d7oqq1o4rq9jaj",
@@ -9045,7 +9076,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhhb00d9oqq112utifjs",
@@ -9056,7 +9087,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhhc00dboqq14vgc7hc0",
@@ -9067,7 +9098,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -9329,7 +9360,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 12,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student visa/residence permit. University sponsorship required. Visa fee: ~$40. Health insurance recommended. Processing: 1-2 weeks."
   },
   {
     "id": "cmu7cmh8l000zoqppnmfb0aab",
@@ -9356,7 +9388,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhge00aloqq1g77znbz0",
@@ -9367,7 +9399,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhgf00anoqq1j1petzl3",
@@ -9378,7 +9410,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhgg00apoqq1ofyivrf8",
@@ -9389,7 +9421,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhgg00aroqq1wycqvqio",
@@ -9400,7 +9432,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -9605,7 +9637,8 @@
     ],
     "avgRating": 3.6,
     "reviewCount": 9,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student visa from Egyptian consulate. University acceptance letter required. Visa fee: ~$25. Residence permit after arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cmu7cmh90001doqppv0jilde7",
@@ -9632,7 +9665,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhhy00ezoqq167lxxg0h",
@@ -9643,7 +9676,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhhz00f1oqq13u0d6n6g",
@@ -9654,7 +9687,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhhz00f3oqq1gmpazmkt",
@@ -9665,7 +9698,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -9870,7 +9903,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 9,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Residence Visa sponsored by university. Medical fitness test required. Emirates ID mandatory. Visa fee: ~$270. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh95001foqppoalravbx",
@@ -9897,7 +9931,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhit00fjoqq15wvg4iz7",
@@ -9908,7 +9942,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhiu00floqq1aldwycc1",
@@ -9919,7 +9953,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -10035,7 +10069,8 @@
     ],
     "avgRating": 4.4,
     "reviewCount": 5,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "National Visa (D). University acceptance + financial proof required. Visa fee: €80. Temporary residence permit after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh8h000woqppnbd2hjdv",
@@ -10062,7 +10097,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhg1009joqq1gclbil0n",
@@ -10073,7 +10108,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhg2009loqq194nit8rr",
@@ -10084,7 +10119,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhg2009noqq1gqfiupml",
@@ -10095,7 +10130,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhg3009poqq16jc36v8m",
@@ -10106,7 +10141,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -10395,7 +10430,8 @@
     ],
     "avgRating": 4.5,
     "reviewCount": 13,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student Pass via university. EMGS approval required. Medical screening on arrival. Visa fee: ~$15. Processing: 4-8 weeks via university."
   },
   {
     "id": "cmu7cmgxi001roqp14t8vfnr9",
@@ -10422,7 +10458,7 @@
         "language": "English",
         "tuitionUsd": 900,
         "deadline": "2026-07-01",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmgxj001voqp1g8iw9qi6",
@@ -10433,7 +10469,7 @@
         "language": "English",
         "tuitionUsd": 900,
         "deadline": "2026-07-01",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -10676,7 +10712,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 11,
-    "cheapestProgramTuition": 900
+    "cheapestProgramTuition": 900,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmgxp002eoqp1b9mb2ce1",
@@ -10714,7 +10751,7 @@
         "language": "English",
         "tuitionUsd": 3800,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -10919,7 +10956,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 9,
-    "cheapestProgramTuition": 3800
+    "cheapestProgramTuition": 3800,
+    "visaNotes": "Student visa (D-type). Acceptance letter + financial proof required. Visa fee: ~€80. Temporary residence card after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmgy5003soqp1153b4qlt",
@@ -10946,7 +10984,7 @@
         "language": "English",
         "tuitionUsd": 2400,
         "deadline": "2026-08-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmgy6003woqp1ht68h8mm",
@@ -10957,7 +10995,7 @@
         "language": "English",
         "tuitionUsd": 3500,
         "deadline": "2026-08-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -11285,7 +11323,8 @@
     ],
     "avgRating": 3.7,
     "reviewCount": 15,
-    "cheapestProgramTuition": 2400
+    "cheapestProgramTuition": 2400,
+    "visaNotes": "Student visa/residence permit. University sponsorship required. Visa fee: ~$40. Health insurance recommended. Processing: 1-2 weeks."
   },
   {
     "id": "cmu7cmh2t001doqpd65o5zwei",
@@ -11311,8 +11350,8 @@
         "durationMonths": 36,
         "language": "German",
         "tuitionUsd": 1500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-31",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmh2u001hoqpdyr5og6bx",
@@ -11322,8 +11361,8 @@
         "durationMonths": 24,
         "language": "English",
         "tuitionUsd": 1500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-01",
+        "entryReqs": "Bachelor's degree. Minimum IELTS 6.5. CV and motivation letter. Some programs require GRE/GMAT."
       }
     ],
     "scholarships": [
@@ -11463,7 +11502,8 @@
     ],
     "avgRating": 4.0,
     "reviewCount": 6,
-    "cheapestProgramTuition": 1500
+    "cheapestProgramTuition": 1500,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh4v0059oqpdyebqtf26",
@@ -11489,8 +11529,8 @@
         "durationMonths": 42,
         "language": "English",
         "tuitionUsd": 3500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmh4w005doqpd1q5qpui9",
@@ -11500,8 +11540,8 @@
         "durationMonths": 24,
         "language": "English",
         "tuitionUsd": 4000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "Undergraduate degree with minimum 2.8 GPA. Two letters of recommendation. Research proposal for thesis programs."
       }
     ],
     "scholarships": [
@@ -11703,7 +11743,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 9,
-    "cheapestProgramTuition": 3500
+    "cheapestProgramTuition": 3500,
+    "visaNotes": "National Visa (D). University acceptance + financial proof required. Visa fee: €80. Temporary residence permit after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmgy8003zoqp1yfdk26oi",
@@ -11730,7 +11771,7 @@
         "language": "English",
         "tuitionUsd": 16000,
         "deadline": "2026-05-31",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmgy90043oqp1v4ycekhv",
@@ -11741,7 +11782,7 @@
         "language": "English",
         "tuitionUsd": 16000,
         "deadline": "2026-05-31",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmgy90045oqp1wldazqc2",
@@ -11752,7 +11793,7 @@
         "language": "English",
         "tuitionUsd": 18000,
         "deadline": "2026-06-30",
-        "entryReqs": null
+        "entryReqs": "Bachelor's degree in relevant field. GPA 3.0+. IELTS 6.5 or TOEFL 90. Statement of purpose required."
       }
     ],
     "scholarships": [
@@ -12019,7 +12060,8 @@
     ],
     "avgRating": 3.5,
     "reviewCount": 12,
-    "cheapestProgramTuition": 16000
+    "cheapestProgramTuition": 16000,
+    "visaNotes": "Student Residence Visa sponsored by university. Medical fitness test required. Emirates ID mandatory. Visa fee: ~$270. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh2f000loqpd7yp4309p",
@@ -12045,8 +12087,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 16800,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmh2h000poqpd415wqog8",
@@ -12056,8 +12098,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 17000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -12318,7 +12360,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 12,
-    "cheapestProgramTuition": 16800
+    "cheapestProgramTuition": 16800,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmgxj001yoqp1jwscyxcu",
@@ -12345,7 +12388,7 @@
         "language": "English",
         "tuitionUsd": 18000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmgxk0022oqp1ujo848re",
@@ -12356,7 +12399,7 @@
         "language": "English",
         "tuitionUsd": 18000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -12560,7 +12603,8 @@
     ],
     "avgRating": 4.3,
     "reviewCount": 9,
-    "cheapestProgramTuition": 18000
+    "cheapestProgramTuition": 18000,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh4y005goqpde0meam9t",
@@ -12586,8 +12630,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 15000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmh4z005koqpdd8rxnbuf",
@@ -12597,8 +12641,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 14000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -12800,7 +12844,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 9,
-    "cheapestProgramTuition": 14000
+    "cheapestProgramTuition": 14000,
+    "visaNotes": "Student visa from Lebanese consulate. University enrollment proof required. Visa fee: ~$35. Residence permit after arrival. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh96001goqpp4f0esl9l",
@@ -12827,7 +12872,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhiw00froqq1szvgaasq",
@@ -12838,7 +12883,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhix00ftoqq1eybavchr",
@@ -12849,7 +12894,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhix00fvoqq10xtwrcgp",
@@ -12860,7 +12905,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -13009,7 +13054,8 @@
     ],
     "avgRating": 4.5,
     "reviewCount": 6,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student visa from Lebanese consulate. University enrollment proof required. Visa fee: ~$35. Residence permit after arrival. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh7h0004oqppcll0clmg",
@@ -13036,7 +13082,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhca001doqq1k5dfbh6g",
@@ -13047,7 +13093,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhcb001foqq1qwod9lfc",
@@ -13058,7 +13104,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -13302,7 +13348,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 11,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh92001eoqpp4jqukxmk",
@@ -13329,7 +13376,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhip00f9oqq1919wlep8",
@@ -13340,7 +13387,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhiq00fboqq1btxxuwqw",
@@ -13351,7 +13398,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhir00fdoqq1yt1hr0xy",
@@ -13362,7 +13409,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -13627,7 +13674,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 12,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "National Visa (D). University acceptance + financial proof required. Visa fee: €80. Temporary residence permit after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh7k0006oqpp35gy0l0u",
@@ -13654,7 +13702,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhci001voqq1szrjec5w",
@@ -13665,7 +13713,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhci001xoqq1juq4d99t",
@@ -13676,7 +13724,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhcj001zoqq10mguou83",
@@ -13687,7 +13735,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhcj0021oqq1nq1pgif8",
@@ -13698,7 +13746,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -13858,7 +13906,8 @@
     ],
     "avgRating": 3.3,
     "reviewCount": 7,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh7d0001oqpp7igevxlt",
@@ -13885,7 +13934,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhbx000hoqq1lexgud1h",
@@ -13896,7 +13945,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhbx000joqq148910nlp",
@@ -13907,7 +13956,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhby000loqq14c6wwojv",
@@ -13918,7 +13967,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -14160,7 +14209,8 @@
     ],
     "avgRating": 4.0,
     "reviewCount": 11,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh3u003woqpdwjvmxdgc",
@@ -14186,8 +14236,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 9000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-15",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmh3y0040oqpdwv9ad4xm",
@@ -14197,8 +14247,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 8500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-15",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -14523,7 +14573,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 15,
-    "cheapestProgramTuition": 8500
+    "cheapestProgramTuition": 8500,
+    "visaNotes": "Student visa from Egyptian consulate. University acceptance letter required. Visa fee: ~$25. Residence permit after arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cmu7cmh7i0005oqppaha8ykpk",
@@ -14550,7 +14601,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhce001loqq1rmzg8uaa",
@@ -14561,7 +14612,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhcf001noqq11lfh8x3c",
@@ -14572,7 +14623,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhcf001poqq1b6mlztpg",
@@ -14583,7 +14634,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -14786,7 +14837,8 @@
     ],
     "avgRating": 3.7,
     "reviewCount": 9,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh8o0011oqpp49la5xkb",
@@ -14813,7 +14865,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhgo00bboqq17frz7n3c",
@@ -14824,7 +14876,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhgp00bdoqq1acyop6l5",
@@ -14835,7 +14887,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhgp00bfoqq1vh14fbzq",
@@ -14846,7 +14898,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -15016,7 +15068,8 @@
     ],
     "avgRating": 3.6,
     "reviewCount": 7,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student visa from Egyptian consulate. University acceptance letter required. Visa fee: ~$25. Residence permit after arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cmu7cmh85000loqppx8c91u13",
@@ -15043,7 +15096,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhe4006doqq1zqwjcs3p",
@@ -15054,7 +15107,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhe5006foqq19geezvcs",
@@ -15065,7 +15118,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -15351,7 +15404,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 13,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmgww000doqp1dqzyt8eh",
@@ -15378,7 +15432,7 @@
         "language": "English",
         "tuitionUsd": 17500,
         "deadline": "2026-06-30",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmgwy000hoqp1ji3jknl4",
@@ -15389,7 +15443,7 @@
         "language": "English",
         "tuitionUsd": 17000,
         "deadline": "2026-06-30",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -15683,7 +15737,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 14,
-    "cheapestProgramTuition": 17000
+    "cheapestProgramTuition": 17000,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh8i000xoqppcn1ezovk",
@@ -15710,7 +15765,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhg6009xoqq16icmqyoe",
@@ -15721,7 +15776,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhg7009zoqq1df7jl0jp",
@@ -15732,7 +15787,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -16008,7 +16063,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 12,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student Pass via university. EMGS approval required. Medical screening on arrival. Visa fee: ~$15. Processing: 4-8 weeks via university."
   },
   {
     "id": "cmu7cmh8f000toqppkitur9b6",
@@ -16035,7 +16091,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhf4008noqq1lla3pzr8",
@@ -16046,7 +16102,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhf4008poqq1x6ghtwxw",
@@ -16057,7 +16113,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -16174,7 +16230,8 @@
     ],
     "avgRating": 3.6,
     "reviewCount": 5,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa (D-type). Acceptance letter + financial proof required. Visa fee: ~€80. Temporary residence card after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh97001hoqppnq5ifxls",
@@ -16201,7 +16258,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhj000g3oqq1jz7j0mx3",
@@ -16212,7 +16269,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhj100g5oqq1quxqa70u",
@@ -16223,7 +16280,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhj100g7oqq187m3l0eh",
@@ -16234,7 +16291,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhj200g9oqq1qvee4aar",
@@ -16245,7 +16302,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -16515,7 +16572,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 12,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student visa from Lebanese consulate. University enrollment proof required. Visa fee: ~$35. Residence permit after arrival. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh7q0009oqppjq9yt2k6",
@@ -16542,7 +16600,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhct002toqq1sj9roqd9",
@@ -16553,7 +16611,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhct002voqq1gpedn4a2",
@@ -16564,7 +16622,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhct002xoqq1k9csihpr",
@@ -16575,7 +16633,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -16720,7 +16778,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 6,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh8r0014oqppngbsv29a",
@@ -16747,7 +16806,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhgz00c7oqq1u7g9t75n",
@@ -16758,7 +16817,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhh000c9oqq1mbzy0l5p",
@@ -16769,7 +16828,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhh000cboqq1bo5su2hg",
@@ -16780,7 +16839,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhh100cdoqq1qynlgq19",
@@ -16791,7 +16850,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -17105,7 +17164,8 @@
     ],
     "avgRating": 4.4,
     "reviewCount": 14,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student visa/residence permit. University sponsorship required. Visa fee: ~$40. Health insurance recommended. Processing: 1-2 weeks."
   },
   {
     "id": "cmu7cmh8d000roqpplt20jage",
@@ -17132,7 +17192,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhew0081oqq10oy68xys",
@@ -17143,7 +17203,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhex0083oqq1io9dvjhf",
@@ -17154,7 +17214,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhex0085oqq1u845fefq",
@@ -17165,7 +17225,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -17440,7 +17500,8 @@
     ],
     "avgRating": 3.2,
     "reviewCount": 12,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student visa (D-type). Acceptance letter + financial proof required. Visa fee: ~€80. Temporary residence card after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh2m000zoqpddi6qx643",
@@ -17466,8 +17527,8 @@
         "durationMonths": 36,
         "language": "German",
         "tuitionUsd": 1500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmh2n0013oqpd6oiauxj9",
@@ -17477,8 +17538,8 @@
         "durationMonths": 24,
         "language": "English",
         "tuitionUsd": 1500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "Bachelor's degree in relevant field. GPA 3.0+. IELTS 6.5 or TOEFL 90. Statement of purpose required."
       }
     ],
     "scholarships": [
@@ -17619,7 +17680,8 @@
     ],
     "avgRating": 4.7,
     "reviewCount": 6,
-    "cheapestProgramTuition": 1500
+    "cheapestProgramTuition": 1500,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh7g0003oqppb8qre90l",
@@ -17646,7 +17708,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhc60013oqq1wc5zllz7",
@@ -17657,7 +17719,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhc70015oqq1xlx6z8e7",
@@ -17668,7 +17730,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -17943,7 +18005,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 12,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh8q0013oqpp1kvv0pry",
@@ -17970,7 +18033,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhgw00bxoqq1frwd8grn",
@@ -17981,7 +18044,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhgw00bzoqq172r6v1k1",
@@ -17992,7 +18055,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -18301,7 +18364,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 14,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa from Egyptian consulate. University acceptance letter required. Visa fee: ~$25. Residence permit after arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cmu7cmh8j000yoqpptks87ywl",
@@ -18328,7 +18392,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhga00a7oqq1ona8he8o",
@@ -18339,7 +18403,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhga00a9oqq160ti0ns4",
@@ -18350,7 +18414,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhgb00aboqq1pih4ua2x",
@@ -18361,7 +18425,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhgb00adoqq1lyzgh5q1",
@@ -18372,7 +18436,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -18565,7 +18629,8 @@
     ],
     "avgRating": 4.8,
     "reviewCount": 8,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student Pass via university. EMGS approval required. Medical screening on arrival. Visa fee: ~$15. Processing: 4-8 weeks via university."
   },
   {
     "id": "cmu7cmh7u000doqppasykryym",
@@ -18592,7 +18657,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhd9003xoqq1vgdt5agv",
@@ -18603,7 +18668,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhd9003zoqq1do6umrs0",
@@ -18614,7 +18679,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhda0041oqq1poztar1w",
@@ -18625,7 +18690,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhdb0043oqq10ibbrgau",
@@ -18636,7 +18701,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -18765,7 +18830,8 @@
     ],
     "avgRating": 3.0,
     "reviewCount": 5,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh8p0012oqppzzbeyctv",
@@ -18792,7 +18858,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhgs00bnoqq19f5ga5a3",
@@ -18803,7 +18869,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhgt00bpoqq11s3n3sy5",
@@ -18814,7 +18880,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhgt00broqq1q30xb59t",
@@ -18825,7 +18891,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -19045,7 +19111,8 @@
     ],
     "avgRating": 4.3,
     "reviewCount": 10,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student visa from Egyptian consulate. University acceptance letter required. Visa fee: ~$25. Residence permit after arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cmu7cmh3o003ioqpd828s3pa4",
@@ -19071,8 +19138,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 8000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmh3p003moqpdlkti9gh8",
@@ -19082,8 +19149,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 7500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-01",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -19220,7 +19287,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 6,
-    "cheapestProgramTuition": 7500
+    "cheapestProgramTuition": 7500,
+    "visaNotes": "Student Pass via university. EMGS approval required. Medical screening on arrival. Visa fee: ~$15. Processing: 4-8 weeks via university."
   },
   {
     "id": "cmu7cmgx4000roqp1sw3t2l2s",
@@ -19269,7 +19337,7 @@
         "language": "German",
         "tuitionUsd": 1500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -19558,7 +19626,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 13,
-    "cheapestProgramTuition": 1500
+    "cheapestProgramTuition": 1500,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmgxa0019oqp1whyj4cod",
@@ -19596,7 +19665,7 @@
         "language": "English",
         "tuitionUsd": 1500,
         "deadline": "2026-01-15",
-        "entryReqs": null
+        "entryReqs": "Relevant bachelor's degree with GPA 3.0+. English proficiency: IELTS 6.5 or TOEFL 85. Portfolio for design programs."
       },
       {
         "id": "cmu7cmgxd001foqp1mu4punwg",
@@ -19607,7 +19676,7 @@
         "language": "English",
         "tuitionUsd": 1500,
         "deadline": "2026-05-31",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -19826,7 +19895,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 10,
-    "cheapestProgramTuition": 1500
+    "cheapestProgramTuition": 1500,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh47004ooqpdx8ldpk5u",
@@ -19852,8 +19922,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 12000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-15",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmh48004soqpdle3d54mk",
@@ -19863,8 +19933,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 11000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -19984,7 +20054,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 5,
-    "cheapestProgramTuition": 11000
+    "cheapestProgramTuition": 11000,
+    "visaNotes": "Student Residence Visa sponsored by university. Medical fitness test required. Emirates ID mandatory. Visa fee: ~$270. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh3l003boqpdfi4amkqk",
@@ -20010,8 +20081,8 @@
         "durationMonths": 60,
         "language": "English",
         "tuitionUsd": 8000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-31",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmh3n003foqpdx8rcpoy4",
@@ -20021,8 +20092,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 4800,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -20143,7 +20214,8 @@
     ],
     "avgRating": 3.6,
     "reviewCount": 5,
-    "cheapestProgramTuition": 4800
+    "cheapestProgramTuition": 4800,
+    "visaNotes": "Student Pass via university. EMGS approval required. Medical screening on arrival. Visa fee: ~$15. Processing: 4-8 weeks via university."
   },
   {
     "id": "cmu7cmh8g000uoqpperppqkem",
@@ -20170,7 +20242,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhf7008voqq153mdw47z",
@@ -20181,7 +20253,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhf8008xoqq1q70esvok",
@@ -20192,7 +20264,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhf8008zoqq18i5kso39",
@@ -20203,7 +20275,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -20332,7 +20404,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 5,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Pass via university. EMGS approval required. Medical screening on arrival. Visa fee: ~$15. Processing: 4-8 weeks via university."
   },
   {
     "id": "cmu7cmh3i0034oqpdxc8l3ibx",
@@ -20358,8 +20431,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 6000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmh3j0038oqpd6g3h3iay",
@@ -20369,8 +20442,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 5000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-31",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -20490,7 +20563,8 @@
     ],
     "avgRating": 3.6,
     "reviewCount": 5,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student Pass via university. EMGS approval required. Medical screening on arrival. Visa fee: ~$15. Processing: 4-8 weeks via university."
   },
   {
     "id": "cmu7cmgxu002uoqp1f1astay0",
@@ -20517,7 +20591,7 @@
         "language": "English",
         "tuitionUsd": 4800,
         "deadline": "2026-06-30",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmgxw002yoqp106ea29xz",
@@ -20528,7 +20602,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-06-30",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -20811,7 +20885,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 13,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Pass via university. EMGS approval required. Medical screening on arrival. Visa fee: ~$15. Processing: 4-8 weeks via university."
   },
   {
     "id": "cmu7cmh8h000voqpp1qi37z0h",
@@ -20838,7 +20913,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhfx0097oqq1mt0lz45c",
@@ -20849,7 +20924,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhfx0099oqq193eupc0d",
@@ -20860,7 +20935,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhfy009boqq10iv5d2e2",
@@ -20871,7 +20946,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -21060,7 +21135,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 8,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Pass via university. EMGS approval required. Medical screening on arrival. Visa fee: ~$15. Processing: 4-8 weeks via university."
   },
   {
     "id": "cmu7cmh51005noqpd1zan1m5g",
@@ -21086,8 +21162,8 @@
         "durationMonths": 60,
         "language": "English",
         "tuitionUsd": 9000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmh53005roqpdd250qx4q",
@@ -21097,8 +21173,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 8500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -21342,7 +21418,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 11,
-    "cheapestProgramTuition": 8500
+    "cheapestProgramTuition": 8500,
+    "visaNotes": "Student visa from Lebanese consulate. University enrollment proof required. Visa fee: ~$35. Residence permit after arrival. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh7u000coqppphk2f175",
@@ -21369,7 +21446,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhd6003poqq1fz8t9s99",
@@ -21380,7 +21457,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhd7003roqq1tny7y3dk",
@@ -21391,7 +21468,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -21692,7 +21769,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 14,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh2b000eoqpdsivraauc",
@@ -21718,8 +21796,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 19000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-31",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmh2d000ioqpdxm9ltpbe",
@@ -21729,8 +21807,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 17000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -22022,7 +22100,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 13,
-    "cheapestProgramTuition": 17000
+    "cheapestProgramTuition": 17000,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh7n0007oqppf4y0e5lz",
@@ -22049,7 +22128,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhcl0027oqq17qjfir8d",
@@ -22060,7 +22139,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhcl0029oqq19qsqx8o4",
@@ -22071,7 +22150,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhcm002boqq1c5dahjfn",
@@ -22082,7 +22161,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhcm002doqq1rymx9l3y",
@@ -22093,7 +22172,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -22215,7 +22294,8 @@
     ],
     "avgRating": 4.4,
     "reviewCount": 5,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh7s000aoqpp7uxdaxry",
@@ -22242,7 +22322,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhcv0035oqq11tsu7szl",
@@ -22253,7 +22333,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhcw0037oqq13hea2n5b",
@@ -22264,7 +22344,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -22561,7 +22641,8 @@
     ],
     "avgRating": 4.5,
     "reviewCount": 13,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh80000hoqpp50pkhqvk",
@@ -22588,7 +22669,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhdp0057oqq1snixa2ip",
@@ -22599,7 +22680,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhdq0059oqq1nyomrc2h",
@@ -22610,7 +22691,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhdq005boqq1alkq36w8",
@@ -22621,7 +22702,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -22818,7 +22899,8 @@
     ],
     "avgRating": 4.7,
     "reviewCount": 9,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh7f0002oqpp762gxroz",
@@ -22845,7 +22927,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhc1000roqq1phalw417",
@@ -22856,7 +22938,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhc2000toqq1n7v1c1k5",
@@ -22867,7 +22949,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhc3000voqq1yukfa4ag",
@@ -22878,7 +22960,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -23087,7 +23169,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 9,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh2w001koqpdaakk3tp2",
@@ -23113,8 +23196,8 @@
         "durationMonths": 36,
         "language": "German",
         "tuitionUsd": 1500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmh2w001ooqpdhuqxdfh2",
@@ -23124,8 +23207,8 @@
         "durationMonths": 24,
         "language": "English",
         "tuitionUsd": 1500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "Undergraduate degree with minimum 2.8 GPA. Two letters of recommendation. Research proposal for thesis programs."
       }
     ],
     "scholarships": [
@@ -23298,7 +23381,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 8,
-    "cheapestProgramTuition": 1500
+    "cheapestProgramTuition": 1500,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh7b0000oqpps8glqevv",
@@ -23325,7 +23409,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhbr0003oqq1xm5sxllp",
@@ -23336,7 +23420,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhbs0005oqq12c977af6",
@@ -23347,7 +23431,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhbs0007oqq12q7b83r9",
@@ -23358,7 +23442,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhbt0009oqq1uxw21gp8",
@@ -23369,7 +23453,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -23581,7 +23665,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 9,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh2p0016oqpde5ctchhe",
@@ -23607,8 +23692,8 @@
         "durationMonths": 36,
         "language": "German",
         "tuitionUsd": 1500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmh2q001aoqpdi93du4zf",
@@ -23618,8 +23703,8 @@
         "durationMonths": 24,
         "language": "English",
         "tuitionUsd": 1500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "Bachelor's degree in relevant field. GPA 3.0+. IELTS 6.5 or TOEFL 90. Statement of purpose required."
       }
     ],
     "scholarships": [
@@ -23865,7 +23950,8 @@
     ],
     "avgRating": 3.7,
     "reviewCount": 11,
-    "cheapestProgramTuition": 1500
+    "cheapestProgramTuition": 1500,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh280007oqpd9gm2o5nk",
@@ -23891,8 +23977,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 16500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmh2a000boqpdwv580ssc",
@@ -23902,8 +23988,8 @@
         "durationMonths": 12,
         "language": "English",
         "tuitionUsd": 18000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-01",
+        "entryReqs": "Bachelor's degree in relevant field. GPA 3.0+. IELTS 6.5 or TOEFL 90. Statement of purpose required."
       }
     ],
     "scholarships": [
@@ -24228,7 +24314,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 15,
-    "cheapestProgramTuition": 16500
+    "cheapestProgramTuition": 16500,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmgy2003joqp13tfkt5w8",
@@ -24255,7 +24342,7 @@
         "language": "English",
         "tuitionUsd": 2200,
         "deadline": "2026-08-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmgy3003noqp1v4910i3e",
@@ -24266,7 +24353,7 @@
         "language": "Arabic",
         "tuitionUsd": 2000,
         "deadline": "2026-08-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmgy4003poqp1xhw2kdpk",
@@ -24277,7 +24364,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-08-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -24515,7 +24602,8 @@
     ],
     "avgRating": 4.4,
     "reviewCount": 11,
-    "cheapestProgramTuition": 2000
+    "cheapestProgramTuition": 2000,
+    "visaNotes": "Student visa/residence permit. University sponsorship required. Visa fee: ~$40. Health insurance recommended. Processing: 1-2 weeks."
   },
   {
     "id": "cmu7cmh3c002qoqpdtigiiyly",
@@ -24541,8 +24629,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 3000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmh3d002uoqpdkcn3jz5d",
@@ -24552,8 +24640,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 3500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -24731,7 +24819,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 8,
-    "cheapestProgramTuition": 3000
+    "cheapestProgramTuition": 3000,
+    "visaNotes": "Student visa (D-type). Acceptance letter + financial proof required. Visa fee: ~€80. Temporary residence card after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmgxs002loqp1yt21u9zn",
@@ -24758,7 +24847,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-06-30",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmgxt002poqp1jg6q9zmz",
@@ -24769,7 +24858,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-06-30",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmgxt002roqp1mtv3zsvi",
@@ -24780,7 +24869,7 @@
         "language": "English",
         "tuitionUsd": 6500,
         "deadline": "2026-08-31",
-        "entryReqs": null
+        "entryReqs": "Bachelor's degree. Minimum IELTS 6.5. CV and motivation letter. Some programs require GRE/GMAT."
       }
     ],
     "scholarships": [
@@ -25083,7 +25172,8 @@
     ],
     "avgRating": 4.0,
     "reviewCount": 14,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student Pass via university. EMGS approval required. Medical screening on arrival. Visa fee: ~$15. Processing: 4-8 weeks via university."
   },
   {
     "id": "cmu7cmh7v000eoqpp0fd4obix",
@@ -25110,7 +25200,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhde004boqq1v8fng3xw",
@@ -25121,7 +25211,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cmu7cmhdf004doqq17csf9b6d",
@@ -25132,7 +25222,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhdf004foqq1d584qe43",
@@ -25143,7 +25233,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -25475,7 +25565,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 15,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh7w000foqpp0vxy6h6j",
@@ -25502,7 +25593,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhdi004loqq1qtdhhplk",
@@ -25513,7 +25604,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmhdi004noqq1t07fphrx",
@@ -25524,7 +25615,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -25818,7 +25909,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 13,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmgx0000koqp11hsm5ldi",
@@ -25845,7 +25937,7 @@
         "language": "English",
         "tuitionUsd": 19000,
         "deadline": "2026-06-30",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmgx2000ooqp18rco4rdi",
@@ -25856,7 +25948,7 @@
         "language": "English",
         "tuitionUsd": 20500,
         "deadline": "2026-08-01",
-        "entryReqs": null
+        "entryReqs": "Bachelor's degree. Minimum IELTS 6.5. CV and motivation letter. Some programs require GRE/GMAT."
       }
     ],
     "scholarships": [
@@ -26034,7 +26126,8 @@
     ],
     "avgRating": 4.5,
     "reviewCount": 8,
-    "cheapestProgramTuition": 19000
+    "cheapestProgramTuition": 19000,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh4s0052oqpdrt0vqmga",
@@ -26060,8 +26153,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 11000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-01",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmh4t0056oqpdqfok66is",
@@ -26071,8 +26164,8 @@
         "durationMonths": 72,
         "language": "English",
         "tuitionUsd": 18000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -26294,7 +26387,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 10,
-    "cheapestProgramTuition": 11000
+    "cheapestProgramTuition": 11000,
+    "visaNotes": "Student Residence Visa sponsored by university. Medical fitness test required. Emirates ID mandatory. Visa fee: ~$270. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmgx80012oqp1ikuxlty8",
@@ -26321,7 +26415,7 @@
         "language": "English",
         "tuitionUsd": 1500,
         "deadline": "2026-03-15",
-        "entryReqs": null
+        "entryReqs": "Bachelor's degree in relevant field. GPA 3.0+. IELTS 6.5 or TOEFL 90. Statement of purpose required."
       },
       {
         "id": "cmu7cmgx90016oqp19jwb0s4w",
@@ -26332,7 +26426,7 @@
         "language": "German",
         "tuitionUsd": 1500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -26496,7 +26590,8 @@
     ],
     "avgRating": 3.6,
     "reviewCount": 7,
-    "cheapestProgramTuition": 1500
+    "cheapestProgramTuition": 1500,
+    "visaNotes": "Student Applicant Visa or Student Visa. Blocked account required (€11,208/year). Health insurance mandatory. APS certificate required for some countries. Visa fee: €75. Processing: 6-12 weeks."
   },
   {
     "id": "cmu7cmh2j000soqpdy91zywle",
@@ -26522,8 +26617,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 17000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-31",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmh2l000woqpdm5fww2b6",
@@ -26533,8 +26628,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 15500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -26860,7 +26955,8 @@
     ],
     "avgRating": 4.3,
     "reviewCount": 15,
-    "cheapestProgramTuition": 15500
+    "cheapestProgramTuition": 15500,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmgxm0025oqp1vl87fr2t",
@@ -26887,7 +26983,7 @@
         "language": "English",
         "tuitionUsd": 3500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmgxn0029oqp1zbt3zhon",
@@ -26898,7 +26994,7 @@
         "language": "English",
         "tuitionUsd": 4000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmgxo002boqp1lnzzsf3w",
@@ -26909,7 +27005,7 @@
         "language": "English",
         "tuitionUsd": 4000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Undergraduate degree with minimum 2.8 GPA. Two letters of recommendation. Research proposal for thesis programs."
       }
     ],
     "scholarships": [
@@ -27050,7 +27146,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 6,
-    "cheapestProgramTuition": 3500
+    "cheapestProgramTuition": 3500,
+    "visaNotes": "Student visa (D-type). Acceptance letter + financial proof required. Visa fee: ~€80. Temporary residence card after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh240000oqpd2kz3rui9",
@@ -27076,8 +27173,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 17000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmh260004oqpdkur46pg9",
@@ -27087,8 +27184,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 16500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-15",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -27208,7 +27305,8 @@
     ],
     "avgRating": 4.0,
     "reviewCount": 5,
-    "cheapestProgramTuition": 16500
+    "cheapestProgramTuition": 16500,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmh8e000soqpp0svdtay8",
@@ -27235,7 +27333,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhf0008doqq1h8ekon2s",
@@ -27246,7 +27344,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhf1008foqq18dbdo9ci",
@@ -27257,7 +27355,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -27383,7 +27481,8 @@
     ],
     "avgRating": 4.0,
     "reviewCount": 5,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa (D-type). Acceptance letter + financial proof required. Visa fee: ~€80. Temporary residence card after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh7o0008oqppkpne95m9",
@@ -27410,7 +27509,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhcq002joqq1ls00xnzh",
@@ -27421,7 +27520,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhcq002loqq1tvfkr2xh",
@@ -27432,7 +27531,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -27598,7 +27697,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 7,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student Visa (Tier 4) required. Apply up to 6 months before course start. Need CAS letter from university. Financial proof: £1,334/month for living costs (up to 9 months). IHS healthcare surcharge: £470/year. Visa fee: £363."
   },
   {
     "id": "cmu7cmgym004zoqp17gcicn4q",
@@ -27625,7 +27725,7 @@
         "language": "English",
         "tuitionUsd": 3800,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmgyn0053oqp1euco9922",
@@ -27636,7 +27736,7 @@
         "language": "English",
         "tuitionUsd": 4200,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Undergraduate degree with minimum 2.8 GPA. Two letters of recommendation. Research proposal for thesis programs."
       }
     ],
     "scholarships": [
@@ -27919,7 +28019,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 13,
-    "cheapestProgramTuition": 3800
+    "cheapestProgramTuition": 3800,
+    "visaNotes": "National Visa (D). University acceptance + financial proof required. Visa fee: €80. Temporary residence permit after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmgyj004soqp1r7hl7190",
@@ -27946,7 +28047,7 @@
         "language": "English",
         "tuitionUsd": 4000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmgyk004woqp1p3x9wr2t",
@@ -27957,7 +28058,7 @@
         "language": "English",
         "tuitionUsd": 3800,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -28096,7 +28197,8 @@
     ],
     "avgRating": 4.5,
     "reviewCount": 6,
-    "cheapestProgramTuition": 3800
+    "cheapestProgramTuition": 3800,
+    "visaNotes": "National Visa (D). University acceptance + financial proof required. Visa fee: €80. Temporary residence permit after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh3a002joqpdd4310yse",
@@ -28122,8 +28224,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 4000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-15",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cmu7cmh3a002noqpdyus6s5k1",
@@ -28133,8 +28235,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 4000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -28465,7 +28567,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 15,
-    "cheapestProgramTuition": 4000
+    "cheapestProgramTuition": 4000,
+    "visaNotes": "Student visa (D-type). Acceptance letter + financial proof required. Visa fee: ~€80. Temporary residence card after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh8b000poqpp9hqhs9mu",
@@ -28492,7 +28595,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhej007doqq14g1fiefl",
@@ -28503,7 +28606,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhek007foqq11waedppb",
@@ -28514,7 +28617,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhel007hoqq180wfxn61",
@@ -28525,7 +28628,7 @@
         "language": "English",
         "tuitionUsd": 4500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmhem007joqq16afsmvov",
@@ -28536,7 +28639,7 @@
         "language": "English",
         "tuitionUsd": 4250,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -28803,7 +28906,8 @@
     ],
     "avgRating": 4.7,
     "reviewCount": 12,
-    "cheapestProgramTuition": 4250
+    "cheapestProgramTuition": 4250,
+    "visaNotes": "Student visa (D-type). Acceptance letter + financial proof required. Visa fee: ~€80. Temporary residence card after arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh8t0016oqppuzszb402",
@@ -28830,7 +28934,7 @@
         "language": "English",
         "tuitionUsd": 5000,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cmu7cmhh700cxoqq1nrrg9k16",
@@ -28841,7 +28945,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmhh800czoqq1ft0wbx24",
@@ -28852,7 +28956,7 @@
         "language": "English",
         "tuitionUsd": 5500,
         "deadline": "2026-07-15",
-        "entryReqs": null
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -29135,7 +29239,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 13,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa/residence permit. University sponsorship required. Visa fee: ~$40. Health insurance recommended. Processing: 1-2 weeks."
   },
   {
     "id": "cmu7cmh350025oqpd34ys58q6",
@@ -29161,8 +29266,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 900,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cmu7cmh360029oqpdz5d4enyb",
@@ -29172,8 +29277,8 @@
         "durationMonths": 48,
         "language": "Turkish",
         "tuitionUsd": 900,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [
@@ -29476,7 +29581,8 @@
     ],
     "avgRating": 4.3,
     "reviewCount": 14,
-    "cheapestProgramTuition": 900
+    "cheapestProgramTuition": 900,
+    "visaNotes": "Student visa from Turkish consulate. Acceptance letter required. Visa fee: ~$60. Residence permit needed within 1 month of arrival. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cmu7cmh49004voqpdgyhjip33",
@@ -29502,8 +29608,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 14000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cmu7cmh4r004zoqpde0g7ycbl",
@@ -29513,8 +29619,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 13000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [
@@ -29781,7 +29887,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 12,
-    "cheapestProgramTuition": 13000
+    "cheapestProgramTuition": 13000,
+    "visaNotes": "Student Residence Visa sponsored by university. Medical fitness test required. Emirates ID mandatory. Visa fee: ~$270. Health insurance mandatory. Processing: 2-4 weeks."
   },
   {
     "id": "cusb11bd04c99ef4769b36c",
@@ -29807,8 +29914,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 6000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cus039cd98d6c0f47958acc",
@@ -29818,8 +29925,8 @@
         "durationMonths": 24,
         "language": "English",
         "tuitionUsd": 7000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "Bachelor's degree in relevant field. GPA 3.0+. IELTS 6.5 or TOEFL 90. Statement of purpose required."
       },
       {
         "id": "cusa70246f8f0c944caa695",
@@ -29829,8 +29936,8 @@
         "durationMonths": 72,
         "language": "Russian",
         "tuitionUsd": 5000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -30011,7 +30118,8 @@
     ],
     "avgRating": 3.6,
     "reviewCount": 8,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa via university invitation letter. HIV test required. Visa fee: ~$80. Registration within 7 days of arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cus4f38b8d232bf47a190e3",
@@ -30037,8 +30145,8 @@
         "durationMonths": 24,
         "language": "English",
         "tuitionUsd": 5000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "Undergraduate degree with minimum 2.8 GPA. Two letters of recommendation. Research proposal for thesis programs."
       },
       {
         "id": "cus1a54be42898846c5b070",
@@ -30048,8 +30156,8 @@
         "durationMonths": 48,
         "language": "Russian",
         "tuitionUsd": 4200,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [],
@@ -30245,7 +30353,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 9,
-    "cheapestProgramTuition": 4200
+    "cheapestProgramTuition": 4200,
+    "visaNotes": "Student visa via university invitation letter. HIV test required. Visa fee: ~$80. Registration within 7 days of arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cuscdfb3c1db6ce41f89a88",
@@ -30271,8 +30380,8 @@
         "durationMonths": 48,
         "language": "Russian",
         "tuitionUsd": 5000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-31",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cus2b9826fd7702469b8fdd",
@@ -30282,8 +30391,8 @@
         "durationMonths": 24,
         "language": "English",
         "tuitionUsd": 6000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "Undergraduate degree with minimum 2.8 GPA. Two letters of recommendation. Research proposal for thesis programs."
       }
     ],
     "scholarships": [],
@@ -30595,7 +30704,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 15,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa via university invitation letter. HIV test required. Visa fee: ~$80. Registration within 7 days of arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cusf232e65cd61145e1a3dc",
@@ -30621,8 +30731,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 5500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cus8e8a255f41cf4b66aa9b",
@@ -30632,8 +30742,8 @@
         "durationMonths": 24,
         "language": "English",
         "tuitionUsd": 6500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "Bachelor's degree. Minimum IELTS 6.5. CV and motivation letter. Some programs require GRE/GMAT."
       }
     ],
     "scholarships": [
@@ -30931,7 +31041,8 @@
     ],
     "avgRating": 4.3,
     "reviewCount": 14,
-    "cheapestProgramTuition": 5500
+    "cheapestProgramTuition": 5500,
+    "visaNotes": "Student visa via university invitation letter. HIV test required. Visa fee: ~$80. Registration within 7 days of arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cus1f9281f52970435ab4fa",
@@ -30957,8 +31068,8 @@
         "durationMonths": 48,
         "language": "Russian",
         "tuitionUsd": 3500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-31",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cusd7471d3376524c2b9323",
@@ -30968,8 +31079,8 @@
         "durationMonths": 72,
         "language": "Russian",
         "tuitionUsd": 4000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [],
@@ -31138,7 +31249,8 @@
     ],
     "avgRating": 3.6,
     "reviewCount": 8,
-    "cheapestProgramTuition": 3500
+    "cheapestProgramTuition": 3500,
+    "visaNotes": "Student visa via university invitation letter. HIV test required. Visa fee: ~$80. Registration within 7 days of arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cuseea34560d1754db5a6df",
@@ -31164,8 +31276,8 @@
         "durationMonths": 72,
         "language": "English",
         "tuitionUsd": 6000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-15",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cusb41d6248d2d64f48812c",
@@ -31175,8 +31287,8 @@
         "durationMonths": 60,
         "language": "English",
         "tuitionUsd": 5000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -31505,7 +31617,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 15,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa via university invitation letter. HIV test required. Visa fee: ~$80. Registration within 7 days of arrival. Processing: 2-3 weeks."
   },
   {
     "id": "cus939d9a9e74344bcca372",
@@ -31531,8 +31644,8 @@
         "durationMonths": 48,
         "language": "Russian",
         "tuitionUsd": 2500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cus6128a6ecc584466faaa0",
@@ -31542,8 +31655,8 @@
         "durationMonths": 48,
         "language": "Russian",
         "tuitionUsd": 2500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [],
@@ -31697,7 +31810,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 7,
-    "cheapestProgramTuition": 2500
+    "cheapestProgramTuition": 2500,
+    "visaNotes": "Student visa via university invitation. Visa fee: ~$40. Registration within 3 days. Medical check on arrival. Processing: 1-2 weeks."
   },
   {
     "id": "cus2b1bb8f7f67142ec8d6f",
@@ -31723,8 +31837,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 3000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cus3a92ffa106da4bd1a210",
@@ -31734,8 +31848,8 @@
         "durationMonths": 48,
         "language": "Russian",
         "tuitionUsd": 2800,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [],
@@ -31864,7 +31978,8 @@
     ],
     "avgRating": 3.8,
     "reviewCount": 6,
-    "cheapestProgramTuition": 2800
+    "cheapestProgramTuition": 2800,
+    "visaNotes": "Student visa via university invitation. Visa fee: ~$40. Registration within 3 days. Medical check on arrival. Processing: 1-2 weeks."
   },
   {
     "id": "cus6e495e1b3bdb442d813f",
@@ -31890,8 +32005,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 5000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cus7e41b874702d492bad28",
@@ -31901,8 +32016,8 @@
         "durationMonths": 36,
         "language": "English",
         "tuitionUsd": 4500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [
@@ -32104,7 +32219,8 @@
     ],
     "avgRating": 3.6,
     "reviewCount": 9,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student visa via university invitation. Visa fee: ~$40. Registration within 3 days. Medical check on arrival. Processing: 1-2 weeks."
   },
   {
     "id": "cus772869d7f4d24a36977e",
@@ -32130,8 +32246,8 @@
         "durationMonths": 72,
         "language": "English",
         "tuitionUsd": 3500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cus35e188653d3b4da6abbb",
@@ -32141,8 +32257,8 @@
         "durationMonths": 60,
         "language": "Russian",
         "tuitionUsd": 3200,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [],
@@ -32295,7 +32411,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 7,
-    "cheapestProgramTuition": 3200
+    "cheapestProgramTuition": 3200,
+    "visaNotes": "Student visa via university invitation. Visa fee: ~$40. Registration within 3 days. Medical check on arrival. Processing: 1-2 weeks."
   },
   {
     "id": "cus7ffa855608d5479f9d8f",
@@ -32321,8 +32438,8 @@
         "durationMonths": 48,
         "language": "Russian",
         "tuitionUsd": 2200,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cus40521227b23c4576ab28",
@@ -32332,8 +32449,8 @@
         "durationMonths": 48,
         "language": "Russian",
         "tuitionUsd": 2200,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [],
@@ -32602,7 +32719,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 13,
-    "cheapestProgramTuition": 2200
+    "cheapestProgramTuition": 2200,
+    "visaNotes": "Student visa via university invitation. Visa fee: ~$40. Registration within 3 days. Medical check on arrival. Processing: 1-2 weeks."
   },
   {
     "id": "cus7e6b59380b9a4204bcd6",
@@ -32628,8 +32746,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 3500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       },
       {
         "id": "cus5f89b2be9f264d80ba03",
@@ -32639,8 +32757,8 @@
         "durationMonths": 48,
         "language": "Russian",
         "tuitionUsd": 3000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-01",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [],
@@ -32819,7 +32937,8 @@
     ],
     "avgRating": 4.5,
     "reviewCount": 8,
-    "cheapestProgramTuition": 3000
+    "cheapestProgramTuition": 3000,
+    "visaNotes": "Student visa via university invitation. Visa fee: ~$60. IIN (individual identification number) required. Registration within 3 days. Processing: 1-2 weeks."
   },
   {
     "id": "cusd585aa86dc3d444db48a",
@@ -32845,8 +32964,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 8000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cus41ddb2d016cf4119b52f",
@@ -32856,8 +32975,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 8000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cuse727dd153b3c4b7ea36d",
@@ -32867,8 +32986,8 @@
         "durationMonths": 24,
         "language": "English",
         "tuitionUsd": 12000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "Bachelor's degree in relevant field. GPA 3.0+. IELTS 6.5 or TOEFL 90. Statement of purpose required."
       }
     ],
     "scholarships": [
@@ -33049,7 +33168,8 @@
     ],
     "avgRating": 4.8,
     "reviewCount": 8,
-    "cheapestProgramTuition": 8000
+    "cheapestProgramTuition": 8000,
+    "visaNotes": "Student visa via university invitation. Visa fee: ~$60. IIN (individual identification number) required. Registration within 3 days. Processing: 1-2 weeks."
   },
   {
     "id": "cus57d147b77cf547e78d9e",
@@ -33075,8 +33195,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 5000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cus30c4f7fe1b0544768c7d",
@@ -33086,8 +33206,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 5500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       }
     ],
     "scholarships": [],
@@ -33245,7 +33365,8 @@
     ],
     "avgRating": 3.4,
     "reviewCount": 7,
-    "cheapestProgramTuition": 5000
+    "cheapestProgramTuition": 5000,
+    "visaNotes": "Student visa via university invitation. Visa fee: ~$60. IIN (individual identification number) required. Registration within 3 days. Processing: 1-2 weeks."
   },
   {
     "id": "cusca6e514007ae4cd8b5e5",
@@ -33271,8 +33392,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 6000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cus4cc6a793f3484b97b061",
@@ -33282,8 +33403,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 5500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-06-15",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [
@@ -33608,7 +33729,8 @@
     ],
     "avgRating": 4.3,
     "reviewCount": 15,
-    "cheapestProgramTuition": 5500
+    "cheapestProgramTuition": 5500,
+    "visaNotes": "Student visa via university invitation. Visa fee: ~$60. IIN (individual identification number) required. Registration within 3 days. Processing: 1-2 weeks."
   },
   {
     "id": "cus53aaa29d927748e79d9f",
@@ -33634,8 +33756,8 @@
         "durationMonths": 72,
         "language": "English",
         "tuitionUsd": 4500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       },
       {
         "id": "cuseeafb961a5a244ac9a51",
@@ -33645,8 +33767,8 @@
         "durationMonths": 60,
         "language": "English",
         "tuitionUsd": 4000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [],
@@ -33968,7 +34090,8 @@
     ],
     "avgRating": 3.9,
     "reviewCount": 15,
-    "cheapestProgramTuition": 4000
+    "cheapestProgramTuition": 4000,
+    "visaNotes": "Student visa via university invitation. Visa fee: ~$60. IIN (individual identification number) required. Registration within 3 days. Processing: 1-2 weeks."
   },
   {
     "id": "cus4a33842bac854315b7a7",
@@ -33994,8 +34117,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 3000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-01",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cusbdb06c34cd324db3a935",
@@ -34005,8 +34128,8 @@
         "durationMonths": 72,
         "language": "English",
         "tuitionUsd": 4000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [],
@@ -34322,7 +34445,8 @@
     ],
     "avgRating": 4.1,
     "reviewCount": 15,
-    "cheapestProgramTuition": 3000
+    "cheapestProgramTuition": 3000,
+    "visaNotes": "Student visa via university. Visa-free for many countries for 1 year. Residence permit if staying longer. Visa fee: ~$50. Processing: 1-2 weeks."
   },
   {
     "id": "cusa3338eda01a146628216",
@@ -34348,8 +34472,8 @@
         "durationMonths": 72,
         "language": "English",
         "tuitionUsd": 5000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cusb183a071912743418937",
@@ -34359,8 +34483,8 @@
         "durationMonths": 60,
         "language": "English",
         "tuitionUsd": 4500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cusea90e0a0d3c64025ae71",
@@ -34370,8 +34494,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 4000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-01",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [
@@ -34655,7 +34779,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 13,
-    "cheapestProgramTuition": 4000
+    "cheapestProgramTuition": 4000,
+    "visaNotes": "Student visa via university. Visa-free for many countries for 1 year. Residence permit if staying longer. Visa fee: ~$50. Processing: 1-2 weeks."
   },
   {
     "id": "cus28f374e3db334298a183",
@@ -34681,8 +34806,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 3500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       },
       {
         "id": "cus1905e01c1b8d4f96a777",
@@ -34692,8 +34817,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 3800,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-31",
+        "entryReqs": "Secondary school certificate with 70% average. English proficiency: IELTS 5.5 or equivalent."
       }
     ],
     "scholarships": [],
@@ -34964,7 +35089,8 @@
     ],
     "avgRating": 4.3,
     "reviewCount": 13,
-    "cheapestProgramTuition": 3500
+    "cheapestProgramTuition": 3500,
+    "visaNotes": "Student visa via university. Visa-free for many countries for 1 year. Residence permit if staying longer. Visa fee: ~$50. Processing: 1-2 weeks."
   },
   {
     "id": "cus959cfa3ce6f0437caf6b",
@@ -34990,8 +35116,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 4500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-12-15",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cus18bbc7f8252d4566936d",
@@ -35001,8 +35127,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 4500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-07-31",
+        "entryReqs": "High school diploma. GPA 2.5+. Language proficiency certificate required for international students."
       }
     ],
     "scholarships": [],
@@ -35214,7 +35340,8 @@
     ],
     "avgRating": 4.2,
     "reviewCount": 10,
-    "cheapestProgramTuition": 4500
+    "cheapestProgramTuition": 4500,
+    "visaNotes": "Student visa via university. Visa-free for many countries for 1 year. Residence permit if staying longer. Visa fee: ~$50. Processing: 1-2 weeks."
   },
   {
     "id": "cusb740cb92fb7840f9bc79",
@@ -35240,8 +35367,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 4000,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       },
       {
         "id": "cus3b69f7e57bba4805b0ae",
@@ -35251,8 +35378,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 4200,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2027-01-31",
+        "entryReqs": "High school diploma with minimum GPA 2.5. IELTS 6.0 or TOEFL 80. Transcript evaluation required."
       }
     ],
     "scholarships": [],
@@ -35482,7 +35609,8 @@
     ],
     "avgRating": 4.5,
     "reviewCount": 11,
-    "cheapestProgramTuition": 4000
+    "cheapestProgramTuition": 4000,
+    "visaNotes": "Student visa via university. Visa-free for many countries for 1 year. Residence permit if staying longer. Visa fee: ~$50. Processing: 1-2 weeks."
   },
   {
     "id": "cus8950bc5914f84acb96b3",
@@ -35508,8 +35636,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 3500,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-09-01",
+        "entryReqs": "High school graduation with GPA 3.0+. Standardized test scores accepted but not required."
       },
       {
         "id": "cus6a743c5c54bb4e4b92c5",
@@ -35519,8 +35647,8 @@
         "durationMonths": 48,
         "language": "English",
         "tuitionUsd": 3300,
-        "deadline": null,
-        "entryReqs": null
+        "deadline": "2026-08-15",
+        "entryReqs": "Secondary education completion. Minimum IELTS 6.0 for English-taught programs. Entrance exam for some faculties."
       }
     ],
     "scholarships": [],
@@ -35736,6 +35864,7 @@
     ],
     "avgRating": 4.0,
     "reviewCount": 10,
-    "cheapestProgramTuition": 3300
+    "cheapestProgramTuition": 3300,
+    "visaNotes": "Student visa via university. Visa-free for many countries for 1 year. Residence permit if staying longer. Visa fee: ~$50. Processing: 1-2 weeks."
   }
 ]
