@@ -241,5 +241,875 @@
       "tuitionUsd": 5500,
       "livingCostUsd": 5000
     }
+  },
+  {
+    "id": "tp_386016040bcd431aaf49",
+    "fromUniversityId": "cmu7cmh8v0017oqppvbxef1ix",
+    "toUniversityId": "cmu7cmh7q0009oqppjq9yt2k6",
+    "creditsAccepted": 90,
+    "totalCredits": 180,
+    "agreementType": "official",
+    "notes": "2+2 articulation agreement: complete 2 years at Hashemite University, transfer to Oxford Brookes University for final 2 years. United Kingdom degree awarded.",
+    "requirements": "GPA 3.0+, TOEFL 80, transcript evaluation by destination university",
+    "estimatedSavingsUsd": 0,
+    "fromUniversity": {
+      "id": "cmu7cmh8v0017oqppvbxef1ix",
+      "name": "Hashemite University",
+      "slug": "hashemite-university",
+      "country": "Jordan",
+      "city": "Zarqa",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh7q0009oqppjq9yt2k6",
+      "name": "Oxford Brookes University",
+      "slug": "oxford-brookes-university",
+      "country": "United Kingdom",
+      "city": "Oxford",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_fa8b36933e7f4295b0e2",
+    "fromUniversityId": "cus939d9a9e74344bcca372",
+    "toUniversityId": "cmu7cmh7h0004oqppcll0clmg",
+    "creditsAccepted": 90,
+    "totalCredits": 180,
+    "agreementType": "official",
+    "notes": "Credit transfer agreement allows up to 90 credits. Students save approximately $11,000 by starting at National University of Uzbekistan.",
+    "requirements": "GPA 3.0+, TOEFL 80, transcript evaluation by destination university",
+    "estimatedSavingsUsd": 11000,
+    "fromUniversity": {
+      "id": "cus939d9a9e74344bcca372",
+      "name": "National University of Uzbekistan",
+      "slug": "national-university-of-uzbekistan",
+      "country": "Uzbekistan",
+      "city": "Tashkent",
+      "tuitionUsd": 2500,
+      "livingCostUsd": 3000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh7h0004oqppcll0clmg",
+      "name": "Leeds Beckett University",
+      "slug": "leeds-beckett-university",
+      "country": "United Kingdom",
+      "city": "Leeds",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_d6fcd16510cc41c4a400",
+    "fromUniversityId": "cus772869d7f4d24a36977e",
+    "toUniversityId": "cmu7cmh80000hoqpp50pkhqvk",
+    "creditsAccepted": 120,
+    "totalCredits": 180,
+    "agreementType": "case-by-case",
+    "notes": "Direct transfer agreement between institutions. University of Duisburg-Essen accepts 120 of 180 credits from Tashkent Medical Academy.",
+    "requirements": "GPA 2.0+, completed 2 years of study, department approval",
+    "estimatedSavingsUsd": 9000,
+    "fromUniversity": {
+      "id": "cus772869d7f4d24a36977e",
+      "name": "Tashkent Medical Academy",
+      "slug": "tashkent-medical-academy",
+      "country": "Uzbekistan",
+      "city": "Tashkent",
+      "tuitionUsd": 3500,
+      "livingCostUsd": 3000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh80000hoqpp50pkhqvk",
+      "name": "University of Duisburg-Essen",
+      "slug": "university-of-duisburg-essen",
+      "country": "Germany",
+      "city": "Essen",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_bc78d176e1f1493aa703",
+    "fromUniversityId": "cmu7cmh3o003ioqpd828s3pa4",
+    "toUniversityId": "cmu7cmh7v000eoqpp0fd4obix",
+    "creditsAccepted": 120,
+    "totalCredits": 180,
+    "agreementType": "official",
+    "notes": "Direct transfer agreement between institutions. University of Mannheim accepts 120 of 180 credits from Taylor's University.",
+    "requirements": "GPA 2.5+, IELTS 6.0, passing internal English exam",
+    "estimatedSavingsUsd": 0,
+    "fromUniversity": {
+      "id": "cmu7cmh3o003ioqpd828s3pa4",
+      "name": "Taylor's University",
+      "slug": "taylors-university",
+      "country": "Malaysia",
+      "city": "Subang Jaya",
+      "tuitionUsd": 8000,
+      "livingCostUsd": 5000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh7v000eoqpp0fd4obix",
+      "name": "University of Mannheim",
+      "slug": "university-of-mannheim",
+      "country": "Germany",
+      "city": "Mannheim",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_19187a80a53c4c2ba9a4",
+    "fromUniversityId": "cus1f9281f52970435ab4fa",
+    "toUniversityId": "cmu7cmh8z001coqpp84luewlh",
+    "creditsAccepted": 60,
+    "totalCredits": 360,
+    "agreementType": "official",
+    "notes": "2+2 articulation agreement: complete 2 years at Kazan Federal University, transfer to Canadian University Dubai for final 2 years. United Arab Emirates degree awarded.",
+    "requirements": "GPA 2.8+, IELTS 6.5, portfolio review for design programs",
+    "estimatedSavingsUsd": 6000,
+    "fromUniversity": {
+      "id": "cus1f9281f52970435ab4fa",
+      "name": "Kazan Federal University",
+      "slug": "kazan-federal-university",
+      "country": "Russia",
+      "city": "Kazan",
+      "tuitionUsd": 3500,
+      "livingCostUsd": 4500
+    },
+    "toUniversity": {
+      "id": "cmu7cmh8z001coqpp84luewlh",
+      "name": "Canadian University Dubai",
+      "slug": "canadian-university-dubai",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_217d407bbdef49f69e5d",
+    "fromUniversityId": "cmu7cmh8v0017oqppvbxef1ix",
+    "toUniversityId": "cmu7cmgxs002loqp1yt21u9zn",
+    "creditsAccepted": 120,
+    "totalCredits": 360,
+    "agreementType": "case-by-case",
+    "notes": "2+2 articulation agreement: complete 2 years at Hashemite University, transfer to University of Malaya for final 2 years. Malaysia degree awarded.",
+    "requirements": "GPA 2.5+, IELTS 6.0, passing internal English exam",
+    "estimatedSavingsUsd": 0,
+    "fromUniversity": {
+      "id": "cmu7cmh8v0017oqppvbxef1ix",
+      "name": "Hashemite University",
+      "slug": "hashemite-university",
+      "country": "Jordan",
+      "city": "Zarqa",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmgxs002loqp1yt21u9zn",
+      "name": "University of Malaya",
+      "slug": "university-of-malaya",
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "tuitionUsd": 5500,
+      "livingCostUsd": 5000
+    }
+  },
+  {
+    "id": "tp_e92b541f72aa444ab6fd",
+    "fromUniversityId": "cmu7cmh8c000qoqppbdx00l95",
+    "toUniversityId": "cmu7cmgya0048oqp19gwymz99",
+    "creditsAccepted": 60,
+    "totalCredits": 240,
+    "agreementType": "official",
+    "notes": "Direct transfer agreement between institutions. American University of Sharjah accepts 60 of 240 credits from Gdansk University of Technology.",
+    "requirements": "GPA 2.0+, completed 2 years of study, department approval",
+    "estimatedSavingsUsd": 34000,
+    "fromUniversity": {
+      "id": "cmu7cmh8c000qoqppbdx00l95",
+      "name": "Gdansk University of Technology",
+      "slug": "gdansk-university-of-technology",
+      "country": "Poland",
+      "city": "Gdansk",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmgya0048oqp19gwymz99",
+      "name": "American University of Sharjah",
+      "slug": "american-university-of-sharjah",
+      "country": "United Arab Emirates",
+      "city": "Sharjah",
+      "tuitionUsd": 17000,
+      "livingCostUsd": 11000
+    }
+  },
+  {
+    "id": "tp_f39a4ce97b294a41856c",
+    "fromUniversityId": "cmu7cmh88000noqppxg00y1q1",
+    "toUniversityId": "cmu7cmgya0048oqp19gwymz99",
+    "creditsAccepted": 120,
+    "totalCredits": 360,
+    "agreementType": "official",
+    "notes": "Credit transfer agreement allows up to 120 credits. Students save approximately $34,000 by starting at Cukurova University.",
+    "requirements": "GPA 3.0+, TOEFL 80, transcript evaluation by destination university",
+    "estimatedSavingsUsd": 34000,
+    "fromUniversity": {
+      "id": "cmu7cmh88000noqppxg00y1q1",
+      "name": "Cukurova University",
+      "slug": "cukurova-university",
+      "country": "Turkey",
+      "city": "Adana",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmgya0048oqp19gwymz99",
+      "name": "American University of Sharjah",
+      "slug": "american-university-of-sharjah",
+      "country": "United Arab Emirates",
+      "city": "Sharjah",
+      "tuitionUsd": 17000,
+      "livingCostUsd": 11000
+    }
+  },
+  {
+    "id": "tp_9bb0f8f8deff4b889700",
+    "fromUniversityId": "cmu7cmh8e000soqpp0svdtay8",
+    "toUniversityId": "cmu7cmgxa0019oqp1whyj4cod",
+    "creditsAccepted": 120,
+    "totalCredits": 360,
+    "agreementType": "case-by-case",
+    "notes": "Pathway program: study 1-2 years at University of Wroclaw then transfer. Application requires syllabus submission for course matching.",
+    "requirements": "GPA 2.5+, IELTS 6.0, passing internal English exam",
+    "estimatedSavingsUsd": 9000,
+    "fromUniversity": {
+      "id": "cmu7cmh8e000soqpp0svdtay8",
+      "name": "University of Wroclaw",
+      "slug": "university-of-wroclaw",
+      "country": "Poland",
+      "city": "Wroclaw",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmgxa0019oqp1whyj4cod",
+      "name": "Technical University of Munich",
+      "slug": "tu-munich",
+      "country": "Germany",
+      "city": "Munich",
+      "tuitionUsd": 1500,
+      "livingCostUsd": 14000
+    }
+  },
+  {
+    "id": "tp_eda244eff73645868f9e",
+    "fromUniversityId": "cmu7cmh3c002qoqpdtigiiyly",
+    "toUniversityId": "cmu7cmh7b0000oqpps8glqevv",
+    "creditsAccepted": 120,
+    "totalCredits": 180,
+    "agreementType": "case-by-case",
+    "notes": "Pathway program: study 1-2 years at University of Lodz then transfer. Application requires syllabus submission for course matching.",
+    "requirements": "GPA 3.0+, language proficiency certificate, course syllabus review",
+    "estimatedSavingsUsd": 6000,
+    "fromUniversity": {
+      "id": "cmu7cmh3c002qoqpdtigiiyly",
+      "name": "University of Lodz",
+      "slug": "university-of-lodz",
+      "country": "Poland",
+      "city": "Lodz",
+      "tuitionUsd": 3000,
+      "livingCostUsd": 5000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh7b0000oqpps8glqevv",
+      "name": "University of Greenwich",
+      "slug": "university-of-greenwich",
+      "country": "United Kingdom",
+      "city": "London",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_0a405ad42ccc43158a02",
+    "fromUniversityId": "cusca6e514007ae4cd8b5e5",
+    "toUniversityId": "cmu7cmh89000ooqpp8l7vhfux",
+    "creditsAccepted": 120,
+    "totalCredits": 180,
+    "agreementType": "case-by-case",
+    "notes": "Pathway program: study 1-2 years at KIMEP University then transfer. Application requires syllabus submission for course matching.",
+    "requirements": "GPA 3.0+, TOEFL 80, transcript evaluation by destination university",
+    "estimatedSavingsUsd": 2000,
+    "fromUniversity": {
+      "id": "cusca6e514007ae4cd8b5e5",
+      "name": "KIMEP University",
+      "slug": "kimep-university",
+      "country": "Kazakhstan",
+      "city": "Almaty",
+      "tuitionUsd": 6000,
+      "livingCostUsd": 4000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh89000ooqpp8l7vhfux",
+      "name": "Ataturk University",
+      "slug": "ataturk-university",
+      "country": "Turkey",
+      "city": "Erzurum",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_12e2a69581e347b7b2fd",
+    "fromUniversityId": "cus772869d7f4d24a36977e",
+    "toUniversityId": "cmu7cmh8g000uoqpperppqkem",
+    "creditsAccepted": 90,
+    "totalCredits": 180,
+    "agreementType": "official",
+    "notes": "2+2 articulation agreement: complete 2 years at Tashkent Medical Academy, transfer to Universiti Putra Malaysia for final 2 years. Malaysia degree awarded.",
+    "requirements": "GPA 2.5+, IELTS 6.0, passing internal English exam",
+    "estimatedSavingsUsd": 9000,
+    "fromUniversity": {
+      "id": "cus772869d7f4d24a36977e",
+      "name": "Tashkent Medical Academy",
+      "slug": "tashkent-medical-academy",
+      "country": "Uzbekistan",
+      "city": "Tashkent",
+      "tuitionUsd": 3500,
+      "livingCostUsd": 3000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh8g000uoqpperppqkem",
+      "name": "Universiti Putra Malaysia",
+      "slug": "universiti-putra-malaysia",
+      "country": "Malaysia",
+      "city": "Serdang",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_1eefb406fcf140489a33",
+    "fromUniversityId": "cmu7cmh8s0015oqppccyprg9u",
+    "toUniversityId": "cmu7cmh7v000eoqpp0fd4obix",
+    "creditsAccepted": 150,
+    "totalCredits": 360,
+    "agreementType": "official",
+    "notes": "Direct transfer agreement between institutions. University of Mannheim accepts 150 of 360 credits from Applied Science University.",
+    "requirements": "GPA 2.8+, IELTS 6.5, portfolio review for design programs",
+    "estimatedSavingsUsd": 0,
+    "fromUniversity": {
+      "id": "cmu7cmh8s0015oqppccyprg9u",
+      "name": "Applied Science University",
+      "slug": "applied-science-university",
+      "country": "Jordan",
+      "city": "Al Jubaiha",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh7v000eoqpp0fd4obix",
+      "name": "University of Mannheim",
+      "slug": "university-of-mannheim",
+      "country": "Germany",
+      "city": "Mannheim",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_40854e00aa434429a0b6",
+    "fromUniversityId": "cmu7cmgyj004soqp1r7hl7190",
+    "toUniversityId": "cmu7cmgxe001ioqp1x8kxsrex",
+    "creditsAccepted": 60,
+    "totalCredits": 360,
+    "agreementType": "official",
+    "notes": "Pathway program: study 1-2 years at Vilnius University then transfer. Application requires syllabus submission for course matching.",
+    "requirements": "GPA 2.0+, completed 2 years of study, department approval",
+    "estimatedSavingsUsd": 0,
+    "fromUniversity": {
+      "id": "cmu7cmgyj004soqp1r7hl7190",
+      "name": "Vilnius University",
+      "slug": "vilnius-university",
+      "country": "Lithuania",
+      "city": "Vilnius",
+      "tuitionUsd": 4000,
+      "livingCostUsd": 5000
+    },
+    "toUniversity": {
+      "id": "cmu7cmgxe001ioqp1x8kxsrex",
+      "name": "Bogazici University",
+      "slug": "bogazici-university",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "tuitionUsd": 800,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_10aa489fabe64e388bc8",
+    "fromUniversityId": "cmu7cmh8r0014oqppngbsv29a",
+    "toUniversityId": "cmu7cmh8x001aoqppubez6y7f",
+    "creditsAccepted": 150,
+    "totalCredits": 180,
+    "agreementType": "official",
+    "notes": "Credit transfer agreement allows up to 150 credits. Students save approximately $0 by starting at Philadelphia University.",
+    "requirements": "GPA 3.0+, TOEFL 80, transcript evaluation by destination university",
+    "estimatedSavingsUsd": 0,
+    "fromUniversity": {
+      "id": "cmu7cmh8r0014oqppngbsv29a",
+      "name": "Philadelphia University",
+      "slug": "philadelphia-university-jordan",
+      "country": "Jordan",
+      "city": "Amman",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh8x001aoqppubez6y7f",
+      "name": "Al Ghurair University",
+      "slug": "al-ghurair-university",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_69202c149dbd47d2a1be",
+    "fromUniversityId": "cmu7cmh8t0016oqppuzszb402",
+    "toUniversityId": "cmu7cmh49004voqpdgyhjip33",
+    "creditsAccepted": 90,
+    "totalCredits": 180,
+    "agreementType": "official",
+    "notes": "Credit transfer agreement allows up to 90 credits. Students save approximately $28,000 by starting at Yarmouk University.",
+    "requirements": "GPA 3.0+, TOEFL 80, transcript evaluation by destination university",
+    "estimatedSavingsUsd": 28000,
+    "fromUniversity": {
+      "id": "cmu7cmh8t0016oqppuzszb402",
+      "name": "Yarmouk University",
+      "slug": "yarmouk-university",
+      "country": "Jordan",
+      "city": "Irbid",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh49004voqpdgyhjip33",
+      "name": "Zayed University",
+      "slug": "zayed-university",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "tuitionUsd": 14000,
+      "livingCostUsd": 11000
+    }
+  },
+  {
+    "id": "tp_f49949f0150e4c17835e",
+    "fromUniversityId": "cusb740cb92fb7840f9bc79",
+    "toUniversityId": "cmu7cmh7n0007oqppf4y0e5lz",
+    "creditsAccepted": 150,
+    "totalCredits": 180,
+    "agreementType": "official",
+    "notes": "Pathway program: study 1-2 years at Caucasus University then transfer. Application requires syllabus submission for course matching.",
+    "requirements": "GPA 2.0+, completed 2 years of study, department approval",
+    "estimatedSavingsUsd": 7000,
+    "fromUniversity": {
+      "id": "cusb740cb92fb7840f9bc79",
+      "name": "Caucasus University",
+      "slug": "caucasus-university",
+      "country": "Georgia",
+      "city": "Tbilisi",
+      "tuitionUsd": 4000,
+      "livingCostUsd": 3500
+    },
+    "toUniversity": {
+      "id": "cmu7cmh7n0007oqppf4y0e5lz",
+      "name": "University of Central Lancashire",
+      "slug": "university-of-central-lancashire",
+      "country": "United Kingdom",
+      "city": "Preston",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_76275ff6cb5243b7a1f3",
+    "fromUniversityId": "cmu7cmh8f000toqppkitur9b6",
+    "toUniversityId": "cmu7cmh7h0004oqppcll0clmg",
+    "creditsAccepted": 60,
+    "totalCredits": 360,
+    "agreementType": "official",
+    "notes": "2+2 articulation agreement: complete 2 years at Nicolaus Copernicus University, transfer to Leeds Beckett University for final 2 years. United Kingdom degree awarded.",
+    "requirements": "GPA 3.0+, TOEFL 80, transcript evaluation by destination university",
+    "estimatedSavingsUsd": 0,
+    "fromUniversity": {
+      "id": "cmu7cmh8f000toqppkitur9b6",
+      "name": "Nicolaus Copernicus University",
+      "slug": "nicolaus-copernicus-university",
+      "country": "Poland",
+      "city": "Torun",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh7h0004oqppcll0clmg",
+      "name": "Leeds Beckett University",
+      "slug": "leeds-beckett-university",
+      "country": "United Kingdom",
+      "city": "Leeds",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_572dce67be344aa9ad86",
+    "fromUniversityId": "cmu7cmgxi001roqp14t8vfnr9",
+    "toUniversityId": "cmu7cmh7u000coqppphk2f175",
+    "creditsAccepted": 90,
+    "totalCredits": 240,
+    "agreementType": "official",
+    "notes": "Credit transfer agreement allows up to 90 credits. Students save approximately $8,200 by starting at Istanbul Technical University.",
+    "requirements": "GPA 3.0+, TOEFL 80, transcript evaluation by destination university",
+    "estimatedSavingsUsd": 8200,
+    "fromUniversity": {
+      "id": "cmu7cmgxi001roqp14t8vfnr9",
+      "name": "Istanbul Technical University",
+      "slug": "istanbul-technical-university",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "tuitionUsd": 900,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh7u000coqppphk2f175",
+      "name": "University of Bonn",
+      "slug": "university-of-bonn",
+      "country": "Germany",
+      "city": "Bonn",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_160ec36ab2914ee5a68a",
+    "fromUniversityId": "cmu7cmgxm0025oqp1vl87fr2t",
+    "toUniversityId": "cmu7cmh90001doqppv0jilde7",
+    "creditsAccepted": 150,
+    "totalCredits": 360,
+    "agreementType": "official",
+    "notes": "2+2 articulation agreement: complete 2 years at University of Warsaw, transfer to Heriot-Watt University Dubai for final 2 years. United Arab Emirates degree awarded.",
+    "requirements": "GPA 3.0+, language proficiency certificate, course syllabus review",
+    "estimatedSavingsUsd": 3000,
+    "fromUniversity": {
+      "id": "cmu7cmgxm0025oqp1vl87fr2t",
+      "name": "University of Warsaw",
+      "slug": "university-of-warsaw",
+      "country": "Poland",
+      "city": "Warsaw",
+      "tuitionUsd": 3500,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh90001doqppv0jilde7",
+      "name": "Heriot-Watt University Dubai",
+      "slug": "heriot-watt-university-dubai",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_db0d0e6944fb4420b1a0",
+    "fromUniversityId": "cmu7cmh3c002qoqpdtigiiyly",
+    "toUniversityId": "cmu7cmgwq0002oqp1h1yptzg2",
+    "creditsAccepted": 90,
+    "totalCredits": 360,
+    "agreementType": "case-by-case",
+    "notes": "2+2 articulation agreement: complete 2 years at University of Lodz, transfer to Coventry University for final 2 years. United Kingdom degree awarded.",
+    "requirements": "GPA 2.5+, IELTS 6.0, passing internal English exam",
+    "estimatedSavingsUsd": 47000,
+    "fromUniversity": {
+      "id": "cmu7cmh3c002qoqpdtigiiyly",
+      "name": "University of Lodz",
+      "slug": "university-of-lodz",
+      "country": "Poland",
+      "city": "Lodz",
+      "tuitionUsd": 3000,
+      "livingCostUsd": 5000
+    },
+    "toUniversity": {
+      "id": "cmu7cmgwq0002oqp1h1yptzg2",
+      "name": "Coventry University",
+      "slug": "coventry-university",
+      "country": "United Kingdom",
+      "city": "Coventry",
+      "tuitionUsd": 19500,
+      "livingCostUsd": 12000
+    }
+  },
+  {
+    "id": "tp_d2b10a1db8094d3d88ce",
+    "fromUniversityId": "cmu7cmh400043oqpdgggoebhb",
+    "toUniversityId": "cmu7cmgx80012oqp1ikuxlty8",
+    "creditsAccepted": 60,
+    "totalCredits": 240,
+    "agreementType": "official",
+    "notes": "Credit transfer agreement allows up to 60 credits. Students save approximately $13,000 by starting at Alexandria University.",
+    "requirements": "GPA 2.0+, completed 2 years of study, department approval",
+    "estimatedSavingsUsd": 13000,
+    "fromUniversity": {
+      "id": "cmu7cmh400043oqpdgggoebhb",
+      "name": "Alexandria University",
+      "slug": "alexandria-university",
+      "country": "Egypt",
+      "city": "Alexandria",
+      "tuitionUsd": 2500,
+      "livingCostUsd": 3500
+    },
+    "toUniversity": {
+      "id": "cmu7cmgx80012oqp1ikuxlty8",
+      "name": "University of Stuttgart",
+      "slug": "university-of-stuttgart",
+      "country": "Germany",
+      "city": "Stuttgart",
+      "tuitionUsd": 1500,
+      "livingCostUsd": 11000
+    }
+  },
+  {
+    "id": "tp_28312d23228c4a169d5c",
+    "fromUniversityId": "cus53aaa29d927748e79d9f",
+    "toUniversityId": "cmu7cmh2t001doqpd65o5zwei",
+    "creditsAccepted": 150,
+    "totalCredits": 180,
+    "agreementType": "official",
+    "notes": "Direct transfer agreement between institutions. Karlsruhe Institute of Technology accepts 150 of 180 credits from Astana Medical University.",
+    "requirements": "GPA 3.0+, language proficiency certificate, course syllabus review",
+    "estimatedSavingsUsd": 8000,
+    "fromUniversity": {
+      "id": "cus53aaa29d927748e79d9f",
+      "name": "Astana Medical University",
+      "slug": "astana-medical-university",
+      "country": "Kazakhstan",
+      "city": "Astana",
+      "tuitionUsd": 4500,
+      "livingCostUsd": 4000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh2t001doqpd65o5zwei",
+      "name": "Karlsruhe Institute of Technology",
+      "slug": "kit-karlsruhe",
+      "country": "Germany",
+      "city": "Karlsruhe",
+      "tuitionUsd": 1500,
+      "livingCostUsd": 11000
+    }
+  },
+  {
+    "id": "tp_e6d5075fa52c42e98fe8",
+    "fromUniversityId": "cmu7cmh8r0014oqppngbsv29a",
+    "toUniversityId": "cmu7cmh7f0002oqpp762gxroz",
+    "creditsAccepted": 150,
+    "totalCredits": 240,
+    "agreementType": "official",
+    "notes": "2+2 articulation agreement: complete 2 years at Philadelphia University, transfer to University of East London for final 2 years. United Kingdom degree awarded.",
+    "requirements": "GPA 2.5+, IELTS 6.0, passing internal English exam",
+    "estimatedSavingsUsd": 0,
+    "fromUniversity": {
+      "id": "cmu7cmh8r0014oqppngbsv29a",
+      "name": "Philadelphia University",
+      "slug": "philadelphia-university-jordan",
+      "country": "Jordan",
+      "city": "Amman",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh7f0002oqpp762gxroz",
+      "name": "University of East London",
+      "slug": "university-of-east-london",
+      "country": "United Kingdom",
+      "city": "London",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_c57e1954b816414c9ecc",
+    "fromUniversityId": "cmu7cmh8l000zoqppnmfb0aab",
+    "toUniversityId": "cmu7cmh85000loqppx8c91u13",
+    "creditsAccepted": 60,
+    "totalCredits": 180,
+    "agreementType": "case-by-case",
+    "notes": "Credit transfer agreement allows up to 60 credits. Students save approximately $0 by starting at Helwan University.",
+    "requirements": "GPA 3.0+, TOEFL 80, transcript evaluation by destination university",
+    "estimatedSavingsUsd": 0,
+    "fromUniversity": {
+      "id": "cmu7cmh8l000zoqppnmfb0aab",
+      "name": "Helwan University",
+      "slug": "helwan-university",
+      "country": "Egypt",
+      "city": "Cairo",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh85000loqppx8c91u13",
+      "name": "Marmara University",
+      "slug": "marmara-university",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_f5c9560249c7439bb9c7",
+    "fromUniversityId": "cusca6e514007ae4cd8b5e5",
+    "toUniversityId": "cmu7cmh2t001doqpd65o5zwei",
+    "creditsAccepted": 120,
+    "totalCredits": 240,
+    "agreementType": "case-by-case",
+    "notes": "2+2 articulation agreement: complete 2 years at KIMEP University, transfer to Karlsruhe Institute of Technology for final 2 years. Germany degree awarded.",
+    "requirements": "GPA 2.8+, IELTS 6.5, portfolio review for design programs",
+    "estimatedSavingsUsd": 5000,
+    "fromUniversity": {
+      "id": "cusca6e514007ae4cd8b5e5",
+      "name": "KIMEP University",
+      "slug": "kimep-university",
+      "country": "Kazakhstan",
+      "city": "Almaty",
+      "tuitionUsd": 6000,
+      "livingCostUsd": 4000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh2t001doqpd65o5zwei",
+      "name": "Karlsruhe Institute of Technology",
+      "slug": "kit-karlsruhe",
+      "country": "Germany",
+      "city": "Karlsruhe",
+      "tuitionUsd": 1500,
+      "livingCostUsd": 11000
+    }
+  },
+  {
+    "id": "tp_70267af57b6c4d7d874c",
+    "fromUniversityId": "cus4a33842bac854315b7a7",
+    "toUniversityId": "cmu7cmh7o0008oqppkpne95m9",
+    "creditsAccepted": 60,
+    "totalCredits": 180,
+    "agreementType": "case-by-case",
+    "notes": "Credit transfer agreement allows up to 60 credits. Students save approximately $9,000 by starting at Tbilisi State University.",
+    "requirements": "GPA 2.8+, IELTS 6.5, portfolio review for design programs",
+    "estimatedSavingsUsd": 9000,
+    "fromUniversity": {
+      "id": "cus4a33842bac854315b7a7",
+      "name": "Tbilisi State University",
+      "slug": "tbilisi-state-university",
+      "country": "Georgia",
+      "city": "Tbilisi",
+      "tuitionUsd": 3000,
+      "livingCostUsd": 3500
+    },
+    "toUniversity": {
+      "id": "cmu7cmh7o0008oqppkpne95m9",
+      "name": "University of the West of England",
+      "slug": "university-of-the-west-of-england",
+      "country": "United Kingdom",
+      "city": "Bristol",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_89189058039a49cc80e9",
+    "fromUniversityId": "cusd585aa86dc3d444db48a",
+    "toUniversityId": "cmu7cmh350025oqpd34ys58q6",
+    "creditsAccepted": 150,
+    "totalCredits": 180,
+    "agreementType": "case-by-case",
+    "notes": "Direct transfer agreement between institutions. Yildiz Technical University accepts 150 of 180 credits from Nazarbayev University.",
+    "requirements": "GPA 2.5+, IELTS 6.0, passing internal English exam",
+    "estimatedSavingsUsd": 0,
+    "fromUniversity": {
+      "id": "cusd585aa86dc3d444db48a",
+      "name": "Nazarbayev University",
+      "slug": "nazarbayev-university",
+      "country": "Kazakhstan",
+      "city": "Astana",
+      "tuitionUsd": 8000,
+      "livingCostUsd": 5000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh350025oqpd34ys58q6",
+      "name": "Yildiz Technical University",
+      "slug": "yildiz-technical-university",
+      "country": "Turkey",
+      "city": "Istanbul",
+      "tuitionUsd": 900,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_8915e3b6886a49abbd03",
+    "fromUniversityId": "cus772869d7f4d24a36977e",
+    "toUniversityId": "cmu7cmh8z001coqpp84luewlh",
+    "creditsAccepted": 150,
+    "totalCredits": 360,
+    "agreementType": "official",
+    "notes": "Credit transfer agreement allows up to 150 credits. Students save approximately $9,000 by starting at Tashkent Medical Academy.",
+    "requirements": "GPA 3.0+, language proficiency certificate, course syllabus review",
+    "estimatedSavingsUsd": 9000,
+    "fromUniversity": {
+      "id": "cus772869d7f4d24a36977e",
+      "name": "Tashkent Medical Academy",
+      "slug": "tashkent-medical-academy",
+      "country": "Uzbekistan",
+      "city": "Tashkent",
+      "tuitionUsd": 3500,
+      "livingCostUsd": 3000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh8z001coqpp84luewlh",
+      "name": "Canadian University Dubai",
+      "slug": "canadian-university-dubai",
+      "country": "United Arab Emirates",
+      "city": "Dubai",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
+  },
+  {
+    "id": "tp_4522b6eacfa94ee3bba1",
+    "fromUniversityId": "cmu7cmh8h000woqppnbd2hjdv",
+    "toUniversityId": "cmu7cmh80000hoqpp50pkhqvk",
+    "creditsAccepted": 60,
+    "totalCredits": 360,
+    "agreementType": "official",
+    "notes": "2+2 articulation agreement: complete 2 years at International Islamic University Malaysia, transfer to University of Duisburg-Essen for final 2 years. Germany degree awarded.",
+    "requirements": "GPA 2.5+, IELTS 6.0, passing internal English exam",
+    "estimatedSavingsUsd": 0,
+    "fromUniversity": {
+      "id": "cmu7cmh8h000woqppnbd2hjdv",
+      "name": "International Islamic University Malaysia",
+      "slug": "international-islamic-university-malaysia",
+      "country": "Malaysia",
+      "city": "Gombak",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    },
+    "toUniversity": {
+      "id": "cmu7cmh80000hoqpp50pkhqvk",
+      "name": "University of Duisburg-Essen",
+      "slug": "university-of-duisburg-essen",
+      "country": "Germany",
+      "city": "Essen",
+      "tuitionUsd": 5000,
+      "livingCostUsd": 6000
+    }
   }
 ]

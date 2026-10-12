@@ -32,24 +32,25 @@ export function TransferFinderClient({ universities }: { universities: Universit
   const router = useRouter()
   const { toast } = useToast()
   const t = useTranslations('TransferFinder')
-  const [fromId, setFromId] = React.useState('')
-  const [toId, setToId] = React.useState('')
   const [pathways, setPathways] = React.useState<Pathway[]>([])
   const [loading, setLoading] = React.useState(false)
   const [searched, setSearched] = React.useState(false)
 
-  const fetchPathways = async (from?: string, to?: string) => {
+  const [fromCountry, setFromCountry] = React.useState('')
+  const [toCountry, setToCountry] = React.useState('')
+
+  const fetchPathways = async (fCountry?: string, tCountry?: string) => {
     setLoading(true)
     setSearched(true)
     try {
       const params = new URLSearchParams()
-      if (from) params.set('from', from)
-      if (to) params.set('to', to)
+      if (fCountry) params.set('fromCountry', fCountry)
+      if (tCountry) params.set('toCountry', tCountry)
       const res = await fetch(`/api/transfer-pathways?${params}`)
       const data = await res.json()
       setPathways(data.pathways ?? [])
     } catch {
-      toast({ title: 'Failed to load pathways', variant: 'destructive' })
+      toast({ title: t('failedToLoad'), variant: 'destructive' })
     }
     setLoading(false)
   }
@@ -60,14 +61,20 @@ export function TransferFinderClient({ universities }: { universities: Universit
   }, [])
 
   const handleSearch = () => {
-    fetchPathways(fromId || undefined, toId || undefined)
+    fetchPathways(fromCountry || undefined, toCountry || undefined)
   }
 
   const clearFilters = () => {
-    setFromId('')
-    setToId('')
+    setFromCountry('')
+    setToCountry('')
     fetchPathways()
   }
+
+  // Get unique countries from universities
+  const countries = React.useMemo(() => {
+    const set = new Set(universities.map(u => u.country))
+    return Array.from(set).sort()
+  }, [universities])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-white">
@@ -104,10 +111,10 @@ export function TransferFinderClient({ universities }: { universities: Universit
             <div className="grid md:grid-cols-[1fr_auto_1fr_auto] gap-4 items-end">
               <div className="space-y-1.5">
                 <Label className="text-xs font-medium">{t('from')}</Label>
-                <Select value={fromId} onValueChange={setFromId}>
+                <Select value={fromCountry} onValueChange={setFromCountry}>
                   <SelectTrigger><SelectValue placeholder={t('anyUniversity')} /></SelectTrigger>
                   <SelectContent>
-                    {universities.map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
+                    {countries.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
                   </SelectContent>
                 </Select>
               </div>
@@ -116,10 +123,10 @@ export function TransferFinderClient({ universities }: { universities: Universit
               </div>
               <div className="space-y-1.5">
                 <Label className="text-xs font-medium">{t('to')}</Label>
-                <Select value={toId} onValueChange={setToId}>
+                <Select value={toCountry} onValueChange={setToCountry}>
                   <SelectTrigger><SelectValue placeholder={t('anyUniversity')} /></SelectTrigger>
                   <SelectContent>
-                    {universities.map(u => <SelectItem key={u.id} value={u.id}>{u.name}</SelectItem>)}
+                    {countries.map(c => <SelectItem key={c} value={c}>{c}</SelectItem>)}
                   </SelectContent>
                 </Select>
               </div>
@@ -127,7 +134,7 @@ export function TransferFinderClient({ universities }: { universities: Universit
                 <Button onClick={handleSearch} className="gap-2 bg-blue-600 hover:bg-blue-700">
                   <Shuffle className="size-4" /> {t('search')}
                 </Button>
-                {(fromId || toId) && (
+                {(fromCountry || toCountry) && (
                   <Button variant="outline" onClick={clearFilters}>{t('clear')}</Button>
                 )}
               </div>
