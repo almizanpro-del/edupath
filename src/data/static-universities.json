@@ -44,8 +44,8 @@
         "name": "AGH International Scholarship",
         "amountUsd": 2500,
         "amountType": "partial",
-        "eligibility": "International students",
-        "deadline": null
+        "eligibility": "GPA 2.5+. International students",
+        "deadline": "2026-07-01"
       }
     ],
     "reviews": [
@@ -464,10 +464,10 @@
       {
         "id": "cmu7cmhhl00dzoqq1qw6l9dkl",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2027-01-15"
       }
     ],
     "reviews": [
@@ -815,10 +815,10 @@
       {
         "id": "cmu7cmhgm00b7oqq1vtebiuzi",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 1000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -1113,7 +1113,7 @@
         "amountUsd": 1500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-15"
       }
     ],
     "reviews": [
@@ -1420,10 +1420,10 @@
       {
         "id": "cmu7cmhho00e7oqq130mct3kl",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-01"
       },
       {
         "id": "cmu7cmhho00e9oqq1oo6r7hr8",
@@ -1431,7 +1431,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-08-15"
       }
     ],
     "reviews": [
@@ -1609,10 +1609,10 @@
       {
         "id": "cmu7cmhhg00dloqq1x5q56hly",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-15"
       },
       {
         "id": "cmu7cmhhg00dnoqq13up4p1to",
@@ -1620,7 +1620,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -1875,7 +1875,7 @@
         "amountUsd": 2500,
         "amountType": "full",
         "eligibility": "Arab students via bilateral agreements",
-        "deadline": null
+        "deadline": "2026-12-01"
       }
     ],
     "reviews": [
@@ -3151,8 +3151,8 @@
         "name": "AAU Scholarship",
         "amountUsd": 1500,
         "amountType": "partial",
-        "eligibility": "International students",
-        "deadline": null
+        "eligibility": "GPA 2.8+. International students",
+        "deadline": "2026-12-15"
       }
     ],
     "reviews": [
@@ -3439,10 +3439,10 @@
       {
         "id": "cmu7cmhe9006poqq1003qrqns",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -3773,8 +3773,8 @@
         "name": "Türkiye Bursları",
         "amountUsd": 8000,
         "amountType": "full",
-        "eligibility": "International students via government scholarship",
-        "deadline": null
+        "eligibility": "GPA 2.8+. International students via government scholarship",
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -4123,7 +4123,7 @@
         "amountUsd": 1500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -4448,10 +4448,10 @@
       {
         "id": "cmu7cmheh0079oqq1yr9u6qnd",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -4764,7 +4764,7 @@
         "amountUsd": 1500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-15"
       }
     ],
     "reviews": [
@@ -4952,7 +4952,7 @@
         "amountUsd": 16000,
         "amountType": "full",
         "eligibility": "Top 10% applicants",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -5263,7 +5263,7 @@
         "name": "Türkiye Bursları Scholarship",
         "amountUsd": 8000,
         "amountType": "full",
-        "eligibility": "International students via Turkey government scholarship program",
+        "eligibility": "GPA 3.2+. International students via Turkey government scholarship program",
         "deadline": "2026-02-20"
       }
     ],
@@ -5541,7 +5541,7 @@
         "name": "Egyptian Government Scholarship",
         "amountUsd": 2500,
         "amountType": "full",
-        "eligibility": "International Arab students via Ministry of Higher Education",
+        "eligibility": "GPA 2.8+. International Arab students via Ministry of Higher Education",
         "deadline": "2026-05-31"
       }
     ],
@@ -5923,10 +5923,10 @@
       {
         "id": "cmu7cmhhw00etoqq1u6dsrl52",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2027-01-15"
       },
       {
         "id": "cmu7cmhhw00evoqq1n31nyyte",
@@ -5934,7 +5934,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-12-15"
       }
     ],
     "reviews": [
@@ -6441,10 +6441,10 @@
       {
         "id": "cmu7cmhed006zoqq19cyf7rrc",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-01"
       },
       {
         "id": "cmu7cmhee0071oqq1wjdbvsig",
@@ -6452,7 +6452,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -6637,10 +6637,10 @@
       {
         "id": "cmu7cmhdy005zoqq1jj8gwpm0",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -6966,10 +6966,10 @@
       {
         "id": "cmu7cmhdv005poqq1j05tuhc8",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-01"
       }
     ],
     "reviews": [
@@ -7251,10 +7251,10 @@
       {
         "id": "cmu7cmhe20067oqq1gioauuv9",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-15"
       },
       {
         "id": "cmu7cmhe20069oqq15233ny7r",
@@ -7262,7 +7262,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-08-15"
       }
     ],
     "reviews": [
@@ -7493,10 +7493,10 @@
       {
         "id": "cmu7cmhet007voqq1xjjhi53e",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2027-01-15"
       },
       {
         "id": "cmu7cmheu007xoqq17lzuqr6c",
@@ -7504,7 +7504,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -7840,7 +7840,7 @@
         "amountUsd": 5000,
         "amountType": "partial",
         "eligibility": "Students for German exchange semester",
-        "deadline": null
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -8163,7 +8163,7 @@
         "amountUsd": 6000,
         "amountType": "partial",
         "eligibility": "Top academic performers",
-        "deadline": null
+        "deadline": "2026-12-01"
       }
     ],
     "reviews": [
@@ -8521,10 +8521,10 @@
       {
         "id": "cmu7cmhd3003joqq1frr9r9ia",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 1000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2027-01-15"
       },
       {
         "id": "cmu7cmhd4003loqq1r0xye8hu",
@@ -8532,7 +8532,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -8873,8 +8873,8 @@
         "name": "Hacettepe International Scholarship",
         "amountUsd": 4000,
         "amountType": "partial",
-        "eligibility": "International students with strong academic record",
-        "deadline": null
+        "eligibility": "GPA 3.2+. International students with strong academic record",
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -9238,10 +9238,10 @@
       {
         "id": "cmu7cmhj700gpoqq13jft0lxb",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-15"
       }
     ],
     "reviews": [
@@ -9527,10 +9527,10 @@
       {
         "id": "cmu7cmhhc00ddoqq1af47omfw",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2027-01-15"
       }
     ],
     "reviews": [
@@ -9876,10 +9876,10 @@
       {
         "id": "cmu7cmhgh00atoqq1xmrue89c",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 1000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-06-15"
       },
       {
         "id": "cmu7cmhgi00avoqq1k9nldkve",
@@ -9887,7 +9887,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-07-01"
       }
     ],
     "reviews": [
@@ -10157,7 +10157,7 @@
         "amountUsd": 1500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-01"
       }
     ],
     "reviews": [
@@ -10421,10 +10421,10 @@
       {
         "id": "cmu7cmhiu00fnoqq1e55fkvtv",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-15"
       }
     ],
     "reviews": [
@@ -10620,7 +10620,7 @@
         "amountUsd": 1500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-09-01"
       },
       {
         "id": "cmu7cmhg4009toqq1j2bsp5dl",
@@ -10628,7 +10628,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-12-15"
       }
     ],
     "reviews": [
@@ -10963,7 +10963,7 @@
         "name": "ITU International Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
-        "eligibility": "International students with strong academic record",
+        "eligibility": "GPA 3.0+. International students with strong academic record",
         "deadline": "2026-05-15"
       }
     ],
@@ -11259,7 +11259,7 @@
         "name": "JU Merit Scholarship",
         "amountUsd": 2000,
         "amountType": "partial",
-        "eligibility": "Top international applicants",
+        "eligibility": "GPA 2.5+. Top international applicants",
         "deadline": "2026-05-31"
       }
     ],
@@ -11515,7 +11515,7 @@
         "name": "JUST International Scholarship",
         "amountUsd": 1500,
         "amountType": "partial",
-        "eligibility": "International students with strong academic record",
+        "eligibility": "GPA 3.0+. International students with strong academic record",
         "deadline": "2026-05-15"
       }
     ],
@@ -11900,8 +11900,8 @@
         "name": "Deutschlandstipendium",
         "amountUsd": 3600,
         "amountType": "partial",
-        "eligibility": "Outstanding students, all nationalities",
-        "deadline": null
+        "eligibility": "GPA 3.2+. Outstanding students, all nationalities",
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -12088,8 +12088,8 @@
         "name": "KTU Tuition Waiver",
         "amountUsd": 3500,
         "amountType": "full",
-        "eligibility": "Top international applicants",
-        "deadline": null
+        "eligibility": "GPA 2.8+. Top international applicants",
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -12352,7 +12352,7 @@
         "name": "KU Full Scholarship",
         "amountUsd": 28000,
         "amountType": "full",
-        "eligibility": "Outstanding international students, covers tuition + stipend",
+        "eligibility": "GPA 3.0+. Outstanding international students, covers tuition + stipend",
         "deadline": "2026-03-31"
       }
     ],
@@ -12673,8 +12673,8 @@
         "name": "Kingston International Award",
         "amountUsd": 3500,
         "amountType": "partial",
-        "eligibility": "International students with strong academic record",
-        "deadline": null
+        "eligibility": "GPA 3.0+. International students with strong academic record",
+        "deadline": "2026-06-15"
       }
     ],
     "reviews": [
@@ -13244,7 +13244,7 @@
         "amountUsd": 15000,
         "amountType": "full",
         "eligibility": "Top 5% applicants",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -13516,10 +13516,10 @@
       {
         "id": "cmu7cmhiy00fxoqq1cphw2f3o",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-31"
       },
       {
         "id": "cmu7cmhiy00fzoqq1img10e47",
@@ -13527,7 +13527,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-07-01"
       }
     ],
     "reviews": [
@@ -13724,10 +13724,10 @@
       {
         "id": "cmu7cmhcb001hoqq1gke7w023",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -14043,10 +14043,10 @@
       {
         "id": "cmu7cmhir00ffoqq1dmke3kzn",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 1000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-15"
       }
     ],
     "reviews": [
@@ -14395,10 +14395,10 @@
       {
         "id": "cmu7cmhck0023oqq1km7y69vw",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-08-15"
       }
     ],
     "reviews": [
@@ -14626,10 +14626,10 @@
       {
         "id": "cmu7cmhbz000noqq1maywk4bv",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -14924,7 +14924,7 @@
         "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "Students with high school GPA 3.5+",
-        "deadline": null
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -15325,10 +15325,10 @@
       {
         "id": "cmu7cmhcg001roqq1p0yn61yw",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 1000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2027-01-15"
       }
     ],
     "reviews": [
@@ -15601,10 +15601,10 @@
       {
         "id": "cmu7cmhgq00bhoqq1xhmqlfss",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 1000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-09-01"
       },
       {
         "id": "cmu7cmhgq00bjoqq1erhu7s2r",
@@ -15612,7 +15612,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -15834,7 +15834,7 @@
         "amountUsd": 1500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -16533,10 +16533,10 @@
       {
         "id": "cmu7cmhg700a1oqq1ao6jc5bc",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 1000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2027-01-15"
       },
       {
         "id": "cmu7cmhg800a3oqq1xqp4vk5z",
@@ -16544,7 +16544,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -16874,10 +16874,10 @@
       {
         "id": "cmu7cmhf5008roqq1oc7asmy3",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-01"
       }
     ],
     "reviews": [
@@ -17071,10 +17071,10 @@
       {
         "id": "cmu7cmhj200gboqq10dhu0yl8",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-01"
       },
       {
         "id": "cmu7cmhj300gdoqq1s8qqwwe3",
@@ -17082,7 +17082,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -17417,10 +17417,10 @@
       {
         "id": "cmu7cmhct002zoqq1361we74r",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-08-15"
       },
       {
         "id": "cmu7cmhcu0031oqq1u0ia8u1v",
@@ -17428,7 +17428,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -17643,10 +17643,10 @@
       {
         "id": "cmu7cmhh100cfoqq1fy4dcami",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-09-01"
       },
       {
         "id": "cmu7cmhh100choqq13hq49bk0",
@@ -17654,7 +17654,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -18035,10 +18035,10 @@
       {
         "id": "cmu7cmhey0087oqq1elspaqbw",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 1000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-15"
       },
       {
         "id": "cmu7cmhey0089oqq1u9uhutzo",
@@ -18046,7 +18046,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-12-01"
       }
     ],
     "reviews": [
@@ -18366,8 +18366,8 @@
         "name": "DAAD Scholarship",
         "amountUsd": 10000,
         "amountType": "partial",
-        "eligibility": "International master's students",
-        "deadline": null
+        "eligibility": "GPA 3.0+. International master's students",
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -18564,10 +18564,10 @@
       {
         "id": "cmu7cmhc70017oqq17v3nu5yz",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2027-01-31"
       },
       {
         "id": "cmu7cmhc80019oqq1e9el7l39",
@@ -18575,7 +18575,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -18907,7 +18907,7 @@
         "amountUsd": 1500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2027-01-15"
       },
       {
         "id": "cmu7cmhgy00c3oqq19u0vwmvn",
@@ -18915,7 +18915,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -19302,10 +19302,10 @@
       {
         "id": "cmu7cmhgc00afoqq101pd1zdz",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-01"
       },
       {
         "id": "cmu7cmhgd00ahoqq1c3zvq7ms",
@@ -19313,7 +19313,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-07-01"
       }
     ],
     "reviews": [
@@ -19578,10 +19578,10 @@
       {
         "id": "cmu7cmhdb0045oqq16597jqvr",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-09-01"
       },
       {
         "id": "cmu7cmhdc0047oqq1bl9ogaii",
@@ -19589,7 +19589,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -19776,10 +19776,10 @@
       {
         "id": "cmu7cmhgu00btoqq1umh10h0o",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-15"
       }
     ],
     "reviews": [
@@ -20050,8 +20050,8 @@
         "name": "Taylor's Excellence Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
-        "eligibility": "High-achieving international students",
-        "deadline": null
+        "eligibility": "GPA 2.5+. High-achieving international students",
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -20246,7 +20246,7 @@
         "name": "DAAD Scholarship",
         "amountUsd": 10000,
         "amountType": "partial",
-        "eligibility": "International master's students via DAAD",
+        "eligibility": "GPA 3.2+. International master's students via DAAD",
         "deadline": "2026-10-31"
       },
       {
@@ -20254,7 +20254,7 @@
         "name": "Deutschlandstipendium",
         "amountUsd": 3600,
         "amountType": "partial",
-        "eligibility": "Outstanding students, all nationalities",
+        "eligibility": "GPA 2.5+. Outstanding students, all nationalities",
         "deadline": "2026-09-15"
       }
     ],
@@ -20872,8 +20872,8 @@
         "name": "UAEU Chancellor Scholarship",
         "amountUsd": 25000,
         "amountType": "full",
-        "eligibility": "Outstanding international students, full tuition + stipend",
-        "deadline": null
+        "eligibility": "GPA 3.0+. Outstanding international students, full tuition + stipend",
+        "deadline": "2026-12-01"
       }
     ],
     "reviews": [
@@ -21039,8 +21039,8 @@
         "name": "UKM International Grant",
         "amountUsd": 3000,
         "amountType": "partial",
-        "eligibility": "International students with academic merit",
-        "deadline": null
+        "eligibility": "GPA 2.8+. International students with academic merit",
+        "deadline": "2026-06-15"
       }
     ],
     "reviews": [
@@ -21227,10 +21227,10 @@
       {
         "id": "cmu7cmhf90091oqq17g4b0gbz",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-31"
       },
       {
         "id": "cmu7cmhfv0093oqq1hdxsipu4",
@@ -21238,7 +21238,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -21406,7 +21406,7 @@
         "amountUsd": 3500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.3+",
-        "deadline": null
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -21572,7 +21572,7 @@
         "name": "UTM International Grant",
         "amountUsd": 3000,
         "amountType": "partial",
-        "eligibility": "International students with academic merit",
+        "eligibility": "GPA 3.0+. International students with academic merit",
         "deadline": "2026-05-15"
       }
     ],
@@ -21933,7 +21933,7 @@
         "amountUsd": 1500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2027-01-15"
       },
       {
         "id": "cmu7cmhfz009foqq1h7zaysjw",
@@ -21941,7 +21941,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -22172,7 +22172,7 @@
         "amountUsd": 4000,
         "amountType": "partial",
         "eligibility": "Students with academic merit",
-        "deadline": null
+        "deadline": "2026-12-01"
       }
     ],
     "reviews": [
@@ -22477,10 +22477,10 @@
       {
         "id": "cmu7cmhd7003toqq1lhekeraf",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-06-15"
       }
     ],
     "reviews": [
@@ -22836,8 +22836,8 @@
         "name": "Brighton International Scholarship",
         "amountUsd": 3000,
         "amountType": "partial",
-        "eligibility": "International students",
-        "deadline": null
+        "eligibility": "GPA 2.5+. International students",
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -23214,10 +23214,10 @@
       {
         "id": "cmu7cmhcn002foqq1m6a2oqcb",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-08-15"
       }
     ],
     "reviews": [
@@ -23394,10 +23394,10 @@
       {
         "id": "cmu7cmhcw0039oqq1ja8i131l",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-06-15"
       },
       {
         "id": "cmu7cmhcx003boqq12r7pyb3a",
@@ -23405,7 +23405,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -23768,10 +23768,10 @@
       {
         "id": "cmu7cmhdq005doqq1yf1yyxyi",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -24038,10 +24038,10 @@
       {
         "id": "cmu7cmhc4000xoqq1llx3z2e0",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-08-15"
       },
       {
         "id": "cmu7cmhc4000zoqq17v0cohbr",
@@ -24049,7 +24049,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -24300,8 +24300,8 @@
         "name": "Freiburg International Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
-        "eligibility": "International students with academic merit",
-        "deadline": null
+        "eligibility": "GPA 2.5+. International students with academic merit",
+        "deadline": "2026-12-15"
       }
     ],
     "reviews": [
@@ -24554,10 +24554,10 @@
       {
         "id": "cmu7cmhbu000boqq1qq1cywgc",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-07-01"
       },
       {
         "id": "cmu7cmhbv000doqq1pmub8v6f",
@@ -24565,7 +24565,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-08-15"
       }
     ],
     "reviews": [
@@ -24819,8 +24819,8 @@
         "name": "Hamburg International Scholarship",
         "amountUsd": 6000,
         "amountType": "partial",
-        "eligibility": "International students",
-        "deadline": null
+        "eligibility": "GPA 3.0+. International students",
+        "deadline": "2027-01-15"
       }
     ],
     "reviews": [
@@ -25119,7 +25119,7 @@
         "amountUsd": 4000,
         "amountType": "partial",
         "eligibility": "Academic excellence, GPA 3.5+",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -25802,8 +25802,8 @@
         "name": "Lodz Merit Scholarship",
         "amountUsd": 2000,
         "amountType": "partial",
-        "eligibility": "International students with good academic standing",
-        "deadline": null
+        "eligibility": "GPA 3.2+. International students with good academic standing",
+        "deadline": "2026-12-01"
       }
     ],
     "reviews": [
@@ -26420,10 +26420,10 @@
       {
         "id": "cmu7cmhdg004hoqq1kersr3xl",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 1000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-08-15"
       }
     ],
     "reviews": [
@@ -26820,10 +26820,10 @@
       {
         "id": "cmu7cmhdj004poqq1azue3qzf",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-09-01"
       },
       {
         "id": "cmu7cmhdk004roqq1ocbqk345",
@@ -26831,7 +26831,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2027-01-15"
       }
     ],
     "reviews": [
@@ -27399,8 +27399,8 @@
         "name": "UOS Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
-        "eligibility": "International students with academic merit",
-        "deadline": null
+        "eligibility": "GPA 3.2+. International students with academic merit",
+        "deadline": "2026-12-01"
       }
     ],
     "reviews": [
@@ -27673,7 +27673,7 @@
         "name": "Baden-Württemberg Scholarship",
         "amountUsd": 6000,
         "amountType": "partial",
-        "eligibility": "International exchange students",
+        "eligibility": "GPA 2.8+. International exchange students",
         "deadline": "2026-04-30"
       }
     ],
@@ -27886,8 +27886,8 @@
         "name": "Sunderland International Scholarship",
         "amountUsd": 2500,
         "amountType": "partial",
-        "eligibility": "International students",
-        "deadline": null
+        "eligibility": "GPA 3.0+. International students",
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -28280,7 +28280,7 @@
         "name": "Polish Government Scholarship",
         "amountUsd": 6000,
         "amountType": "partial",
-        "eligibility": "International students via Polish Ministry of Education",
+        "eligibility": "GPA 2.8+. International students via Polish Ministry of Education",
         "deadline": "2026-03-31"
       }
     ],
@@ -28469,8 +28469,8 @@
         "name": "Westminster International Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
-        "eligibility": "International students with academic merit",
-        "deadline": null
+        "eligibility": "GPA 2.5+. International students with academic merit",
+        "deadline": "2026-08-15"
       }
     ],
     "reviews": [
@@ -28645,10 +28645,10 @@
       {
         "id": "cmu7cmhf1008hoqq1szsrjsuq",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-15"
       },
       {
         "id": "cmu7cmhf2008joqq1avnw4sp7",
@@ -28656,7 +28656,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-07-01"
       }
     ],
     "reviews": [
@@ -28829,10 +28829,10 @@
       {
         "id": "cmu7cmhcr002noqq18c0vytoh",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-09-01"
       },
       {
         "id": "cmu7cmhcr002poqq1p7y3q427",
@@ -28840,7 +28840,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Outstanding students with GPA 3.5+, based on academic merit",
-        "deadline": null
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -29046,7 +29046,7 @@
         "name": "VGTU Tuition Waiver",
         "amountUsd": 3800,
         "amountType": "full",
-        "eligibility": "Top international applicants, full tuition",
+        "eligibility": "GPA 2.5+. Top international applicants, full tuition",
         "deadline": "2026-05-31"
       }
     ],
@@ -29384,7 +29384,7 @@
         "name": "Lithuanian State Scholarship",
         "amountUsd": 4000,
         "amountType": "partial",
-        "eligibility": "International students via Lithuanian Ministry",
+        "eligibility": "GPA 2.5+. International students via Lithuanian Ministry",
         "deadline": "2026-04-30"
       }
     ],
@@ -29571,8 +29571,8 @@
         "name": "WUT International Scholarship",
         "amountUsd": 3000,
         "amountType": "partial",
-        "eligibility": "International students with academic merit",
-        "deadline": null
+        "eligibility": "GPA 3.0+. International students with academic merit",
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -29990,10 +29990,10 @@
       {
         "id": "cmu7cmhen007loqq1x6iocbaq",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-08-15"
       }
     ],
     "reviews": [
@@ -30322,10 +30322,10 @@
       {
         "id": "cmu7cmhh800d1oqq1g36avtth",
         "name": "International Merit Scholarship",
-        "amountUsd": 1500,
+        "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "International students with GPA 3.0+ and strong academic record",
-        "deadline": null
+        "deadline": "2026-12-15"
       }
     ],
     "reviews": [
@@ -30662,8 +30662,8 @@
         "name": "YTU International Scholarship",
         "amountUsd": 3500,
         "amountType": "partial",
-        "eligibility": "International students",
-        "deadline": null
+        "eligibility": "GPA 2.8+. International students",
+        "deadline": "2026-12-01"
       }
     ],
     "reviews": [
@@ -31022,7 +31022,7 @@
         "amountUsd": 7000,
         "amountType": "partial",
         "eligibility": "High-achieving students",
-        "deadline": null
+        "deadline": "2026-09-01"
       }
     ],
     "reviews": [
@@ -31353,8 +31353,8 @@
         "name": "MSU International Grant",
         "amountUsd": 4000,
         "amountType": "partial",
-        "eligibility": "International students with high academic achievement",
-        "deadline": null
+        "eligibility": "GPA 3.2+. International students with high academic achievement",
+        "deadline": "2026-12-01"
       }
     ],
     "reviews": [
@@ -32200,8 +32200,8 @@
         "name": "ITMO International Scholarship",
         "amountUsd": 3000,
         "amountType": "partial",
-        "eligibility": "International students",
-        "deadline": null
+        "eligibility": "GPA 2.8+. International students",
+        "deadline": "2026-07-31"
       }
     ],
     "reviews": [
@@ -32774,7 +32774,7 @@
         "amountUsd": 2500,
         "amountType": "partial",
         "eligibility": "Students from developing countries",
-        "deadline": null
+        "deadline": "2026-07-01"
       }
     ],
     "reviews": [
@@ -33539,8 +33539,8 @@
         "name": "WIUT Scholarship",
         "amountUsd": 2000,
         "amountType": "partial",
-        "eligibility": "High-achieving international students",
-        "deadline": null
+        "eligibility": "GPA 3.0+. High-achieving international students",
+        "deadline": "2027-01-15"
       }
     ],
     "reviews": [
@@ -34558,8 +34558,8 @@
         "name": "NU Merit Scholarship",
         "amountUsd": 5000,
         "amountType": "partial",
-        "eligibility": "Top international applicants",
-        "deadline": null
+        "eligibility": "GPA 2.5+. Top international applicants",
+        "deadline": "2026-12-01"
       }
     ],
     "reviews": [
@@ -34997,7 +34997,7 @@
         "amountUsd": 3000,
         "amountType": "partial",
         "eligibility": "International students with high GPA",
-        "deadline": null
+        "deadline": "2027-01-31"
       }
     ],
     "reviews": [
@@ -36141,8 +36141,8 @@
         "name": "TSMU International Scholarship",
         "amountUsd": 2000,
         "amountType": "partial",
-        "eligibility": "International students with strong academic record",
-        "deadline": null
+        "eligibility": "GPA 2.8+. International students with strong academic record",
+        "deadline": "2027-01-15"
       }
     ],
     "reviews": [
