@@ -152,7 +152,10 @@ export function TransferFinderClient({ universities }: { universities: Universit
           <div className="text-center py-20">
             <div className="text-5xl mb-4">🔍</div>
             <h3 className="text-xl font-semibold mb-2">{t('noResults')}</h3>
-            <p className="text-muted-foreground">{t('noResultsDesc')}</p>
+            <p className="text-muted-foreground mb-4">{t('noResultsDesc')}</p>
+            <Button variant="outline" onClick={clearFilters} className="gap-2">
+              {t('clear')}
+            </Button>
           </div>
         ) : (
           <div className="space-y-4">

@@ -44,6 +44,7 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
   const [degreeLevel, setDegreeLevel] = React.useState('')
   const [loading, setLoading] = React.useState(false)
   const [matches, setMatches] = React.useState<Match[]>([])
+  const [searched, setSearched] = React.useState(false)
 
   const handleMatch = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -53,6 +54,7 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
     }
     setLoading(true)
     setMatches([])
+    setSearched(true)
     try {
       const res = await fetch('/api/scholarship-match', {
         method: 'POST',
@@ -176,7 +178,7 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
               </Card>
             )}
 
-            {!loading && matches.length === 0 && (
+            {!loading && matches.length === 0 && !searched && (
               <Card className="flex items-center justify-center min-h-[400px] border-dashed">
                 <CardContent className="text-center py-12">
                   <div className="size-16 rounded-full bg-blue-600/10 flex items-center justify-center mx-auto mb-4">
@@ -184,6 +186,21 @@ export function ScholarshipMatcherClient({ totalScholarships }: { totalScholarsh
                   </div>
                   <h3 className="font-semibold text-lg mb-2">{t('yourMatches')}</h3>
                   <p className="text-sm text-muted-foreground">{t('yourMatchesDesc')}</p>
+                </CardContent>
+              </Card>
+            )}
+
+            {!loading && matches.length === 0 && searched && (
+              <Card className="flex items-center justify-center min-h-[400px] border-dashed">
+                <CardContent className="text-center py-12">
+                  <div className="size-16 rounded-full bg-amber-50 flex items-center justify-center mx-auto mb-4">
+                    <Award className="size-8 text-amber-500" />
+                  </div>
+                  <h3 className="font-semibold text-lg mb-2">{t('noMatches')}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">{t('noMatchesDesc')}</p>
+                  <div className="text-xs text-muted-foreground space-y-1">
+                    <p>💡 Try lowering your GPA requirement or selecting a different field.</p>
+                  </div>
                 </CardContent>
               </Card>
             )}
