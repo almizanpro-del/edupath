@@ -18,6 +18,7 @@ import { Separator } from '@/components/ui/separator'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 import { useToast } from '@/hooks/use-toast'
 import { formatUsd, formatUsdCompact, totalCost, countryFlagUrl } from '@/lib/edupath'
+import { calculateTotalCost } from '@/lib/financial'
 import { cn } from '@/lib/utils'
 import { useTranslations, useLocale } from 'next-intl'
 import { AuthModal, type UserProfile } from '@/components/edupath/auth-modal'
@@ -557,9 +558,19 @@ export function UniversityDetailPage({ uni }: Props) {
                       <div className="flex justify-between items-center">
                         <span className="font-semibold text-sm uppercase tracking-wider">{t('cost.total')}</span>
                         <motion.span key={costDuration + String(includeLiving)} initial={{ scale: 0.9, opacity: 0.5 }} animate={{ scale: 1, opacity: 1 }} className="text-3xl font-bold tabular-nums">
-                          {formatUsd(totalCost(uni.cheapestProgramTuition, includeLiving ? uni.livingCostUsd : 0, costDuration))}
+                          {(() => {
+                            const total = calculateTotalCost(uni.cheapestProgramTuition, includeLiving ? uni.livingCostUsd : 0, costDuration)
+                            return total !== null ? formatUsd(total) : (locale === 'ar' ? 'غير معروف' : 'Unknown')
+                          })()}
                         </motion.span>
                       </div>
+                      {(!uni.cheapestProgramTuition || uni.cheapestProgramTuition === 0) && (
+                        <p className="text-xs text-white/70 mt-2">
+                          {locale === 'ar'
+                            ? '⚠️ لا يمكن حساب التكلفة الإجمالية لأن الرسوم غير معروفة. يرجى التحقق من موقع الجامعة.'
+                            : '⚠️ Total cost cannot be calculated because tuition is unknown. Please verify with the university website.'}
+                        </p>
+                      )}
                     </div>
                   </CardContent>
                 </Card>
@@ -635,7 +646,7 @@ export function UniversityDetailPage({ uni }: Props) {
                                   <div className="flex items-center gap-2">
                                     <span className="font-semibold dark:text-white">{r.userName}</span>
                                     {r.verifiedEnrollment && (
-                                      <Badge variant="outline" className="text-[10px] gap-1 border-blue-500 text-blue-700 dark:text-blue-400 dark:border-blue-700">
+                                      <Badge variant="outline" className="text-[10px] gap-1 border-slate-300 text-slate-600 dark:text-slate-400 dark:border-slate-600">
                                         <CheckCircle2 className="size-3" />{t('reviews.verifiedStudent')}
                                       </Badge>
                                     )}

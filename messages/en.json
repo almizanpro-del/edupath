@@ -111,7 +111,7 @@
       "writeReview": "Write a Review",
       "noReviews": "No reviews yet",
       "noReviewsDesc": "Be the first to share your experience at {name}.",
-      "verifiedStudent": "Verified Student",
+      "verifiedStudent": "Student Reviewer",
       "helpful": "Helpful",
       "reviewCount": "{count, plural, one {# review} other {# reviews}}",
       "subRatings": {
@@ -344,10 +344,10 @@
       "directory": "University Directory",
       "comparison": "Comparison Tool",
       "calculator": "Cost Calculator",
-      "reviews": "Verified Reviews"
+      "reviews": "Student Reviews"
     },
-    "englishArabic": "English + Arabic (RTL coming)",
-    "disclaimer": "Phase 1 MVP demo. Verified reviews are surface-level only - full verification flow in production."
+    "englishArabic": "English + Arabic (RTL)",
+    "disclaimer": "EduPath is in beta. University data is unverified — confirm all details with official sources. Reviews are student-submitted and not independently verified."
   },
   "Filters": {
     "title": "Filters",

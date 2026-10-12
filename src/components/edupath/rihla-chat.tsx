@@ -62,6 +62,16 @@ export function RihlaChat({ onComplete }: Props) {
       setSessionId(data.sessionId)
       setMessages(prev => [...prev, { role: 'assistant', content: data.reply }])
 
+      // If LLM failed, show a helpful message about what to do
+      if (data.llmFailed) {
+        setMessages(prev => [...prev, {
+          role: 'assistant',
+          content: locale === 'ar'
+            ? '💡 يمكنك استخدام الفلاتر اليدوية في الصفحة الرئيسية للبحث عن الجامعات. نعتذر عن الإزعاج.'
+            : '💡 You can use the manual filters on the home page to search for universities. Sorry for the inconvenience.',
+        }])
+      }
+
       if (data.intakeComplete && data.sessionId) {
         // Brief delay so user sees the completion message
         setTimeout(() => onComplete(data.sessionId, data.profile), 1500)

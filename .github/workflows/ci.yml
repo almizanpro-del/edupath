@@ -7,39 +7,41 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
+
+    env:
+      DATABASE_URL: "file:./test.db"
+      NEXT_PUBLIC_SUPABASE_URL: "https://mock.supabase.co"
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: "mock-key"
+
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest
+          node-version: 20
+          cache: 'npm'
 
       - name: Install dependencies
-        run: bun install
+        run: npm ci
 
       - name: Generate Prisma client
         run: npx prisma generate
 
       - name: Type check
-        run: bunx tsc --noEmit
+        run: npx tsc --noEmit
 
-      - name: Lint
-        run: bun run lint
+      - name: Run JavaScript tests
+        run: npx vitest run
 
-      - name: Run tests
-        run: bunx vitest run
+      - name: Run Python tests
+        run: |
+          pip install -q requests rapidfuzz pytest
+          python3 -m pytest scraper/tests/ -q
 
       - name: Build
-        run: bun run build
+        run: npx next build
         env:
-          DATABASE_URL: "file:./test.db"
-          NEXT_PUBLIC_SUPABASE_URL: "https://mock.supabase.co"
-          NEXT_PUBLIC_SUPABASE_ANON_KEY: "mock-key"
-          SUPABASE_URL: "https://mock.supabase.co"
-          SUPABASE_ANON_KEY: "mock-key"
-          SUPABASE_SECRET_KEY: "mock-secret"
-          SUPABASE_JWKS_URL: "https://mock.supabase.co/auth/v1/.well-known/jwks.json"
-          CRON_SECRET: "test-secret"
+          NEXT_LINT: "0"

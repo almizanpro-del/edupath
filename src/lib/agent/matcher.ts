@@ -171,15 +171,20 @@ function scoreUniversity(uni: University, profile: IntakeProfile): number {
   let score = 0
 
   // Budget fit (40 pts max) — closer to budget = higher score
-  if (uni.tuitionUsd && profile.budgetUsd) {
+  // NOTE: Tuition data is unverified — reduce weight to avoid over-relying
+  // on potentially incorrect figures. Cap budget score at 25 pts instead of 40.
+  if (uni.tuitionUsd && uni.tuitionUsd > 0 && profile.budgetUsd) {
     const ratio = uni.tuitionUsd / profile.budgetUsd
     if (ratio <= 1) {
       // Within budget — score proportional to how much budget remains
-      score += Math.max(10, 40 * (1 - ratio * 0.5))
+      score += Math.max(8, 25 * (1 - ratio * 0.5))
     } else if (ratio <= 1.2) {
       // Slightly over budget — partial score
-      score += 15
+      score += 10
     }
+  } else {
+    // Missing tuition data — can't assess budget fit, give small neutral score
+    score += 5
   }
 
   // Field match (30 pts)
@@ -257,10 +262,10 @@ async function generateExplanation(uni: University, profile: IntakeProfile): Pro
 
   const prompt = `Student wants: ${studentSummary}.
 University: ${uni.name} in ${uni.city}, ${uni.country}.
-Tuition: $${uni.tuitionUsd}/year. Living cost: $${uni.livingCostUsd}/year.
+Tuition: ~$${uni.tuitionUsd}/year (UNVERIFIED — may not be accurate). Living cost: ~$${uni.livingCostUsd}/year (UNVERIFIED).
 ${programInfo}International students: ${uni.intlStudentPct}%.
 
-Write EXACTLY 2 sentences ${langInstruction} explaining why this university is a great match for this student. Be specific about budget, location, or program fit. Be encouraging. Do not use markdown.`
+Write EXACTLY 2 sentences ${langInstruction} explaining why this university is a great match for this student. Be specific about program fit or location. Mention that tuition figures are estimates and should be verified. Be encouraging. Do not use markdown.`
 
   try {
     const result = await chatCompletion(
