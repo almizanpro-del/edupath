@@ -45,6 +45,9 @@ model University {
   sourceCategory  String?  // official | government | third_party | estimated | user_submitted
   lastVerifiedAt  DateTime? // When the data was last checked against the source
   dataQualityScore Int     @default(0) // 0-100 completeness score
+  // Phase A — Trust repair fields
+  dataSource      String?  // Human-readable source description (e.g. "Official university website")
+  dataConfidence  String   @default("unverified") // high | medium | low | unverified
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -127,6 +130,8 @@ model Review {
   moderationStatus String @default("approved") // pending | approved | rejected
   verifiedEnrollment Boolean @default(false)
   tags            String   @default("[]") // JSON array of tags
+  // Phase A — Trust repair: mark synthetic/seeded reviews
+  isSample        Boolean  @default(false) // true = generated for demo, NOT a real student review
   createdAt       DateTime @default(now())
 
   @@index([universityId, moderationStatus])

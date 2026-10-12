@@ -42,7 +42,7 @@ type Review = {
   ratingOverall: number; ratingAffordability: number; ratingVisa: number
   ratingTeaching: number; ratingSafety: number; ratingSocial: number
   reviewText: string; helpfulCount: number; verifiedEnrollment: boolean
-  tags: string[]; createdAt: string
+  tags: string[]; createdAt: string; isSample?: boolean
 }
 type University = {
   id: string; slug: string; name: string; country: string; city: string
@@ -51,6 +51,7 @@ type University = {
   logoUrl: string | null; descriptionEn: string; descriptionAr: string
   programs: Program[]; scholarships: Scholarship[]; reviews: Review[]
   avgRating: number | null; reviewCount: number; cheapestProgramTuition: number
+  visaNotes?: string; dataSource?: string; dataConfidence?: string; lastVerifiedAt?: string | null
 }
 
 function StarRating({ value, size = 14 }: { value: number; size?: number }) {
@@ -164,7 +165,23 @@ export function UniversityDetailPage({ uni }: Props) {
     try { const res = await fetch(`/api/reviews?universityId=${uni.id}`); if (!res.ok) return; const data = await res.json(); if (data.reviews) setReviews(data.reviews) } catch {}
   }
 
-  const avgRating = reviews.length > 0 ? reviews.reduce((s, r) => s + r.ratingOverall, 0) / reviews.length : null
+  // Separate real reviews from sample reviews
+  const realReviews = reviews.filter(r => !r.isSample)
+  const sampleReviews = reviews.filter(r => r.isSample)
+
+  // Average rating ONLY from real reviews (not sample data)
+  const avgRating = realReviews.length > 0
+    ? realReviews.reduce((s, r) => s + r.ratingOverall, 0) / realReviews.length
+    : null
+
+  // Include sample toggle state
+  const [includeSamples, setIncludeSamples] = React.useState(false)
+
+  // Reviews to display: real only by default, include samples if toggled
+  const displayedReviews = includeSamples ? reviews : realReviews
+  const displayedAvg = displayedReviews.length > 0
+    ? displayedReviews.reduce((s, r) => s + r.ratingOverall, 0) / displayedReviews.length
+    : null
 
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
@@ -252,13 +269,21 @@ export function UniversityDetailPage({ uni }: Props) {
                   <ExternalLink className="size-4 text-blue-300" />
                   {t('visitWebsite')}
                 </a>
-                {avgRating !== null && (
+                {avgRating !== null ? (
                   <>
                     <span className="hidden sm:block w-px h-4 bg-white/15" />
                     <span className="flex items-center gap-1.5">
                       <Star className="size-4 fill-amber-400 text-amber-400" />
                       <span className="font-semibold text-white">{avgRating.toFixed(1)}</span>
-                      <span className="text-white/60">({reviews.length} reviews)</span>
+                      <span className="text-white/60">({realReviews.length} {locale === 'ar' ? 'مراجعة حقيقية' : 'real reviews'})</span>
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="hidden sm:block w-px h-4 bg-white/15" />
+                    <span className="flex items-center gap-1.5 text-white/50">
+                      <Star className="size-4" />
+                      <span>{locale === 'ar' ? 'لا توجد مراجعات حقيقية بعد' : 'No real reviews yet'}</span>
                     </span>
                   </>
                 )}
@@ -325,6 +350,37 @@ export function UniversityDetailPage({ uni }: Props) {
           </div>
           <SocialShare url={`https://edupath-amber-three.vercel.app/university/${uni.slug}`} title={`${uni.name} — Tuition, Programs & Reviews | EduPath`} description={uni.descriptionEn} />
         </motion.div>
+
+        {/* Data provenance bar */}
+        <div className="mb-4 flex items-center gap-3 text-xs text-muted-foreground bg-slate-100 dark:bg-slate-800/50 rounded-lg px-4 py-2">
+          <Info className="size-3.5 shrink-0" />
+          <span>
+            {locale === 'ar' ? 'آخر تحقق:' : 'Last verified:'}{' '}
+            <strong className="text-slate-700 dark:text-slate-300">
+              {(uni as Record<string, unknown>).lastVerifiedAt
+                ? new Date((uni as Record<string, unknown>).lastVerifiedAt as string).toLocaleDateString(locale === 'ar' ? 'ar-EG' : 'en-US')
+                : (locale === 'ar' ? 'غير موثق' : 'Never')}
+            </strong>
+          </span>
+          <span className="text-slate-300 dark:text-slate-600">·</span>
+          <span>
+            {locale === 'ar' ? 'المصدر:' : 'Source:'}{' '}
+            <strong className="text-slate-700 dark:text-slate-300">
+              {(uni as Record<string, unknown>).dataSource as string || (locale === 'ar' ? 'بيانات أولية' : 'Seed data')}
+            </strong>
+          </span>
+          <span className="text-slate-300 dark:text-slate-600">·</span>
+          <Badge variant="outline" className={cn(
+            'text-[10px] capitalize',
+            (uni as Record<string, unknown>).dataConfidence === 'high'
+              ? 'border-green-300 text-green-700 dark:text-green-300 dark:border-green-700'
+              : (uni as Record<string, unknown>).dataConfidence === 'medium'
+              ? 'border-blue-300 text-blue-700 dark:text-blue-300 dark:border-blue-700'
+              : 'border-amber-300 text-amber-700 dark:text-amber-300 dark:border-amber-700'
+          )}>
+            {(uni as Record<string, unknown>).dataConfidence as string || 'unverified'}
+          </Badge>
+        </div>
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
@@ -600,41 +656,73 @@ export function UniversityDetailPage({ uni }: Props) {
                 </Button>
               </motion.div>
 
-              {reviews.length === 0 ? (
+              {displayedReviews.length === 0 && !includeSamples ? (
                 <div className="text-center py-16">
                   <div className="inline-flex items-center justify-center size-14 rounded-2xl bg-slate-100 dark:bg-slate-800 mb-3">
                     <Star className="size-7 text-slate-400" />
                   </div>
                   <h4 className="font-semibold mb-1 dark:text-white">{t('reviews.noReviews')}</h4>
                   <p className="text-sm text-muted-foreground dark:text-slate-400">{t('reviews.noReviewsDesc', { name: uni.name })}</p>
+                  {sampleReviews.length > 0 && (
+                    <div className="mt-4">
+                      <Button variant="outline" size="sm" onClick={() => setIncludeSamples(true)} className="gap-2">
+                        {locale === 'ar' ? `عرض ${sampleReviews.length} مراجعة تجريبية` : `Show ${sampleReviews.length} sample reviews`}
+                      </Button>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <>
-                  {/* Rating summary */}
-                  {avgRating !== null && (
+                  {/* Rating summary — only from real reviews */}
+                  {displayedAvg !== null && (
                     <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800">
                       <CardContent className="p-6">
                         <div className="flex flex-col md:flex-row gap-6">
                           <div className="text-center md:text-left">
-                            <div className="text-5xl font-bold dark:text-white tabular-nums">{avgRating.toFixed(1)}</div>
-                            <StarRating value={avgRating} size={20} />
-                            <div className="text-xs text-muted-foreground mt-1 dark:text-slate-400 uppercase tracking-wider">{t('reviews.reviewCount', { count: reviews.length })}</div>
+                            <div className="text-5xl font-bold dark:text-white tabular-nums">{displayedAvg.toFixed(1)}</div>
+                            <StarRating value={displayedAvg} size={20} />
+                            <div className="text-xs text-muted-foreground mt-1 dark:text-slate-400 uppercase tracking-wider">
+                              {displayedReviews.length} {includeSamples && sampleReviews.length > 0
+                                ? (locale === 'ar' ? `مراجعة (${sampleReviews.length} تجريبية)` : `reviews (${sampleReviews.length} sample)`)
+                                : (locale === 'ar' ? 'مراجعة حقيقية' : 'real reviews')}
+                            </div>
                           </div>
                           <div className="flex-1 space-y-2">
-                            <RatingBar label={t('reviews.subRatings.affordability')} value={reviews.reduce((s, r) => s + r.ratingAffordability, 0) / reviews.length} />
-                            <RatingBar label={t('reviews.subRatings.teaching')} value={reviews.reduce((s, r) => s + r.ratingTeaching, 0) / reviews.length} />
-                            <RatingBar label={t('reviews.subRatings.visa')} value={reviews.reduce((s, r) => s + r.ratingVisa, 0) / reviews.length} />
-                            <RatingBar label={t('reviews.subRatings.safety')} value={reviews.reduce((s, r) => s + r.ratingSafety, 0) / reviews.length} />
-                            <RatingBar label={t('reviews.subRatings.social')} value={reviews.reduce((s, r) => s + r.ratingSocial, 0) / reviews.length} />
+                            <RatingBar label={t('reviews.subRatings.affordability')} value={displayedReviews.reduce((s, r) => s + r.ratingAffordability, 0) / displayedReviews.length} />
+                            <RatingBar label={t('reviews.subRatings.teaching')} value={displayedReviews.reduce((s, r) => s + r.ratingTeaching, 0) / displayedReviews.length} />
+                            <RatingBar label={t('reviews.subRatings.visa')} value={displayedReviews.reduce((s, r) => s + r.ratingVisa, 0) / displayedReviews.length} />
+                            <RatingBar label={t('reviews.subRatings.safety')} value={displayedReviews.reduce((s, r) => s + r.ratingSafety, 0) / displayedReviews.length} />
+                            <RatingBar label={t('reviews.subRatings.social')} value={displayedReviews.reduce((s, r) => s + r.ratingSocial, 0) / displayedReviews.length} />
                           </div>
                         </div>
                       </CardContent>
                     </Card>
                   )}
 
+                  {/* Sample reviews toggle */}
+                  {sampleReviews.length > 0 && (
+                    <div className="flex items-center justify-between gap-2 p-3 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-800 rounded-xl">
+                      <span className="text-xs text-amber-800 dark:text-amber-200">
+                        {locale === 'ar'
+                          ? `${sampleReviews.length} مراجعة تجريبية — ليست من طلاب حقيقيين`
+                          : `${sampleReviews.length} sample reviews — not from real students`}
+                      </span>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setIncludeSamples(!includeSamples)}
+                        className="text-xs h-7 gap-1"
+                      >
+                        {includeSamples
+                          ? (locale === 'ar' ? 'إخفاء التجريبية' : 'Hide samples')
+                          : (locale === 'ar' ? 'إظهار التجريبية' : 'Show samples')}
+                      </Button>
+                    </div>
+                  )}
+
                   {/* Review cards */}
                   <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="space-y-4">
-                    {reviews.map(r => (
+                    {displayedReviews.map(r => (
                       <motion.div key={r.id} variants={staggerItem}>
                         <Card className="rounded-2xl shadow-sm border-slate-200 dark:bg-slate-900 dark:border-slate-800">
                           <CardContent className="p-5">
@@ -646,7 +734,12 @@ export function UniversityDetailPage({ uni }: Props) {
                                 <div>
                                   <div className="flex items-center gap-2">
                                     <span className="font-semibold dark:text-white">{r.userName}</span>
-                                    {r.verifiedEnrollment && (
+                                    {r.isSample && (
+                                      <Badge variant="outline" className="text-[10px] gap-1 border-amber-300 text-amber-700 dark:text-amber-300 dark:border-amber-700 bg-amber-50 dark:bg-amber-950/30">
+                                        {locale === 'ar' ? 'مراجعة تجريبية' : 'Sample review'}
+                                      </Badge>
+                                    )}
+                                    {!r.isSample && r.verifiedEnrollment && (
                                       <Badge variant="outline" className="text-[10px] gap-1 border-slate-300 text-slate-600 dark:text-slate-400 dark:border-slate-600">
                                         <CheckCircle2 className="size-3" />{t('reviews.verifiedStudent')}
                                       </Badge>
