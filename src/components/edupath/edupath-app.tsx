@@ -3,7 +3,7 @@
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles, Shuffle, Award, Building2, CreditCard, RotateCcw, Globe, Wallet } from 'lucide-react'
+import { Search, SlidersHorizontal, X, GraduationCap, Globe2, DollarSign, Star, Shield, Heart, ArrowRight, ArrowLeftRight, CheckCircle2, MapPin, Users, TrendingUp, BookOpen, Languages, Clock, ExternalLink, ThumbsUp, Calculator, MessageSquarePlus, Sparkles, Shuffle, Award, Building2, CreditCard, RotateCcw, Globe, Wallet, Moon, Check } from 'lucide-react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -177,6 +177,9 @@ export function EduPathApp({ universities, countries, stats }: Props) {
   const [selectedFields, setSelectedFields] = React.useState<Set<string>>(new Set())
   const [selectedLanguages, setSelectedLanguages] = React.useState<Set<string>>(new Set())
   const [tuitionRange, setTuitionRange] = React.useState<[number, number]>([0, 25000])
+  // MENA-specific filters (Phase 5) — these leverage existing schema fields
+  // (hasHalalFood, hasPrayerFacilities, etc.) that were previously unused.
+  const [menaFilters, setMenaFilters] = React.useState<Set<string>>(new Set())
   const [sortBy, setSortBy] = React.useState<'tuition-asc' | 'tuition-desc' | 'rating-desc' | 'name-asc'>('tuition-asc')
   const [selectedUni, setSelectedUni] = React.useState<University | null>(null) // kept for review form refetch logic; modal removed
   const [compareList, setCompareList] = React.useState<University[]>([])
@@ -255,6 +258,14 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         if (!hasMatch) return false
       }
       if (u.cheapestProgramTuition < tuitionRange[0] || u.cheapestProgramTuition > tuitionRange[1]) return false
+      // MENA-specific filters (Phase 5)
+      if (menaFilters.size > 0) {
+        const uniAny = u as Record<string, unknown>
+        if (menaFilters.has('halal') && !uniAny.hasHalalFood) return false
+        if (menaFilters.has('prayer') && !uniAny.hasPrayerFacilities) return false
+        if (menaFilters.has('gender_housing') && !uniAny.hasGenderSegregatedHousing) return false
+        if (menaFilters.has('family') && !uniAny.hasFamilyAccommodation) return false
+      }
       return true
     })
 
@@ -269,12 +280,12 @@ export function EduPathApp({ universities, countries, stats }: Props) {
     })
 
     return result
-  }, [universities, searchQuery, selectedCountries, selectedFields, selectedLanguages, tuitionRange, sortBy])
+  }, [universities, searchQuery, selectedCountries, selectedFields, selectedLanguages, tuitionRange, sortBy, menaFilters])
 
   // Reset pagination when filters change
   React.useEffect(() => {
     setVisibleCount(24)
-  }, [searchQuery, selectedCountries, selectedFields, selectedLanguages, tuitionRange, sortBy])
+  }, [searchQuery, selectedCountries, selectedFields, selectedLanguages, tuitionRange, sortBy, menaFilters])
 
   const toggleCountry = (c: string) => {
     const next = new Set(selectedCountries)
@@ -291,12 +302,18 @@ export function EduPathApp({ universities, countries, stats }: Props) {
     if (next.has(l)) next.delete(l); else next.add(l)
     setSelectedLanguages(next)
   }
+  const toggleMenaFilter = (f: string) => {
+    const next = new Set(menaFilters)
+    if (next.has(f)) next.delete(f); else next.add(f)
+    setMenaFilters(next)
+  }
 
   const clearFilters = () => {
     setSelectedCountries(new Set())
     setSelectedFields(new Set())
     setSelectedLanguages(new Set())
     setTuitionRange([0, 25000])
+    setMenaFilters(new Set())
     setSearchQuery('')
     setCountrySearch('')
   }
@@ -889,6 +906,43 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                           step={500}
                           className="mt-1"
                         />
+                      </div>
+                    </section>
+
+                    {/* ----- MENA-specific filters (Phase 5) ----- */}
+                    <section className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-3">
+                      <header className="flex items-center gap-2 px-1 pb-3">
+                        <div className="size-7 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 flex items-center justify-center">
+                          <Moon className="size-4 text-emerald-600 dark:text-emerald-400" />
+                        </div>
+                        <h3 className="text-sm font-semibold dark:text-white">
+                          {locale === 'ar' ? 'احتياجات الطلاب المسلمين' : 'Muslim student needs'}
+                        </h3>
+                      </header>
+                      <div className="space-y-2">
+                        {[
+                          { id: 'halal', label: locale === 'ar' ? 'طعام حلال' : 'Halal food available' },
+                          { id: 'prayer', label: locale === 'ar' ? 'مرافق الصلاة' : 'Prayer facilities' },
+                          { id: 'gender_housing', label: locale === 'ar' ? 'سكن منفصل' : 'Gender-segregated housing' },
+                          { id: 'family', label: locale === 'ar' ? 'سكن عائلي' : 'Family accommodation' },
+                        ].map(f => {
+                          const active = menaFilters.has(f.id)
+                          return (
+                            <button
+                              key={f.id}
+                              onClick={() => toggleMenaFilter(f.id)}
+                              className={cn(
+                                'w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-medium border transition-all',
+                                active
+                                  ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-700 text-emerald-800 dark:text-emerald-200'
+                                  : 'bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-slate-400'
+                              )}
+                            >
+                              <span>{f.label}</span>
+                              {active && <Check className="size-3.5" />}
+                            </button>
+                          )
+                        })}
                       </div>
                     </section>
                   </div>
