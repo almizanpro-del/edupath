@@ -11,7 +11,8 @@
     "scholarships": "Scholarships",
     "pricing": "Pricing",
     "sponsor": "Sponsor",
-    "explore": "Explore"
+    "explore": "Explore",
+    "accountSettings": "Account settings"
   },
   "Hero": {
     "badge": "For MENA students",
@@ -219,7 +220,13 @@
     "proAccount": "Pro",
     "vipAccount": "VIP",
     "notAdmin": "You need admin access to view this page.",
-    "notRecruiter": "You need sponsor access to view this page."
+    "notRecruiter": "You need sponsor access to view this page.",
+    "forgotPassword": "Forgot password?",
+    "agreePrefix": "I agree to EduPath's",
+    "termsLink": "Terms of Service",
+    "andPrefix": "and",
+    "privacyLink": "Privacy Policy",
+    "mustAgree": "Please accept the Terms and Privacy Policy to continue."
   },
   "ReviewForm": {
     "title": "Write a Review",
@@ -346,10 +353,19 @@
       "directory": "University Directory",
       "comparison": "Comparison Tool",
       "calculator": "Cost Calculator",
-      "reviews": "Student Reviews"
+      "reviews": "Student Reviews",
+      "scholarships": "Scholarships",
+      "transferFinder": "Transfer Finder",
+      "essayReview": "Essay Review",
+      "aiAdvisor": "AI Advisor",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookies": "Cookie Policy",
+      "account": "Account Settings"
     },
     "englishArabic": "English + Arabic (RTL)",
-    "disclaimer": "EduPath is in beta. University data is unverified — confirm all details with official sources. Reviews are student-submitted and not independently verified."
+    "disclaimer": "EduPath is in beta. University data is unverified — confirm all details with official sources. Reviews are student-submitted and not independently verified.",
+    "legal": "Legal"
   },
   "Filters": {
     "title": "Filters",
@@ -865,5 +881,162 @@
     "errorOccurred": "An error occurred",
     "tryAgain": "Try Again",
     "back": "Back"
+  },
+  "Legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "effectiveDate": "Effective: October 23, 2026",
+      "intro": "EduPath (\"we\", \"us\", \"our\") operates the edupath.com website and related services (the \"Service\"). This Privacy Policy explains what personal information we collect, why we collect it, how we use it, and the rights you have over your data. We are committed to protecting your privacy and complying with the General Data Protection Regulation (GDPR), the Jordan Personal Protection Privacy Law No. 24 of 2023 (PPL), and other applicable data protection laws.",
+      "sections": {
+        "collect": {
+          "title": "1. Information We Collect",
+          "body": "We collect information you provide directly to us:\n\nAccount information: When you sign up, we collect your full name, email address, password (hashed), country, and field of interest. If you sign up via Google, we receive your Google account name and email.\n\nProfile data: As you use EduPath, we store your saved universities, Rihla AI chat sessions, scholarship matches, essay review history, and reviews you submit.\n\nLead inquiries: When you contact a university through EduPath, we store your name, email, country, GPA, field of interest, and message.\n\nUsage data: We automatically collect information about how you interact with the Service — pages visited, time spent, clicks, search queries, and device information (browser type, screen size, approximate location by country). We use this data in aggregate to improve the Service.\n\nCookies: We use cookies and similar technologies for authentication, language preference, and (with your consent) analytics. See our Cookie Policy for details."
+        },
+        "use": {
+          "title": "2. How We Use Your Information",
+          "body": "We use your information to:\n\n• Provide, operate, and maintain the Service\n• Create and manage your account\n• Personalize your experience (e.g., recommend universities based on your saved list)\n• Process your inquiries to universities and deliver responses\n• Send you service-related emails (welcome email, deadline alerts, review status notifications)\n• Analyze usage patterns to improve features and fix bugs\n• Detect, prevent, and address fraud, abuse, and security issues\n• Comply with our legal obligations\n\nWe do NOT sell your personal information to third parties. We do NOT use your data to train AI models without your explicit consent."
+        },
+        "legal": {
+          "title": "3. Legal Basis for Processing (GDPR Article 6)",
+          "body": "Under the GDPR, we process your personal data on the following legal bases:\n\n• Consent: You consent to our use of your data when you create an account and accept this Privacy Policy. You can withdraw consent at any time by deleting your account.\n• Contract: Processing is necessary to provide the Service you requested (e.g., saving universities, submitting reviews, contacting universities).\n• Legal obligation: We may process data to comply with legal requirements (e.g., tax records, responding to lawful requests).\n• Legitimate interests: We process usage data to improve security, prevent fraud, and enhance the Service — these interests are balanced against your privacy rights.\n\nUnder Jordan's PPL No. 24 of 2023, we process your data based on your informed consent and to fulfill the Service's purpose."
+        },
+        "cookies": {
+          "title": "4. Cookies and Tracking Technologies",
+          "body": "We use the following categories of cookies:\n\n• Strictly necessary: Required for authentication (session tokens) and language preference. These cannot be disabled.\n• Analytics (optional): Used to understand how students use EduPath so we can improve it. Only set if you accept analytics cookies via our consent banner.\n• Functional (optional): Remember your preferences (theme, saved filters).\n\nYou can control cookies through your browser settings and our consent banner. See our Cookie Policy for the full list of cookies we use."
+        },
+        "share": {
+          "title": "5. Information Sharing and Disclosure",
+          "body": "We do NOT sell your personal information. We share data only in these circumstances:\n\n• With universities: When you submit a lead inquiry, we share your name, email, country, GPA, field, and message with the university you contacted.\n• With service providers: We use Supabase (authentication and database hosting), Vercel (web hosting), Resend (email delivery), and OpenAI/xAI (AI essay review and Rihla chat). These providers process data on our behalf under Data Processing Agreements and are bound by confidentiality obligations.\n• For legal compliance: We may disclose data if required by law, court order, or government request, or to protect our rights, property, or safety.\n• Business transfers: In the event of a merger, acquisition, or asset sale, user data may be transferred to the acquiring entity. We will notify you 30 days before such a transfer.\n\nWe never share your data for advertising purposes."
+        },
+        "retention": {
+          "title": "6. Data Retention",
+          "body": "We retain your personal data for as long as your account is active, or as needed to provide the Service. Specific retention periods:\n\n• Account data: Until you delete your account\n• Reviews: Until you delete them (or your account)\n• Rihla AI sessions: 24 months after your last activity\n• Essay reviews: 12 months after submission\n• Lead inquiries: 36 months (to comply with potential consumer-protection inquiries)\n• Analytics data (aggregated): Indefinitely (no personal identification)\n• Server logs: 90 days\n\nWhen data is no longer needed, we delete it or anonymize it so it cannot be linked to you."
+        },
+        "rights": {
+          "title": "7. Your Rights",
+          "body": "Under the GDPR and Jordan PPL, you have the following rights:\n\n• Right of access: You can request a copy of all personal data we hold about you.\n• Right to rectification: You can correct inaccurate or incomplete data.\n• Right to erasure (\"right to be forgotten\"): You can delete your account at any time via Account Settings. We will remove your data within 30 days.\n• Right to restrict processing: You can ask us to limit how we use your data.\n• Right to data portability: You can request your data in a machine-readable format.\n• Right to object: You can object to processing based on legitimate interests.\n• Right to withdraw consent: You can withdraw consent at any time without affecting the lawfulness of processing before withdrawal.\n\nTo exercise any of these rights, email privacy@edupath.com. We will respond within 30 days. If you are not satisfied with our response, you can complain to your local data protection authority (e.g., the Jordan Data Protection Unit, or your EU member state's DPA)."
+        },
+        "transfer": {
+          "title": "8. International Data Transfers",
+          "body": "EduPath is hosted on Vercel (United States) and Supabase (United States/EU). Your data may be transferred to and processed in these countries. We ensure appropriate safeguards are in place, including Standard Contractual Clauses (SCCs) approved by the European Commission, and we only transfer data to countries that provide an adequate level of protection.\n\nIf you are in Jordan, your data is processed under Jordan's PPL which permits international transfers subject to appropriate safeguards."
+        },
+        "security": {
+          "title": "9. Data Security",
+          "body": "We take reasonable technical and organizational measures to protect your data:\n\n• All data in transit is encrypted via TLS 1.2+\n• Passwords are hashed by Supabase Auth using bcrypt\n• Database access is restricted to authenticated server-side code\n• API routes are protected by CSRF checks, rate limiting, and input validation\n• We monitor for suspicious activity and have an incident response plan\n\nNo method of transmission over the internet is 100% secure. We cannot guarantee absolute security, but we work hard to protect your data and will notify affected users within 72 hours of any breach as required by GDPR Article 33."
+        },
+        "children": {
+          "title": "10. Children's Privacy",
+          "body": "EduPath is intended for students aged 16 and older. We do not knowingly collect data from children under 16. If you believe we have collected data from a child under 16, please contact privacy@edupath.com and we will delete it immediately.\n\nStudents aged 16–18 may use EduPath with the consent of a parent or legal guardian. By creating an account, you represent that you are 16 or older, or that you have parental consent."
+        },
+        "changes": {
+          "title": "11. Changes to This Policy",
+          "body": "We may update this Privacy Policy from time to time. We will notify you of material changes by email (if you have an account) and by posting a notice on the EduPath homepage 30 days before the change takes effect. The \"Effective date\" at the top of this page indicates when the policy was last revised.\n\nContinued use of the Service after the effective date constitutes acceptance of the updated policy."
+        },
+        "contact": {
+          "title": "12. Contact Us",
+          "body": "If you have questions about this Privacy Policy or your personal data, contact us:\n\n• Email: privacy@edupath.com\n• Subject: Privacy Inquiry\n\nWe aim to respond to all privacy inquiries within 5 business days. For urgent matters related to data deletion, mark your subject as \"URGENT — Deletion Request\"."
+        }
+      },
+      "footer": {
+        "contact": "Questions about privacy"
+      }
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "effectiveDate": "Effective: October 23, 2026",
+      "intro": "Welcome to EduPath. These Terms of Service (\"Terms\") govern your use of the edupath.com website and related services (the \"Service\"). By creating an account or using the Service, you agree to these Terms. If you do not agree, do not use the Service.",
+      "sections": {
+        "acceptance": {
+          "title": "1. Acceptance of Terms",
+          "body": "By accessing or using EduPath, you agree to be bound by these Terms and our Privacy Policy. If you are using EduPath on behalf of an organization (e.g., as a university recruiter), you represent that you have authority to bind that organization."
+        },
+        "eligibility": {
+          "title": "2. Eligibility",
+          "body": "You must be at least 16 years old to use EduPath. If you are under 18, you must have the consent of a parent or legal guardian. By using EduPath, you represent that you meet these requirements."
+        },
+        "accounts": {
+          "title": "3. Your Account",
+          "body": "You are responsible for maintaining the security of your account and password. You agree to provide accurate information at signup and to keep it updated. You must not share your account credentials with others. We reserve the right to suspend or terminate accounts that violate these Terms."
+        },
+        "use": {
+          "title": "4. Acceptable Use",
+          "body": "You agree NOT to:\n\n• Use EduPath for any unlawful purpose\n• Submit false or misleading information in reviews, leads, or essays\n• Impersonate another person or misrepresent your affiliation with a university\n• Spam, harass, or threaten other users\n• Attempt to access data you are not authorized to access\n• Reverse-engineer, scrape, or otherwise disrupt the Service\n• Use automated scripts (bots) without our prior written consent\n\nViolations may result in account termination and legal action."
+        },
+        "content": {
+          "title": "5. User Content",
+          "body": "You retain ownership of content you submit to EduPath (reviews, essays, lead inquiries, profile information). By submitting content, you grant EduPath a worldwide, non-exclusive, royalty-free license to host, display, and process that content for the purpose of operating the Service.\n\nYou represent that you have the rights to any content you submit and that it does not infringe the rights of any third party."
+        },
+        "reviews": {
+          "title": "6. Reviews and Ratings",
+          "body": "Reviews must be based on your genuine experience. We may moderate, remove, or reject reviews that:\n\n• Contain false or misleading information\n• Include hate speech, discrimination, or personal attacks\n• Promote illegal activities\n• Contain advertising or promotional content\n• Were submitted in exchange for compensation (paid reviews)\n\nWe reserve the right to remove any review at our discretion. Reviews flagged as \"Sample\" are synthetic and not from real students."
+        },
+        "ip": {
+          "title": "7. Intellectual Property",
+          "body": "The EduPath website, including its design, code, logos, university data (where created by us), and documentation, is our property or the property of our licensors. University names, logos, and program information belong to their respective institutions.\n\nYou may not copy, modify, distribute, or create derivative works from EduPath without our prior written consent."
+        },
+        "disclaimer": {
+          "title": "8. Disclaimers",
+          "body": "EduPath is provided \"as is\" and \"as available\" without warranties of any kind. We do not guarantee that:\n\n• University information (tuition, deadlines, requirements) is accurate or current\n• Scholarship matching will result in actual awards\n• Essay reviews will improve your admission chances\n• The Service will be uninterrupted or error-free\n\nUniversity data is sourced from public websites and may be outdated. Always verify critical information (deadlines, tuition, requirements) directly with the institution before applying."
+        },
+        "liability": {
+          "title": "9. Limitation of Liability",
+          "body": "To the maximum extent permitted by law, EduPath and its operators shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:\n\n• Loss of admission opportunities\n• Loss of scholarships\n• Loss of data\n• Business interruption\n\nOur total liability for any claim arising from your use of EduPath shall not exceed the amount you paid us in the 12 months preceding the claim, or $50 USD, whichever is greater."
+        },
+        "indemnity": {
+          "title": "10. Indemnification",
+          "body": "You agree to indemnify and hold EduPath harmless from any claims, damages, losses, or expenses (including legal fees) arising from: (a) your violation of these Terms, (b) your violation of any third-party rights, or (c) content you submit to the Service."
+        },
+        "termination": {
+          "title": "11. Termination",
+          "body": "You may delete your account at any time via Account Settings. We may suspend or terminate your access to EduPath if you violate these Terms or if we believe your conduct is harmful to other users or to us. Upon termination, your right to use the Service ends immediately. Sections that by their nature should survive termination (e.g., intellectual property, disclaimers, liability) will remain in effect."
+        },
+        "law": {
+          "title": "12. Governing Law and Disputes",
+          "body": "These Terms are governed by the laws of the Hashemite Kingdom of Jordan, without regard to conflict-of-law principles. Any dispute arising from these Terms or your use of EduPath will be resolved exclusively in the courts of Amman, Jordan. If you are a consumer in the EU or UK, you may also bring proceedings in your country of residence and may benefit from mandatory consumer protection laws."
+        },
+        "changes": {
+          "title": "13. Changes to These Terms",
+          "body": "We may update these Terms from time to time. We will notify you of material changes by email and by posting a notice on the EduPath homepage 30 days before the change takes effect. Continued use of the Service after the effective date constitutes acceptance of the updated Terms."
+        },
+        "contact": {
+          "title": "14. Contact Us",
+          "body": "If you have questions about these Terms, contact us:\n\n• Email: legal@edupath.com\n• Subject: Terms Inquiry"
+        }
+      },
+      "footer": {
+        "contact": "Questions about these terms"
+      }
+    },
+    "cookies": {
+      "title": "Cookie Policy",
+      "effectiveDate": "Effective: October 23, 2026",
+      "intro": "This Cookie Policy explains how EduPath uses cookies and similar technologies (collectively, \"cookies\") when you visit our website. For information about how we use the data collected via cookies, see our Privacy Policy.",
+      "sections": {
+        "what": {
+          "title": "1. What Are Cookies?",
+          "body": "Cookies are small text files placed on your device when you visit a website. They allow the website to remember your actions and preferences over time. EduPath uses both first-party cookies (set by us) and third-party cookies (set by our service providers, e.g., Supabase for authentication)."
+        },
+        "types": {
+          "title": "2. Types of Cookies We Use",
+          "body": "We categorize our cookies into three types:\n\n• Strictly necessary: Required for the Service to function. These cannot be disabled. They handle authentication (login sessions), language preference, and security (CSRF tokens).\n• Analytics (optional): Help us understand how students use EduPath so we can improve it. Only set if you accept analytics cookies via our consent banner.\n• Functional (optional): Remember your preferences (theme, saved filters) for a better experience."
+        },
+        "table": {
+          "title": "3. Specific Cookies We Use",
+          "body": "Strictly necessary:\n• sb-access-token, sb-refresh-token: Supabase authentication session. Expires after 7 days.\n• locale: Stores your language preference (en or ar). Expires after 1 year.\n• csrf-token: Prevents cross-site request forgery. Session cookie.\n\nAnalytics (only with consent):\n• posthog_distinct_id: Anonymous user identifier for PostHog analytics. Expires after 1 year.\n• posthog_session: Session grouping for PostHog. Expires after 30 minutes.\n\nFunctional:\n• edupath-cookie-consent: Records your cookie consent choice. Expires after 1 year.\n• edupath-theme: Stores your light/dark theme preference. Expires after 1 year."
+        },
+        "third": {
+          "title": "4. Third-Party Cookies",
+          "body": "We use the following third-party services that may set cookies:\n\n• Supabase: Authentication (essential). Their cookies are required for login.\n• PostHog: Analytics (only with your consent). Their cookies track anonymous usage.\n• Google (OAuth): If you sign in with Google, Google may set cookies during the authentication flow. We do not control Google's cookies — see Google's privacy policy.\n\nWe do NOT use advertising cookies or tracking pixels from Facebook, Google Ads, or similar platforms."
+        },
+        "control": {
+          "title": "5. Managing and Deleting Cookies",
+          "body": "You can control cookies in several ways:\n\n• Our consent banner: When you first visit EduPath, you can accept or decline analytics cookies. You can change your choice anytime by clearing your browser's localStorage and reloading the page.\n• Browser settings: Most browsers allow you to refuse cookies or delete existing ones. See your browser's help documentation.\n• Opt-out of all analytics: Use our consent banner's \"Decline\" option. We will not set any analytics cookies.\n\nNote: If you disable strictly-necessary cookies, you will not be able to log in or use EduPath's interactive features."
+        },
+        "changes": {
+          "title": "6. Changes to This Policy",
+          "body": "We may update this Cookie Policy when we add or remove cookies. We will notify you of material changes by posting a notice on the EduPath homepage 30 days before the change takes effect."
+        }
+      }
+    }
   }
 }

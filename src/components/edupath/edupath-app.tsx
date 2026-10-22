@@ -1075,7 +1075,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
       {/* ===== Footer ===== */}
       <footer className="border-t bg-slate-50 dark:bg-slate-950 mt-auto dark:border-slate-800">
         <div className="container mx-auto max-w-7xl px-4 py-10">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <div className="size-7 rounded-lg bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center">
@@ -1090,10 +1090,11 @@ export function EduPathApp({ universities, countries, stats }: Props) {
             <div>
               <h4 className="font-semibold mb-3 text-sm">{t('Footer.platform')}</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>{t('Footer.items.directory')}</li>
-                <li>{t('Footer.items.comparison')}</li>
-                <li>{t('Footer.items.calculator')}</li>
-                <li>{t('Footer.items.reviews')}</li>
+                <li><a href="/" className="hover:text-foreground hover:underline">{t('Footer.items.directory')}</a></li>
+                <li><a href="/scholarships" className="hover:text-foreground hover:underline">{t('Footer.items.scholarships')}</a></li>
+                <li><a href="/transfer-finder" className="hover:text-foreground hover:underline">{t('Footer.items.transferFinder')}</a></li>
+                <li><a href="/essay-review" className="hover:text-foreground hover:underline">{t('Footer.items.essayReview')}</a></li>
+                <li><a href="/agent" className="hover:text-foreground hover:underline">{t('Footer.items.aiAdvisor')}</a></li>
               </ul>
             </div>
             <div>
@@ -1103,6 +1104,15 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 <li>{stats.totalCountries} {t('Hero.stats.countries').toLowerCase()}</li>
                 <li>{stats.totalPrograms} {t('Hero.stats.programs').toLowerCase()}</li>
                 <li>{t('Footer.englishArabic')}</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-3 text-sm">{t('Footer.legal')}</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li><a href="/privacy" className="hover:text-foreground hover:underline">{t('Footer.items.privacy')}</a></li>
+                <li><a href="/terms" className="hover:text-foreground hover:underline">{t('Footer.items.terms')}</a></li>
+                <li><a href="/cookies" className="hover:text-foreground hover:underline">{t('Footer.items.cookies')}</a></li>
+                <li><a href="/account" className="hover:text-foreground hover:underline">{t('Footer.items.account')}</a></li>
               </ul>
             </div>
           </div>

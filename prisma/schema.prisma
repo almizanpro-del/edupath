@@ -265,7 +265,7 @@ model ScrapedUniversity {
 model IntakeSession {
   id              String   @id @default(cuid())
   userId          String?
-  user            User?    @relation(fields: [userId], references: [id])
+  user            User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   language        String   @default("en") // "en" | "ar"
   status          String   @default("in_progress") // in_progress | completed | abandoned
 

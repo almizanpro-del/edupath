@@ -47,6 +47,34 @@ async function sendEmail({ to, subject, html }: EmailParams): Promise<boolean> {
 
 // ─── Email Templates ─────────────────────────────────────────────────────────
 
+export async function sendWelcomeEmail(to: string, name: string): Promise<boolean> {
+  return sendEmail({
+    to,
+    subject: `Welcome to EduPath, ${name}! 🎓`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <div style="text-align: center; margin-bottom: 24px;">
+          <div style="display: inline-block; width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #2563eb, #1d4ed8); margin-bottom: 16px;"></div>
+          <h1 style="color: #1d4ed8; margin: 0;">Welcome to EduPath, ${name}!</h1>
+        </div>
+        <p>You're now part of a community of MENA students finding their path to affordable global education.</p>
+        <p>Here's what you can do next:</p>
+        <ul style="line-height: 1.8; padding-left: 20px;">
+          <li><strong>Find your match</strong> — Chat with Rihla, our AI advisor, to get personalized university recommendations.</li>
+          <li><strong>Explore universities</strong> — Browse ${'129+'} universities across 14 countries with detailed cost, program, and scholarship info.</li>
+          <li><strong>Match scholarships</strong> — Find scholarships you're eligible for based on GPA, field, and country.</li>
+          <li><strong>Review your essays</strong> — Get AI feedback on your application essays before you submit.</li>
+        </ul>
+        <a href="${APP_URL}/agent" style="display: inline-block; background: #1d4ed8; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">Start with Rihla AI →</a>
+        <p style="color: #6b7280; font-size: 14px; margin-top: 24px;">
+          Questions? Reply to this email or visit our <a href="${APP_URL}" style="color: #1d4ed8;">help center</a>.
+        </p>
+        <p style="color: #6b7280; font-size: 14px; margin-top: 24px;">EduPath — Your path to affordable global education</p>
+      </div>
+    `,
+  })
+}
+
 export async function sendReviewApprovedEmail(to: string, universityName: string): Promise<boolean> {
   return sendEmail({
     to,

@@ -1,10 +1,12 @@
 'use client'
 
 import * as React from 'react'
-import { User, X, Mail, Lock, Loader2, LogOut, UserCircle2 } from 'lucide-react'
+import Link from 'next/link'
+import { User, X, Mail, Lock, Loader2, LogOut, UserCircle2, Settings } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { Checkbox } from '@/components/ui/checkbox'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useToast } from '@/hooks/use-toast'
@@ -38,6 +40,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
   const [password, setPassword] = React.useState('')
   const [fullName, setFullName] = React.useState('')
   const [country, setCountry] = React.useState('Jordan')
+  const [agreedToTerms, setAgreedToTerms] = React.useState(false)
 
   React.useEffect(() => {
     if (!open) {
@@ -45,6 +48,7 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
       setPassword('')
       setFullName('')
       setCountry('Jordan')
+      setAgreedToTerms(false)
       setLoading(false)
     }
   }, [open])
@@ -94,13 +98,35 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
       return
     }
     if (data.user && !data.session) {
-      // Email confirmation required
+      // Email confirmation required — Supabase will send the verification email.
+      // We also try to fire a welcome email via our /api/email/welcome endpoint
+      // (best-effort; non-blocking).
+      try {
+        await fetch('/api/email/welcome', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email, name: fullName }),
+        })
+      } catch {
+        // Non-critical — the welcome email is a nicety, not a requirement.
+      }
       toast({
         title: t('checkEmail'),
         description: t('checkEmailDesc'),
       })
       setMode('signin')
     } else if (data.session) {
+      // Logged in immediately (email confirmation disabled in Supabase).
+      // Fire welcome email best-effort.
+      try {
+        await fetch('/api/email/welcome', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email, name: fullName }),
+        })
+      } catch {
+        // Non-critical.
+      }
       toast({ title: t('accountCreated'), description: `${t('welcomeBack')}, ${fullName}!` })
       await fetchProfile()
       onClose()
@@ -236,6 +262,11 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
                 <Button type="submit" className="w-full" disabled={loading}>
                   {loading ? <Loader2 className="size-4 animate-spin" /> : t('signInBtn')}
                 </Button>
+                <div className="text-xs text-center">
+                  <Link href="/forgot-password" className="text-blue-600 hover:underline">
+                    {t('forgotPassword')}
+                  </Link>
+                </div>
               </form>
             </TabsContent>
 
@@ -317,12 +348,32 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
                     </SelectContent>
                   </Select>
                 </div>
-                <Button type="submit" className="w-full" disabled={loading}>
+                <div className="flex items-start gap-2">
+                  <Checkbox
+                    id="agree-terms"
+                    checked={agreedToTerms}
+                    onCheckedChange={(v) => setAgreedToTerms(v === true)}
+                    className="mt-0.5"
+                  />
+                  <Label htmlFor="agree-terms" className="text-xs text-muted-foreground leading-relaxed font-normal">
+                    {t('agreePrefix')}{' '}
+                    <Link href="/terms" target="_blank" className="text-blue-600 hover:underline">
+                      {t('termsLink')}
+                    </Link>{' '}
+                    {t('andPrefix')}{' '}
+                    <Link href="/privacy" target="_blank" className="text-blue-600 hover:underline">
+                      {t('privacyLink')}
+                    </Link>
+                  </Label>
+                </div>
+                <Button type="submit" className="w-full" disabled={loading || !agreedToTerms}>
                   {loading ? <Loader2 className="size-4 animate-spin" /> : t('createAccountBtn')}
                 </Button>
-                <p className="text-xs text-muted-foreground text-center">
-                  {t('termsNote')}
-                </p>
+                {!agreedToTerms && (
+                  <p className="text-xs text-muted-foreground text-center">
+                    {t('mustAgree')}
+                  </p>
+                )}
               </form>
             </TabsContent>
           </Tabs>
@@ -386,6 +437,14 @@ export function UserMenuButton({
                 </div>
               )}
             </div>
+            <a
+              href="/account"
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-left px-3 py-2 text-sm hover:bg-slate-50 flex items-center gap-2"
+            >
+              <Settings className="size-4" />
+              {tNav('accountSettings')}
+            </a>
             <button
               onClick={() => {
                 setMenuOpen(false)
