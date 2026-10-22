@@ -12,10 +12,12 @@ const BASE_URL = 'https://edupath-amber-three.vercel.app'
 
 const STATIC_PAGES = [
   { path: '', priority: 1.0, changeFrequency: 'daily' as const },
+  { path: '/compare', priority: 0.8, changeFrequency: 'weekly' as const },
   { path: '/pricing', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/essay-review', priority: 0.8, changeFrequency: 'monthly' as const },
   { path: '/transfer-finder', priority: 0.7, changeFrequency: 'weekly' as const },
   { path: '/scholarships', priority: 0.7, changeFrequency: 'weekly' as const },
+  { path: '/agent', priority: 0.8, changeFrequency: 'monthly' as const },
 ]
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -50,6 +52,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
       priority: 0.9,
+    })
+  }
+
+  // Country landing pages (Phase 4 — programmatic SEO)
+  const countries = [...new Set(
+    (staticUniversities as Array<{ country: string }>).map(u => u.country)
+  )]
+  for (const country of countries) {
+    const code = country.toLowerCase().replace(/\s+/g, '-')
+    entries.push({
+      url: `${BASE_URL}/country/${code}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
     })
   }
 

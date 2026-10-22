@@ -63,6 +63,7 @@ model University {
   events          AnalyticsEvent[]
   leads           Lead[]
   agentMatches    AgentMatch[]
+  applications    ApplicationTracker[]
 }
 
 model Program {
@@ -131,6 +132,7 @@ model User {
   subscription    Subscription?
   intakeSessions  IntakeSession[]
   essayReviews    EssayReview[]
+  applications    ApplicationTracker[]
 }
 
 model Review {
@@ -279,6 +281,32 @@ model EssayReview {
 
   @@index([userId, createdAt])
   @@index([userId, overallScore])
+}
+
+/// Application tracker — lets students track their university applications
+/// through a Kanban-style pipeline: researching → applying → submitted →
+/// interviewing → decision → enrolled.
+model ApplicationTracker {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  universityId  String
+  university    University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  programId     String?
+  // Pipeline status — the columns on the Kanban board
+  status        String   @default("researching") // researching | applying | submitted | interviewing | decision | enrolled
+  // Decision outcome (only set when status = 'decision')
+  decision      String?  // accepted | rejected | waitlisted | deferred
+  // Key dates (all optional — user fills in as they progress)
+  appliedAt     DateTime?
+  deadlineAt    DateTime?
+  decisionAt    DateTime?
+  notes         String   @default("") // free-text notes
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId, status])
+  @@index([universityId])
 }
 
 /// Staging table for scraped university data awaiting admin review.
