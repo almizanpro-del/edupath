@@ -515,6 +515,24 @@ export function UniversityDetailPage({ uni }: Props) {
                             <strong>{t('programs.entryRequirements')}:</strong> {p.entryReqs}
                           </div>
                         )}
+                        {/* Apply Now CTA — shows when program has an applicationUrl,
+                            otherwise falls back to the university's main website. */}
+                        <div className="flex items-center gap-2 mt-3 pt-3 border-t dark:border-slate-700">
+                          <a
+                            href={(p as any).applicationUrl || uni.website}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-600 text-white text-xs font-medium hover:bg-blue-700 transition-colors"
+                          >
+                            <ExternalLink className="size-3" />
+                            {(p as any).applicationUrl ? t('programs.applyNow') : t('programs.visitWebsite')}
+                          </a>
+                          {(p as any).applicationFeeUsd != null && (
+                            <span className="text-[10px] text-muted-foreground">
+                              {t('programs.applicationFee')}: {formatUsd((p as any).applicationFeeUsd)}
+                            </span>
+                          )}
+                        </div>
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -555,6 +573,17 @@ export function UniversityDetailPage({ uni }: Props) {
                             <div className="text-xs text-muted-foreground mt-3 flex items-center gap-1 dark:text-slate-400">
                               <CalendarIcon className="size-3" />{t('scholarships.applyBy')}: {s.deadline}
                             </div>
+                          )}
+                          {(s as any).applicationUrl && (
+                            <a
+                              href={(s as any).applicationUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-orange-600 text-white text-xs font-medium hover:bg-orange-700 transition-colors mt-3"
+                            >
+                              <ExternalLink className="size-3" />
+                              {t('scholarships.applyNow')}
+                            </a>
                           )}
                         </CardContent>
                       </Card>

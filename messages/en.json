@@ -12,7 +12,9 @@
     "pricing": "Pricing",
     "sponsor": "Sponsor",
     "explore": "Explore",
-    "accountSettings": "Account settings"
+    "accountSettings": "Account settings",
+    "myMatches": "My Matches",
+    "myEssays": "My Essays"
   },
   "Hero": {
     "badge": "For MENA students",
@@ -87,13 +89,17 @@
       "perYear": "per year",
       "months": "months",
       "deadline": "Deadline",
-      "entryRequirements": "Entry requirements"
+      "entryRequirements": "Entry requirements",
+      "applyNow": "Apply Now",
+      "visitWebsite": "Visit Website",
+      "applicationFee": "App. fee"
     },
     "scholarships": {
       "amount": "amount",
       "fullCoverage": "full coverage",
       "applyBy": "Apply by",
-      "none": "No scholarships listed."
+      "none": "No scholarships listed.",
+      "applyNow": "Apply for Scholarship"
     },
     "cost": {
       "title": "Total Cost Calculator",

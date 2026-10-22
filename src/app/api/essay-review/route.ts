@@ -2,37 +2,101 @@
  * POST /api/essay-review
  * Reviews a university application essay using AI (z-ai-web-dev-sdk).
  *
+ * Phase 2 changes:
+ *   - Replaced the flat in-memory rate limit with proper entitlement-based
+ *     enforcement via @/lib/entitlements. Free tier = 1 review/month,
+ *     Premium = 2, Pro = 20, VIP = unlimited.
+ *   - Persists each review to the EssayReview table so users can view
+ *     their history on /my-essays.
+ *   - Returns `remaining` based on the user's monthly entitlement, not
+ *     the per-hour rate limit.
+ *
  * Requires authentication. Returns structured JSON with:
  * - 4 dimension scores (structure, tone, clarity, cultural_fit) each 1-5
  * - Overall score
  * - Strengths and weaknesses
  * - Line-level feedback (quote, issue, suggestion)
  * - Rewrite summary
- *
- * Rate limiting: 3 reviews per hour per user (in-memory, per-instance).
- * Note: in serverless, each instance has its own map — for true distributed
- * limiting, use Upstash Redis or DB-backed tracking.
+ * - reviewId (for the history page)
+ * - remaining (reviews left this month)
  */
 import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
+import { db } from '@/lib/db'
 import { chatCompletion } from '@/lib/llm'
 import { requireSameOrigin } from '@/lib/csrf'
 import { essayReviewSchema, validateBody } from '@/lib/validation'
+import { requireFeature, getUserTier } from '@/lib/entitlements'
 
-// In-memory per-user rate limiting (per server instance)
+/**
+ * GET /api/essay-review
+ * Returns the authenticated user's essay review history (newest first).
+ * Used by the /my-essays page.
+ */
+export async function GET() {
+  try {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) {
+      return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
+    }
+
+    const profile = await db.user.findUnique({
+      where: { supabaseId: user.id },
+      select: { id: true },
+    })
+    if (!profile) {
+      return NextResponse.json({ reviews: [] })
+    }
+
+    const reviews = await db.essayReview.findMany({
+      where: { userId: profile.id },
+      orderBy: { createdAt: 'desc' },
+      take: 50, // last 50 reviews
+      select: {
+        id: true,
+        essayText: true,
+        feedback: true,
+        overallScore: true,
+        targetUniversity: true,
+        targetProgram: true,
+        applicantCountry: true,
+        createdAt: true,
+      },
+    })
+
+    return NextResponse.json({
+      reviews: reviews.map(r => ({
+        id: r.id,
+        essayText: r.essayText,
+        feedback: JSON.parse(r.feedback),
+        overallScore: r.overallScore,
+        targetUniversity: r.targetUniversity,
+        targetProgram: r.targetProgram,
+        applicantCountry: r.applicantCountry,
+        createdAt: r.createdAt.toISOString(),
+      })),
+    })
+  } catch (error) {
+    console.error('[api/essay-review GET] Error:', error)
+    return NextResponse.json({ reviews: [] })
+  }
+}
+
+// Keep a light per-instance rate limit as a secondary defense (prevents
+// a single user from hammering the LLM in a tight loop). The primary
+// limit is the monthly entitlement.
 const reviewTimestamps = new Map<string, number[]>()
 const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000 // 1 hour
-const RATE_LIMIT_MAX = 3 // 3 reviews per hour per user
+const RATE_LIMIT_MAX = 5 // 5 per hour per user (burst protection)
 
-function checkRateLimit(userId: string): { allowed: boolean; remaining: number } {
+function checkBurstLimit(userId: string): boolean {
   const now = Date.now()
   const timestamps = reviewTimestamps.get(userId) ?? []
   const recent = timestamps.filter(ts => now - ts < RATE_LIMIT_WINDOW_MS)
-  if (recent.length >= RATE_LIMIT_MAX) {
-    return { allowed: false, remaining: 0 }
-  }
+  if (recent.length >= RATE_LIMIT_MAX) return false
   reviewTimestamps.set(userId, [...recent, now])
-  return { allowed: true, remaining: RATE_LIMIT_MAX - recent.length - 1 }
+  return true
 }
 
 const SYSTEM_PROMPT = `You are an expert university admissions reviewer for MENA students applying to international universities. You evaluate essays on four dimensions, each scored 1-5 with rubric anchors.
@@ -98,14 +162,55 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
     }
 
-    // Rate limit check
-    const rateLimit = checkRateLimit(user.id)
-    if (!rateLimit.allowed) {
-      return NextResponse.json({
-        error: 'Rate limit exceeded',
-        message: 'You can submit up to 3 essay reviews per hour. Please try again later.',
-        retryAfterMinutes: 60,
-      }, { status: 429 })
+    // Look up the Prisma profile (needed for entitlement check).
+    let profile: { id: string } | null = null
+    try {
+      profile = await db.user.findUnique({
+        where: { supabaseId: user.id },
+        select: { id: true },
+      })
+    } catch {
+      // DB unavailable — we'll allow the review but skip persistence.
+    }
+
+    // Entitlement check: is the user within their monthly essay-review limit?
+    let remaining: number | null = null
+    let limit: number | null = null
+    let tier = 'free'
+    if (profile) {
+      tier = await getUserTier(profile.id)
+      const check = await requireFeature(profile.id, {
+        feature: 'essayReviewsPerMonth',
+        count: true,
+      })
+      remaining = check.remaining
+      limit = check.limit
+      if (!check.ok) {
+        return NextResponse.json(
+          {
+            error: 'Limit reached',
+            message: check.reason,
+            tier,
+            limit,
+            remaining: 0,
+            upgradeUrl: '/pricing',
+          },
+          { status: 402 } // 402 Payment Required — semantically correct
+        )
+      }
+    }
+
+    // Burst-protection rate limit (5/hour regardless of tier — stops LLM
+    // abuse without blocking legitimate use).
+    if (!checkBurstLimit(user.id)) {
+      return NextResponse.json(
+        {
+          error: 'Rate limit exceeded',
+          message: 'You can submit up to 5 essay reviews per hour. Please try again later.',
+          retryAfterMinutes: 60,
+        },
+        { status: 429 }
+      )
     }
 
     // Parse + validate request body
@@ -115,9 +220,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: validation.error }, { status: 400 })
     }
     const { essayText } = validation.data
-    const targetUniversity = typeof body.targetUniversity === 'string' ? body.targetUniversity : undefined
-    const targetProgram = typeof body.targetProgram === 'string' ? body.targetProgram : undefined
-    const applicantCountry = typeof body.applicantCountry === 'string' ? body.applicantCountry : undefined
+    const targetUniversity =
+      typeof body.targetUniversity === 'string' ? body.targetUniversity : undefined
+    const targetProgram =
+      typeof body.targetProgram === 'string' ? body.targetProgram : undefined
+    const applicantCountry =
+      typeof body.applicantCountry === 'string' ? body.applicantCountry : undefined
 
     // Build user prompt
     const userPrompt = `Please review the following university application essay.
@@ -149,11 +257,9 @@ Evaluate this essay strictly per the rubric. Cite exact phrases from the essay i
 
     // Parse JSON — handle case where AI wraps in markdown fences
     let cleaned = rawResponse.trim()
-    // Remove markdown code fences if present
     if (cleaned.startsWith('```')) {
       cleaned = cleaned.replace(/^```(?:json)?\s*\n?/, '').replace(/\n?```$/, '')
     }
-    // Remove any leading/trailing non-JSON text
     const jsonStart = cleaned.indexOf('{')
     const jsonEnd = cleaned.lastIndexOf('}')
     if (jsonStart === -1 || jsonEnd === -1) {
@@ -163,14 +269,44 @@ Evaluate this essay strictly per the rubric. Cite exact phrases from the essay i
 
     const review = JSON.parse(cleaned)
 
-    // Validate structure
     if (!review.scores || typeof review.overall_score !== 'number') {
       throw new Error('Invalid review structure from AI')
     }
 
+    // Persist to DB (best-effort — non-blocking on failure)
+    let reviewId: string | null = null
+    if (profile) {
+      try {
+        const saved = await db.essayReview.create({
+          data: {
+            userId: profile.id,
+            essayText: essayText.trim(),
+            feedback: JSON.stringify(review),
+            overallScore: parseFloat(review.overall_score) || 0,
+            targetUniversity: targetUniversity ?? null,
+            targetProgram: targetProgram ?? null,
+            applicantCountry: applicantCountry ?? null,
+          },
+          select: { id: true },
+        })
+        reviewId = saved.id
+      } catch (persistErr) {
+        console.warn('[api/essay-review] Failed to persist review:', persistErr)
+        // Non-fatal — the user still gets their review in the response.
+      }
+    }
+
+    // Recompute remaining after the save (decrements by 1).
+    if (profile && remaining !== null) {
+      remaining = Math.max(0, remaining - 1)
+    }
+
     return NextResponse.json({
       review,
-      remaining: rateLimit.remaining,
+      reviewId,
+      remaining,
+      limit,
+      tier,
     })
   } catch (error) {
     console.error('[api/essay-review] Error:', error)

@@ -73,6 +73,11 @@ model Program {
   tuitionUsd      Int
   deadline        String?
   entryReqs       String?
+  // Application link — the external URL where students actually apply.
+  // When present, the UI shows an "Apply Now" button linking here.
+  // When absent, the UI falls back to "Visit Website".
+  applicationUrl  String?
+  applicationFeeUsd Int?  // one-time application fee, if known
   // Data provenance fields (Phase 1 — Data Integrity)
   verifiedStatus  String   @default("UNVERIFIED") // UNVERIFIED | OFFICIAL_SOURCE_VERIFIED | ESTIMATED | STALE
   sourceUrl       String?  // Official program page URL
@@ -91,6 +96,9 @@ model Scholarship {
   amountType      String   // full | partial | fixed
   eligibility     String
   deadline        String?
+  // Application link for the scholarship (often a separate form from
+  // university admission).
+  applicationUrl  String?
 
   @@index([universityId])
 }
@@ -107,10 +115,18 @@ model User {
   locale          String   @default("en")
   createdAt       DateTime @default(now())
 
+  // Onboarding fields (Phase 2) — collected after first signup so the
+  // directory can be personalized without forcing the user through the
+  // full Rihla intake. All nullable until the user completes onboarding.
+  educationLevel    String?  // high_school | bachelor | master | phd
+  preferredCountries String?  // JSON array of country names, e.g. ["Turkey","Germany"]
+  budgetUsd         Int?     // annual budget in USD
+
   reviews         Review[]
   savedLists      SavedList[]
   subscription    Subscription?
   intakeSessions  IntakeSession[]
+  essayReviews    EssayReview[]
 }
 
 model Review {
@@ -218,6 +234,27 @@ model Subscription {
 
   @@index([userId])
   @@index([stripeCustomerId])
+}
+
+/// AI essay review history. Each record is one essay submission + the
+/// AI's feedback. Persists across sessions so users can track improvement
+/// over time and see past reviews on /my-essays.
+model EssayReview {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  essayText     String   // the original essay (max 10000 chars, validated in API)
+  // Feedback is stored as a JSON string to avoid over-typing the LLM's
+  // response shape. The API route validates the shape before saving.
+  feedback      String   // JSON: { scores, overall_score, strengths, weaknesses, line_feedback, rewrite_summary }
+  overallScore  Float    // denormalized for easy sorting/filtering
+  targetUniversity String? // optional: which university the essay is for
+  targetProgram  String? // optional: which program
+  applicantCountry String? // optional: applicant's country
+  createdAt     DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([userId, overallScore])
 }
 
 /// Staging table for scraped university data awaiting admin review.

@@ -12,7 +12,9 @@
     "pricing": "الأسعار",
     "sponsor": "راعي",
     "explore": "استكشف",
-    "accountSettings": "إعدادات الحساب"
+    "accountSettings": "إعدادات الحساب",
+    "myMatches": "تطابقاتي",
+    "myEssays": "مراجعات مقالاتي"
   },
   "Hero": {
     "badge": "لطلاب الشرق الأوسط وشمال أفريقيا",
@@ -87,13 +89,17 @@
       "perYear": "سنوياً",
       "months": "شهر",
       "deadline": "الموعد النهائي",
-      "entryRequirements": "متطلبات القبول"
+      "entryRequirements": "متطلبات القبول",
+      "applyNow": "قدم الآن",
+      "visitWebsite": "زيارة الموقع",
+      "applicationFee": "رسوم التقديم"
     },
     "scholarships": {
       "amount": "المبلغ",
       "fullCoverage": "تغطية كاملة",
       "applyBy": "آخر موعد للتقديم",
-      "none": "لا توجد منح دراسية."
+      "none": "لا توجد منح دراسية.",
+      "applyNow": "التقدم للمنحة"
     },
     "cost": {
       "title": "حاسبة التكلفة الإجمالية",

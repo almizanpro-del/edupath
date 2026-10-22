@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
-import { User, X, Mail, Lock, Loader2, LogOut, UserCircle2, Settings } from 'lucide-react'
+import { User, X, Mail, Lock, Loader2, LogOut, UserCircle2, Settings, Sparkles, FileText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -130,6 +130,10 @@ export function AuthModal({ open, onClose, onAuthed }: Props) {
       toast({ title: t('accountCreated'), description: `${t('welcomeBack')}, ${fullName}!` })
       await fetchProfile()
       onClose()
+      // Redirect new users to onboarding so we can personalize their directory.
+      if (typeof window !== 'undefined') {
+        window.location.href = '/onboarding'
+      }
     }
     setLoading(false)
   }
@@ -437,6 +441,22 @@ export function UserMenuButton({
                 </div>
               )}
             </div>
+            <a
+              href="/my-matches"
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-left px-3 py-2 text-sm hover:bg-slate-50 flex items-center gap-2"
+            >
+              <Sparkles className="size-4" />
+              {tNav('myMatches')}
+            </a>
+            <a
+              href="/my-essays"
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-left px-3 py-2 text-sm hover:bg-slate-50 flex items-center gap-2"
+            >
+              <FileText className="size-4" />
+              {tNav('myEssays')}
+            </a>
             <a
               href="/account"
               onClick={() => setMenuOpen(false)}

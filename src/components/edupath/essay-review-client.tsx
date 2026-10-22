@@ -119,7 +119,17 @@ export function EssayReviewClient({ universities }: { universities: University[]
       const data = await res.json()
 
       if (!res.ok) {
-        if (res.status === 429) {
+        if (res.status === 402) {
+          // Entitlement limit reached — show upgrade CTA
+          setError(data.message || 'You have reached your monthly essay review limit.')
+          if (data.upgradeUrl) {
+            toast({
+              title: 'Limit reached',
+              description: data.message,
+              action: <Button size="sm" onClick={() => router.push(data.upgradeUrl)}>Upgrade</Button>,
+            })
+          }
+        } else if (res.status === 429) {
           setError(data.message || 'Rate limit exceeded. Please try again later.')
         } else {
           setError(data.message || data.error || 'Review failed')
