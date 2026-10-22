@@ -6,6 +6,17 @@ export default defineConfig({
     environment: 'jsdom',
     globals: true,
     setupFiles: ['./vitest.setup.ts'],
+    // Playwright specs live in /e2e and have their own runner.
+    // Keep vitest away from them — otherwise vitest tries to load
+    // @playwright/test as a vitest plugin and crashes.
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/.next/**',
+      '**/e2e/**',
+      '**/playwright-report/**',
+      '**/test-results/**',
+    ],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
@@ -16,6 +27,7 @@ export default defineConfig({
         'coverage/',
         'examples/',
         'skills/',
+        'e2e/',
       ],
     },
   },
