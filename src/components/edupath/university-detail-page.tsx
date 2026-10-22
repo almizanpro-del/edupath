@@ -254,6 +254,15 @@ export function UniversityDetailPage({ uni }: Props) {
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-br from-white via-blue-50 to-blue-200 bg-clip-text text-transparent leading-[1.1] tracking-tight">
                 {uni.name}
               </h1>
+              {/* "Claimed by University" badge — Phase 3 sponsor feature */}
+              {Boolean((uni as Record<string, unknown>).claimedByUserId) && (
+                <div className="inline-flex items-center gap-1.5 mb-3 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 backdrop-blur-sm">
+                  <CheckCircle2 className="size-3.5 text-emerald-300" />
+                  <span className="text-xs font-medium text-emerald-100">
+                    {locale === 'ar' ? 'موثق من قبل الجامعة' : 'Verified by University'}
+                  </span>
+                </div>
+              )}
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-white/80">
                 <span className="flex items-center gap-1.5">
                   <MapPin className="size-4 text-blue-300" />

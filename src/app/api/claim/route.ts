@@ -159,6 +159,16 @@ export async function PATCH(req: NextRequest) {
         data: { role: 'recruiter', fieldOfInterest: event.universityId },
       })
 
+      // Mark the university as claimed (Phase 3 — shows "Claimed" badge
+      // on the detail page and enables recruiter-only features).
+      await db.university.update({
+        where: { id: event.universityId! },
+        data: {
+          claimedByUserId: event.userId,
+          claimedAt: new Date(),
+        },
+      })
+
       return NextResponse.json({ status: 'approved', message: 'University profile claimed. User promoted to recruiter.' })
     } else {
       meta.status = 'rejected'

@@ -2,11 +2,12 @@
 
 import * as React from 'react'
 import { useRouter } from 'next/navigation'
-import { ArrowLeft, Building2, Loader2, TrendingUp, Users, Star, Mail, Download, Eye, Save, GitCompare, AlertCircle, ChevronDown } from 'lucide-react'
+import { ArrowLeft, Building2, Loader2, TrendingUp, Users, Star, Mail, Download, Eye, Save, GitCompare, AlertCircle, ChevronDown, Send } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useToast } from '@/hooks/use-toast'
 import { cn } from '@/lib/utils'
@@ -216,7 +217,7 @@ export function SponsorDashboardClient() {
             {/* Leads tab */}
             <TabsContent value="leads">
               <div className="space-y-3">
-                {leads.map(lead => <LeadCard key={lead.id} lead={lead} />)}
+                {leads.map(lead => <LeadCard key={lead.id} lead={lead} onLeadUpdated={loadData} />)}
               </div>
             </TabsContent>
           </Tabs>
@@ -328,29 +329,196 @@ function SentimentBar({ label, value }: { label: string; value: number }) {
   )
 }
 
-function LeadCard({ lead }: { lead: Lead }) {
+function LeadCard({ lead, onLeadUpdated }: { lead: Lead; onLeadUpdated?: () => void }) {
+  const { toast } = useToast()
+  const [expanded, setExpanded] = React.useState(false)
+  const [replyText, setReplyText] = React.useState('')
+  const [sending, setSending] = React.useState(false)
+  const [statusUpdating, setStatusUpdating] = React.useState(false)
+  const [messages, setMessages] = React.useState<Array<{
+    id: string; fromRole: string; authorName: string; body: string; createdAt: string
+  }>>([])
+  const [loadingMessages, setLoadingMessages] = React.useState(false)
+  const [currentStatus, setCurrentStatus] = React.useState(lead.status)
+
   const statusColors: Record<string, string> = {
     new: 'bg-blue-600/10 text-blue-700 dark:bg-blue-600/20 dark:text-blue-300 border-blue-300',
     contacted: 'bg-amber-100 text-amber-700 border-amber-300',
     closed: 'bg-slate-100 text-slate-600 border-slate-300',
   }
 
+  const loadMessages = React.useCallback(async () => {
+    setLoadingMessages(true)
+    try {
+      const res = await fetch(`/api/leads/${lead.id}`)
+      const data = await res.json()
+      if (res.ok && data.lead?.messages) {
+        setMessages(data.lead.messages)
+      }
+    } catch {
+      // ignore
+    } finally {
+      setLoadingMessages(false)
+    }
+  }, [lead.id])
+
+  React.useEffect(() => {
+    if (expanded && messages.length === 0) {
+      loadMessages()
+    }
+  }, [expanded, loadMessages, messages.length])
+
+  const handleSendReply = async () => {
+    if (!replyText.trim()) return
+    setSending(true)
+    try {
+      const res = await fetch(`/api/leads/${lead.id}`, {
+        method: 'PATCH',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ reply: { body: replyText.trim() } }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Failed to send reply')
+
+      setMessages(prev => [...prev, data.message])
+      setReplyText('')
+      if (data.lead?.status && data.lead.status !== currentStatus) {
+        setCurrentStatus(data.lead.status)
+      }
+      toast({ title: 'Reply sent', description: 'The student has been emailed your reply.' })
+      onLeadUpdated?.()
+    } catch (err) {
+      toast({
+        title: 'Could not send reply',
+        description: err instanceof Error ? err.message : 'Please try again.',
+        variant: 'destructive',
+      })
+    } finally {
+      setSending(false)
+    }
+  }
+
+  const handleStatusChange = async (newStatus: string) => {
+    setStatusUpdating(true)
+    try {
+      const res = await fetch(`/api/leads/${lead.id}`, {
+        method: 'PATCH',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ status: newStatus }),
+      })
+      const data = await res.json()
+      if (!res.ok) throw new Error(data.error || 'Failed')
+      setCurrentStatus(newStatus)
+      toast({ title: 'Status updated', description: `Lead marked as ${newStatus}.` })
+      onLeadUpdated?.()
+    } catch (err) {
+      toast({
+        title: 'Update failed',
+        description: err instanceof Error ? err.message : 'Please try again.',
+        variant: 'destructive',
+      })
+    } finally {
+      setStatusUpdating(false)
+    }
+  }
+
   return (
     <Card>
       <CardContent className="pt-4">
         <div className="flex items-start justify-between gap-3 mb-2">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="font-medium">{lead.studentName}</span>
-              <Badge variant="outline" className={cn("text-[10px] capitalize", statusColors[lead.status])}>{lead.status}</Badge>
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <button
+                onClick={() => setExpanded(!expanded)}
+                className="font-medium hover:underline text-left"
+              >
+                {lead.studentName}
+              </button>
+              <Badge variant="outline" className={cn("text-[10px] capitalize", statusColors[currentStatus])}>
+                {currentStatus}
+              </Badge>
             </div>
             <div className="text-xs text-muted-foreground mt-0.5">
               {lead.country} · GPA {lead.gpa} · {lead.field}
             </div>
           </div>
-          <span className="text-xs text-muted-foreground">{lead.date}</span>
+          <div className="flex items-center gap-2 shrink-0">
+            <Select value={currentStatus} onValueChange={handleStatusChange} disabled={statusUpdating}>
+              <SelectTrigger className="h-7 w-28 text-xs">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="new">New</SelectItem>
+                <SelectItem value="contacted">Contacted</SelectItem>
+                <SelectItem value="closed">Closed</SelectItem>
+              </SelectContent>
+            </Select>
+            <span className="text-xs text-muted-foreground">{lead.date}</span>
+          </div>
         </div>
-        <p className="text-sm text-slate-700 bg-slate-50 rounded p-2">{lead.message}</p>
+        <p className="text-sm text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-slate-800 rounded p-2">{lead.message}</p>
+
+        {expanded && (
+          <div className="mt-3 pt-3 border-t dark:border-slate-700 space-y-3">
+            {/* Conversation thread */}
+            {loadingMessages ? (
+              <div className="flex items-center gap-2 text-xs text-muted-foreground py-2">
+                <Loader2 className="size-3 animate-spin" /> Loading conversation…
+              </div>
+            ) : messages.length > 0 ? (
+              <div className="space-y-2">
+                <h4 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                  Conversation ({messages.length})
+                </h4>
+                {messages.map(m => (
+                  <div
+                    key={m.id}
+                    className={cn(
+                      'rounded-lg p-2 text-sm',
+                      m.fromRole === 'recruiter'
+                        ? 'bg-blue-50 dark:bg-blue-950 ml-8'
+                        : 'bg-slate-50 dark:bg-slate-800 mr-8'
+                    )}
+                  >
+                    <div className="flex items-center gap-2 mb-1 text-xs text-muted-foreground">
+                      <span className="font-medium">{m.authorName}</span>
+                      <span>·</span>
+                      <span>{new Date(m.createdAt).toLocaleString()}</span>
+                      {m.fromRole === 'recruiter' && <Badge variant="outline" className="text-[9px]">You</Badge>}
+                    </div>
+                    <p className="whitespace-pre-wrap">{m.body}</p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-xs text-muted-foreground">No replies yet.</p>
+            )}
+
+            {/* Reply box */}
+            <div className="space-y-2">
+              <Textarea
+                value={replyText}
+                onChange={(e) => setReplyText(e.target.value)}
+                placeholder="Type your reply to the student…"
+                className="min-h-[80px] text-sm"
+                maxLength={5000}
+              />
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-muted-foreground">
+                  {replyText.length}/5000 — the student will be emailed your reply.
+                </span>
+                <Button
+                  size="sm"
+                  onClick={handleSendReply}
+                  disabled={sending || !replyText.trim()}
+                >
+                  {sending ? <Loader2 className="size-4 animate-spin" /> : <Send className="size-4" />}
+                  Send reply
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </CardContent>
     </Card>
   )

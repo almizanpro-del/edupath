@@ -118,6 +118,28 @@ export async function sendLeadNotificationEmail(to: string, lead: {
   })
 }
 
+export async function sendLeadReplyEmail(to: string, reply: {
+  studentName: string; universityName: string; recruiterName: string; message: string
+}): Promise<boolean> {
+  return sendEmail({
+    to,
+    subject: `${reply.universityName} replied to your inquiry on EduPath`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h1 style="color: #1d4ed8;">Reply from ${reply.universityName} 💬</h1>
+        <p>Hi ${reply.studentName},</p>
+        <p><strong>${reply.recruiterName}</strong> from <strong>${reply.universityName}</strong> has replied to your inquiry on EduPath:</p>
+        <div style="background: #f9fafb; padding: 16px; border-radius: 8px; border-left: 3px solid #1d4ed8; margin: 16px 0;">
+          ${reply.message.split('\n').map((line: string) => `<p style="margin: 0 0 8px 0;">${line}</p>`).join('')}
+        </div>
+        <p>You can reply directly to ${reply.recruiterName} by responding to this email.</p>
+        <a href="${APP_URL}" style="display: inline-block; background: #1d4ed8; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">View on EduPath</a>
+        <p style="color: #6b7280; font-size: 14px; margin-top: 24px;">EduPath — Your path to affordable global education</p>
+      </div>
+    `,
+  })
+}
+
 export async function sendDeadlineAlertEmail(to: string, alerts: Array<{
   universityName: string; deadline: string; programName: string
 }>): Promise<boolean> {

@@ -48,6 +48,10 @@ model University {
   // Phase A — Trust repair fields
   dataSource      String?  // Human-readable source description (e.g. "Official university website")
   dataConfidence  String   @default("unverified") // high | medium | low | unverified
+  // Phase 3 — Sponsor: when a university is claimed by a recruiter,
+  // this holds the User.id of the recruiter. Null = unclaimed.
+  claimedByUserId String?
+  claimedAt       DateTime?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
@@ -214,8 +218,28 @@ model Lead {
   status        String   @default("new") // new | contacted | closed
   createdAt     DateTime @default(now())
 
+  messages      LeadMessage[]
+
   @@index([universityId])
   @@index([status])
+}
+
+/// Conversation thread between a recruiter and a student lead.
+/// Each lead can have multiple messages — the initial inquiry is the
+/// Lead.message field; subsequent replies are LeadMessage rows.
+model LeadMessage {
+  id          String   @id @default(cuid())
+  leadId      String
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  // "recruiter" = message from the sponsor; "student" = message from the
+  // student (future: in-platform student replies)
+  fromRole    String   // "recruiter" | "student"
+  authorName  String
+  authorEmail String
+  body        String
+  createdAt   DateTime @default(now())
+
+  @@index([leadId, createdAt])
 }
 
 model Subscription {

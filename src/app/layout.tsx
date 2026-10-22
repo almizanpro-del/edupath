@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CookieConsent } from "@/components/edupath/cookie-consent";
+import { PostHogProvider } from "@/components/edupath/posthog-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -96,9 +97,11 @@ export default async function RootLayout({
       >
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
-            {children}
-            <Toaster />
-            <CookieConsent />
+            <PostHogProvider>
+              {children}
+              <Toaster />
+              <CookieConsent />
+            </PostHogProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
         <script
