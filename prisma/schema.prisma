@@ -126,6 +126,15 @@ model User {
   educationLevel    String?  // high_school | bachelor | master | phd
   preferredCountries String?  // JSON array of country names, e.g. ["Turkey","Germany"]
   budgetUsd         Int?     // annual budget in USD
+  // Phase 6 — PRD ONB-05: separate consent controls
+  consentProcessing  Boolean  @default(true)  // required for account — data processing
+  consentMarketing   Boolean  @default(false) // optional — marketing emails
+  consentLeadSharing Boolean  @default(false) // optional — share profile with universities
+  // Phase 6 — PRD ONB-03: extended profile fields
+  gpa               Float?   // GPA on a 0-5 scale
+  englishLevel      String?  // none | beginner | intermediate | advanced | fluent | ielts_6 | ielts_6.5 | ielts_7 | toefl_80 | toefl_100
+  scholarshipNeed   Boolean  @default(false) // actively seeking scholarships
+  intake            String?  // intended intake: fall_2026 | spring_2027 | fall_2027 | etc.
 
   reviews         Review[]
   savedLists      SavedList[]

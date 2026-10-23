@@ -55,7 +55,7 @@ export function CompareClient({
 
   const addUniversity = (slug: string) => {
     const currentSlugs = selected.map(u => u.slug)
-    if (currentSlugs.includes(slug) || currentSlugs.length >= 3) return
+    if (currentSlugs.includes(slug) || currentSlugs.length >= 4) return
     const newSlugs = [...currentSlugs, slug].join(',')
     router.push(`/compare?ids=${newSlugs}`)
     setPickerOpen(false)
@@ -80,10 +80,10 @@ export function CompareClient({
         <div>
           <h1 className="text-3xl font-bold">Compare Universities</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Side-by-side comparison of up to 3 universities.
+            Side-by-side comparison of up to 4 universities.
           </p>
         </div>
-        {selected.length > 0 && selected.length < 3 && (
+        {selected.length > 0 && selected.length < 4 && (
           <Button variant="outline" size="sm" onClick={() => setPickerOpen(true)}>
             <Search className="size-4 mr-1" /> Add university
           </Button>
@@ -95,7 +95,7 @@ export function CompareClient({
         <div className="border rounded-xl p-4 mb-6 space-y-3">
           <div className="flex items-center justify-between">
             <h3 className="font-semibold text-sm">
-              {selected.length === 0 ? 'Pick universities to compare' : `Add a ${selected.length + 1}th university`}
+              {selected.length === 0 ? 'Pick universities to compare' : `Add a ${selected.length + 1}${selected.length + 1 === 2 ? 'nd' : selected.length + 1 === 3 ? 'rd' : 'th'} university`}
             </h3>
             <button onClick={() => setPickerOpen(false)} className="text-muted-foreground hover:text-foreground">
               <X className="size-4" />

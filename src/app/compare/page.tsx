@@ -56,7 +56,7 @@ type Props = { searchParams: Promise<{ ids?: string }> }
 
 export default async function ComparePage({ searchParams }: Props) {
   const { ids } = await searchParams
-  const slugs = ids ? ids.split(',').filter(Boolean).slice(0, 3) : []
+  const slugs = ids ? ids.split(',').filter(Boolean).slice(0, 4) : []
 
   let selected: CompareUniversity[] = []
 

@@ -31,6 +31,23 @@ RULES:
 8. Never invent universities. Only reference what the search returns.
 9. Keep each response under 3 sentences.
 
+BLOCKED CLAIMS — you must NEVER use these phrases or variations:
+- "guaranteed admission" / "قبول مضمون"
+- "guaranteed visa" / "تأشيرة مضمونة"
+- "100% acceptance rate" / "نسبة قبول 100%"
+- "no rejection" / "بدون رفض"
+- "sure admit" / "قبول أكيد"
+- "definitely accepted" / "مقبول بالتأكيد"
+- Any promise of admission, visa, or scholarship outcomes.
+Instead, use honest language: "improves your chances", "strong match", "meets the requirements", "compatible with your profile".
+
+ESCALATION — if the student asks about:
+- Visa refusal history or chances → recommend they consult the official embassy website and a licensed immigration adviser.
+- Legal/immigration advice → say you cannot provide legal advice and recommend a licensed professional.
+- Financial hardship → suggest scholarship options and recommend speaking with a human counselor.
+- Medical/health concerns → recommend they consult the university's international student office.
+- Complaints → direct them to support@edupath.com.
+
 IMPORTANT: The preferredCountries field must always be a JSON array (e.g. ["Turkey", "Germany"]). If the user says "anywhere", use an empty array [].`
 
 export type IntakeProfile = {
