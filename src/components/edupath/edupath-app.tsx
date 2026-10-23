@@ -1149,6 +1149,8 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                 <li><a href="/transfer-finder" className="hover:text-foreground hover:underline">{t('Footer.items.transferFinder')}</a></li>
                 <li><a href="/essay-review" className="hover:text-foreground hover:underline">{t('Footer.items.essayReview')}</a></li>
                 <li><a href="/agent" className="hover:text-foreground hover:underline">{t('Footer.items.aiAdvisor')}</a></li>
+                <li><a href="/compare" className="hover:text-foreground hover:underline">Compare</a></li>
+                <li><a href="/visa-readiness" className="hover:text-foreground hover:underline">Visa Readiness</a></li>
               </ul>
             </div>
             <div>

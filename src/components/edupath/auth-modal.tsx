@@ -2,7 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
-import { User, X, Mail, Lock, Loader2, LogOut, UserCircle2, Settings, Sparkles, FileText, Calendar } from 'lucide-react'
+import { User, X, Mail, Lock, Loader2, LogOut, UserCircle2, Settings, Sparkles, FileText, Calendar, Users } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -472,6 +472,14 @@ export function UserMenuButton({
             >
               <Settings className="size-4" />
               {tNav('accountSettings')}
+            </a>
+            <a
+              href="/family"
+              onClick={() => setMenuOpen(false)}
+              className="w-full text-left px-3 py-2 text-sm hover:bg-slate-50 flex items-center gap-2"
+            >
+              <Users className="size-4" />
+              Family Room
             </a>
             <button
               onClick={() => {
