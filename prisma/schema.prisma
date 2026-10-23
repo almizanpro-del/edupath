@@ -142,6 +142,8 @@ model User {
   intakeSessions  IntakeSession[]
   essayReviews    EssayReview[]
   applications    ApplicationTracker[]
+  parentInvitations ParentInvitation[] @relation("StudentInvitations")
+  parentOf         ParentInvitation[] @relation("ParentInvitations")
 }
 
 model Review {
@@ -316,6 +318,38 @@ model ApplicationTracker {
 
   @@index([userId, status])
   @@index([universityId])
+}
+
+/// Family Decision Room (PRD ONB-04 + 9.3 #1) — allows a student to invite
+/// a parent/guardian to view a simplified dashboard with controlled
+/// permissions. The parent sees: total cost, safety summary, visa steps,
+/// key deadlines — but NOT academic details unless the student explicitly
+/// shares them.
+model ParentInvitation {
+  id            String    @id @default(cuid())
+  // The student who sent the invitation
+  studentId     String
+  student       User      @relation("StudentInvitations", fields: [studentId], references: [id], onDelete: Cascade)
+  // The parent/guardian who accepted (null until they sign up)
+  parentId      String?
+  parent        User?     @relation("ParentInvitations", fields: [parentId], references: [id], onDelete: SetNull)
+  // Parent's email — used to send the invitation
+  parentEmail   String
+  parentName    String?
+  // Token used in the invitation link (/family/join?token=...)
+  inviteToken   String    @unique @default(cuid())
+  status        String    @default("pending") // pending | accepted | revoked
+  // Permission controls — what the parent can see
+  canSeeCosts       Boolean  @default(true)
+  canSeeDeadlines   Boolean  @default(true)
+  canSeeSafety      Boolean  @default(true)
+  canSeeAcademic    Boolean  @default(false) // off by default — student must opt in
+  canSeeDocuments   Boolean  @default(false)
+  createdAt     DateTime  @default(now())
+  acceptedAt    DateTime?
+
+  @@index([studentId])
+  @@index([parentId])
 }
 
 /// Staging table for scraped university data awaiting admin review.

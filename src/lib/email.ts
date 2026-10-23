@@ -172,3 +172,31 @@ export async function sendDeadlineAlertEmail(to: string, alerts: Array<{
     `,
   })
 }
+
+export async function sendFamilyInvitationEmail(to: string, invite: {
+  studentName: string; inviteUrl: string
+}): Promise<boolean> {
+  return sendEmail({
+    to,
+    subject: `${invite.studentName} invited you to join their university journey on EduPath`,
+    html: `
+      <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+        <h1 style="color: #1d4ed8;">You're invited! 👨‍👩‍👧‍👦</h1>
+        <p><strong>${invite.studentName}</strong> has invited you to join their university planning journey on EduPath.</p>
+        <p>As a family member, you'll be able to see:</p>
+        <ul style="line-height: 1.8; padding-left: 20px;">
+          <li>Total costs (tuition, living, visa, insurance)</li>
+          <li>Key application deadlines</li>
+          <li>Safety and visa information</li>
+          <li>University shortlist</li>
+        </ul>
+        <p>You'll have a simplified view focused on the information parents care about most — costs, deadlines, and safety.</p>
+        <a href="${invite.inviteUrl}" style="display: inline-block; background: #1d4ed8; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; margin: 16px 0;">Join the Family Room →</a>
+        <p style="color: #6b7280; font-size: 14px; margin-top: 24px;">
+          If you didn't expect this invitation, you can safely ignore this email.
+          EduPath — Your path to affordable global education
+        </p>
+      </div>
+    `,
+  })
+}
