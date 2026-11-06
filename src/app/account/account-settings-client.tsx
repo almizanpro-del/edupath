@@ -32,8 +32,10 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { Badge } from '@/components/ui/badge'
-import { ChevronLeft, Trash2, Shield, Loader2, AlertTriangle } from 'lucide-react'
+import { Checkbox } from '@/components/ui/checkbox'
+import { ChevronLeft, Trash2, Shield, Loader2, AlertTriangle, TrendingUp, ArrowRight, Check, Mail, Share2, Database } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
+import { calculateProfileCompletion } from '@/lib/profile-completion'
 
 type Profile = {
   name: string
@@ -43,6 +45,16 @@ type Profile = {
   role: string
   verificationStatus: string
   createdAt: string
+  educationLevel: string | null
+  preferredCountries: string | null
+  budgetUsd: number | null
+  gpa: number | null
+  englishLevel: string | null
+  scholarshipNeed: boolean
+  intake: string | null
+  consentProcessing: boolean
+  consentMarketing: boolean
+  consentLeadSharing: boolean
 }
 
 type Stats = {
@@ -156,6 +168,19 @@ export function AccountSettingsClient({
         {/* Profile editing will land in Phase 2 */}
       </section>
 
+      {/* Profile completion (ONB-06) */}
+      {dbAvailable && (
+        <ProfileCompletionSection profile={profile} />
+      )}
+
+      {/* Privacy & consent (ONB-05) */}
+      {dbAvailable && (
+        <ConsentSection
+          consentMarketing={profile.consentMarketing}
+          consentLeadSharing={profile.consentLeadSharing}
+        />
+      )}
+
       {/* Your data section */}
       <section className="border rounded-xl p-6 space-y-4">
         <h2 className="text-lg font-semibold">Your data on EduPath</h2>
@@ -254,5 +279,207 @@ export function AccountSettingsClient({
         </div>
       </section>
     </div>
+  )
+}
+
+// ─── Profile Completion Section (ONB-06) ──────────────────────────────────
+
+function ProfileCompletionSection({ profile }: { profile: Profile }) {
+  const completion = calculateProfileCompletion({
+    name: profile.name,
+    country: profile.country,
+    fieldOfInterest: profile.fieldOfInterest,
+    educationLevel: profile.educationLevel,
+    preferredCountries: profile.preferredCountries,
+    budgetUsd: profile.budgetUsd,
+    gpa: profile.gpa,
+    englishLevel: profile.englishLevel,
+    scholarshipNeed: profile.scholarshipNeed,
+    intake: profile.intake,
+  })
+
+  const scoreColor =
+    completion.score >= 80 ? 'text-emerald-600'
+    : completion.score >= 50 ? 'text-blue-600'
+    : completion.score >= 30 ? 'text-amber-600'
+    : 'text-rose-600'
+
+  const barColor =
+    completion.score >= 80 ? 'bg-emerald-500'
+    : completion.score >= 50 ? 'bg-blue-500'
+    : completion.score >= 30 ? 'bg-amber-500'
+    : 'bg-rose-500'
+
+  return (
+    <section className="border rounded-xl p-6 space-y-4">
+      <div className="flex items-center gap-2">
+        <TrendingUp className="size-5 text-blue-600" />
+        <h2 className="text-lg font-semibold">Profile completion</h2>
+      </div>
+
+      <div>
+        <div className="flex items-baseline justify-between mb-2">
+          <span className={`text-3xl font-bold ${scoreColor}`}>{completion.score}%</span>
+          <span className="text-sm text-muted-foreground">
+            {completion.completedFields} of {completion.totalFields} fields completed
+          </span>
+        </div>
+        <div className="h-3 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+          <div
+            className={`h-full ${barColor} transition-all duration-500`}
+            style={{ width: `${completion.score}%` }}
+          />
+        </div>
+      </div>
+
+      {completion.nextSteps.length > 0 ? (
+        <div>
+          <p className="text-sm text-muted-foreground mb-3">
+            Complete these to improve your matches and get better recommendations:
+          </p>
+          <div className="space-y-2">
+            {completion.nextSteps.map(step => (
+              <Link
+                key={step.field}
+                href={step.action}
+                className="flex items-center justify-between p-3 border rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors group"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="size-8 rounded-lg bg-blue-50 dark:bg-blue-950 flex items-center justify-center text-xs font-bold text-blue-600">
+                    +{step.points}
+                  </div>
+                  <span className="text-sm font-medium">{step.label}</span>
+                </div>
+                <ArrowRight className="size-4 text-muted-foreground group-hover:text-blue-600 group-hover:translate-x-1 transition-all" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      ) : (
+        <div className="flex items-center gap-2 p-3 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 rounded-lg">
+          <Check className="size-5 text-emerald-600" />
+          <span className="text-sm font-medium text-emerald-700 dark:text-emerald-300">
+            Your profile is complete! You're getting the best possible recommendations.
+          </span>
+        </div>
+      )}
+    </section>
+  )
+}
+
+// ─── Consent Management Section (ONB-05) ──────────────────────────────────
+
+function ConsentSection({
+  consentMarketing,
+  consentLeadSharing,
+}: {
+  consentMarketing: boolean
+  consentLeadSharing: boolean
+}) {
+  const { toast } = useToast()
+  const [marketing, setMarketing] = React.useState(consentMarketing)
+  const [leadSharing, setLeadSharing] = React.useState(consentLeadSharing)
+  const [saving, setSaving] = React.useState<string | null>(null)
+
+  const updateConsent = async (field: 'consentMarketing' | 'consentLeadSharing', value: boolean) => {
+    setSaving(field)
+    try {
+      const res = await fetch('/api/me/profile', {
+        method: 'PATCH',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ [field]: value }),
+      })
+      if (!res.ok) throw new Error('Failed')
+      toast({
+        title: value ? 'Consent given' : 'Consent withdrawn',
+        description: field === 'consentMarketing'
+          ? (value ? 'You\'ll receive product updates and tips.' : 'You won\'t receive marketing emails.')
+          : (value ? 'Universities may contact you with relevant offers.' : 'Your profile won\'t be shared with universities.'),
+      })
+    } catch {
+      toast({ title: 'Failed to update consent', variant: 'destructive' })
+      // Revert local state
+      if (field === 'consentMarketing') setMarketing(!value)
+      if (field === 'consentLeadSharing') setLeadSharing(!value)
+    } finally {
+      setSaving(null)
+    }
+  }
+
+  return (
+    <section className="border rounded-xl p-6 space-y-4">
+      <div className="flex items-center gap-2">
+        <Shield className="size-5 text-blue-600" />
+        <h2 className="text-lg font-semibold">Privacy & consent</h2>
+      </div>
+      <p className="text-sm text-muted-foreground">
+        You control how your data is used. These settings can be changed at any time.
+        See our <Link href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</Link>.
+      </p>
+
+      {/* 1. Processing (required) */}
+      <div className="flex items-start gap-3 p-3 border rounded-lg bg-slate-50 dark:bg-slate-900">
+        <Database className="size-5 text-slate-400 mt-0.5 shrink-0" />
+        <div className="flex-1">
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium">Data processing</span>
+            <Badge variant="outline" className="text-[9px] text-slate-500">Required</Badge>
+            <Check className="size-3.5 text-emerald-600" />
+          </div>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Required to operate your account. Without this, we cannot provide EduPath's services.
+          </p>
+        </div>
+      </div>
+
+      {/* 2. Marketing (optional) */}
+      <div className="flex items-start gap-3 p-3 border rounded-lg">
+        <Mail className="size-5 text-blue-600 mt-0.5 shrink-0" />
+        <div className="flex-1">
+          <div className="flex items-center justify-between">
+            <div>
+              <span className="text-sm font-medium">Marketing emails</span>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Product updates, tips, and newsletters. We won't spam — max 2 emails/month.
+              </p>
+            </div>
+            <Checkbox
+              checked={marketing}
+              onCheckedChange={(v) => {
+                const val = v === true
+                setMarketing(val)
+                updateConsent('consentMarketing', val)
+              }}
+              disabled={saving === 'consentMarketing'}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 3. Lead sharing (optional) */}
+      <div className="flex items-start gap-3 p-3 border rounded-lg">
+        <Share2 className="size-5 text-purple-600 mt-0.5 shrink-0" />
+        <div className="flex-1">
+          <div className="flex items-center justify-between">
+            <div>
+              <span className="text-sm font-medium">Share profile with universities</span>
+              <p className="text-xs text-muted-foreground mt-0.5">
+                Allow universities to see your profile (GPA, field, budget) when you contact them.
+                Helps them provide relevant information and offers.
+              </p>
+            </div>
+            <Checkbox
+              checked={leadSharing}
+              onCheckedChange={(v) => {
+                const val = v === true
+                setLeadSharing(val)
+                updateConsent('consentLeadSharing', val)
+              }}
+              disabled={saving === 'consentLeadSharing'}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }

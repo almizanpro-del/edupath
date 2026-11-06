@@ -42,6 +42,16 @@ export default async function AccountPage() {
     role: string
     verificationStatus: string
     createdAt: Date
+    educationLevel: string | null
+    preferredCountries: string | null
+    budgetUsd: number | null
+    gpa: number | null
+    englishLevel: string | null
+    scholarshipNeed: boolean
+    intake: string | null
+    consentProcessing: boolean
+    consentMarketing: boolean
+    consentLeadSharing: boolean
   } | null = null
   let stats = { reviews: 0, savedLists: 0, intakeSessions: 0, leads: 0 }
 
@@ -57,6 +67,16 @@ export default async function AccountPage() {
         role: true,
         verificationStatus: true,
         createdAt: true,
+        educationLevel: true,
+        preferredCountries: true,
+        budgetUsd: true,
+        gpa: true,
+        englishLevel: true,
+        scholarshipNeed: true,
+        intake: true,
+        consentProcessing: true,
+        consentMarketing: true,
+        consentLeadSharing: true,
       },
     })
 
@@ -86,6 +106,16 @@ export default async function AccountPage() {
                 role: profile.role,
                 verificationStatus: profile.verificationStatus,
                 createdAt: profile.createdAt.toISOString(),
+                educationLevel: profile.educationLevel,
+                preferredCountries: profile.preferredCountries,
+                budgetUsd: profile.budgetUsd,
+                gpa: profile.gpa,
+                englishLevel: profile.englishLevel,
+                scholarshipNeed: profile.scholarshipNeed,
+                intake: profile.intake,
+                consentProcessing: profile.consentProcessing,
+                consentMarketing: profile.consentMarketing,
+                consentLeadSharing: profile.consentLeadSharing,
               }
             : {
                 name: user.email?.split('@')[0] ?? 'Student',
@@ -95,6 +125,16 @@ export default async function AccountPage() {
                 role: 'student',
                 verificationStatus: 'pending',
                 createdAt: new Date().toISOString(),
+                educationLevel: null,
+                preferredCountries: null,
+                budgetUsd: null,
+                gpa: null,
+                englishLevel: null,
+                scholarshipNeed: false,
+                intake: null,
+                consentProcessing: true,
+                consentMarketing: false,
+                consentLeadSharing: false,
               }
         }
         stats={stats}

@@ -35,6 +35,14 @@ const schema = z.object({
   preferredCountries: z.array(z.string().trim().min(1).max(100)).max(20).optional(),
   budgetUsd: z.number().int().min(0).max(1_000_000).nullable().optional(),
   locale: z.enum(['en', 'ar']).optional(),
+  // ONB-03 extended profile fields
+  gpa: z.number().min(0).max(5).nullable().optional(),
+  englishLevel: z.string().trim().max(50).nullable().optional(),
+  scholarshipNeed: z.boolean().optional(),
+  intake: z.string().trim().max(50).nullable().optional(),
+  // ONB-05 consent controls (processing is required — cannot be set to false via this endpoint)
+  consentMarketing: z.boolean().optional(),
+  consentLeadSharing: z.boolean().optional(),
 })
 
 export async function PATCH(req: NextRequest) {
@@ -75,6 +83,14 @@ export async function PATCH(req: NextRequest) {
     }
     if (validation.data.budgetUsd !== undefined) update.budgetUsd = validation.data.budgetUsd
     if (validation.data.locale !== undefined) update.locale = validation.data.locale
+    // ONB-03 extended fields
+    if (validation.data.gpa !== undefined) update.gpa = validation.data.gpa
+    if (validation.data.englishLevel !== undefined) update.englishLevel = validation.data.englishLevel
+    if (validation.data.scholarshipNeed !== undefined) update.scholarshipNeed = validation.data.scholarshipNeed
+    if (validation.data.intake !== undefined) update.intake = validation.data.intake
+    // ONB-05 consent (processing is NOT settable — it's required and always true)
+    if (validation.data.consentMarketing !== undefined) update.consentMarketing = validation.data.consentMarketing
+    if (validation.data.consentLeadSharing !== undefined) update.consentLeadSharing = validation.data.consentLeadSharing
 
     // Find or create the profile row
     let profile = await db.user.findUnique({
