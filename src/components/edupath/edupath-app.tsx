@@ -619,9 +619,25 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         </div>
       </header>
 
-      {/* ===== Hero (static — no slider) ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-blue-900 text-white">
-        <div className="container mx-auto max-w-7xl px-4 py-12 md:py-20">
+      {/* ===== Hero (static — with background image) ===== */}
+      <section className="relative overflow-hidden text-white">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/hero/hero-bg.webp"
+            alt=""
+            className="w-full h-full object-cover"
+            fetchPriority="high"
+          />
+          {/* Dark gradient overlay for text readability —
+              stronger on the left where text sits, fades to transparent on the right */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-slate-950/40" />
+          {/* Subtle bottom fade to blend into the next section */}
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950 to-transparent" />
+        </div>
+
+        <div className="relative container mx-auto max-w-7xl px-4 py-12 md:py-20">
           <div className="max-w-3xl mx-auto text-center">
             {/* Badge */}
             <div className="mb-5">
