@@ -1,14 +1,16 @@
 'use client'
 
 /**
- * Hero slider — split-screen design with manual carousel.
+ * Hero slider — full-width image with text overlay.
  *
- * Uses a simple CSS-based carousel (transform: translateX) instead of
- * Embla to avoid any hydration/initialization issues. All slides are
- * rendered in the DOM but only one is visible at a time.
+ * Clean, simple design: each slide is a full-width background image
+ * with a text overlay (headline, subheadline, CTA button) positioned
+ * on the left or right side.
  *
- * Layout: image on one half, content (headline, search, CTAs, stats)
- * on the other half. Alternates image position per slide.
+ * To add a new slide: just add an entry to the SLIDES array below
+ * with the image path, headline, subheadline, and button text.
+ *
+ * Images go in /public/hero/ (WebP format, ~1600px wide recommended).
  */
 import * as React from 'react'
 import { Button } from '@/components/ui/button'
@@ -25,50 +27,78 @@ type Slide = {
   imageAlt: string
   headline: string
   subheadline: string
-  imageSide: 'left' | 'right'
-  accent: string
+  // Where the text overlay sits: 'left' or 'right'
+  textAlign: 'left' | 'right'
+  // Button text + link
+  buttonText: string
+  buttonHref: string
+  // Optional: a secondary button
+  secondaryButtonText?: string
+  secondaryButtonHref?: string
+  // Overlay scrim opacity (0-100) — higher = darker overlay for readability
+  overlayOpacity: number
 }
 
 const SLIDES: Slide[] = [
   {
-    image: '/hero/slide-2-desktop.webp',
-    imageAlt: 'Students exploring global universities with EduPath',
+    image: '/hero/slider-1.webp',
+    imageAlt: 'EduPath — Study abroad within reach',
     headline: 'Study abroad.\nWithin reach.',
-    subheadline: 'Explore affordable higher education options across 14 countries.',
-    imageSide: 'right',
-    accent: 'from-slate-950 via-blue-950 to-blue-900',
+    subheadline: 'Explore affordable higher education across 14 countries. Compare tuition, scholarships, and verified reviews — all in one place.',
+    textAlign: 'left',
+    buttonText: 'Start exploring',
+    buttonHref: '/',
+    secondaryButtonText: 'Talk to Rihla AI',
+    secondaryButtonHref: '/agent',
+    overlayOpacity: 50,
   },
   {
-    image: '/hero/slide-1-arabic.webp',
-    imageAlt: 'مستقبلك أقرب مما تتخيل — EduPath',
-    headline: 'مستقبلك أقرب\nمما تتخيل',
-    subheadline: 'استكشف البرامج والشهادات والمنح الدراسية بأسعار معقولة في الخارج',
-    imageSide: 'left',
-    accent: 'from-blue-900 via-blue-950 to-slate-950',
+    image: '/hero/slider-2.webp',
+    imageAlt: 'EduPath — Scholarships and financial aid for MENA students',
+    headline: 'Find scholarships\nthat fit you.',
+    subheadline: 'Match with 147+ scholarships based on your GPA, field, and country. Never miss a deadline again.',
+    textAlign: 'left',
+    buttonText: 'Match scholarships',
+    buttonHref: '/scholarships',
+    secondaryButtonText: 'Learn more',
+    secondaryButtonHref: '/pricing',
+    overlayOpacity: 55,
   },
   {
-    image: '/hero/slide-3-billboard.webp',
-    imageAlt: 'Find your path to quality education — EduPath',
-    headline: 'Find your path to\nquality education',
-    subheadline: 'Compare tuition, scholarships & verified peer reviews across 14 countries.',
-    imageSide: 'right',
-    accent: 'from-slate-950 via-slate-900 to-blue-950',
+    image: '/hero/slider-3.webp',
+    imageAlt: 'EduPath — Your AI advisor for university applications',
+    headline: 'Meet Rihla,\nyour AI advisor.',
+    subheadline: 'Chat in Arabic or English with our AI counselor. Get personalized university matches, essay feedback, and a step-by-step application plan.',
+    textAlign: 'left',
+    buttonText: 'Chat with Rihla',
+    buttonHref: '/agent',
+    secondaryButtonText: 'Review your essay',
+    secondaryButtonHref: '/essay-review',
+    overlayOpacity: 50,
   },
   {
-    image: '/hero/slide-4-medium.webp',
-    imageAlt: 'For MENA students — EduPath',
-    headline: 'Built for MENA\nstudents',
-    subheadline: 'Compare tuition, scholarships & verified peer reviews from students like you.',
-    imageSide: 'left',
-    accent: 'from-blue-950 via-slate-950 to-slate-900',
-  },
-  {
-    image: '/hero/slide-5-square.webp',
-    imageAlt: 'Compare smarter. Choose with confidence. — EduPath',
+    image: '/hero/slider-4.webp',
+    imageAlt: 'EduPath — Compare universities side by side',
     headline: 'Compare smarter.\nChoose with confidence.',
-    subheadline: '129 universities across 14 countries. Tuition, scholarships & peer reviews.',
-    imageSide: 'right',
-    accent: 'from-slate-900 via-blue-950 to-blue-900',
+    subheadline: 'Put up to 4 universities side by side. Compare tuition, programs, scholarships, reviews, and total costs — all in one view.',
+    textAlign: 'left',
+    buttonText: 'Compare universities',
+    buttonHref: '/compare',
+    secondaryButtonText: 'Browse directory',
+    secondaryButtonHref: '/',
+    overlayOpacity: 55,
+  },
+  {
+    image: '/hero/slider-5.webp',
+    imageAlt: 'EduPath — Track your applications from start to enrollment',
+    headline: 'Track every step.\nFrom research to enrollment.',
+    subheadline: 'Kanban-style application tracker. Monitor deadlines, upload documents, and visualize your progress from research to enrollment.',
+    textAlign: 'left',
+    buttonText: 'Start tracking',
+    buttonHref: '/my-applications',
+    secondaryButtonText: 'Check visa readiness',
+    secondaryButtonHref: '/visa-readiness',
+    overlayOpacity: 50,
   },
 ]
 
@@ -121,9 +151,9 @@ export function HeroSlider({
     setCurrentIndex(prev => (prev - 1 + SLIDES.length) % SLIDES.length)
   }, [])
 
-  // Auto-advance
+  // Auto-advance (only if more than 1 slide)
   React.useEffect(() => {
-    if (isPaused) return
+    if (isPaused || SLIDES.length <= 1) return
 
     timerRef.current = setTimeout(() => {
       next()
@@ -134,186 +164,79 @@ export function HeroSlider({
     }
   }, [next, isPaused, currentIndex])
 
+  // If only 1 slide, no carousel needed — just render it statically
+  if (SLIDES.length <= 1) {
+    return (
+      <HeroSlideStatic
+        searchQuery={searchQuery}
+        onSearchChange={onSearchChange}
+        onSearchSubmit={onSearchSubmit}
+        onFiltersOpen={onFiltersOpen}
+        activeFilterCount={activeFilterCount}
+        onAgentClick={onAgentClick}
+        agentCtaTitle={agentCtaTitle}
+        agentCtaDesc={agentCtaDesc}
+        stats={stats}
+        searchPlaceholder={searchPlaceholder}
+        filtersLabel={filtersLabel}
+        badgeText={badgeText}
+        isRtl={isRtl}
+      />
+    )
+  }
+
   return (
     <section
       className="relative bg-slate-950"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* ===== Slides container ===== */}
+      {/* Slides container */}
       <div className="relative overflow-hidden">
-        {/* Track — translates horizontally */}
         <div
           className="flex transition-transform duration-700 ease-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
-          {SLIDES.map((slide, i) => {
-            const isAr = isRtl || slide.headline.includes('مستقبلك')
-            const imageOnRight = isAr ? slide.imageSide === 'left' : slide.imageSide === 'right'
-
-            return (
-              <div key={i} className="flex-shrink-0 w-full">
-                {/* ===== Desktop: split-screen ===== */}
-                <div className="hidden md:flex min-h-[500px] lg:min-h-[560px]">
-                  {/* Content side */}
-                  <div className={cn(
-                    'flex-1 flex items-center justify-center p-8 lg:p-16 bg-gradient-to-br',
-                    slide.accent,
-                    imageOnRight ? 'order-1' : 'order-2'
-                  )}>
-                    <div className={cn('max-w-xl w-full', isAr && 'text-right')} dir={isAr ? 'rtl' : 'ltr'}>
-                      {/* Badge */}
-                      <div className="mb-5">
-                        <Badge variant="secondary" className="bg-white/10 text-white border-white/20 backdrop-blur-md">
-                          <Sparkles className="size-3 mr-1.5" />
-                          {badgeText}
-                        </Badge>
-                      </div>
-
-                      {/* Headline */}
-                      <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight mb-4 whitespace-pre-line bg-gradient-to-br from-white via-blue-50 to-blue-200 bg-clip-text text-transparent leading-[1.1]">
-                        {slide.headline}
-                      </h1>
-
-                      {/* Subheadline */}
-                      <p className="text-base lg:text-lg text-white/70 mb-8 leading-relaxed max-w-md">
-                        {slide.subheadline}
-                      </p>
-
-                      {/* Search + Filters */}
-                      <div className="flex gap-2.5 mb-4">
-                        <div className="relative flex-1">
-                          <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-slate-400 pointer-events-none z-10" />
-                          <Input
-                            placeholder={searchPlaceholder}
-                            value={searchQuery}
-                            onChange={e => onSearchChange(e.target.value)}
-                            onKeyDown={e => {
-                              if (e.key === 'Enter' && searchQuery.trim()) onSearchSubmit()
-                            }}
-                            className="pl-11 h-12 bg-white/95 text-foreground border-0 shadow-lg rounded-lg relative"
-                          />
-                        </div>
-                        <Button
-                          size="lg"
-                          onClick={onFiltersOpen}
-                          className="h-12 gap-2 bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 text-white rounded-lg px-4 shadow-lg"
-                        >
-                          <SlidersHorizontal className="size-4" />
-                          {filtersLabel}
-                          {activeFilterCount > 0 && (
-                            <Badge className="ml-0.5 bg-orange-500 text-white">{activeFilterCount}</Badge>
-                          )}
-                        </Button>
-                      </div>
-
-                      {/* Rihla AI CTA */}
-                      <button
-                        onClick={onAgentClick}
-                        className="group w-full flex items-center gap-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white p-3 shadow-lg transition-all hover:shadow-xl mb-6"
-                      >
-                        <div className="size-10 rounded-lg bg-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                          <Sparkles className="size-5 text-white" />
-                        </div>
-                        <div className="flex-1 text-left">
-                          <div className="font-bold text-sm">{agentCtaTitle}</div>
-                          <div className="text-xs text-white/70">{agentCtaDesc}</div>
-                        </div>
-                        <ArrowRight className={cn('size-4 text-white/70 group-hover:translate-x-1 transition-transform', isAr && 'rotate-180')} />
-                      </button>
-
-                      {/* Stats */}
-                      <div className="grid grid-cols-4 gap-2">
-                        {stats.map((stat, si) => (
-                          <div key={si} className="bg-white/5 backdrop-blur-xl rounded-xl p-2.5 border border-white/10 text-center">
-                            <div className="text-base lg:text-lg font-bold bg-gradient-to-br from-white to-blue-200 bg-clip-text text-transparent">
-                              {stat.value}
-                            </div>
-                            <div className="text-[9px] lg:text-[10px] text-white/50 mt-0.5 uppercase tracking-wider">
-                              {stat.label}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Image side */}
-                  <div className={cn(
-                    'flex-1 relative overflow-hidden bg-slate-800',
-                    imageOnRight ? 'order-2' : 'order-1'
-                  )}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={slide.image}
-                      alt={slide.imageAlt}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      loading={i === 0 ? 'eager' : 'lazy'}
-                    />
-                    {/* Gradient blend where image meets content */}
-                    {imageOnRight ? (
-                      <div className="absolute inset-0 bg-gradient-to-r from-slate-950/30 to-transparent" />
-                    ) : (
-                      <div className="absolute inset-0 bg-gradient-to-l from-slate-950/30 to-transparent" />
-                    )}
-                  </div>
-                </div>
-
-                {/* ===== Mobile: stacked ===== */}
-                <div className="md:hidden">
-                  {/* Image */}
-                  <div className="relative w-full" style={{ height: '300px' }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={slide.image}
-                      alt={slide.imageAlt}
-                      className="absolute inset-0 w-full h-full object-cover"
-                      loading={i === 0 ? 'eager' : 'lazy'}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
-                  </div>
-
-                  {/* Content */}
-                  <div className={cn('bg-gradient-to-b p-6 pt-8', slide.accent)}>
-                    <div className={cn('max-w-md mx-auto', isAr && 'text-right')} dir={isAr ? 'rtl' : 'ltr'}>
-                      <div className="mb-3">
-                        <Badge variant="secondary" className="bg-white/10 text-white border-white/20 backdrop-blur-md">
-                          <Sparkles className="size-3 mr-1.5" />
-                          {badgeText}
-                        </Badge>
-                      </div>
-                      <h1 className="text-3xl font-bold tracking-tight mb-2 whitespace-pre-line bg-gradient-to-br from-white via-blue-50 to-blue-200 bg-clip-text text-transparent leading-[1.15]">
-                        {slide.headline}
-                      </h1>
-                      <p className="text-sm text-white/70 mb-5 leading-relaxed">
-                        {slide.subheadline}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )
-          })}
+          {SLIDES.map((slide, i) => (
+            <div key={i} className="flex-shrink-0 w-full">
+              <HeroSlideContent
+                slide={slide}
+                searchQuery={searchQuery}
+                onSearchChange={onSearchChange}
+                onSearchSubmit={onSearchSubmit}
+                onFiltersOpen={onFiltersOpen}
+                activeFilterCount={activeFilterCount}
+                onAgentClick={onAgentClick}
+                agentCtaTitle={agentCtaTitle}
+                agentCtaDesc={agentCtaDesc}
+                stats={stats}
+                searchPlaceholder={searchPlaceholder}
+                filtersLabel={filtersLabel}
+                badgeText={badgeText}
+                isRtl={isRtl}
+              />
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* ===== Navigation arrows (desktop) ===== */}
+      {/* Navigation arrows */}
       <button
         onClick={prev}
-        className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 size-10 items-center justify-center rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white hover:bg-white/25 transition-colors z-20"
+        className="hidden md:flex absolute left-3 top-1/2 -translate-y-1/2 size-10 items-center justify-center rounded-full bg-black/30 backdrop-blur-md border border-white/20 text-white hover:bg-black/50 transition-colors z-20"
         aria-label="Previous slide"
       >
         <ChevronLeft className={cn('size-5', isRtl && 'rotate-180')} />
       </button>
       <button
         onClick={next}
-        className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 size-10 items-center justify-center rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white hover:bg-white/25 transition-colors z-20"
+        className="hidden md:flex absolute right-3 top-1/2 -translate-y-1/2 size-10 items-center justify-center rounded-full bg-black/30 backdrop-blur-md border border-white/20 text-white hover:bg-black/50 transition-colors z-20"
         aria-label="Next slide"
       >
         <ChevronRight className={cn('size-5', isRtl && 'rotate-180')} />
       </button>
 
-      {/* ===== Dot indicators ===== */}
+      {/* Dot indicators */}
       <div className="absolute bottom-4 inset-x-0 z-20 flex items-center justify-center gap-2">
         {SLIDES.map((_, i) => (
           <button
@@ -329,6 +252,181 @@ export function HeroSlider({
           />
         ))}
       </div>
+    </section>
+  )
+}
+
+// ─── Single slide content (shared between static and carousel modes) ───────
+
+function HeroSlideContent({
+  slide,
+  searchQuery,
+  onSearchChange,
+  onSearchSubmit,
+  onFiltersOpen,
+  activeFilterCount,
+  onAgentClick,
+  agentCtaTitle,
+  agentCtaDesc,
+  stats,
+  searchPlaceholder,
+  filtersLabel,
+  badgeText,
+  isRtl,
+}: {
+  slide: Slide
+} & Omit<HeroSliderProps, 'isRtl'> & { isRtl: boolean }) {
+  const isAr = isRtl || slide.headline.includes('مستقبلك')
+  const textOnRight = slide.textAlign === 'right'
+
+  return (
+    <div className="relative">
+      {/* Background image — full width */}
+      <div className="relative w-full" style={{ height: 'min(70vh, 600px)' }}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={slide.image}
+          alt={slide.imageAlt}
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+        />
+        {/* Dark overlay for text readability */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r"
+          style={{
+            background: textOnRight
+              ? `linear-gradient(to left, rgba(15,23,42,${slide.overlayOpacity / 100}) 0%, rgba(15,23,42,${slide.overlayOpacity / 100 * 0.7}) 50%, transparent 100%)`
+              : `linear-gradient(to right, rgba(15,23,42,${slide.overlayOpacity / 100}) 0%, rgba(15,23,42,${slide.overlayOpacity / 100 * 0.7}) 50%, transparent 100%)`,
+          }}
+        />
+      </div>
+
+      {/* Text overlay */}
+      <div className="absolute inset-0 flex items-center">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className={cn(
+            'max-w-xl',
+            textOnRight ? 'ml-auto text-right' : 'text-left',
+            isAr && 'dir-rtl'
+          )} dir={isAr ? 'rtl' : 'ltr'}>
+            {/* Badge */}
+            <div className="mb-4">
+              <Badge variant="secondary" className="bg-white/15 text-white border-white/25 backdrop-blur-md">
+                <Sparkles className="size-3 mr-1.5" />
+                {badgeText}
+              </Badge>
+            </div>
+
+            {/* Headline */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 whitespace-pre-line text-white leading-[1.1] drop-shadow-lg">
+              {slide.headline}
+            </h1>
+
+            {/* Subheadline */}
+            <p className="text-base md:text-lg text-white/90 mb-6 leading-relaxed max-w-md drop-shadow">
+              {slide.subheadline}
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap gap-3 mb-6">
+              <a
+                href={slide.buttonHref}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold shadow-lg transition-colors"
+              >
+                {slide.buttonText}
+                <ArrowRight className={cn('size-4', isAr && 'rotate-180')} />
+              </a>
+              {slide.secondaryButtonText && slide.secondaryButtonHref && (
+                <a
+                  href={slide.secondaryButtonHref}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white font-semibold transition-colors"
+                >
+                  {slide.secondaryButtonText}
+                </a>
+              )}
+            </div>
+
+            {/* Search bar (only show on first slide or when requested) */}
+            <div className="flex gap-2 max-w-lg">
+              <div className="relative flex-1">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-slate-400 pointer-events-none z-10" />
+                <Input
+                  placeholder={searchPlaceholder}
+                  value={searchQuery}
+                  onChange={e => onSearchChange(e.target.value)}
+                  onKeyDown={e => {
+                    if (e.key === 'Enter' && searchQuery.trim()) onSearchSubmit()
+                  }}
+                  className="pl-11 h-11 bg-white/95 text-foreground border-0 shadow-lg rounded-lg"
+                />
+              </div>
+              <Button
+                onClick={onFiltersOpen}
+                className="h-11 gap-1.5 bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white rounded-lg px-3 shadow-lg"
+              >
+                <SlidersHorizontal className="size-4" />
+                {activeFilterCount > 0 && (
+                  <Badge className="bg-orange-500 text-white">{activeFilterCount}</Badge>
+                )}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats bar at the bottom */}
+      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/80 to-transparent pt-12 pb-4">
+        <div className="container mx-auto max-w-7xl px-4">
+          <div className="hidden md:grid grid-cols-4 gap-3">
+            {stats.map((stat, si) => (
+              <div key={si} className="bg-white/10 backdrop-blur-xl rounded-xl p-3 border border-white/15 text-center">
+                <div className="text-lg font-bold text-white drop-shadow">
+                  {stat.value}
+                </div>
+                <div className="text-[10px] text-white/70 uppercase tracking-wider">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* Mobile stats — simpler */}
+          <div className="md:hidden flex justify-center gap-4">
+            {stats.map((stat, si) => (
+              <div key={si} className="text-center">
+                <div className="text-sm font-bold text-white drop-shadow">{stat.value}</div>
+                <div className="text-[8px] text-white/70 uppercase">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Static mode (single slide, no carousel) ────────────────────────────────
+
+function HeroSlideStatic(props: Omit<HeroSliderProps, 'isRtl'> & { isRtl: boolean }) {
+  // When there's only one slide, render it without the carousel wrapper
+  return (
+    <section className="relative bg-slate-950">
+      <HeroSlideContent
+        slide={SLIDES[0]}
+        searchQuery={props.searchQuery}
+        onSearchChange={props.onSearchChange}
+        onSearchSubmit={props.onSearchSubmit}
+        onFiltersOpen={props.onFiltersOpen}
+        activeFilterCount={props.activeFilterCount}
+        onAgentClick={props.onAgentClick}
+        agentCtaTitle={props.agentCtaTitle}
+        agentCtaDesc={props.agentCtaDesc}
+        stats={props.stats}
+        searchPlaceholder={props.searchPlaceholder}
+        filtersLabel={props.filtersLabel}
+        badgeText={props.badgeText}
+        isRtl={props.isRtl}
+      />
     </section>
   )
 }
