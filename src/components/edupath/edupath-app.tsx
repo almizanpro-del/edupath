@@ -23,6 +23,7 @@ import { LocaleSwitcher } from '@/components/edupath/locale-switcher'
 import { createClient } from '@/lib/supabase/client'
 import { track } from '@/lib/analytics-client'
 import { EmailCapture } from '@/components/edupath/email-capture'
+import { HeroSlider } from '@/components/edupath/hero-slider'
 import { CurrencySwitcher } from '@/components/edupath/currency-switcher'
 import { ThemeToggle } from '@/components/theme-toggle'
 import {
@@ -606,73 +607,30 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         </div>
       </header>
 
-      {/* ===== Hero ===== */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-blue-950 to-blue-950 text-white">
-        {/* Animated background blobs */}
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-blue-950/50/20 blur-3xl"
-            animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute top-20 -right-40 w-96 h-96 rounded-full bg-blue-950/50/20 blur-3xl"
-            animate={{ x: [0, -40, 0], y: [0, 50, 0] }}
-            transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute -bottom-40 left-1/3 w-96 h-96 rounded-full bg-blue-950/50/15 blur-3xl"
-            animate={{ x: [0, 30, 0], y: [0, -40, 0] }}
-            transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut' }}
-          />
-        </div>
+      {/* ===== Hero Slider ===== */}
+      <HeroSlider
+        searchQuery={searchQuery}
+        onSearchChange={setSearchQuery}
+        onSearchSubmit={() => track('search', { metadata: { query: searchQuery } })}
+        filtersOpen={filtersOpen}
+        onFiltersOpenChange={(v) => { setFiltersOpen(v); if (!v) setCountrySearch('') }}
+        activeFilterCount={activeFilterCount}
+        onAgentClick={() => router.push('/agent')}
+        agentCtaTitle={t('Agent.heroCta')}
+        agentCtaDesc={t('Agent.heroCtaDesc')}
+        stats={[
+          { value: stats.totalUniversities, label: t('Hero.stats.universities') },
+          { value: stats.totalCountries, label: t('Hero.stats.countries') },
+          { value: stats.totalPrograms, label: t('Hero.stats.programs') },
+          { value: formatUsdCompact(stats.cheapestTuition), label: t('Hero.stats.fromPerYear') },
+        ]}
+        searchPlaceholder={t('Hero.searchPlaceholder')}
+        filtersLabel={t('Hero.filters')}
+        badgeText={t('Hero.badge')}
+        isRtl={locale === 'ar'}
+      />
 
-        <div className="relative container mx-auto max-w-7xl px-4 py-16 md:py-28">
-          <motion.div
-            className="max-w-3xl mx-auto text-center"
-            variants={staggerContainer}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.div variants={fadeInUp}>
-              <Badge variant="secondary" className="mb-5 bg-white/10 text-white border-white/20 backdrop-blur-md hover:bg-white/15 transition-colors">
-                <Sparkles className="size-3 mr-1" />
-                {t('Hero.badge')}
-              </Badge>
-            </motion.div>
-
-            <motion.h1
-              variants={fadeInUp}
-              className="text-4xl md:text-6xl font-bold tracking-tight mb-5 bg-gradient-to-br from-white via-blue-50 to-blue-200 bg-clip-text text-transparent"
-            >
-              {t('Hero.title')}
-            </motion.h1>
-
-            <motion.p
-              variants={fadeInUp}
-              className="text-lg md:text-xl text-white/70 mb-10 leading-relaxed max-w-2xl mx-auto"
-            >
-              {t('Hero.subtitle', { count: stats.totalCountries })}
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-3 max-w-2xl mx-auto">
-              <div className="relative flex-1 group">
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-blue-500 rounded-xl blur opacity-30 group-hover:opacity-50 transition duration-300" />
-                <div className="relative">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-5 text-slate-400" />
-                  <Input
-                    placeholder={t('Hero.searchPlaceholder')}
-                    value={searchQuery}
-                    onChange={e => setSearchQuery(e.target.value)}
-                    onKeyDown={e => {
-                      if (e.key === 'Enter' && searchQuery.trim()) {
-                        track('search', { metadata: { query: searchQuery } })
-                      }
-                    }}
-                    className="pl-12 h-14 bg-white/95 dark:bg-slate-800/95 text-foreground border-0 shadow-2xl rounded-xl backdrop-blur-md"
-                  />
-                </div>
-              </div>
+      {/* ===== Filters Sheet (moved out of hero) ===== */}
               <Sheet open={filtersOpen} onOpenChange={(v) => { setFiltersOpen(v); if (!v) setCountrySearch('') }}>
                 <SheetTrigger asChild>
                   <Button size="lg" className="h-14 gap-2 shadow-2xl bg-white/10 backdrop-blur-md border border-white/20 hover:bg-white/15 text-white rounded-xl px-6">
@@ -969,53 +927,6 @@ export function EduPathApp({ universities, countries, stats }: Props) {
                   </div>
                 </SheetContent>
               </Sheet>
-            </motion.div>
-
-            {/* Rihla AI Agent CTA */}
-            <motion.div
-              variants={fadeInUp}
-              className="mt-8 max-w-2xl mx-auto"
-            >
-              <button
-                onClick={() => router.push('/agent')}
-                className="group w-full flex items-center gap-4 rounded-2xl bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white p-4 shadow-lg transition-all hover:shadow-xl"
-              >
-                <div className="size-12 rounded-xl bg-white/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-                  <Sparkles className="size-6 text-white" />
-                </div>
-                <div className="flex-1 text-left">
-                  <div className="font-bold text-lg">{t('Agent.heroCta')}</div>
-                  <div className="text-sm text-white/70">{t('Agent.heroCtaDesc')}</div>
-                </div>
-                <ArrowRight className={cn('size-5 text-white/70 group-hover:translate-x-1 transition-transform', locale === 'ar' && 'rotate-180')} />
-              </button>
-            </motion.div>
-
-            {/* Animated stats */}
-            <motion.div
-              variants={fadeInUp}
-              className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12"
-            >
-              {[
-                { value: stats.totalUniversities, label: t('Hero.stats.universities') },
-                { value: stats.totalCountries, label: t('Hero.stats.countries') },
-                { value: stats.totalPrograms, label: t('Hero.stats.programs') },
-                { value: formatUsdCompact(stats.cheapestTuition), label: t('Hero.stats.fromPerYear') },
-              ].map((stat, i) => (
-                <motion.div
-                  key={i}
-                  variants={staggerItem}
-                  whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                  className="bg-white/5 backdrop-blur-xl rounded-2xl p-5 border border-white/10 hover:border-blue-400/30 transition-colors"
-                >
-                  <div className="text-3xl font-bold bg-gradient-to-br from-white to-blue-200 bg-clip-text text-transparent">{stat.value}</div>
-                  <div className="text-sm text-white/60 mt-1">{stat.label}</div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* ===== Country Explorer ===== */}
       <section className="border-b bg-white dark:bg-slate-900">
