@@ -357,7 +357,7 @@ export function UniversityDetailPage({ uni }: Props) {
               <Building2 className="size-4" />Claim this university
             </Button>
           </div>
-          <SocialShare url={`https://edupath-amber-three.vercel.app/university/${uni.slug}`} title={`${uni.name} — Tuition, Programs & Reviews | EduPath`} description={uni.descriptionEn} />
+          <SocialShare url={`https://edupath.cafepass.net/university/${uni.slug}`} title={`${uni.name} — Tuition, Programs & Reviews | EduPath`} description={uni.descriptionEn} />
         </motion.div>
 
         {/* Data provenance bar */}

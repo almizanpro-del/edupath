@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 
-const BASE_URL = 'https://edupath-amber-three.vercel.app'
+const BASE_URL = 'https://edupath.cafepass.net'
 
 export default function robots(): MetadataRoute.Robots {
   return {

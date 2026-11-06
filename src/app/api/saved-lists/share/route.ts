@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://edupath-amber-three.vercel.app'
+    const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://edupath.cafepass.net'
     return NextResponse.json({
       shareToken: savedList.shareToken,
       shareUrl: `${baseUrl}/list/${savedList.shareToken}`,

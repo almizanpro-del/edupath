@@ -21,8 +21,8 @@ export function isEmailConfigured(): boolean {
 }
 
 // Configurable from env vars — defaults to Vercel preview URL for dev
-const FROM_EMAIL = process.env.FROM_EMAIL || 'EduPath <noreply@edupath-amber-three.vercel.app>'
-const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://edupath-amber-three.vercel.app'
+const FROM_EMAIL = process.env.FROM_EMAIL || 'EduPath <noreply@edupath.cafepass.net>'
+const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://edupath.cafepass.net'
 
 type EmailParams = {
   to: string

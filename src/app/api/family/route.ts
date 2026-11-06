@@ -117,7 +117,7 @@ export async function POST(req: NextRequest) {
     // Best-effort: send invitation email
     try {
       const { sendFamilyInvitationEmail } = await import('@/lib/email')
-      const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://edupath-amber-three.vercel.app'
+      const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://edupath.cafepass.net'
       await sendFamilyInvitationEmail(validation.data.parentEmail, {
         studentName: user.email?.split('@')[0] ?? 'Your child',
         inviteUrl: `${baseUrl}/family/join?token=${invitation.inviteToken}`,

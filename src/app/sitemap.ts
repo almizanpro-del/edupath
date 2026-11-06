@@ -8,7 +8,7 @@ import { MetadataRoute } from 'next'
 import { db } from '@/lib/db'
 import staticUniversities from '@/data/static-universities.json'
 
-const BASE_URL = 'https://edupath-amber-three.vercel.app'
+const BASE_URL = 'https://edupath.cafepass.net'
 
 const STATIC_PAGES = [
   { path: '', priority: 1.0, changeFrequency: 'daily' as const },

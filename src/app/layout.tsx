@@ -40,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
       "international students", "transfer credits", "AI essay review", "cost calculator",
     ],
     authors: [{ name: "EduPath" }],
-    metadataBase: new URL("https://edupath-amber-three.vercel.app"),
+    metadataBase: new URL("https://edupath.cafepass.net"),
     alternates: {
       canonical: "/",
       languages: { en: "/", ar: "/" },
@@ -50,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: t("ogDescription"),
       siteName: "EduPath",
       type: "website",
-      url: "https://edupath-amber-three.vercel.app",
+      url: "https://edupath.cafepass.net",
     },
     twitter: {
       card: "summary_large_image",
