@@ -974,36 +974,213 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         </div>
       </section>
 
-      {/* ===== Country Explorer ===== */}
-      <section className="border-b bg-white dark:bg-slate-900">
-        <div className="container mx-auto max-w-7xl px-4 py-10">
-          <div className="flex items-end justify-between mb-6">
-            <div>
-              <h2 className="text-2xl font-bold mb-1 dark:text-white">{t('CountryExplorer.title')}</h2>
-              <p className="text-sm text-muted-foreground">{t('CountryExplorer.subtitle')}</p>
+      {/* ===== Country Explorer — Innovative redesign ===== */}
+      <section className="relative bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 border-b dark:border-slate-800 overflow-hidden">
+        {/* Decorative dotted world-map pattern */}
+        <div
+          className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none"
+          style={{
+            backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)',
+            backgroundSize: '24px 24px',
+          }}
+        />
+
+        <div className="relative container mx-auto max-w-7xl px-4 py-12 md:py-16">
+          {/* Header */}
+          <div className="text-center mb-8 md:mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-900 mb-3">
+              <Globe className="size-3.5 text-blue-600 dark:text-blue-400" />
+              <span className="text-xs font-semibold text-blue-700 dark:text-blue-300 uppercase tracking-wider">
+                {stats.totalCountries} Countries
+              </span>
             </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-2 dark:text-white">
+              {t('CountryExplorer.title')}
+            </h2>
+            <p className="text-sm md:text-base text-muted-foreground max-w-lg mx-auto">
+              {t('CountryExplorer.subtitle')}
+            </p>
           </div>
-          <MotionContainer className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-10 gap-3">
-            {countries.map(c => (
-              <MotionItem key={c.code}>
+
+          {/* Selected countries bar (shows when filters are active) */}
+          {selectedCountries.size > 0 && (
+            <div className="flex items-center justify-center gap-2 mb-6 flex-wrap">
+              {Array.from(selectedCountries).map(code => {
+                const c = countries.find(c => c.code === code)
+                if (!c) return null
+                return (
+                  <motion.div
+                    key={code}
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-600 text-white text-sm font-medium shadow-md"
+                  >
+                    <Image src={`https://flagcdn.com/w40/${c.flag}.png`} alt={c.name} width={16} height={12} className="rounded-sm" unoptimized />
+                    {c.name}
+                    <button
+                      onClick={() => toggleCountry(c.code)}
+                      className="hover:bg-white/20 rounded-full size-4 flex items-center justify-center transition-colors"
+                    >
+                      <X className="size-3" />
+                    </button>
+                  </motion.div>
+                )
+              })}
+              <button
+                onClick={clearFilters}
+                className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-sm hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              >
+                <RotateCcw className="size-3" />
+                {t('Filters.clearAll')}
+              </button>
+            </div>
+          )}
+
+          {/* Country cards — horizontal scroll on mobile, grid on desktop */}
+          <div className="md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4 hidden">
+            {countries.map((c, i) => {
+              const isSelected = selectedCountries.has(c.code)
+              const cAny = c as Record<string, unknown>
+              const avgTuition = typeof cAny.avgTuition === 'number' ? cAny.avgTuition : null
+              return (
                 <motion.button
+                  key={c.code}
                   onClick={() => toggleCountry(c.code)}
-                  whileHover={{ y: -4, scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
+                  whileHover={{ y: -6, scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(i * 0.03, 0.4) }}
                   className={cn(
-                    'w-full flex flex-col items-center gap-2 p-4 rounded-2xl border transition-all',
-                    selectedCountries.has(c.code)
-                      ? 'border-blue-500 bg-blue-950/5 dark:bg-blue-950/30 ring-2 ring-blue-500/20 shadow-md'
-                      : 'border-border bg-white dark:bg-slate-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md'
+                    'group relative flex items-center gap-3 p-4 rounded-2xl border-2 transition-all text-left overflow-hidden',
+                    isSelected
+                      ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/30 ring-2 ring-blue-500/20 shadow-lg'
+                      : 'border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-lg'
                   )}
                 >
-                  <Image src={`https://flagcdn.com/w80/${c.flag}.png`} alt={c.name} width={40} height={28} className="rounded shadow-sm" unoptimized />
-                  <div className="text-xs font-medium text-center leading-tight dark:text-slate-200">{c.name}</div>
-                  <div className="text-[10px] text-muted-foreground">{c.count} unis</div>
+                  {/* Flag — large, with rounded corners */}
+                  <div className="relative shrink-0">
+                    <div className={cn(
+                      'absolute inset-0 rounded-xl blur-md transition-opacity',
+                      isSelected ? 'opacity-50 bg-blue-500' : 'opacity-0 group-hover:opacity-20 bg-blue-500'
+                    )} />
+                    <Image
+                      src={`https://flagcdn.com/w160/${c.flag}.png`}
+                      alt={c.name}
+                      width={56}
+                      height={40}
+                      className="relative rounded-xl shadow-md object-cover"
+                      unoptimized
+                    />
+                  </div>
+
+                  {/* Country info */}
+                  <div className="flex-1 min-w-0">
+                    <div className="font-bold text-sm dark:text-white truncate">{c.name}</div>
+                    <div className="flex items-center gap-2 mt-0.5">
+                      <span className={cn(
+                        'inline-flex items-center gap-1 text-xs font-medium px-1.5 py-0.5 rounded-md',
+                        isSelected
+                          ? 'bg-blue-600 text-white'
+                          : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                      )}>
+                        <GraduationCap className="size-2.5" />
+                        {c.count}
+                      </span>
+                      {avgTuition && (
+                        <span className="text-[10px] text-muted-foreground">
+                          from ${(avgTuition / 1000).toFixed(0)}k/yr
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Hover/selected indicator */}
+                  <div className={cn(
+                    'shrink-0 transition-all',
+                    isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'
+                  )}>
+                    <div className={cn(
+                      'size-6 rounded-full flex items-center justify-center',
+                      isSelected ? 'bg-blue-600' : 'bg-slate-200 dark:bg-slate-700'
+                    )}>
+                      <Check className={cn('size-3.5', isSelected ? 'text-white' : 'text-slate-500')} />
+                    </div>
+                  </div>
+
+                  {/* Hover gradient strip at the bottom */}
+                  <div className={cn(
+                    'absolute bottom-0 inset-x-0 h-1 bg-gradient-to-r from-blue-500 to-blue-600 transition-transform origin-left',
+                    isSelected ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                  )} />
                 </motion.button>
-              </MotionItem>
-            ))}
-          </MotionContainer>
+              )
+            })}
+          </div>
+
+          {/* Mobile: horizontal scroll strip */}
+          <div className="md:hidden -mx-4 px-4 overflow-x-auto pb-2 space-y-3" style={{ scrollbarWidth: 'none' }}>
+            <div className="flex gap-3 w-max">
+              {countries.map(c => {
+                const isSelected = selectedCountries.has(c.code)
+                const cAny = c as Record<string, unknown>
+                const avgTuition = typeof cAny.avgTuition === 'number' ? cAny.avgTuition : null
+                return (
+                  <button
+                    key={c.code}
+                    onClick={() => toggleCountry(c.code)}
+                    className={cn(
+                      'flex flex-col items-center gap-1.5 p-3 rounded-2xl border-2 transition-all min-w-[100px]',
+                      isSelected
+                        ? 'border-blue-500 bg-blue-50 dark:bg-blue-950/30 shadow-md'
+                        : 'border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900'
+                    )}
+                  >
+                    <Image
+                      src={`https://flagcdn.com/w160/${c.flag}.png`}
+                      alt={c.name}
+                      width={48}
+                      height={34}
+                      className="rounded-lg shadow-sm"
+                      unoptimized
+                    />
+                    <div className="text-xs font-bold dark:text-white text-center leading-tight">{c.name}</div>
+                    <div className={cn(
+                      'inline-flex items-center gap-0.5 text-[10px] font-medium px-1.5 py-0.5 rounded-md',
+                      isSelected ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300'
+                    )}>
+                      <GraduationCap className="size-2.5" />
+                      {c.count} unis
+                    </div>
+                    {avgTuition && (
+                      <div className="text-[9px] text-muted-foreground">from ${(avgTuition / 1000).toFixed(0)}k/yr</div>
+                    )}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Bottom: link to country landing pages */}
+          <div className="mt-8 text-center">
+            <p className="text-xs text-muted-foreground mb-3">
+              {locale === 'ar' ? 'أو تصفح حسب البلد' : 'Or browse by destination'}
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {countries.slice(0, 6).map(c => (
+                <a
+                  key={c.code}
+                  href={`/country/${c.code.toLowerCase().replace(/\s+/g, '-')}`}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-medium hover:bg-blue-50 hover:border-blue-300 dark:hover:bg-blue-950/30 transition-colors dark:text-slate-200"
+                >
+                  <Image src={`https://flagcdn.com/w40/${c.flag}.png`} alt={c.name} width={14} height={10} className="rounded-sm" unoptimized />
+                  {locale === 'ar' ? c.nameAr : c.name}
+                  <ArrowRight className="size-3 text-muted-foreground" />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
