@@ -290,8 +290,20 @@ export function EduPathApp({ universities, countries, stats }: Props) {
 
   const toggleCountry = (c: string) => {
     const next = new Set(selectedCountries)
+    const isAdding = !next.has(c)
     if (next.has(c)) next.delete(c); else next.add(c)
     setSelectedCountries(next)
+
+    // When SELECTING a country (not deselecting), scroll to the directory
+    // so the user immediately sees the filtered results.
+    if (isAdding) {
+      setTimeout(() => {
+        const dir = document.getElementById('directory')
+        if (dir) {
+          dir.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 100)
+    }
   }
   const toggleField = (f: string) => {
     const next = new Set(selectedFields)
@@ -1188,6 +1200,54 @@ export function EduPathApp({ universities, countries, stats }: Props) {
 
       {/* ===== Directory ===== */}
       <section id="directory" className="container mx-auto max-w-7xl px-4 py-10 flex-1 scroll-mt-20">
+        {/* Active filter results banner — shows when countries are selected */}
+        {selectedCountries.size > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mb-6 p-4 rounded-2xl bg-blue-50 dark:bg-blue-950/30 border-2 border-blue-200 dark:border-blue-800"
+          >
+            <div className="flex items-start justify-between gap-3 flex-wrap">
+              <div>
+                <div className="flex items-center gap-2 mb-1">
+                  <Search className="size-4 text-blue-600" />
+                  <span className="font-semibold text-blue-900 dark:text-blue-100">
+                    {filtered.length} {filtered.length === 1 ? 'university' : 'universities'} in:
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {Array.from(selectedCountries).map(code => {
+                    const c = countries.find(c => c.code === code)
+                    if (!c) return null
+                    return (
+                      <span
+                        key={code}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white dark:bg-slate-800 border border-blue-200 dark:border-blue-800 text-sm font-medium dark:text-white"
+                      >
+                        <Image src={`https://flagcdn.com/w40/${c.flag}.png`} alt={c.name} width={14} height={10} className="rounded-sm" unoptimized />
+                        {c.name}
+                        <button
+                          onClick={() => toggleCountry(c.code)}
+                          className="hover:bg-slate-100 dark:hover:bg-slate-700 rounded-full size-4 flex items-center justify-center transition-colors ml-1"
+                        >
+                          <X className="size-3" />
+                        </button>
+                      </span>
+                    )
+                  })}
+                </div>
+              </div>
+              <button
+                onClick={clearFilters}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors dark:text-slate-200 shrink-0"
+              >
+                <RotateCcw className="size-3.5" />
+                {t('Filters.clearAll')}
+              </button>
+            </div>
+          </motion.div>
+        )}
+
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-bold mb-1 dark:text-white">
