@@ -612,8 +612,7 @@ export function EduPathApp({ universities, countries, stats }: Props) {
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         onSearchSubmit={() => track('search', { metadata: { query: searchQuery } })}
-        filtersOpen={filtersOpen}
-        onFiltersOpenChange={(v) => { setFiltersOpen(v); if (!v) setCountrySearch('') }}
+        onFiltersOpen={() => setFiltersOpen(true)}
         activeFilterCount={activeFilterCount}
         onAgentClick={() => router.push('/agent')}
         agentCtaTitle={t('Agent.heroCta')}
