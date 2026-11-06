@@ -282,7 +282,7 @@ function HeroSlideContent({
   return (
     <div className="relative">
       {/* Background image — full width */}
-      <div className="relative w-full" style={{ height: 'min(70vh, 600px)' }}>
+      <div className="relative w-full h-[420px] sm:h-[500px] md:h-[560px] lg:h-[600px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={slide.image}
@@ -291,19 +291,21 @@ function HeroSlideContent({
           loading="eager"
           fetchPriority="high"
         />
-        {/* Dark overlay for text readability */}
+        {/* Dark overlay for text readability — desktop: side gradient, mobile: bottom gradient */}
         <div
-          className="absolute inset-0 bg-gradient-to-r"
+          className="absolute inset-0 md:bg-gradient-to-r hidden md:block"
           style={{
             background: textOnRight
               ? `linear-gradient(to left, rgba(15,23,42,${slide.overlayOpacity / 100}) 0%, rgba(15,23,42,${slide.overlayOpacity / 100 * 0.7}) 50%, transparent 100%)`
               : `linear-gradient(to right, rgba(15,23,42,${slide.overlayOpacity / 100}) 0%, rgba(15,23,42,${slide.overlayOpacity / 100 * 0.7}) 50%, transparent 100%)`,
           }}
         />
+        {/* Mobile: bottom-up gradient so text is readable without covering the whole image */}
+        <div className="absolute inset-0 md:hidden bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent" />
       </div>
 
-      {/* Text overlay */}
-      <div className="absolute inset-0 flex items-center">
+      {/* Text overlay — positioned in the upper-middle area, NOT overlapping the stats bar */}
+      <div className="absolute inset-0 flex items-start md:items-center pt-16 pb-24 md:pt-0 md:pb-0">
         <div className="container mx-auto max-w-7xl px-4">
           <div className={cn(
             'max-w-xl',
@@ -311,7 +313,7 @@ function HeroSlideContent({
             isAr && 'dir-rtl'
           )} dir={isAr ? 'rtl' : 'ltr'}>
             {/* Badge */}
-            <div className="mb-4">
+            <div className="mb-3 md:mb-4">
               <Badge variant="secondary" className="bg-white/15 text-white border-white/25 backdrop-blur-md">
                 <Sparkles className="size-3 mr-1.5" />
                 {badgeText}
@@ -319,20 +321,20 @@ function HeroSlideContent({
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-4 whitespace-pre-line text-white leading-[1.1] drop-shadow-lg">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-3 md:mb-4 whitespace-pre-line text-white leading-[1.1] drop-shadow-lg">
               {slide.headline}
             </h1>
 
-            {/* Subheadline */}
-            <p className="text-base md:text-lg text-white/90 mb-6 leading-relaxed max-w-md drop-shadow">
+            {/* Subheadline — hidden on small mobile to avoid covering image */}
+            <p className="hidden sm:block text-sm md:text-lg text-white/90 mb-5 md:mb-6 leading-relaxed max-w-md drop-shadow">
               {slide.subheadline}
             </p>
 
             {/* Buttons */}
-            <div className="flex flex-wrap gap-3 mb-6">
+            <div className="flex flex-wrap gap-2.5 md:gap-3 mb-4 md:mb-5">
               <a
                 href={slide.buttonHref}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold shadow-lg transition-colors"
+                className="inline-flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3 rounded-lg bg-orange-600 hover:bg-orange-700 text-white font-semibold shadow-lg transition-colors text-sm md:text-base relative z-10"
               >
                 {slide.buttonText}
                 <ArrowRight className={cn('size-4', isAr && 'rotate-180')} />
@@ -340,15 +342,15 @@ function HeroSlideContent({
               {slide.secondaryButtonText && slide.secondaryButtonHref && (
                 <a
                   href={slide.secondaryButtonHref}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white font-semibold transition-colors"
+                  className="inline-flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3 rounded-lg bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white font-semibold transition-colors text-sm md:text-base relative z-10"
                 >
                   {slide.secondaryButtonText}
                 </a>
               )}
             </div>
 
-            {/* Search bar (only show on first slide or when requested) */}
-            <div className="flex gap-2 max-w-lg">
+            {/* Search bar — desktop only, positioned below buttons */}
+            <div className="hidden md:flex gap-2 max-w-lg">
               <div className="relative flex-1">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-slate-400 pointer-events-none z-10" />
                 <Input
@@ -375,8 +377,8 @@ function HeroSlideContent({
         </div>
       </div>
 
-      {/* Stats bar at the bottom */}
-      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950/80 to-transparent pt-12 pb-4">
+      {/* Stats bar — pinned to bottom, separated from text content */}
+      <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/70 to-transparent pt-8 pb-3 md:pb-4">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="hidden md:grid grid-cols-4 gap-3">
             {stats.map((stat, si) => (
@@ -390,8 +392,8 @@ function HeroSlideContent({
               </div>
             ))}
           </div>
-          {/* Mobile stats — simpler */}
-          <div className="md:hidden flex justify-center gap-4">
+          {/* Mobile stats — compact, inline */}
+          <div className="md:hidden flex justify-center gap-3">
             {stats.map((stat, si) => (
               <div key={si} className="text-center">
                 <div className="text-sm font-bold text-white drop-shadow">{stat.value}</div>
