@@ -72,6 +72,70 @@ type University = {
   claimedByUserId?: string
 }
 
+// ─── University Emblem component ────────────────────────────────────────────
+
+/**
+ * University emblem with fallback. Shows the university's logo on a
+ * white rounded background (so it's visible against dark heroes).
+ * Falls back to a GraduationCap icon if the logo fails to load.
+ *
+ * Uses an <img> tag (not next/image) because the logo URLs are dynamic
+ * and may redirect — next/image optimization can interfere with these.
+ */
+function UniversityEmblem({
+  logoUrl,
+  name,
+  size = 'md',
+}: {
+  logoUrl: string | null
+  name: string
+  size?: 'sm' | 'md' | 'lg'
+}) {
+  const [error, setError] = React.useState(false)
+
+  const sizeClasses = {
+    sm: 'size-8 rounded-lg p-1',
+    md: 'size-10 rounded-xl p-1.5',
+    lg: 'size-14 rounded-2xl p-2',
+  }
+  const iconSizes = {
+    sm: 'size-4',
+    md: 'size-5',
+    lg: 'size-7',
+  }
+  const imgSizes = {
+    sm: 'w-6 h-6',
+    md: 'w-7 h-7',
+    lg: 'w-10 h-10',
+  }
+
+  if (!logoUrl || error) {
+    return (
+      <div className={cn(
+        'flex items-center justify-center shrink-0 shadow-md',
+        sizeClasses[size],
+        'bg-white/10 backdrop-blur-md border border-white/20'
+      )}>
+        <GraduationCap className={cn(iconSizes[size], 'text-white/60')} />
+      </div>
+    )
+  }
+
+  return (
+    <div className={cn(
+      'bg-white flex items-center justify-center shrink-0 shadow-md overflow-hidden',
+      sizeClasses[size]
+    )}>
+      <img
+        src={logoUrl}
+        alt={`${name} logo`}
+        className={cn(imgSizes[size], 'object-contain')}
+        onError={() => setError(true)}
+      />
+    </div>
+  )
+}
+
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
 /**
@@ -89,33 +153,29 @@ function getDomain(website: string): string | null {
 }
 
 /**
- * Get a university logo URL. Tries the stored logoUrl first, then
- * generates one from the website domain via Google's favicon service
- * (which returns the site's actual favicon at a larger size).
+ * Get a university logo URL. Tries multiple sources in order:
+ * 1. The stored logoUrl (if it's a real logo, not a generic google favicon)
+ * 2. Clearbit Logo API (high-quality company/organization logos)
+ * 3. Google's favicon service at 128px (fallback)
  */
 function getLogoUrl(uni: { logoUrl: string | null; website: string }): string | null {
   // If we have a real logoUrl (not a generic google.com favicon), use it
   if (uni.logoUrl && !uni.logoUrl.includes('domain=www.google.com')) {
     return uni.logoUrl
   }
-  // Generate from website domain
   const domain = getDomain(uni.website)
-  if (domain) {
-    return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
-  }
-  return null
+  if (!domain) return null
+  // Use Google's favicon service at the largest available size.
+  // This redirects to the actual favicon and works for most universities.
+  return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
 }
 
 /**
- * Get an OpenGraph image URL for the university's website.
- * This uses a free service that fetches the OG image from any URL.
- * Falls back to null if the website isn't a real URL.
+ * Get a larger version of the logo for background decoration.
  */
-function getOgImageUrl(website: string): string | null {
+function getLargeLogoUrl(website: string): string | null {
   const domain = getDomain(website)
   if (!domain) return null
-  // Use the website's own /og:image or favicon as a background
-  // We use the favicon at a larger size as a subtle background pattern
   return `https://www.google.com/s2/favicons?domain=${domain}&sz=256`
 }
 
@@ -326,22 +386,17 @@ export function UniversityDetailPage({ uni }: Props) {
 
       {/* ─── Compact Hero ─── */}
       <div className="relative bg-slate-950 text-white overflow-hidden">
-        {/* Background: university website screenshot via Google favicon (subtle, large, blurred) */}
+        {/* Background: large blurred university logo as decoration */}
         {(() => {
-          const domain = getDomain(uni.website)
-          if (!domain) return null
+          const largeLogo = getLargeLogoUrl(uni.website)
+          if (!largeLogo) return null
           return (
-            <div className="absolute inset-0 overflow-hidden">
-              {/* Blurred large favicon as a decorative background element */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <img
-                src={`https://www.google.com/s2/favicons?domain=${domain}&sz=256`}
+                src={largeLogo}
                 alt=""
-                className="absolute -right-20 -top-20 w-96 h-96 object-contain opacity-[0.04] blur-sm"
-              />
-              <img
-                src={`https://www.google.com/s2/favicons?domain=${domain}&sz=256`}
-                alt=""
-                className="absolute -left-20 -bottom-20 w-80 h-80 object-contain opacity-[0.03] blur-sm"
+                className="absolute -right-32 -top-32 w-[28rem] h-[28rem] object-contain opacity-[0.05] blur-md"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
               />
             </div>
           )
@@ -358,26 +413,12 @@ export function UniversityDetailPage({ uni }: Props) {
             <div className="flex-1 min-w-0">
               {/* University emblem + location row */}
               <div className="flex items-center gap-3 mb-4 flex-wrap">
-                {/* Emblem — university logo/favicon in a rounded container */}
-                {(() => {
-                  const logoSrc = getLogoUrl(uni)
-                  if (logoSrc) {
-                    return (
-                      <div className="size-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center overflow-hidden shrink-0 shadow-lg">
-                        <img
-                          src={logoSrc}
-                          alt={`${uni.name} logo`}
-                          className="w-8 h-8 object-contain"
-                        />
-                      </div>
-                    )
-                  }
-                  return (
-                    <div className="size-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shrink-0 shadow-lg">
-                      <GraduationCap className="size-6 text-white/60" />
-                    </div>
-                  )
-                })()}
+                {/* Emblem — university logo in a white rounded container for visibility */}
+                <UniversityEmblem
+                  logoUrl={getLogoUrl(uni)}
+                  name={uni.name}
+                  size="lg"
+                />
                 <Image
                   src={countryFlagUrl(uni.country, 64)}
                   alt={uni.country}

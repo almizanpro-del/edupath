@@ -1448,6 +1448,28 @@ export function EduPathApp({ universities, countries, stats }: Props) {
 }
 
 // =================== University Card ===================
+/** Card emblem — small university logo with error fallback */
+function CardEmblem({ src, name }: { src: string; name: string }) {
+  const [error, setError] = React.useState(false)
+  if (error) {
+    return (
+      <div className="size-7 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
+        <GraduationCap className="size-4 text-muted-foreground" />
+      </div>
+    )
+  }
+  return (
+    <div className="size-7 rounded-lg bg-white flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
+      <img
+        src={src}
+        alt={`${name} logo`}
+        className="w-5 h-5 object-contain"
+        onError={() => setError(true)}
+      />
+    </div>
+  )
+}
+
 function UniversityCard({
   uni, isSaved, isComparing, onSave, onCompare, onOpen,
 }: {
@@ -1475,7 +1497,7 @@ function UniversityCard({
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1.5">
-              {/* University emblem/logo */}
+              {/* University emblem/logo — with error fallback */}
               {(() => {
                 const logo = uni.logoUrl && !uni.logoUrl.includes('domain=www.google.com')
                   ? uni.logoUrl
@@ -1483,19 +1505,17 @@ function UniversityCard({
                       try {
                         if (!uni.website || uni.website.includes('google.com/search')) return null
                         const domain = new URL(uni.website).hostname.replace(/^www\./, '')
-                        return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`
+                        return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
                       } catch { return null }
                     })()
                 if (logo) {
-                  return (
-                    <img
-                      src={logo}
-                      alt={`${uni.name} logo`}
-                      className="size-6 rounded object-contain shrink-0"
-                    />
-                  )
+                  return <CardEmblem src={logo} name={uni.name} />
                 }
-                return <GraduationCap className="size-5 text-muted-foreground shrink-0" />
+                return (
+                  <div className="size-7 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
+                    <GraduationCap className="size-4 text-muted-foreground" />
+                  </div>
+                )
               })()}
               <Image
                 src={countryFlagUrl(uni.country, 40)}
