@@ -1474,12 +1474,34 @@ function UniversityCard({
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex items-center gap-2 mb-1.5">
+              {/* University emblem/logo */}
+              {(() => {
+                const logo = uni.logoUrl && !uni.logoUrl.includes('domain=www.google.com')
+                  ? uni.logoUrl
+                  : (() => {
+                      try {
+                        if (!uni.website || uni.website.includes('google.com/search')) return null
+                        const domain = new URL(uni.website).hostname.replace(/^www\./, '')
+                        return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`
+                      } catch { return null }
+                    })()
+                if (logo) {
+                  return (
+                    <img
+                      src={logo}
+                      alt={`${uni.name} logo`}
+                      className="size-6 rounded object-contain shrink-0"
+                    />
+                  )
+                }
+                return <GraduationCap className="size-5 text-muted-foreground shrink-0" />
+              })()}
               <Image
                 src={countryFlagUrl(uni.country, 40)}
                 alt={uni.country}
-                width={24}
-                height={16}
+                width={20}
+                height={14}
                 className="rounded shadow-sm shrink-0"
                 unoptimized
               />

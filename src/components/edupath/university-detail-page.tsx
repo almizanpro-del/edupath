@@ -74,6 +74,51 @@ type University = {
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
+/**
+ * Extract the domain from a website URL for generating favicon/logo links.
+ * Falls back to the raw string if it's not a valid URL.
+ */
+function getDomain(website: string): string | null {
+  try {
+    if (!website || website.includes('google.com/search')) return null
+    const url = new URL(website)
+    return url.hostname.replace(/^www\./, '')
+  } catch {
+    return null
+  }
+}
+
+/**
+ * Get a university logo URL. Tries the stored logoUrl first, then
+ * generates one from the website domain via Google's favicon service
+ * (which returns the site's actual favicon at a larger size).
+ */
+function getLogoUrl(uni: { logoUrl: string | null; website: string }): string | null {
+  // If we have a real logoUrl (not a generic google.com favicon), use it
+  if (uni.logoUrl && !uni.logoUrl.includes('domain=www.google.com')) {
+    return uni.logoUrl
+  }
+  // Generate from website domain
+  const domain = getDomain(uni.website)
+  if (domain) {
+    return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
+  }
+  return null
+}
+
+/**
+ * Get an OpenGraph image URL for the university's website.
+ * This uses a free service that fetches the OG image from any URL.
+ * Falls back to null if the website isn't a real URL.
+ */
+function getOgImageUrl(website: string): string | null {
+  const domain = getDomain(website)
+  if (!domain) return null
+  // Use the website's own /og:image or favicon as a background
+  // We use the favicon at a larger size as a subtle background pattern
+  return `https://www.google.com/s2/favicons?domain=${domain}&sz=256`
+}
+
 function StarRow({ value, size = 14 }: { value: number; size?: number }) {
   return (
     <div className="flex items-center gap-0.5">
@@ -281,6 +326,26 @@ export function UniversityDetailPage({ uni }: Props) {
 
       {/* ─── Compact Hero ─── */}
       <div className="relative bg-slate-950 text-white overflow-hidden">
+        {/* Background: university website screenshot via Google favicon (subtle, large, blurred) */}
+        {(() => {
+          const domain = getDomain(uni.website)
+          if (!domain) return null
+          return (
+            <div className="absolute inset-0 overflow-hidden">
+              {/* Blurred large favicon as a decorative background element */}
+              <img
+                src={`https://www.google.com/s2/favicons?domain=${domain}&sz=256`}
+                alt=""
+                className="absolute -right-20 -top-20 w-96 h-96 object-contain opacity-[0.04] blur-sm"
+              />
+              <img
+                src={`https://www.google.com/s2/favicons?domain=${domain}&sz=256`}
+                alt=""
+                className="absolute -left-20 -bottom-20 w-80 h-80 object-contain opacity-[0.03] blur-sm"
+              />
+            </div>
+          )
+        })()}
         {/* Background pattern */}
         <div className="absolute inset-0 opacity-[0.03]" style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
@@ -289,9 +354,30 @@ export function UniversityDetailPage({ uni }: Props) {
 
         <div className="relative container mx-auto max-w-6xl px-4 py-8 md:py-12">
           <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-10">
-            {/* Left: identity */}
+            {/* Left: identity with emblem */}
             <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-3 flex-wrap">
+              {/* University emblem + location row */}
+              <div className="flex items-center gap-3 mb-4 flex-wrap">
+                {/* Emblem — university logo/favicon in a rounded container */}
+                {(() => {
+                  const logoSrc = getLogoUrl(uni)
+                  if (logoSrc) {
+                    return (
+                      <div className="size-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center overflow-hidden shrink-0 shadow-lg">
+                        <img
+                          src={logoSrc}
+                          alt={`${uni.name} logo`}
+                          className="w-8 h-8 object-contain"
+                        />
+                      </div>
+                    )
+                  }
+                  return (
+                    <div className="size-12 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shrink-0 shadow-lg">
+                      <GraduationCap className="size-6 text-white/60" />
+                    </div>
+                  )
+                })()}
                 <Image
                   src={countryFlagUrl(uni.country, 64)}
                   alt={uni.country}
