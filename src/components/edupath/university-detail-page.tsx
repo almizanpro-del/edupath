@@ -384,50 +384,34 @@ export function UniversityDetailPage({ uni }: Props) {
         </div>
       </header>
 
-      {/* ─── Compact Hero ─── */}
+      {/* ─── Hero with country flag background ─── */}
       <div className="relative bg-slate-950 text-white overflow-hidden">
-        {/* Background: large blurred university logo as decoration */}
-        {(() => {
-          const largeLogo = getLargeLogoUrl(uni.website)
-          if (!largeLogo) return null
-          return (
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-              <img
-                src={largeLogo}
-                alt=""
-                className="absolute -right-32 -top-32 w-[28rem] h-[28rem] object-contain opacity-[0.05] blur-md"
-                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-              />
-            </div>
-          )
-        })()}
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-          backgroundSize: '32px 32px',
-        }} />
+        {/* Background: large country flag, right-aligned, faded into darkness on the left */}
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src={countryFlagUrl(uni.country, 1280)}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover opacity-20"
+          />
+          {/* Dark gradient overlay — strong on left (where text is), fades right (where flag shows) */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/50" />
+          {/* Bottom fade */}
+          <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-slate-950 to-transparent" />
+        </div>
 
-        <div className="relative container mx-auto max-w-6xl px-4 py-8 md:py-12">
+        <div className="relative container mx-auto max-w-6xl px-4 py-10 md:py-16">
           <div className="flex flex-col md:flex-row md:items-end gap-6 md:gap-10">
             {/* Left: identity with emblem */}
             <div className="flex-1 min-w-0">
               {/* University emblem + location row */}
-              <div className="flex items-center gap-3 mb-4 flex-wrap">
-                {/* Emblem — university logo in a white rounded container for visibility */}
+              <div className="flex items-center gap-3 mb-5 flex-wrap">
+                {/* Emblem — university logo in a white rounded container */}
                 <UniversityEmblem
                   logoUrl={getLogoUrl(uni)}
                   name={uni.name}
                   size="lg"
                 />
-                <Image
-                  src={countryFlagUrl(uni.country, 64)}
-                  alt={uni.country}
-                  width={28}
-                  height={20}
-                  className="rounded shadow-sm"
-                  unoptimized
-                />
-                <span className="text-sm text-white/70 flex items-center gap-1">
+                <span className="text-sm text-white/70 flex items-center gap-1.5">
                   <MapPin className="size-3.5" />
                   {uni.city}, {uni.country}
                 </span>
@@ -438,7 +422,7 @@ export function UniversityDetailPage({ uni }: Props) {
                   </span>
                 )}
               </div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-3">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-3 drop-shadow-lg">
                 {uni.name}
               </h1>
               {/* Quick stats row */}
