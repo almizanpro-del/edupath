@@ -1448,24 +1448,19 @@ export function EduPathApp({ universities, countries, stats }: Props) {
 }
 
 // =================== University Card ===================
-/** Card emblem — small university logo with error fallback */
-function CardEmblem({ src, name }: { src: string; name: string }) {
-  const [error, setError] = React.useState(false)
-  if (error) {
-    return (
-      <div className="size-7 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
-        <GraduationCap className="size-4 text-muted-foreground" />
-      </div>
-    )
-  }
+/** Card emblem — university initials in a branded circle */
+function CardEmblem({ name }: { name: string }) {
+  const initials = name
+    .split(' ')
+    .filter(w => w.length > 2 && !['of', 'the', 'and', 'for', 'University'].includes(w))
+    .slice(0, 2)
+    .map(w => w[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2) || name.slice(0, 2).toUpperCase()
   return (
-    <div className="size-7 rounded-lg bg-white flex items-center justify-center shrink-0 overflow-hidden shadow-sm">
-      <img
-        src={src}
-        alt={`${name} logo`}
-        className="w-5 h-5 object-contain"
-        onError={() => setError(true)}
-      />
+    <div className="size-7 rounded-lg flex items-center justify-center shrink-0 shadow-sm bg-gradient-to-br from-[#0e2038] to-[#1a3a5c]">
+      <span className="text-[10px] font-bold text-white">{initials}</span>
     </div>
   )
 }
@@ -1497,26 +1492,8 @@ function UniversityCard({
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1.5">
-              {/* University emblem/logo — with error fallback */}
-              {(() => {
-                const logo = uni.logoUrl && !uni.logoUrl.includes('domain=www.google.com')
-                  ? uni.logoUrl
-                  : (() => {
-                      try {
-                        if (!uni.website || uni.website.includes('google.com/search')) return null
-                        const domain = new URL(uni.website).hostname.replace(/^www\./, '')
-                        return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
-                      } catch { return null }
-                    })()
-                if (logo) {
-                  return <CardEmblem src={logo} name={uni.name} />
-                }
-                return (
-                  <div className="size-7 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center shrink-0">
-                    <GraduationCap className="size-4 text-muted-foreground" />
-                  </div>
-                )
-              })()}
+              {/* University emblem — initials badge */}
+              <CardEmblem name={uni.name} />
               <Image
                 src={countryFlagUrl(uni.country, 40)}
                 alt={uni.country}

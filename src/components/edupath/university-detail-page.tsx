@@ -109,24 +109,39 @@ function CalendarIcon({ className }: { className?: string }) {
 
 // ─── University Emblem component ────────────────────────────────────────────
 
-function UniversityEmblem({ logoUrl, name, size = 'md' }: { logoUrl: string | null; name: string; size?: 'sm' | 'md' | 'lg' }) {
-  const [error, setError] = React.useState(false)
+/**
+ * University emblem — uses the university's initials in a branded circle.
+ * This is more reliable than favicons (which are often 16x16 and look
+ * terrible when scaled up). The initials are displayed in a navy circle
+ * with the university's first 2-3 letters, similar to how many
+ * institutional apps display organizations.
+ */
+function UniversityEmblem({ name, size = 'md' }: { name: string; size?: 'sm' | 'md' | 'lg' }) {
+  // Extract initials — first letter of first 2 words
+  const initials = name
+    .split(' ')
+    .filter(w => w.length > 2 && !['of', 'the', 'and', 'for', 'university', 'University'].includes(w))
+    .slice(0, 2)
+    .map(w => w[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2) || name.slice(0, 2).toUpperCase()
+
   const sizes = {
-    sm: { box: 'size-10 rounded-xl p-1.5', icon: 'size-5', img: 'w-7 h-7' },
-    md: { box: 'size-12 rounded-xl p-2', icon: 'size-6', img: 'w-8 h-8' },
-    lg: { box: 'size-14 rounded-2xl p-2', icon: 'size-7', img: 'w-10 h-10' },
+    sm: { box: 'size-10 rounded-xl', text: 'text-sm' },
+    md: { box: 'size-12 rounded-xl', text: 'text-base' },
+    lg: { box: 'size-16 rounded-2xl', text: 'text-xl' },
   }
   const s = sizes[size]
-  if (!logoUrl || error) {
-    return (
-      <div className={cn('flex items-center justify-center shrink-0 bg-white/10 border border-white/20', s.box)}>
-        <GraduationCap className={cn(s.icon, 'text-white/60')} />
-      </div>
-    )
-  }
+
   return (
-    <div className={cn('bg-white flex items-center justify-center shrink-0 shadow-lg overflow-hidden', s.box)}>
-      <img src={logoUrl} alt={`${name} logo`} className={cn(s.img, 'object-contain')} onError={() => setError(true)} />
+    <div className={cn(
+      'flex items-center justify-center shrink-0 shadow-lg bg-gradient-to-br from-[#0e2038] to-[#1a3a5c] border border-white/20',
+      s.box
+    )}>
+      <span className={cn(s.text, 'font-bold text-white tracking-tight')}>
+        {initials}
+      </span>
     </div>
   )
 }
@@ -241,8 +256,7 @@ export function UniversityDetailPage({ uni }: Props) {
   const annualTuition = uni.cheapestProgramTuition || uni.tuitionUsd
   const annualLiving = uni.livingCostUsd
   const annualTotal = annualTuition + annualLiving
-  const logoUrl = getLogoUrl(uni)
-
+  // logoUrl removed — using initials-based emblem instead
   const scrollTo = (id: string) => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }
 
   // Program icon mapping
@@ -293,7 +307,7 @@ export function UniversityDetailPage({ uni }: Props) {
             <div className="flex-1 min-w-0">
               {/* Emblem + location */}
               <div className="flex items-center gap-3 mb-5 flex-wrap">
-                <UniversityEmblem logoUrl={logoUrl} name={uni.name} size="lg" />
+                <UniversityEmblem name={uni.name} size="lg" />
                 <span className="text-sm text-white/70 flex items-center gap-1.5">
                   <MapPin className="size-3.5" />
                   {uni.city}, {uni.country}
