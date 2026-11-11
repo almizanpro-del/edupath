@@ -12,6 +12,7 @@ import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { requireSameOrigin } from '@/lib/csrf'
+import { rateLimit } from '@/lib/rate-limit'
 import { z } from 'zod'
 
 const createSchema = z.object({
@@ -78,6 +79,9 @@ export async function POST(req: NextRequest) {
   const csrfError = requireSameOrigin(req)
   if (csrfError) return csrfError
 
+  const limited = rateLimit(req, { windowMs: 60_000, max: 30, prefix: 'applications' })
+  if (limited) return limited
+
   try {
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
@@ -132,6 +136,9 @@ export async function PATCH(req: NextRequest) {
   const csrfError = requireSameOrigin(req)
   if (csrfError) return csrfError
 
+  const limited = rateLimit(req, { windowMs: 60_000, max: 60, prefix: 'applications' })
+  if (limited) return limited
+
   try {
     const supabase = await createClient()
     const { data: { user } } = await supabase.auth.getUser()
@@ -180,6 +187,9 @@ export async function PATCH(req: NextRequest) {
 export async function DELETE(req: NextRequest) {
   const csrfError = requireSameOrigin(req)
   if (csrfError) return csrfError
+
+  const limited = rateLimit(req, { windowMs: 60_000, max: 30, prefix: 'applications' })
+  if (limited) return limited
 
   try {
     const supabase = await createClient()

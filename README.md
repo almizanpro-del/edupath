@@ -1,200 +1,123 @@
 # EduPath
 
-> Your path to affordable global education. Built for MENA students.
+EduPath is a Next.js web app that helps students (especially in MENA) discover universities, compare options, understand costs, and move through parts of the application journey.
 
-EduPath is a university discovery, comparison, and review platform that helps Arabic-speaking students find affordable universities worldwide. This repo contains the Phase 1 MVP — a Next.js 16 single-page app with Supabase auth, Prisma + SQLite, and Tailwind CSS + shadcn/ui.
+> **Note:** Stripe billing integration exists in the codebase but is intentionally kept **on standby for future activation** in regions where Stripe is not currently usable (including Jordan). Do not assume live payments are enabled.
 
-## Features (Phase 1 MVP)
+## What this repo includes
+This codebase has grown beyond the original MVP and includes, among other things:
+- **University discovery & content**: directory/search/filtering, university detail pages, country pages, comparisons, scholarships, transfer pathways, visa-readiness content.
+- **Student tools**: saved lists, applications tracker, essay review flow, scholarship matching, onboarding, profile/account pages.
+- **AI agent ("Rihla")**: conversational intake/matching endpoints and UI.
+- **Reviews & moderation**: review submission, admin moderation flows, scraped/university admin tooling.
+- **Auth & user accounts**: Supabase-based authentication/session handling.
+- **Family/sponsor/claims flows**: parent/family views/invites, university claim flow, sponsor-related pages and APIs.
+- **Operational features**: analytics/events, email hooks, cron endpoints (secret-protected), health checks, SEO routes (`sitemap`, `robots`).
+- **Payments scaffolding (standby)**: Stripe checkout/portal/webhook code and subscription models for future activation.
 
-- **University directory** — 22 seeded universities across 10 countries (UK, Germany, Turkey, Poland, Lithuania, Malaysia, Egypt, Jordan, UAE, Lebanon)
-- **Search & filters** — by country, field of study, language of instruction, tuition range
-- **University detail view** — 5 tabs: Overview (English + Arabic), Programs, Scholarships, Cost Calculator, Reviews
-- **Cost calculator** — interactive slider for program duration, toggle living expenses, total cost in USD
-- **Side-by-side comparison** — up to 3 universities, 12 metrics in a sticky-header table
-- **Verified reviews** — 6-dimension ratings (overall, affordability, teaching, visa, safety, social) with tags
-- **Supabase auth** — email/password sign up & sign in
-- **Saved lists** — bookmark universities, persisted to your account
-- **Review submission** — write and publish reviews (auto-approved in MVP, admin moderation queue in production)
-- **Mobile-responsive** with sticky footer
+## Tech stack
+- **Framework**: Next.js 16 (App Router), React 19, TypeScript
+- **UI**: Tailwind CSS 4, shadcn/ui, Radix UI, Lucide icons
+- **Data**: Prisma ORM
+  - `prisma/schema.prisma` -> **SQLite** (active/local dev schema)
+  - `prisma/schema.postgres.prisma` -> **PostgreSQL/Supabase** (production schema, synced to current domain model)
+- **Auth**: Supabase (`@supabase/ssr`, `@supabase/supabase-js`)
+- **i18n/Theming**: `next-intl`, `next-themes`
+- **Payments (standby)**: Stripe SDK + webhook/checkout routes (not enabled in all regions)
+- **Email/Monitoring/Analytics (optional/integrations)**: Resend, Sentry, PostHog
+- **Testing**: Vitest, Testing Library, Playwright
 
-## Tech Stack
+## Project structure (high level)
+- `src/app/` - App Router pages/layouts and API route handlers (`src/app/api/**`)
+- `src/components/edupath/` - feature/client components
+- `src/components/ui/` - shadcn/ui primitives
+- `src/lib/` - shared utilities (auth helpers, db, validation, csrf/rate-limit, stripe/email/analytics, agent logic, etc.)
+- `src/data/` - bundled/static fallback data
+- `prisma/` - Prisma schemas, migrations, seed scripts
+- `scripts/` - maintenance/dev scripts (seeding, static data generation, admin promotion, etc.)
+- `e2e/`, `tests/` - test suites/config support
 
-- **Framework**: Next.js 16 (App Router, React Server Components)
-- **Language**: TypeScript 5
-- **Styling**: Tailwind CSS 4 + shadcn/ui (New York)
-- **Database**: Prisma ORM with SQLite in local dev (`prisma/schema.prisma`) and a separate Postgres schema for production (`prisma/schema.postgres.prisma`)
-- **Auth**: Supabase Auth (email/password, with optional Google OAuth)
-- **Icons**: Lucide React
-
-## Getting Started
+## Getting started (local dev)
 
 ### Prerequisites
-
 - Node.js 18+ (or Bun)
-- A Supabase project (free tier works) — get one at [supabase.com](https://supabase.com)
+- A Supabase project (for auth flows)
 
-### Installation
-
+### 1) Install dependencies
 ```bash
-# Clone the repo
-git clone https://github.com/almizanpro-del/edupath.git
-cd edupath
+bun install
+# or
+npm install
+```
 
-# Install dependencies
-bun install   # or: npm install
-
-# Set up environment variables
+### 2) Configure environment variables
+```bash
 cp .env.example .env
-# Edit .env with your Supabase project URL, anon key, and secret key
-
-# Set up the database
-bun run db:push      # creates SQLite DB + Prisma client
-bun run prisma/seed.ts  # seeds 22 universities, programs, scholarships, reviews
-
-# Start the dev server
-bun run dev          # opens at http://localhost:3000
 ```
+Fill in required values in `.env` (see `.env.example` for the full list). At minimum for local dev you will typically need:
+- `DATABASE_URL` (SQLite local path, e.g. `file:./db/custom.db`)
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+- server-side Supabase vars as required by your setup
 
-### Environment Variables
+Optional integrations (enable only if configured): Stripe, Resend, Sentry, PostHog, LLM provider keys, `CRON_SECRET`, etc.
 
-See [`.env.example`](./.env.example) for the full list. Required:
-
-| Variable | Description | Where to get it |
-|---|---|---|
-| `DATABASE_URL` | SQLite connection string | Local file path |
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL | Supabase dashboard → Settings → API |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase publishable anon key | Same as above |
-| `SUPABASE_SECRET_KEY` | Supabase secret key (server-only) | Same as above |
-
-⚠️ **Never commit `.env`** — it's in `.gitignore`. The `.env.example` file is a template with placeholders.
-
-## Project Structure
-
-```
-edupath/
-├── prisma/
-│   ├── schema.prisma          # 6-model Prisma schema
-│   └── seed.ts                # Seeds 22 universities + programs + scholarships + reviews
-├── src/
-│   ├── app/
-│   │   ├── api/
-│   │   │   ├── me/             # GET current user profile
-│   │   │   ├── saved-lists/    # GET + POST saved universities
-│   │   │   └── reviews/        # GET + POST reviews
-│   │   ├── layout.tsx          # Root layout with metadata
-│   │   └── page.tsx            # Home page (RSC, fetches universities)
-│   ├── components/
-│   │   ├── edupath/
-│   │   │   ├── edupath-app.tsx # Main client component (hero, filters, directory, detail, compare)
-│   │   │   ├── auth-modal.tsx  # Sign in / sign up modal
-│   │   │   └── review-form.tsx # Review submission form
-│   │   └── ui/                 # shadcn/ui components
-│   ├── lib/
-│   │   ├── db.ts               # Prisma client singleton
-│   │   ├── edupath.ts          # Shared types, formatters, country list
-│   │   └── supabase/
-│   │       ├── client.ts       # Browser Supabase client
-│   │       ├── server.ts       # Server Supabase client
-│   │       └── middleware.ts   # Session refresh
-│   └── middleware.ts           # Next.js middleware (calls Supabase updateSession)
-└── .env.example                # Environment variable template
-```
-
-## Development
-
+### 3) Set up the database (SQLite local dev)
 ```bash
-bun run dev          # Start dev server at localhost:3000
-bun run lint         # Run ESLint
-bun run db:push      # Push schema changes to DB
-bun run db:generate  # Regenerate Prisma client
+bun run db:push
+bun run db:generate
+# optional seed (if you want sample data)
+bun run prisma/seed.ts
 ```
 
-## Roadmap
-
-This MVP covers Phase 1 of the EduPath development plan. Future phases:
-
-- **Phase 1.x** — Full Arabic RTL UI (next-intl), admin moderation queue, on-demand ISR
-- **Phase 2** — AI essay review (GPT-4o-mini), transfer pathway finder, financial aid matcher, Stripe billing + sponsor dashboard
-- **Phase 3** — Visa guides, alumni network, job board, post-grad outcome tracking
-
-See `EduPath_Development_Plan_v1.1.pdf` for the full technical blueprint (14 chapters, 35 pages, includes risk register, 12-week sprint plan, and engineering deep-dives on scraping, verification, AI prompts, and monetization).
-
-## Authentication
-
-EduPath uses Supabase Auth with two sign-in methods:
-
-### Email/Password
-Works out of the box. By default, Supabase requires email confirmation — for dev/demo, you can disable this in:
-> Supabase Dashboard → Authentication → Sign In / Providers → Email → turn OFF "Confirm email"
-
-### Google OAuth (optional)
-To enable Google sign-in:
-1. Go to [Google Cloud Console](https://console.cloud.google.com/) → create a project (or use existing)
-2. APIs & Services → Credentials → Create OAuth client ID → Web application
-3. Add authorized redirect URI: `https://<your-supabase-project>.supabase.co/auth/v1/callback`
-4. Copy the Client ID and Client Secret
-5. Supabase Dashboard → Authentication → Providers → Google → toggle ON → paste Client ID + Secret
-6. The "Continue with Google" button in the auth modal will now work
-
-## Admin Moderation
-
-New reviews go to a `pending` state and appear in the admin moderation queue. To access the queue:
-
-1. Sign in with any account
-2. Promote yourself to admin:
-   ```bash
-   bun run scripts/promote-admin.ts your@email.com
-   ```
-3. Refresh the page — an "Admin" button will appear in the header
-4. Click it to open the moderation panel where you can approve or reject pending reviews
-
-## Security
-
-- CSRF protection on all state-changing API routes via `Sec-Fetch-Site` and Origin header validation
-- Rate limiting on API routes (in-memory per-instance; use Upstash Redis for distributed deployments)
-- Zod schema validation on all API inputs
-- CSP and security headers configured in `next.config.ts`
-- Supabase Auth with server-side session handling
-- React's built-in XSS escaping for all user-generated content
-
-## Testing
-
+### 4) Run the app
 ```bash
-bunx vitest run        # Run unit tests
-bun run lint           # Run ESLint
-bunx tsc --noEmit      # Type check
+bun run dev
 ```
+App runs on `http://localhost:3000` by default.
 
-Test files are located alongside source files as `*.test.ts`.
+## Database notes (SQLite vs PostgreSQL)
+- **Local/dev (default):** use `prisma/schema.prisma` with `DATABASE_URL=file:./db/custom.db`
+- **Production/Postgres:** use `prisma/schema.postgres.prisma` with a PostgreSQL `DATABASE_URL` (e.g. Supabase Postgres)
 
-## Database Migration: SQLite → Supabase Postgres
+The Postgres schema is intended to mirror the current app domain model. Before production deployment, validate migrations and data compatibility in your environment (especially JSON-like string fields and any app-specific assumptions).
 
-The dev environment uses SQLite (zero-config). For production, migrate to Supabase Postgres:
+## Stripe (standby / future activation)
+Stripe-related code and schema support are present (checkout, portal, webhook, subscription records), but Stripe is **intentionally not active** in regions where it is unavailable (including Jordan).
 
-1. Get your Postgres connection string from Supabase Dashboard → Settings → Database → Connection string → URI
-2. Update `.env`:
-   ```env
-   DATABASE_URL=postgresql://postgres:[YOUR-PASSWORD]@db.[YOUR-PROJECT].supabase.co:5432/postgres
-   ```
-3. Replace the Prisma schema:
-   ```bash
-   cp prisma/schema.postgres.prisma prisma/schema.prisma
-   ```
-4. Push the schema to Postgres:
-   ```bash
-   bun run db:push --accept-data-loss
-   ```
-5. Re-seed:
-   ```bash
-   bun run prisma/seed.ts
-   ```
-6. Promote yourself to admin again (the User table is fresh):
-   ```bash
-   bun run scripts/promote-admin.ts your@email.com
-   ```
+- Keep Stripe env vars unset unless you are explicitly preparing a supported-region deployment.
+- Webhook endpoint includes signature verification and idempotency handling for future activation.
+- Treat billing features as dormant/standby until regional/payment readiness is confirmed.
 
-The Postgres schema uses native `Json` type for the `tags` and `universities` fields (SQLite used `String`). The application code (`JSON.parse`/`JSON.stringify`) works with both — no code changes needed.
+## Security & reliability notes
+Implemented in parts of the codebase (coverage continues to improve):
+- CSRF same-origin checks for browser-based state-changing requests (`src/lib/csrf.ts`)
+- Zod-based request validation (`src/lib/validation.ts`)
+- In-memory rate limiting helper (`src/lib/rate-limit.ts`) for abuse reduction (not distributed)
+- Supabase server-side auth/session handling
+- CSP and security headers in `next.config.ts`
+- Cron endpoint auth via `CRON_SECRET` (fail-closed when missing)
+- Stripe webhook signature verification + idempotency logging (standby-ready)
 
-## License
+## Testing & checks
+Common commands:
+```bash
+bun run lint
+bunx tsc --noEmit
+bun run test
+# or: bunx vitest run
+bun run test:e2e
+```
+(Exact setup may depend on installed dependencies and environment variables.)
 
-MIT
+## Useful scripts
+- `bun run db:push` - push Prisma schema to DB
+- `bun run db:generate` - generate Prisma client
+- `bun run db:seed` - run seed script
+- `bun run db:static` - generate static data artifacts
+- `bun run scripts/promote-admin.ts <email>` - promote a user to admin (when DB/user exists)
+
+## Current status / maintenance notes
+- The app contains many product surfaces and is actively evolving; some docs/comments may lag behind features.
+- API route hardening and schema parity should be reviewed continuously as new routes/features are added.
+- For production, validate authz, billing/webhooks, migrations, and observability in a staging environment before rollout.

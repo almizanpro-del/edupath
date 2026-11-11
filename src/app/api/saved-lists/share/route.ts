@@ -12,10 +12,14 @@ import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { requireSameOrigin } from '@/lib/csrf'
+import { rateLimit } from '@/lib/rate-limit'
 
 export async function POST(req: NextRequest) {
   const csrfError = requireSameOrigin(req)
   if (csrfError) return csrfError
+
+  const limited = rateLimit(req, { windowMs: 60_000, max: 20, prefix: 'saved-lists-share' })
+  if (limited) return limited
 
   try {
     const supabase = await createClient()

@@ -446,3 +446,11 @@ model AgentMatch {
   @@index([sessionId])
   @@index([universityId])
 }
+
+/// Stripe webhook idempotency log (kept for future Stripe activation).
+model StripeWebhookEvent {
+  id          String   @id @default(cuid())
+  eventId     String   @unique
+  eventType   String
+  processedAt DateTime @default(now())
+}

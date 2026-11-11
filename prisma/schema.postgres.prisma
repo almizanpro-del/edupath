@@ -1,18 +1,13 @@
-// EduPath Prisma schema — Postgres (production)
-// Use this schema when migrating to Supabase Postgres.
+// EduPath Prisma schema - PostgreSQL/Supabase (production)
+// Synced from prisma/schema.prisma (active app domain model).
 //
-// To switch from SQLite to Postgres:
-// 1. Update your .env: DATABASE_URL=postgresql://postgres:[PASSWORD]@db.[PROJECT].supabase.co:5432/postgres
-// 2. Copy this file to prisma/schema.prisma (replacing the SQLite version)
-// 3. Run: bun run db:push --accept-data-loss
-//    (This creates all tables in Postgres. Data won't be migrated from SQLite — re-seed instead.)
-// 4. Run: bun run prisma/seed.ts
-//    (Seeds 22 universities + programs + scholarships + reviews)
-// 5. Promote yourself to admin: bun run scripts/promote-admin.ts your@email.com
+// Use this schema when deploying with a PostgreSQL DATABASE_URL (e.g. Supabase).
+// Local dev uses prisma/schema.prisma with SQLite.
 //
-// Note: SQLite uses String for JSON arrays (universities field in SavedList, tags in Review).
-// Postgres uses native Json type. The application code uses JSON.parse/stringify which works
-// with both, but Postgres enforces JSON validity at the DB level.
+// Notes:
+// - JSON-like fields are currently stored as String in many places for compatibility
+//   with existing application JSON.parse/stringify usage. Keep aligned unless app code changes.
+// - Stripe integration is kept on standby for future activation in some regions.
 
 generator client {
   provider = "prisma-client-js"
@@ -22,9 +17,8 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
 model University {
-  id              String   @id @default(uuid())
+  id              String   @id @default(cuid())
   slug            String   @unique
   name            String
   country         String
@@ -38,65 +32,121 @@ model University {
   logoUrl         String?
   descriptionEn   String?
   descriptionAr   String?
+  pendingReview   Boolean  @default(false) // true = scraped, awaiting editorial review
+  // Rihla agent enrichment fields
+  hasHalalFood            Boolean? @default(true)
+  hasPrayerFacilities     Boolean? @default(true)
+  hasGenderSegregatedHousing Boolean? @default(false)
+  hasFamilyAccommodation  Boolean? @default(false)
+  // Data provenance fields (Phase 1 — Data Integrity)
+  verifiedStatus  String   @default("UNVERIFIED") // UNVERIFIED | OFFICIAL_SOURCE_VERIFIED | THIRD_PARTY_CORROBORATED | ESTIMATED | STALE | CONFLICTING_SOURCES
+  sourceUrl       String?  // URL of the official source where data was verified
+  sourceCategory  String?  // official | government | third_party | estimated | user_submitted
+  lastVerifiedAt  DateTime? // When the data was last checked against the source
+  dataQualityScore Int     @default(0) // 0-100 completeness score
+  // Phase A — Trust repair fields
+  dataSource      String?  // Human-readable source description (e.g. "Official university website")
+  dataConfidence  String   @default("unverified") // high | medium | low | unverified
+  // Phase 3 — Sponsor: when a university is claimed by a recruiter,
+  // this holds the User.id of the recruiter. Null = unclaimed.
+  claimedByUserId String?
+  claimedAt       DateTime?
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
   programs        Program[]
   scholarships    Scholarship[]
   reviews         Review[]
-
-  @@index([country, tuitionUsd])
-  @@index([name])
+  transferFrom    TransferPathway[] @relation("TransferFrom")
+  transferTo      TransferPathway[] @relation("TransferTo")
+  events          AnalyticsEvent[]
+  leads           Lead[]
+  agentMatches    AgentMatch[]
+  applications    ApplicationTracker[]
 }
 
 model Program {
-  id              String   @id @default(uuid())
+  id              String   @id @default(cuid())
   universityId    String
   university      University @relation(fields: [universityId], references: [id], onDelete: Cascade)
   name            String
-  degreeLevel     String
+  degreeLevel     String   // bachelor | master | phd
   field           String
   durationMonths  Int
   language        String
   tuitionUsd      Int
   deadline        String?
   entryReqs       String?
+  // Application link — the external URL where students actually apply.
+  // When present, the UI shows an "Apply Now" button linking here.
+  // When absent, the UI falls back to "Visit Website".
+  applicationUrl  String?
+  applicationFeeUsd Int?  // one-time application fee, if known
+  // Data provenance fields (Phase 1 — Data Integrity)
+  verifiedStatus  String   @default("UNVERIFIED") // UNVERIFIED | OFFICIAL_SOURCE_VERIFIED | ESTIMATED | STALE
+  sourceUrl       String?  // Official program page URL
+  lastVerifiedAt  DateTime?
+  agentMatches    AgentMatch[]
 
   @@index([universityId])
-  @@index([field, degreeLevel])
 }
 
 model Scholarship {
-  id              String   @id @default(uuid())
+  id              String   @id @default(cuid())
   universityId    String
   university      University @relation(fields: [universityId], references: [id], onDelete: Cascade)
   name            String
   amountUsd       Int
-  amountType      String
+  amountType      String   // full | partial | fixed
   eligibility     String
   deadline        String?
+  // Application link for the scholarship (often a separate form from
+  // university admission).
+  applicationUrl  String?
 
   @@index([universityId])
 }
 
 model User {
-  id              String   @id @default(uuid())
-  supabaseId      String?  @unique
+  id              String   @id @default(cuid())
+  supabaseId      String?  @unique // maps to Supabase auth.users.id when user signs in
   email           String   @unique
   name            String
   country         String   @default("Jordan")
   fieldOfInterest String?
-  role            String   @default("student")
-  verificationStatus String @default("pending")
+  role            String   @default("student") // student | recruiter | admin
+  verificationStatus String @default("pending") // pending | verified | rejected
   locale          String   @default("en")
   createdAt       DateTime @default(now())
 
+  // Onboarding fields (Phase 2) — collected after first signup so the
+  // directory can be personalized without forcing the user through the
+  // full Rihla intake. All nullable until the user completes onboarding.
+  educationLevel    String?  // high_school | bachelor | master | phd
+  preferredCountries String?  // JSON array of country names, e.g. ["Turkey","Germany"]
+  budgetUsd         Int?     // annual budget in USD
+  // Phase 6 — PRD ONB-05: separate consent controls
+  consentProcessing  Boolean  @default(true)  // required for account — data processing
+  consentMarketing   Boolean  @default(false) // optional — marketing emails
+  consentLeadSharing Boolean  @default(false) // optional — share profile with universities
+  // Phase 6 — PRD ONB-03: extended profile fields
+  gpa               Float?   // GPA on a 0-5 scale
+  englishLevel      String?  // none | beginner | intermediate | advanced | fluent | ielts_6 | ielts_6.5 | ielts_7 | toefl_80 | toefl_100
+  scholarshipNeed   Boolean  @default(false) // actively seeking scholarships
+  intake            String?  // intended intake: fall_2026 | spring_2027 | fall_2027 | etc.
+
   reviews         Review[]
   savedLists      SavedList[]
+  subscription    Subscription?
+  intakeSessions  IntakeSession[]
+  essayReviews    EssayReview[]
+  applications    ApplicationTracker[]
+  parentInvitations ParentInvitation[] @relation("StudentInvitations")
+  parentOf         ParentInvitation[] @relation("ParentInvitations")
 }
 
 model Review {
-  id              String   @id @default(uuid())
+  id              String   @id @default(cuid())
   userId          String
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   universityId    String
@@ -109,9 +159,11 @@ model Review {
   ratingSocial        Int
   reviewText      String
   helpfulCount    Int      @default(0)
-  moderationStatus String @default("pending")
+  moderationStatus String @default("approved") // pending | approved | rejected
   verifiedEnrollment Boolean @default(false)
-  tags            Json     @default("[]")  // Postgres native JSON
+  tags            String   @default("[]") // JSON array of tags
+  // Phase A — Trust repair: mark synthetic/seeded reviews
+  isSample        Boolean  @default(false) // true = generated for demo, NOT a real student review
   createdAt       DateTime @default(now())
 
   @@index([universityId, moderationStatus])
@@ -119,14 +171,289 @@ model Review {
 }
 
 model SavedList {
-  id              String   @id @default(uuid())
+  id              String   @id @default(cuid())
   userId          String
   user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   listName        String
-  universities    Json     @default("[]")  // Postgres native JSON
+  universities    String   @default("[]") // JSON array of university IDs
   isPublic        Boolean  @default(false)
   shareToken      String?  @unique
   createdAt       DateTime @default(now())
 
   @@index([userId])
+}
+
+model TransferPathway {
+  id              String   @id @default(cuid())
+  fromUniversityId String
+  fromUniversity  University @relation("TransferFrom", fields: [fromUniversityId], references: [id], onDelete: Cascade)
+  toUniversityId  String
+  toUniversity    University @relation("TransferTo", fields: [toUniversityId], references: [id], onDelete: Cascade)
+  creditsAccepted Int      // typical number of credits that transfer
+  totalCredits    Int      // total credits in the target program
+  agreementType   String   // "official" | "informal" | "case-by-case"
+  notes           String   // description of the transfer pathway
+  requirements    String?  // GPA requirements, course equivalents, etc.
+  estimatedSavingsUsd Int? // how much students save by transferring
+  createdAt       DateTime @default(now())
+
+  @@index([fromUniversityId])
+  @@index([toUniversityId])
+}
+
+model AnalyticsEvent {
+  id            String   @id @default(cuid())
+  eventType     String   // university_view | search | compare | save | essay_review | scholarship_match | transfer_view | contact_form
+  universityId  String?  // related university (if applicable)
+  university    University? @relation(fields: [universityId], references: [id], onDelete: SetNull)
+  userId        String?  // authenticated user (if applicable)
+  sessionId     String?  // anonymous session ID
+  metadata      String   @default("{}") // JSON: { query, filters, field, gpa, etc. }
+  country       String?  // user's country (from profile or IP)
+  createdAt     DateTime @default(now())
+
+  @@index([eventType, createdAt])
+  @@index([universityId])
+  @@index([userId])
+}
+
+model Lead {
+  id            String   @id @default(cuid())
+  universityId  String
+  university    University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  studentName   String
+  studentEmail  String
+  country       String
+  gpa           Float?
+  field         String?
+  message       String
+  status        String   @default("new") // new | contacted | closed
+  createdAt     DateTime @default(now())
+
+  messages      LeadMessage[]
+
+  @@index([universityId])
+  @@index([status])
+}
+
+/// Conversation thread between a recruiter and a student lead.
+/// Each lead can have multiple messages — the initial inquiry is the
+/// Lead.message field; subsequent replies are LeadMessage rows.
+model LeadMessage {
+  id          String   @id @default(cuid())
+  leadId      String
+  lead        Lead     @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  // "recruiter" = message from the sponsor; "student" = message from the
+  // student (future: in-platform student replies)
+  fromRole    String   // "recruiter" | "student"
+  authorName  String
+  authorEmail String
+  body        String
+  createdAt   DateTime @default(now())
+
+  @@index([leadId, createdAt])
+}
+
+model Subscription {
+  id                    String   @id @default(cuid())
+  userId                String   @unique
+  user                  User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stripeCustomerId      String?  @unique
+  stripeSubscriptionId  String?  @unique
+  stripePriceId         String?
+  tier                  String   @default("free") // free | premium | pro | vip | sponsor_starter | sponsor_growth
+  status                String   @default("none") // none | trialing | active | past_due | canceled | expired
+  currentPeriodEnd      DateTime?
+  cancelAtPeriodEnd     Boolean  @default(false)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@index([userId])
+  @@index([stripeCustomerId])
+}
+
+/// AI essay review history. Each record is one essay submission + the
+/// AI's feedback. Persists across sessions so users can track improvement
+/// over time and see past reviews on /my-essays.
+model EssayReview {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  essayText     String   // the original essay (max 10000 chars, validated in API)
+  // Feedback is stored as a JSON string to avoid over-typing the LLM's
+  // response shape. The API route validates the shape before saving.
+  feedback      String   // JSON: { scores, overall_score, strengths, weaknesses, line_feedback, rewrite_summary }
+  overallScore  Float    // denormalized for easy sorting/filtering
+  targetUniversity String? // optional: which university the essay is for
+  targetProgram  String? // optional: which program
+  applicantCountry String? // optional: applicant's country
+  createdAt     DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@index([userId, overallScore])
+}
+
+/// Application tracker — lets students track their university applications
+/// through a Kanban-style pipeline: researching → applying → submitted →
+/// interviewing → decision → enrolled.
+model ApplicationTracker {
+  id            String   @id @default(cuid())
+  userId        String
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  universityId  String
+  university    University @relation(fields: [universityId], references: [id], onDelete: Cascade)
+  programId     String?
+  // Pipeline status — the columns on the Kanban board
+  status        String   @default("researching") // researching | applying | submitted | interviewing | decision | enrolled
+  // Decision outcome (only set when status = 'decision')
+  decision      String?  // accepted | rejected | waitlisted | deferred
+  // Key dates (all optional — user fills in as they progress)
+  appliedAt     DateTime?
+  deadlineAt    DateTime?
+  decisionAt    DateTime?
+  notes         String   @default("") // free-text notes
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([userId, status])
+  @@index([universityId])
+}
+
+/// Family Decision Room (PRD ONB-04 + 9.3 #1) — allows a student to invite
+/// a parent/guardian to view a simplified dashboard with controlled
+/// permissions. The parent sees: total cost, safety summary, visa steps,
+/// key deadlines — but NOT academic details unless the student explicitly
+/// shares them.
+model ParentInvitation {
+  id            String    @id @default(cuid())
+  // The student who sent the invitation
+  studentId     String
+  student       User      @relation("StudentInvitations", fields: [studentId], references: [id], onDelete: Cascade)
+  // The parent/guardian who accepted (null until they sign up)
+  parentId      String?
+  parent        User?     @relation("ParentInvitations", fields: [parentId], references: [id], onDelete: SetNull)
+  // Parent's email — used to send the invitation
+  parentEmail   String
+  parentName    String?
+  // Token used in the invitation link (/family/join?token=...)
+  inviteToken   String    @unique @default(cuid())
+  status        String    @default("pending") // pending | accepted | revoked
+  // Permission controls — what the parent can see
+  canSeeCosts       Boolean  @default(true)
+  canSeeDeadlines   Boolean  @default(true)
+  canSeeSafety      Boolean  @default(true)
+  canSeeAcademic    Boolean  @default(false) // off by default — student must opt in
+  canSeeDocuments   Boolean  @default(false)
+  createdAt     DateTime  @default(now())
+  acceptedAt    DateTime?
+
+  @@index([studentId])
+  @@index([parentId])
+}
+
+/// Staging table for scraped university data awaiting admin review.
+/// Records are created by the scraper pipeline (scripts/scraper/) and
+/// promoted to the University table when an admin approves them.
+model ScrapedUniversity {
+  id              String   @id @default(cuid())
+  slug            String
+  name            String
+  country         String
+  city            String
+  website         String?
+  tuitionUsd      Int      @default(0)
+  livingCostUsd   Int      @default(0)
+  intlStudentPct  Float    @default(0)
+  acceptanceRate  Float?
+  currency        String   @default("USD")
+  logoUrl         String?
+  descriptionEn   String?
+  descriptionAr   String?
+
+  // Scraper metadata
+  source          String   // openalex | wikipedia | curated
+  normalizedName  String   // normalized form for dedup comparison
+  qualityScore    Int      @default(0) // 0-100
+  qualityBreakdown String? // JSON string of per-field breakdown
+  status          String   @default("manual_review") // auto_rejected | manual_review | auto_approved | approved | rejected
+  scrapedAt       DateTime @default(now())
+  reviewedAt      DateTime?
+  reviewedBy      String?  // User.id of admin who reviewed
+
+  // Raw data from source (JSON)
+  rawData         String?  // JSON string of original source record
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([source, country])
+  @@index([normalizedName])
+  @@index([status])
+  @@index([qualityScore])
+}
+
+/// Rihla AI agent — conversational intake session
+model IntakeSession {
+  id              String   @id @default(cuid())
+  userId          String?
+  user            User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  language        String   @default("en") // "en" | "ar"
+  status          String   @default("in_progress") // in_progress | completed | abandoned
+
+  // Structured intake fields (nullable until collected)
+  nationality       String?
+  educationLevel    String?
+  fieldOfInterest   String?
+  preferredCountries String? // JSON array as string for SQLite compat
+  budgetUsd         Int?
+  languagePref      String?
+  degreeLevel       String?
+  careerGoal        String?
+  specialRequirements String?
+
+  // Conversation transcript
+  messages        IntakeMessage[]
+  matches         AgentMatch[]
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([userId])
+  @@index([status])
+}
+
+model IntakeMessage {
+  id         String   @id @default(cuid())
+  sessionId  String
+  session    IntakeSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role       String   // "user" | "assistant" | "system"
+  content    String
+  createdAt  DateTime @default(now())
+
+  @@index([sessionId])
+}
+
+/// Rihla AI agent — match with LLM-generated explanation
+model AgentMatch {
+  id           String   @id @default(cuid())
+  sessionId    String
+  session      IntakeSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  universityId String
+  university   University @relation(fields: [universityId], references: [id])
+  programId    String?
+  program      Program?  @relation(fields: [programId], references: [id])
+  relevanceScore Float
+  explanation  String   // LLM-generated "Why this matches you" (in session language)
+  createdAt    DateTime @default(now())
+
+  @@index([sessionId])
+  @@index([universityId])
+}
+
+/// Stripe webhook idempotency log (kept for future Stripe activation).
+model StripeWebhookEvent {
+  id          String   @id @default(cuid())
+  eventId     String   @unique
+  eventType   String
+  processedAt DateTime @default(now())
 }

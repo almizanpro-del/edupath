@@ -30,6 +30,24 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 })
   }
 
+  // Idempotency: Stripe may retry deliveries. Record processed event IDs so
+  // duplicate deliveries are acknowledged safely (important when Stripe is
+  // activated in the future; currently kept standby in some regions).
+  try {
+    const existingEvent = await db.stripeWebhookEvent.findUnique({
+      where: { eventId: event.id },
+      select: { id: true },
+    })
+    if (existingEvent) {
+      return NextResponse.json({ received: true, duplicate: true })
+    }
+    await db.stripeWebhookEvent.create({
+      data: { eventId: event.id, eventType: event.type },
+    })
+  } catch (err) {
+    console.warn('[stripe/webhook] Idempotency check/store failed, continuing:', err)
+  }
+
   try {
     switch (event.type) {
       case 'checkout.session.completed': {

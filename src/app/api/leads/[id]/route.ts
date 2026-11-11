@@ -20,6 +20,7 @@ import { NextResponse, NextRequest } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { requireSameOrigin } from '@/lib/csrf'
+import { rateLimit } from '@/lib/rate-limit'
 import { z } from 'zod'
 
 const schema = z.object({
@@ -33,6 +34,9 @@ export async function PATCH(
 ) {
   const csrfError = requireSameOrigin(req)
   if (csrfError) return csrfError
+
+  const limited = rateLimit(req, { windowMs: 60_000, max: 30, prefix: 'leads-update' })
+  if (limited) return limited
 
   try {
     const supabase = await createClient()

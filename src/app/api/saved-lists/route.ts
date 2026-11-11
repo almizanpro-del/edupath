@@ -7,35 +7,11 @@
  * Returns graceful errors when DB is unavailable (Vercel without Postgres).
  */
 import { NextResponse, NextRequest } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { requireSameOrigin } from '@/lib/csrf'
+import { rateLimit } from '@/lib/rate-limit'
+import { getOrCreateProfile } from '@/lib/auth-helpers'
 import { savedListSchema, validateBody } from '@/lib/validation'
-
-async function getOrCreateProfile() {
-  const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-  if (!user) return null
-
-  let profile = await db.user.findUnique({
-    where: { supabaseId: user.id },
-  })
-  if (!profile) {
-    profile = await db.user.create({
-      data: {
-        supabaseId: user.id,
-        email: user.email ?? '',
-        name:
-          (user.user_metadata?.full_name as string) ??
-          (user.email?.split('@')[0] ?? 'Student'),
-        country: (user.user_metadata?.country as string) ?? 'Jordan',
-      },
-    })
-  }
-  return profile
-}
 
 // Get current user's saved universities
 export async function GET() {
@@ -87,6 +63,9 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   const csrfError = requireSameOrigin(req)
   if (csrfError) return csrfError
+
+  const limited = rateLimit(req, { windowMs: 60_000, max: 30, prefix: 'saved-lists' })
+  if (limited) return limited
 
   try {
     const profile = await getOrCreateProfile()
