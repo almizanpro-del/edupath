@@ -3,37 +3,26 @@
  * PATCH /api/claim — admin approves/rejects a claim
  */
 import { NextResponse, NextRequest } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { requireSameOrigin } from '@/lib/csrf'
+import { rateLimit } from '@/lib/rate-limit'
+import { getOrCreateProfile, requireAdmin } from '@/lib/auth-helpers'
 import { claimSchema, validateBody } from '@/lib/validation'
 import { z } from 'zod'
 
 const nonEmptyString = z.string().trim().min(1).max(10_000)
 
-async function getProfile() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return null
-  let profile = await db.user.findUnique({
-        where: { supabaseId: user.id },
-        select: {
-          id: true, role: true, name: true, email: true,
-          country: true, fieldOfInterest: true, verificationStatus: true,
-        },
-      })
-  if (!profile) {
-    profile = await db.user.create({ data: { supabaseId: user.id, email: user.email ?? '', name: user.user_metadata?.full_name ?? 'User', country: 'Jordan', role: 'student' } })
-  }
-  return profile
-}
+
 
 // POST — submit a claim
 export async function POST(req: NextRequest) {
   const csrfError = requireSameOrigin(req)
   if (csrfError) return csrfError
 
-  const profile = await getProfile()
+  const limited = rateLimit(req, { windowMs: 60_000, max: 5, prefix: 'claim' })
+  if (limited) return limited
+
+  const profile = await getOrCreateProfile()
   if (!profile) return NextResponse.json({ error: 'Authentication required' }, { status: 401 })
 
   try {
@@ -74,8 +63,8 @@ export async function POST(req: NextRequest) {
 
 // GET — admin views pending claims
 export async function GET() {
-  const profile = await getProfile()
-  if (!profile || profile.role !== 'admin') {
+  const profile = await requireAdmin()
+  if (!profile) {
     return NextResponse.json({ error: 'Admin access required' }, { status: 403 })
   }
 
@@ -119,8 +108,8 @@ export async function PATCH(req: NextRequest) {
   const csrfError = requireSameOrigin(req)
   if (csrfError) return csrfError
 
-  const profile = await getProfile()
-  if (!profile || profile.role !== 'admin') {
+  const profile = await requireAdmin()
+  if (!profile) {
     return NextResponse.json({ error: 'Admin access required' }, { status: 403 })
   }
 

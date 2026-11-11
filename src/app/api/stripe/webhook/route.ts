@@ -63,10 +63,13 @@ export async function POST(req: NextRequest) {
       }
 
       case 'customer.subscription.updated': {
-        const subscription = event.data.object
+        const subscription = event.data.object as any
         const customerId = subscription.customer as string
-        const priceId = subscription.items.data[0]?.price.id
+        const priceId = subscription.items?.data?.[0]?.price?.id
         const tier = TIERS.find(t => t.priceId === priceId)
+        const periodEnd =
+          subscription.current_period_end ??
+          subscription.items?.data?.[0]?.current_period_end
 
         await db.subscription.updateMany({
           where: { stripeCustomerId: customerId },
@@ -74,10 +77,8 @@ export async function POST(req: NextRequest) {
             status: subscription.status,
             stripePriceId: priceId,
             tier: tier?.id ?? 'free',
-            currentPeriodEnd: subscription.current_period_end
-              ? new Date(subscription.current_period_end * 1000)
-              : null,
-            cancelAtPeriodEnd: subscription.cancel_at_period_end,
+            currentPeriodEnd: periodEnd ? new Date(periodEnd * 1000) : null,
+            cancelAtPeriodEnd: Boolean(subscription.cancel_at_period_end),
           },
         })
         break

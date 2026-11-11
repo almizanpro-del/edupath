@@ -5,32 +5,10 @@
  * DELETE /api/admin/universities/[id] — delete a university
  */
 import { NextResponse, NextRequest } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { requireSameOrigin } from '@/lib/csrf'
+import { requireAdmin } from '@/lib/auth-helpers'
 import { adminUniversityCreateSchema, validateBody } from '@/lib/validation'
-
-async function requireAdmin() {
-  const supabase = await createClient()
-  const { data: { user } } = await supabase.auth.getUser()
-  if (!user) return null
-  let profile = await db.user.findUnique({
-        where: { supabaseId: user.id },
-        select: {
-          id: true, role: true, name: true, email: true,
-          country: true, fieldOfInterest: true, verificationStatus: true,
-        },
-      })
-  if (!profile) {
-    profile = await db.user.create({
-      data: {
-        supabaseId: user.id, email: user.email ?? '', name: user.user_metadata?.full_name ?? 'Admin',
-        country: user.user_metadata?.country ?? 'Jordan', role: 'student',
-      },
-    })
-  }
-  return profile.role === 'admin' ? profile : null
-}
 
 export async function GET(req: NextRequest) {
   const profile = await requireAdmin()

@@ -22,7 +22,7 @@ EduPath is a university discovery, comparison, and review platform that helps Ar
 - **Framework**: Next.js 16 (App Router, React Server Components)
 - **Language**: TypeScript 5
 - **Styling**: Tailwind CSS 4 + shadcn/ui (New York)
-- **Database**: Prisma ORM + SQLite (dev); Supabase Postgres (production)
+- **Database**: Prisma ORM with SQLite in local dev (`prisma/schema.prisma`) and a separate Postgres schema for production (`prisma/schema.postgres.prisma`)
 - **Auth**: Supabase Auth (email/password, with optional Google OAuth)
 - **Icons**: Lucide React
 

@@ -1,23 +1,19 @@
-// EduPath Prisma schema
-// Provider auto-detected from DATABASE_URL:
-//   - If DATABASE_URL starts with "file:" → SQLite (local dev)
-//   - If DATABASE_URL starts with "postgresql:" → Postgres (production/Vercel)
+// EduPath Prisma schema (active/local dev)
+// This schema is configured for SQLite. For PostgreSQL/Supabase deployments,
+// use `prisma/schema.postgres.prisma` as the active schema and update the
+// provider/DATABASE_URL accordingly.
 //
-// On Vercel, set DATABASE_URL to your Supabase Postgres connection string.
-// Locally, use DATABASE_URL=file:./db/custom.db for SQLite.
+// Local dev:   DATABASE_URL=file:./db/custom.db
+// Production:  DATABASE_URL=postgresql://... (with Postgres schema)
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  // Prisma supports a special "sqlite" provider, but for cross-compatibility
-  // we use the provider that matches the DATABASE_URL.
-  // If you're on Vercel with Postgres, ensure DATABASE_URL starts with "postgresql://"
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
-
 model University {
   id              String   @id @default(cuid())
   slug            String   @unique

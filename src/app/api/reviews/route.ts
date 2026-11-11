@@ -9,38 +9,14 @@
  * Returns graceful errors when DB is unavailable (Vercel without Postgres).
  */
 import { NextResponse, NextRequest } from 'next/server'
-import { createClient } from '@/lib/supabase/server'
 import { db } from '@/lib/db'
 import { parseTags } from '@/lib/edupath'
 import staticUniversities from '@/data/static-universities.json'
 import { requireSameOrigin } from '@/lib/csrf'
+import { rateLimit } from '@/lib/rate-limit'
+import { getOrCreateProfile, requireAdmin } from '@/lib/auth-helpers'
 import { reviewSchema, validateBody } from '@/lib/validation'
 import { z } from 'zod'
-
-async function getOrCreateProfile() {
-  const supabase = await createClient()
-  const {
-    data: { user },
-  } = await supabase.auth.getUser()
-  if (!user) return null
-
-  let profile = await db.user.findUnique({
-    where: { supabaseId: user.id },
-  })
-  if (!profile) {
-    profile = await db.user.create({
-      data: {
-        supabaseId: user.id,
-        email: user.email ?? '',
-        name:
-          (user.user_metadata?.full_name as string) ??
-          (user.email?.split('@')[0] ?? 'Student'),
-        country: (user.user_metadata?.country as string) ?? 'Jordan',
-      },
-    })
-  }
-  return profile
-}
 
 // GET — list reviews (approved by university, OR pending for admin)
 export async function GET(req: NextRequest) {
@@ -51,8 +27,8 @@ export async function GET(req: NextRequest) {
   try {
     // Admin path: list pending reviews across all universities
     if (pending) {
-      const profile = await getOrCreateProfile()
-      if (!profile || profile.role !== 'admin') {
+      const profile = await requireAdmin()
+      if (!profile) {
         return NextResponse.json({ error: 'Admin access required' }, { status: 403 })
       }
       const reviews = await db.review.findMany({
@@ -131,8 +107,8 @@ export async function PATCH(req: NextRequest) {
   if (csrfError) return csrfError
 
   try {
-    const profile = await getOrCreateProfile()
-    if (!profile || profile.role !== 'admin') {
+    const profile = await requireAdmin()
+    if (!profile) {
       return NextResponse.json({ error: 'Admin access required' }, { status: 403 })
     }
 
@@ -189,6 +165,9 @@ export async function PATCH(req: NextRequest) {
 export async function POST(req: NextRequest) {
   const csrfError = requireSameOrigin(req)
   if (csrfError) return csrfError
+
+  const limited = rateLimit(req, { windowMs: 60_000, max: 10, prefix: 'reviews' })
+  if (limited) return limited
 
   try {
     const profile = await getOrCreateProfile()
